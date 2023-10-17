@@ -15,17 +15,22 @@ Auth::routes(['register' => false, 'reset' => false]);
 Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function () {
 
     Route::get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
-
-    Route::get('/codeblueforms', function(){
-        return view('includes/codeblueforms');
-    });
-
-    Route::get('/initialresuscitation', function(){
-        return view('initialresuscitation');
-    });
-    
-
 });
+
+Route::get('/codeblueforms', function(){
+    return view('includes/codeblueforms');
+});
+
+Route::get('/initialresuscitation', function(){
+    return view('initialresuscitation');
+});
+
+Route::post('/first-ventilation-dt', '\App\Http\Controllers\InitialResuscitationController@firstVenitlationDT');
+Route::post('/intubation-dt', '\App\Http\Controllers\InitialResuscitationController@intubationDT');
+Route::post('/first-pulseless-rhythm-dt', '\App\Http\Controllers\InitialResuscitationController@firstPulselessRhythmDT');
+Route::post('/compressions-dt', '\App\Http\Controllers\InitialResuscitationController@compressionsDT');
+Route::post('/aed-applied-dt', '\App\Http\Controllers\InitialResuscitationController@aedAppliedDT');
+Route::post('/pacemaker-on-dt', '\App\Http\Controllers\InitialResuscitationController@pacemakerOnDT');
 
 Route::group(['middleware' => ['auth']], function () {
 
