@@ -52,6 +52,6 @@ class OutcomeController extends Controller
         $outcome->save();
 
         // Redirect to a success page or perform any other actions
-        return redirect()->route('outcome.index')->with('success', 'Outcome recorded successfully.');
+        return redirect()->back()->with('success', 'Outcome saved successfully');
     }
 }

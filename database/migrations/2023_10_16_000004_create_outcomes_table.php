@@ -23,7 +23,7 @@ class CreateOutcomesTable extends Migration
             $table->unsignedInteger('respiratory_rate')->nullable();
             $table->string('rhythm')->nullable();
             $table->dateTime('code_end_dt')->default(now());
-            $table->unsignedInteger('code_number');
+            $table->unsignedInteger('code_number')->nullable();
             
             $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
             $table->timestamps();
