@@ -31,7 +31,7 @@
                             <input type="number" class="form-control" name="bp_systolic">
 
                             <label for="bp_diastolic">Blood Pressure, Diastolic:</label>
-                            <input type="number" class="form-control" name "bp_diastolic">
+                            <input type="number" class="form-control" name="bp_diastolic">
 
                             <label for="heart_rate">Heart Rate:</label>
                             <input type="number" class="form-control" name="heart_rate">
