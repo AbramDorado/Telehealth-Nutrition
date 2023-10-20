@@ -25,6 +25,18 @@ Route::get('/initialresuscitation', function(){
     return view('initialresuscitation');
 });
 
+Route::get('/outcome', function(){
+    return view('outcome');
+});
+
+Route::get('/evaluation', function(){
+    return view('evaluation');
+});
+
+Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
+Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
+
+
 Route::post('/first-ventilation-dt', '\App\Http\Controllers\InitialResuscitationController@firstVenitlationDT');
 Route::post('/intubation-dt', '\App\Http\Controllers\InitialResuscitationController@intubationDT');
 Route::post('/first-pulseless-rhythm-dt', '\App\Http\Controllers\InitialResuscitationController@firstPulselessRhythmDT');
