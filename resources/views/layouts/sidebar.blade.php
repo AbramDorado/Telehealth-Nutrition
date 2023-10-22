@@ -15,6 +15,12 @@
                             </li>
 
                             <li class="">
+                                <a href="/maininformation" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
+                                    <i class="ti-forms"></i> <span> Main Information </span>
+                                </a>
+                            </li>
+
+                            <li class="">
                                 <a href="/initialresuscitation" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
                                     <i class="ti-forms"></i> <span> Initial Resuscitation </span>
                                 </a>

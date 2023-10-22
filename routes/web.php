@@ -21,6 +21,10 @@ Route::get('/codeblueforms', function(){
     return view('includes/codeblueforms');
 });
 
+Route::get('/maininformation', function () {
+    return view('maininformation');
+});
+
 Route::get('/initialresuscitation', function(){
     return view('initialresuscitation');
 });
@@ -33,6 +37,7 @@ Route::get('/evaluation', function(){
     return view('evaluation');
 });
 
+Route::post('/store_maininformation', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
 Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
 Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
 
