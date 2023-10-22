@@ -8,7 +8,7 @@
                 <h4 class="font-20 m-b-5">CODE BLUE</h4>
                 <p class="text-white-50 mb-4"></p>
                 <a href="{{ route('welcome') }}" class="logo logo-admin">
-                    <h1>CA</h1>
+                    <h1>CB</h1>
                 </a>
             </div>
             <div class="account-card-content">
@@ -16,12 +16,12 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="email" class="col-form-label ">{{ __('Email Address') }}</label>
+                        <label for="username" class="col-form-label ">{{ __('Username') }}</label>
 
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                            name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                        @error('email')
+                        @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
