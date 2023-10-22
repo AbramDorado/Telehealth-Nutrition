@@ -15,18 +15,18 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->unsignedInteger('patient_pin')->unique()->primary();
-            $table->unsignedInteger('visit_number')->unique();
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
-            $table->string('suffix');
-            $table->date('birthday')->default(date("Y-m-d"));
-            $table->unsignedInteger('age');
-            $table->string('sex');
-            $table->double('height');
-            $table->double('weight');
-            $table->text('allergies');
-            $table->string('location');
+            $table->unsignedInteger('visit_number')->unique()->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('suffix')->nullable();
+            $table->date('birthday')->default(date("Y-m-d"))->nullable();
+            $table->unsignedInteger('age')->nullable();
+            $table->string('sex')->nullable();
+            $table->double('height')->nullable();
+            $table->double('weight')->nullable();
+            $table->text('allergies')->nullable();
+            $table->string('location')->nullable();
 
             $table->timestamps();
         });

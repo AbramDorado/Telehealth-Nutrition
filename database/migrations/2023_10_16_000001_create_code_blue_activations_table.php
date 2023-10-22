@@ -14,17 +14,17 @@ class CreateCodeBlueActivationsTable extends Migration
     public function up()
     {
         Schema::create('code_blue_activations', function (Blueprint $table) {
-            $table->increments('code_number'); 
-            $table->dateTime('code_start_dt');
-            $table->dateTime('arrest_dt');
-            $table->string('reason_for_activation');
-            $table->string('initial_reporter');
-            $table->dateTime('code_team_arrival_dt');
-            $table->dateTime('e-cart_arrival_time');
-            $table->string('witnessed');
-            $table->unsignedInteger('patient_pin');
+            $table->unsignedInteger('code_number')->unique()->primary();
+            $table->dateTime('code_start_dt')->nullable();
+            $table->dateTime('arrest_dt')->nullable();
+            $table->string('reason_for_activation')->nullable();
+            $table->string('initial_reporter')->nullable();
+            $table->dateTime('code_team_arrival_dt')->nullable();
+            $table->dateTime('e-cart_arrival_dt')->nullable();
+            $table->string('witnessed')->nullable();
+            //$table->unsignedInteger('patient_pin');
 
-            $table->foreign('patient_pin')->references('patient_pin')->on('patients');
+            //$table->foreign('patient_pin')->references('patient_pin')->on('patients');
             $table->timestamps();
         });
     }
