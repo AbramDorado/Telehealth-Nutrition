@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     use HasFactory;
+
+    protected $table = 'patients';
+    protected $primaryKey = 'patient_pin';
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'middle_name',
+        'suffix',
+        'patient_pin',
+        'visit_number',
+        'birthday',
+        'age',
+        'sex',
+        'height',
+        'weight',
+        'allergies',
+        'location',
+    ];
+
 }
