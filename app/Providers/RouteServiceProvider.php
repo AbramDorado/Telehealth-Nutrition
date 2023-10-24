@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/includes/codeblueforms';
+    public const HOME = '/codeblueforms';
 
     /**
      * The controller namespace for the application.
