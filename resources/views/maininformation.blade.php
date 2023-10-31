@@ -26,8 +26,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="patient_visit_encounter_number">Patient Visit/Encounter Number:</label>
-                        <input type="text" class="form-control" name="patient_visit_encounter_number">
+                        <label for="visit_number">Patient Visit/Encounter Number:</label>
+                        <input type="text" class="form-control" name="visit_number">
                     </div>
 
                     
