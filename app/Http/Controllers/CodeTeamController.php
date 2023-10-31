@@ -33,7 +33,6 @@ class CodeTeamController extends Controller
         // Save the CodeTeam instance to the database
         $codeTeam->save();
 
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Response saved successfully');
+        return view('codeblueforms');
     }
 }

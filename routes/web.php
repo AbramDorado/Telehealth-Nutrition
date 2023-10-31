@@ -40,9 +40,13 @@ Route::get('/evaluation', function(){
     return view('evaluation');
 });
 
+Route::get('/codeteam', function(){
+    return view('codeteam');
+});
 
 Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
 
+Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
 
 Route::post('/store_maininformation', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
 Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');

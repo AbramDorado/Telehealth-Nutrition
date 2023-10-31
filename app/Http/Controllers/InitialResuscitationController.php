@@ -9,8 +9,9 @@ class InitialResuscitationController extends Controller
 {
     private $initialResuscitation;
 
-    public function index(){
-        
+    public function index()
+    {   
+        return view('initialresuscitation');
     }
 
     public function store(Request $request)
@@ -51,5 +52,7 @@ class InitialResuscitationController extends Controller
         $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'];
         
         $initialResuscitation->save();
+
+        return view('flowsheet');
     }
 }

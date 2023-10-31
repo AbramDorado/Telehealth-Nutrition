@@ -70,6 +70,8 @@ class FlowsheetController extends Controller
         $carbonTime = Carbon::parse($time);
         $flowsheet->log_time = $carbonTime;
         $flowsheet->save();
+
+        return view('outcome');
              
     }        
 }

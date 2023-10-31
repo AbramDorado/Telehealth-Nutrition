@@ -10,8 +10,13 @@ use App\Models\CodeBlueActivation;
 
 class MainInformationController extends Controller
 {
+    public function index()
+    {   
+        return view('maininformation');
+    }
+
     public function store(Request $request)
-{
+    {
     $validatedData = $request->validate([
         'patient_pin' => 'nullable|integer',
         'first_name' => 'nullable|string',
@@ -69,5 +74,7 @@ class MainInformationController extends Controller
     $codeBlueActivation->witnessed = $validatedData2['witnessed'];
 
     $codeBlueActivation->save();
+
+    return view('initialresuscitation');
 }
 }

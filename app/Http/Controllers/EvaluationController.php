@@ -76,7 +76,7 @@ class EvaluationController extends Controller
         // Save the evaluation to the database
         $evaluation->save();
 
-        return redirect()->back()->with('success', 'Response saved successfully');
+        return view('codeteam');
     }
 
 }

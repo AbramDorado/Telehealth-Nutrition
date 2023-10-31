@@ -7,8 +7,10 @@
 @endsection
 
 @section('button')
-    <a href="#addnew" data-toggle="modal" class="btn btn-success btn-sm btn-flat"><i class="mdi mdi-plus mr-2"></i>New Resuscitation Event</a>
-
+        <form action="{{ url('/maininformationview') }}" method="get">
+            @csrf 
+            <button type="submit" class="btn btn-primary btn-block">New Resuscitation Event</button>
+        </form>
 @endsection
 
 @section('content')
