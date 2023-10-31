@@ -1,9 +1,8 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FingerDevicesControlller;
+use App\Http\Controllers\CodeTeamController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,12 +40,17 @@ Route::get('/evaluation', function(){
     return view('evaluation');
 });
 
+
+Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
+
+
 Route::post('/store_maininformation', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
 Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');
 Route::post('/store_flowsheet', '\App\Http\Controllers\FlowsheetController@store')->name('store_flowsheet');
 Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
 Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
-
+Route::post('/store_codeteam', '\App\Http\Controllers\CodeTeamController@store')->name('store_codeteam');
+ 
 
 Route::group(['middleware' => ['auth']], function () {
 
