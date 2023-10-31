@@ -69,7 +69,6 @@
                 </div>
 
                 <!-- Second Column -->
-                
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
@@ -135,11 +134,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- First Column -->
-                <div class="form-group">
-                    <label for="code_number">Code Number:</label>
-                    <input type="text" class="form-control" name="code_number" value="000">
-                </div>
-
+               
                 <div class="form-group">
                     <label for="code_start_dt">Date/Time of Activation of Code:</label>
                     <input type="datetime-local" class="form-control" name="code_start_dt" >

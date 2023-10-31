@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\InitialResuscitation;
+use App\Models\CodeBlueActivation;
 
 class InitialResuscitationController extends Controller
 {
@@ -34,6 +35,9 @@ class InitialResuscitationController extends Controller
             'pacemaker_on_dt' => 'nullable|date',
         ]);
 
+        $code_number = $request->input('code_number'); 
+        $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+
         $initialResuscitation = new InitialResuscitation;
 
         $initialResuscitation->breathing_upon_ca = $validatedData['breathing_upon_ca'];
@@ -50,9 +54,12 @@ class InitialResuscitationController extends Controller
         $initialResuscitation->aed_applied_dt = $validatedData['aed_applied_dt'];
         $initialResuscitation->pacemaker_on = $validatedData['pacemaker_on'];
         $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'];
+
+        $initialResuscitation->codeBlueActivation()->associate($codeBlueActivation);
         
         $initialResuscitation->save();
 
         return view('flowsheet');
     }
 }
+

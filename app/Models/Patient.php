@@ -28,4 +28,10 @@ class Patient extends Model
         'location',
     ];
 
+    public function codeBlueActivation()
+    {
+    return $this->hasMany(codeBlueActivation::class, 'code_number', 'code_number');
+    }
+
+
 }

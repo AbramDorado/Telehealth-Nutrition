@@ -27,11 +27,13 @@ class InitialResuscitation extends Model
         'pacemaker_on',
         'pacemaker_on_dt',
         'pacemaker_on',
-        'patient_pin',
+        'code_number',
     ];
 
     public function codeBlueActivation()
     {
         return $this->belongsTo(codeBlueActivation::class, 'code_number', 'code_number');
     }
+
+    
 }

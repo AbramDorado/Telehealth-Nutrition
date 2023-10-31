@@ -64,7 +64,7 @@ class MainInformationController extends Controller
 
     $codeBlueActivation = new CodeBlueActivation;
 
-    $codeBlueActivation->code_number =  $validatedData2['code_number'];
+    // $codeBlueActivation->code_number =  $validatedData2['code_number'];
     $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'];
     $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
     $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'];
@@ -72,6 +72,7 @@ class MainInformationController extends Controller
     $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'];
     $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'];
     $codeBlueActivation->witnessed = $validatedData2['witnessed'];
+    $codeBlueActivation->patient_pin = $patient->patient_pin;
 
     $codeBlueActivation->save();
 

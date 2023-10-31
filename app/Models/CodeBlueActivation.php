@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CodeBlueActivation extends Model
 {
     use HasFactory;
-    protected $table = 'code_blue_activations'; // Make sure this matches your actual table name
-    protected $primaryKey = 'code_number'; // Change this if your primary key column has a different name
+    protected $table = 'code_blue_activations'; 
+    protected $primaryKey = 'code_number'; 
 
     protected $fillable = [
         'code_number',
@@ -20,7 +20,21 @@ class CodeBlueActivation extends Model
         'code_team_arrival_dt',
         'e-cart_arrival_dt',
         'witnessed',
+        'patient_pin'
     ];
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'patient_pin', 'patient_pin');
+    }
+
+    public function initialResuscitation()
+    {
+    return $this->hasOne(InitialResuscitation::class, 'code_number', 'code_number');
+    }
+
+
+
     
 
 }
