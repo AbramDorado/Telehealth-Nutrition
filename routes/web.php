@@ -28,6 +28,10 @@ Route::get('/initialresuscitation', function(){
     return view('initialresuscitation');
 });
 
+Route::get('/flowsheet', function(){
+    return view('flowsheet');
+});
+
 Route::get('/outcome', function(){
     return view('outcome');
 });
@@ -41,17 +45,12 @@ Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
 
 
 Route::post('/store_maininformation', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
+Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');
+Route::post('/store_flowsheet', '\App\Http\Controllers\FlowsheetController@store')->name('store_flowsheet');
 Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
 Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
 Route::post('/store_codeteam', '\App\Http\Controllers\CodeTeamController@store')->name('store_codeteam');
  
-
-Route::post('/first-ventilation-dt', '\App\Http\Controllers\InitialResuscitationController@firstVenitlationDT');
-Route::post('/intubation-dt', '\App\Http\Controllers\InitialResuscitationController@intubationDT');
-Route::post('/first-pulseless-rhythm-dt', '\App\Http\Controllers\InitialResuscitationController@firstPulselessRhythmDT');
-Route::post('/compressions-dt', '\App\Http\Controllers\InitialResuscitationController@compressionsDT');
-Route::post('/aed-applied-dt', '\App\Http\Controllers\InitialResuscitationController@aedAppliedDT');
-Route::post('/pacemaker-on-dt', '\App\Http\Controllers\InitialResuscitationController@pacemakerOnDT');
 
 Route::group(['middleware' => ['auth']], function () {
 

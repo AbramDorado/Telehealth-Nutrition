@@ -27,6 +27,13 @@
                             </li>
 
                             <li class="">
+                                <a href="/flowsheet" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
+                                    <i class="ti-forms"></i> <span> Flowsheet </span>
+                                </a>
+                            </li>
+
+
+                            <li class="">
                                 <a href="/outcome" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
                                     <i class="ti-forms"></i> <span> Outcome of the Code </span>
                                 </a>
