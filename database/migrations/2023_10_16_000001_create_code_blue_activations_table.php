@@ -20,7 +20,7 @@ class CreateCodeBlueActivationsTable extends Migration
             $table->string('reason_for_activation')->nullable();
             $table->string('initial_reporter')->nullable();
             $table->dateTime('code_team_arrival_dt')->nullable();
-            $table->dateTime('e-cart_arrival_dt')->nullable();
+            $table->dateTime('e_cart_arrival_dt')->nullable();
             $table->string('witnessed')->nullable();
             //$table->unsignedInteger('patient_pin');
 

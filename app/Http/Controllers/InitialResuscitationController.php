@@ -3,76 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Models\InitialResuscitation;
 
 class InitialResuscitationController extends Controller
 {
     private $initialResuscitation;
 
-    public function index()
-    {   
-        return view('initialresuscitation');
+    public function index(){
+        
     }
 
-    public function firstVenitlationDT(Request $request)
+    public function store(Request $request)
     {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
+        $validatedData = $request->validate([
+            'breathing_upon_ca' => 'nullable|string',
+            'first_ventilation_dt' => 'nullable|date',
+            'ventilation' => 'nullable|string',
+            'intubation_dt' => 'nullable|date',
+            'et_tube_size' => 'nullable|string',
+            'intubation_attempts' => 'nullable|integer',
+            'et_tube_information' => 'sometimes|array', 
+            'et_tube_information.*' => 'string',         
+            'first_documented_rhythm_dt' => 'nullable|date',
+            'first_pulseless_rhythm_dt' => 'nullable|date',
+            'compressions_dt' => 'nullable|date',
+            'aed_applied' => 'required|in:Yes,No',
+            'aed_applied_dt' => 'nullable|date',
+            'pacemaker_on' => 'required|in:Yes,No',
+            'pacemaker_on_dt' => 'nullable|date',
+        ]);
 
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->first_ventilation_dt = $carbonTime;
+        $initialResuscitation = new InitialResuscitation;
+
+        $initialResuscitation->breathing_upon_ca = $validatedData['breathing_upon_ca'];
+        $initialResuscitation->first_ventilation_dt = $validatedData['first_ventilation_dt'];
+        $initialResuscitation->ventilation = $validatedData['ventilation'];
+        $initialResuscitation->intubation_dt = $validatedData['intubation_dt'];
+        $initialResuscitation->et_tube_size = $validatedData['et_tube_size'];
+        $initialResuscitation->intubation_attempts = $validatedData['intubation_attempts'];
+        $initialResuscitation->et_tube_information = json_encode($validatedData['et_tube_information'] ?? []);
+        $initialResuscitation->first_documented_rhythm_dt = $validatedData['first_documented_rhythm_dt'];
+        $initialResuscitation->first_pulseless_rhythm_dt = $validatedData['first_pulseless_rhythm_dt'];
+        $initialResuscitation->compressions_dt = $validatedData['compressions_dt'];
+        $initialResuscitation->aed_applied = $validatedData['aed_applied'];
+        $initialResuscitation->aed_applied_dt = $validatedData['aed_applied_dt'];
+        $initialResuscitation->pacemaker_on = $validatedData['pacemaker_on'];
+        $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'];
+        
         $initialResuscitation->save();
     }
-
-    public function intubationDT(Request $request)
-    {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
-
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->intubation_dt = $carbonTime;
-        $initialResuscitation->save();
-    }
-
-    public function firstPulselessRhythmDT(Request $request)
-    {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
-
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->first_pulseless_rhythm_dt= $carbonTime;
-        $initialResuscitation->save();
-    }
-
-    public function compressionsDT(Request $request)
-    {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
-
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->compressions_dt= $carbonTime;
-        $initialResuscitation->save();
-    }
-
-    public function aedAppliedDT(Request $request)
-    {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
-
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->aed_applied_dt= $carbonTime;
-        $initialResuscitation->save();
-    }
-
-    public function pacemakerOnDT(Request $request)
-    {
-        $time = $request->input('time');
-        $carbonTime = Carbon::parse($time);
-
-        $initialResuscitation = new InitialResuscitation();
-        $initialResuscitation->pacemaker_on_dt= $carbonTime;
-        $initialResuscitation->save();
-    }
-
 }

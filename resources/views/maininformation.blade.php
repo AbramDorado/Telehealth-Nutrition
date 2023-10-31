@@ -22,12 +22,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="patient_pin">Patient PIN:</label>
-                        <input type="text" class="form-control" name="patient_pin">
+                        <input type="text" class="form-control" name="patient_pin" value="000">
                     </div>
 
+
                     <div class="form-group">
-                        <label for="patient_visit_encounter_number">Patient Visit/Encounter Number:</label>
-                        <input type="text" class="form-control" name="patient_visit_encounter_number">
+                        <label for="visit_number">Patient Visit/Encounter Number:</label>
+                        <input type="text" class="form-control" name="visit_number" value="000">
                     </div>
 
                     
@@ -74,7 +75,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="age">Age:</label>
-                                <input type="number" class="form-control" name="age" >
+                                <input type="number" class="form-control" name="age" value="00">
                             </div>
                         </div>
 
@@ -96,14 +97,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="height">Height:</label>
-                                <input type="number" class="form-control" name="height">
+                                <input type="number" class="form-control" name="height" value="000">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="weight">Weight:</label>
-                                <input type="number" class="form-control" name="weight">
+                                <input type="number" class="form-control" name="weight" value="00">
                             </div>
                         </div>
                     </div>
@@ -136,7 +137,7 @@
                 <!-- First Column -->
                 <div class="form-group">
                     <label for="code_number">Code Number:</label>
-                    <input type="text" class="form-control" name="code_number">
+                    <input type="text" class="form-control" name="code_number" value="000">
                 </div>
 
                 <div class="form-group">
@@ -182,8 +183,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="e-cart_arrival_dt">Date/Time e-Cart Arrival:</label>
-                    <input type="datetime-local" class="form-control" name="e-cart_arrival_dt" >
+                    <label for="e_cart_arrival_dt">Date/Time e-Cart Arrival:</label>
+                    <input type="datetime-local" class="form-control" name="e_cart_arrival_dt" >
                 </div>
 
                 <div class="form-group">
@@ -203,8 +204,12 @@
     </div>
 </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Submit</button> <!-- Added btn-block class for width -->
-</form> <!--end of the form submittion-->
+    <form action="{{ url('/store_maininformation') }}" method="post">
+            @csrf 
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+
+</form> 
 
   </div>
 </div>
