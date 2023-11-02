@@ -11,36 +11,37 @@ class FlowsheetController extends Controller
 
     private $flowsheet;
 
-    public function index()
+    public function index($code_number)
     {   
-        return view('flowsheet');
+        return view('flowsheet', compact('code_number'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $code_number)
     {
         $validatedData = $request->validate([
-            'breathing' => 'nullable|string',
-            'pulse' => 'nullable|string',
-            'bp_systolic' => 'nullable|integer',
-            'bp_diastolic' => 'nullable|integer',
-            'rhythm_on_check' => 'nullable|string',
-            'rhythm_with_pulse' => 'nullable|string',
-            'rhythm_intervention' => 'nullable|string',
-            'joules' => 'nullable|integer',
-            'epinephrine_dose' => 'nullable|numeric',
-            'epinephrine_route' => 'nullable|string',
-            'amiodarone_dose' => 'nullable|numeric',
-            'amiodarone_route' => 'nullable|string',
-            'lidocaine_dose' => 'nullable|numeric',
-            'lidocaine_route' => 'nullable|string',
-            'free1_label' => 'nullable|string',
-            'free1_dose' => 'nullable|numeric',
-            'free1_route' => 'nullable|string',
-            'free2_label' => 'nullable|string',
-            'free2_dose' => 'nullable|numeric',
-            'free2_route' => 'nullable|string',
-            'comments' => 'nullable|string',
+            'breathing' => 'sometimes|nullable|string',
+            'pulse' => 'sometimes|nullable|string',
+            'bp_systolic' => 'sometimes|nullable|integer',
+            'bp_diastolic' => 'sometimes|nullable|integer',
+            'rhythm_on_check' => 'sometimes|nullable|string',
+            'rhythm_with_pulse' => 'sometimes|nullable|string',
+            'rhythm_intervention' => 'sometimes|nullable|string',
+            'joules' => 'sometimes|nullable|integer',
+            'epinephrine_dose' => 'sometimes|nullable|numeric',
+            'epinephrine_route' => 'sometimes|nullable|string',
+            'amiodarone_dose' => 'sometimes|nullable|numeric',
+            'amiodarone_route' => 'sometimes|nullable|string',
+            'lidocaine_dose' => 'sometimes|nullable|numeric',
+            'lidocaine_route' => 'sometimes|nullable|string',
+            'free1_label' => 'sometimes|nullable|string',
+            'free1_dose' => 'sometimes|nullable|numeric',
+            'free1_route' => 'sometimes|nullable|string',
+            'free2_label' => 'sometimes|nullable|string',
+            'free2_dose' => 'sometimes|nullable|numeric',
+            'free2_route' => 'sometimes|nullable|string',
+            'comments' => 'sometimes|nullable|string',
         ]);
+        
         
         $flowsheet = new Flowsheet;
         
@@ -65,13 +66,15 @@ class FlowsheetController extends Controller
         $flowsheet->free2_dose = $validatedData['free2_dose'];
         $flowsheet->free2_route = $validatedData['free2_route'];
         $flowsheet->comments = $validatedData['comments'];
-        
+        $flowsheet->code_number =  $code_number;
+
         $time = $request->input('time');
         $carbonTime = Carbon::parse($time);
         $flowsheet->log_time = $carbonTime;
         $flowsheet->save();
 
-        return view('outcome');
+        return view('outcome', ['code_number' => $code_number]);
+
              
     }        
 }
