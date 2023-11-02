@@ -123,9 +123,26 @@
                             </div>
                         </div>
 
+
+                    <div class="form-group">
+                        <label for="birthday">Date of Birth:</label>
+                        <input type="date" class="form-control" name="birthday">
+                    </div>
+                </div>
+
+                <!-- Second Column -->
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="number" class="form-control" name="age" value="00">
+                            </div>
+
                         <div class="form-group">
                             <label for="allergies">Allergies:</label>
                             <input type="text" class="form-control" name="allergies">
+
                         </div>
 
                         <div class="form-group">
@@ -159,11 +176,23 @@
                         <input type="datetime-local" class="form-control" name="code_start_dt" >
                     </div>
 
+<div class="card">
+    <div class="card-header card-header bg-secondary text-white py-2">Code Blue Activation</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- First Column -->
+               
+                <div class="form-group">
+                    <label for="code_start_dt">Date/Time of Activation of Code:</label>
+                    <input type="datetime-local" class="form-control" name="code_start_dt" >
+                </div>
 
-                    <div class="form-group">
-                        <label for="arrest_dt">Date/Time of Arrest:</label>
-                        <input type="datetime-local" class="form-control" name="arrest_dt" >
-                    </div>
+
+                <div class="form-group">
+                    <label for="arrest_dt">Date/Time of Arrest:</label>
+                    <input type="datetime-local" class="form-control" name="arrest_dt" >
+                </div>
 
                     <div class="form-group">
                         <label for="reason_for_activation">Reason for Code Blue Activation:</label>

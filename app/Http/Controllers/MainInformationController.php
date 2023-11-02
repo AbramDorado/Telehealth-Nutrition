@@ -69,7 +69,7 @@ class MainInformationController extends Controller
 
     $codeBlueActivation = new CodeBlueActivation;
 
-    $codeBlueActivation->code_number =  $code_number;
+    // $codeBlueActivation->code_number =  $validatedData2['code_number'];
     $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'];
     $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
     $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'];

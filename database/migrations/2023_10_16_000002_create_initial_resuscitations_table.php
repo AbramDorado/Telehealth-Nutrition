@@ -14,7 +14,7 @@ class CreateInitialResuscitationsTable extends Migration
     public function up()
     {
         Schema::create('initial_resuscitations', function (Blueprint $table) {
-            $table->increments('initial_resuscitation_id'); 
+            $table->bigIncrements('initial_resuscitation_id'); 
             $table->string('breathing_upon_ca')->nullable();
             $table->dateTime('first_ventilation_dt')->nullable();
             $table->string('ventilation')->nullable();
@@ -29,7 +29,7 @@ class CreateInitialResuscitationsTable extends Migration
             $table->dateTime('aed_applied_dt')->nullable();
             $table->string('pacemaker_on')->nullable();
             $table->dateTime('pacemaker_on_dt')->nullable();
-            $table->unsignedInteger('code_number')->nullable();
+            $table->unsignedBigInteger('code_number')->nullable();
 
             $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
             $table->timestamps();
