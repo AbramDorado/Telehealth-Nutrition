@@ -12,26 +12,27 @@ class MainInformationController extends Controller
 {
     public function index()
     {   
-        return view('maininformation');
+        $code_number = request('code_number', '000'); // Use a default value of '000' if not present in the request
+        return view('maininformation', compact('code_number'));
     }
-
-    public function store(Request $request)
+    public function store(Request $request, $code_number)
     {
-    $validatedData = $request->validate([
-        'patient_pin' => 'nullable|integer',
-        'first_name' => 'nullable|string',
-        'last_name' => 'nullable|string',
-        'middle_name' => 'nullable|string',
-        'suffix' => 'nullable|string',
-        'visit_number' => 'nullable|integer',
-        'birthday' => 'nullable|date',
-        'age' => 'nullable|integer',
-        'sex' => 'nullable|string',
-        'height' => 'nullable|numeric',
-        'weight' => 'nullable|numeric',
-        'allergies' => 'nullable|string',
-        'location' => 'nullable|string',
-    ]);        
+        $validatedData = $request->validate([
+            'patient_pin' => 'sometimes|nullable|integer',
+            'first_name' => 'sometimes|nullable|string',
+            'last_name' => 'sometimes|nullable|string',
+            'middle_name' => 'sometimes|nullable|string',
+            'suffix' => 'sometimes|nullable|string',
+            'visit_number' => 'sometimes|nullable|integer',
+            'birthday' => 'sometimes|nullable|date',
+            'age' => 'sometimes|nullable|integer',
+            'sex' => 'sometimes|nullable|string',
+            'height' => 'sometimes|nullable|numeric',
+            'weight' => 'sometimes|nullable|numeric',
+            'allergies' => 'sometimes|nullable|string',
+            'location' => 'sometimes|nullable|string',
+        ]);
+               
 
     $patient = new Patient;
 
@@ -50,21 +51,25 @@ class MainInformationController extends Controller
     $patient->location = $validatedData['location'];
 
     $patient->save();
+    $patientPin = $patient->patient_pin;
 
     $validatedData2 = $request->validate([
-        'code_number' => 'nullable|integer',
-        'code_start_dt' => 'nullable|date',
-        'arrest_dt' => 'nullable|date',
+        'code_start_dt' => 'sometimes|nullable|date',
+        'arrest_dt' => 'sometimes|nullable|date',
         'reason_for_activation' => 'required|in:unconscious,pulseless',
-        'initial_reporter' => 'nullable|string',
-        'code_team_arrival_dt' => 'nullable|date',
-        'e_cart_arrival_dt' => 'nullable|date',
+        'initial_reporter' => 'sometimes|nullable|string',
+        'code_team_arrival_dt' => 'sometimes|nullable|date',
+        'e_cart_arrival_dt' => 'sometimes|nullable|date',
         'witnessed' => 'required|in:yes,no',
+        'patient_pin' => 'sometimes|nullable|integer',
     ]);
+    
+
+    $validatedData2['patient_pin'] = $patientPin;
 
     $codeBlueActivation = new CodeBlueActivation;
 
-    $codeBlueActivation->code_number =  $validatedData2['code_number'];
+    $codeBlueActivation->code_number =  $code_number;
     $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'];
     $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
     $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'];
@@ -72,9 +77,10 @@ class MainInformationController extends Controller
     $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'];
     $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'];
     $codeBlueActivation->witnessed = $validatedData2['witnessed'];
+    $codeBlueActivation->patient_pin = $validatedData2['patient_pin'];
 
     $codeBlueActivation->save();
 
-    return view('initialresuscitation');
+    return view('initialresuscitation', ['code_number' => $code_number]);
 }
 }

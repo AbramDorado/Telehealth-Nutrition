@@ -10,41 +10,42 @@ class EvaluationController extends Controller
 {
     private $evaluation;
 
-    public function index()
+    public function index($code_number)
     {
         $questions = Evaluation::all(); // Replace 'Question' with your actual model
-        return view('evaluation', compact('evaluation'));
+        return view('evaluation', compact('code_number'));
     } 
 
-    public function store(Request $request)
+    public function store(Request $request, $code_number)
     {
         // Validate the form data
         $validatedData = $request->validate([
-            'question1' => 'required|in:Yes,No',
-            'question2' => 'required|in:Yes,No',
-            'question2_explanation' => 'nullable|string',
-            'question3' => 'required|in:Yes,No',
-            'question3_1' => 'required',
-            'question3_2' => 'required',
-            'question3_3' => 'required',
-            'question3_4' => 'required',
-            'question3_5' => 'required',
-            'question3_6' => 'required',
-            'question3_7' => 'required',
-            'question3_8' => 'required',
-            'question3_9' => 'required',
-            'question3_10' => 'required',
-            'question3_11' => 'required',
-            'question3_12' => 'required',
-            'question3_13' => 'required',
-            'question3_14' => 'nullable',
-            'question4' => 'required|in:Yes,No',
-            'question4_explanation' => 'nullable|string',
-            'question5' => 'required|in:Yes,No',
-            'question5_explanation' => 'nullable|string',
-            'question6' => 'required|in:Yes,No',
-            'question7_explanation' => 'nullable|string',
-        ]);
+            'question1' => 'sometimes|nullable|in:Yes,No',
+            'question2' => 'sometimes|nullable|in:Yes,No',
+            'question2_explanation' => 'sometimes|nullable|string',
+            'question3' => 'sometimes|nullable|in:Yes,No',
+            'question4' => 'sometimes|nullable|in:Yes,No',
+            'question4_explanation' => 'sometimes|nullable|string',
+            'question5' => 'sometimes|nullable|in:Yes,No',
+            'question5_explanation' => 'sometimes|nullable|string',
+            'question6' => 'sometimes|nullable|in:Yes,No',
+            'question7_explanation' => 'sometimes|nullable|string',
+            // Questions 3_1 to 3_14
+            'question3_1' => 'sometimes|nullable',
+            'question3_2' => 'sometimes|nullable',
+            'question3_3' => 'sometimes|nullable',
+            'question3_4' => 'sometimes|nullable',
+            'question3_5' => 'sometimes|nullable',
+            'question3_6' => 'sometimes|nullable',
+            'question3_7' => 'sometimes|nullable',
+            'question3_8' => 'sometimes|nullable',
+            'question3_9' => 'sometimes|nullable',
+            'question3_10' => 'sometimes|nullable',
+            'question3_11' => 'sometimes|nullable',
+            'question3_12' => 'sometimes|nullable',
+            'question3_13' => 'sometimes|nullable',
+            'question3_14' => 'sometimes|nullable',
+        ]);        
 
         // Create a new Evaluation model instance and fill it with the user's responses
         $evaluation = new Evaluation();
@@ -72,6 +73,7 @@ class EvaluationController extends Controller
         $evaluation->question5_1 = $validatedData['question5_explanation'];
         $evaluation->question6 = $validatedData['question6'];
         $evaluation->question7 = $validatedData['question7_explanation'];
+        $evaluation->code_number =  $code_number;
 
         // Save the evaluation to the database
         $evaluation->save();
