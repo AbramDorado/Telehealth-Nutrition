@@ -3,6 +3,25 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="jumbotron">
+  <h1 class="display-10">Main Information</h1>
+  <p class="lead">Patient Information and Code Blue Activation.</p>
+  <!-- Add a dropdown button to toggle the menu -->
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Toggle Menu
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <!-- Your list of buttons goes here -->
+    <a class="dropdown-item" href="/maininformation">Main Information</a>
+    <a class="dropdown-item" href="/initialresuscitation">Initial Resuscitation</a>
+    <a class="dropdown-item" href="/flowsheet">Flowsheet</a>
+    <a class="dropdown-item" href="/outcome">Outcome of the Code</a>
+    <a class="dropdown-item" href="/evaluation">Debriefing and Evaluation</a>
+    <a class="dropdown-item" href="/codeteam">Code Team</a>
+  </div>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\FlowsheetController;
+use App\Http\Controllers\InitialResuscitationController;
+use App\Http\Controllers\OutcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FingerDevicesControlller;
 use App\Http\Controllers\CodeTeamController;
+use App\Http\Controllers\MainInformationController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,9 +26,9 @@ Route::get('/codeblueforms', function(){
     return view('includes/codeblueforms');
 });
 
-Route::get('/maininformation', function () {
-    return view('maininformation');
-});
+// Route::get('/maininformation', function () {
+//     return view('maininformation');
+// });
 
 Route::get('/initialresuscitation', function(){
     return view('initialresuscitation');
@@ -44,16 +50,43 @@ Route::get('/codeteam', function(){
     return view('codeteam');
 });
 
+Route::get('/users', function(){
+    return view('users');
+});
+
 Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
+Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
+Route::get('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'index'])->name('initialresuscitation');
+Route::post('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'store'])->name('store_initialresuscitation');
 
-Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
+Route::get('/flowsheet/{code_number}', [FlowsheetController::class, 'index'])->name('flowsheet');
+Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet');
 
-Route::post('/store_maininformation', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
-Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');
-Route::post('/store_flowsheet', '\App\Http\Controllers\FlowsheetController@store')->name('store_flowsheet');
-Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
-Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
+Route::get('/evaluation/{code_number}', [EvaluationController::class, 'index'])->name('evaluation');
+Route::post('/evaluation/{code_number}', [EvaluationController::class, 'store'])->name('store_evaluation');
+
+Route::get('/outcome/{code_number}', [OutcomeController::class, 'index'])->name('outcome');
+Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name('store_outcome');
+
+Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
+Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
+
+Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
+
+// Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
+
+// Route::post('/maininformationview', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
+// Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');
+// Route::post('/store_flowsheet', '\App\Http\Controllers\FlowsheetController@store')->name('store_flowsheet');
+// Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
+// Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
 Route::post('/store_codeteam', '\App\Http\Controllers\CodeTeamController@store')->name('store_codeteam');
+Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
+
+
+
  
 
 Route::group(['middleware' => ['auth']], function () {
