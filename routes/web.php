@@ -62,7 +62,7 @@ Route::get('/initialresuscitation/{code_number}', [InitialResuscitationControlle
 Route::post('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'store'])->name('store_initialresuscitation');
 
 Route::get('/flowsheet/{code_number}', [FlowsheetController::class, 'index'])->name('flowsheet');
-Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet');
+Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
 
 Route::get('/evaluation/{code_number}', [EvaluationController::class, 'index'])->name('evaluation');
 Route::post('/evaluation/{code_number}', [EvaluationController::class, 'store'])->name('store_evaluation');

@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="jumbotron">
-  <h1 class="display-10">Main Information</h1>
-  <p class="lead">Patient Information and Code Blue Activation.</p>
+  <h1 class="display-10">Outcome</h1>
+  <p class="lead">Outcome of the code</p>
   <!-- Add a dropdown button to toggle the menu -->
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Toggle Menu

@@ -7,18 +7,21 @@
 
 @section('button')
     @php
-        // Generate a unique 4-digit code
-        $uniqueCode = null;
-        do {
-            $uniqueCode = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
-        } while (DB::table('code_blue_activations')->where('code_number', $uniqueCode)->exists());
+        $lastCodeNumber = DB::table('code_blue_activations')->orderBy('code_number', 'desc')->first();
+
+        if ($lastCodeNumber) {
+            $nextCodeNumber = $lastCodeNumber->code_number + 1;
+        } else {
+            $nextCodeNumber = 1;
+        }
     @endphp
 
-    <form method="GET" action="{{ route('maininformation', ['code_number' => $uniqueCode]) }}">
+    <form method="GET" action="{{ route('maininformation', ['code_number' => $nextCodeNumber]) }}">
         @csrf
         <button type="submit" class="btn btn-primary btn-block">New Resuscitation Event</button>
     </form>
 @endsection
+
 
 
 @section('content')
