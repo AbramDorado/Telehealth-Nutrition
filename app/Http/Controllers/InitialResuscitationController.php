@@ -35,9 +35,6 @@ class InitialResuscitationController extends Controller
             'pacemaker_on_dt' => 'sometimes|nullable|date',
         ]);        
 
-        $code_number = $request->input('code_number'); 
-        $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
-
         $initialResuscitation = new InitialResuscitation;
 
         $initialResuscitation->breathing_upon_ca = $validatedData['breathing_upon_ca'];

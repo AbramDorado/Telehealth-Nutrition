@@ -73,8 +73,6 @@ class FlowsheetController extends Controller
         $flowsheet->log_time = $carbonTime;
         $flowsheet->save();
 
-        return view('outcome', ['code_number' => $code_number]);
-
-             
-    }        
+        return view('flowsheet', compact('code_number'));
+    }     
 }
