@@ -124,20 +124,20 @@
                         </div>
 
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="birthday">Date of Birth:</label>
                         <input type="date" class="form-control" name="birthday">
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Second Column -->
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="age">Age:</label>
                                 <input type="number" class="form-control" name="age" value="00">
-                            </div>
+                            </div> -->
 
                         <div class="form-group">
                             <label for="allergies">Allergies:</label>

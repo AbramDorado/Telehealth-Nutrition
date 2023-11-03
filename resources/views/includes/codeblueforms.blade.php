@@ -50,10 +50,9 @@
                                     <td>{{ $event->created_at }}</td>
                                     <td>{{ $event->location }}</td>
                                     <td>{{ $event->first_name }} {{ $event->last_name }}</td>
-                                    <td>Resuscitation Event Time Started</td>
-                                    <td>Resuscitation Event Time Ended</td>
+                                    <td>{{ $event->code_start_dt }}</td>
+                                    <td>{{ $event->code_end_dt }}</td>
                                     <td>Code Leader</td>
-                                    <td></td>
                                 </tr>
                                 @endforeach
                             </tbody>
