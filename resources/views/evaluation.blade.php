@@ -11,11 +11,11 @@
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <!-- Your list of buttons goes here -->
-    <a class="dropdown-item" href="/maininformation">Main Information</a>
-    <a class="dropdown-item" href="/initialresuscitation">Initial Resuscitation</a>
-    <a class="dropdown-item" href="/flowsheet">Flowsheet</a>
-    <a class="dropdown-item" href="/outcome">Outcome of the Code</a>
-    <a class="dropdown-item" href="/evaluation">Debriefing and Evaluation</a>
+    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
+    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
+    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
     <a class="dropdown-item" href="/codeteam">Code Team</a>
   </div>
 </div>
