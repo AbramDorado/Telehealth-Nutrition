@@ -11,8 +11,9 @@ class InitialResuscitationController extends Controller
     private $initialResuscitation;
 
     public function index($code_number)
-    {   
-        return view('initialresuscitation', compact('code_number'));
+    {
+        $initialResuscitation = InitialResuscitation::where('code_number', $code_number)->first();
+        return view('initialresuscitation', compact('code_number', 'initialResuscitation'));
     }
 
     public function store(Request $request, $code_number)
@@ -52,6 +53,7 @@ class InitialResuscitationController extends Controller
         $initialResuscitation->pacemaker_on = $validatedData['pacemaker_on'];
         $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'];
         
+        $initialResuscitation->code_number = $code_number;
         $initialResuscitation->save();
 
         return view('flowsheet', ['code_number' => $code_number]);

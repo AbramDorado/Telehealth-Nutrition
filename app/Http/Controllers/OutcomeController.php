@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Outcome;
+use App\Models\CodeBlueActivation;
 
 class OutcomeController extends Controller
 {
     private $outcome;
 
     public function index($code_number)
-    {   
-        return view('outcome', compact('code_number'));
+    {
+        $outcome = Outcome::where('code_number', $code_number)->first();
+        // dd($outcome);
+        return view('outcome', compact('code_number', 'outcome'));
     }
 
     public function store(Request $request, $code_number)

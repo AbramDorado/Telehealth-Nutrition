@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="patient_pin">Patient PIN:</label>
-                        <input type="text" class="form-control" name="patient_pin">
+                        <input type="text" class="form-control" name="patient_pin" value="{{ old('patient_pin', $patient->patient_pin ?? '') }}">
                     </div>
 
                     <div class="form-group">

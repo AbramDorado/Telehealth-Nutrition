@@ -10,77 +10,43 @@ use App\Models\CodeBlueActivation;
 
 class MainInformationController extends Controller
 {
-    public function index()
+    public function index($code_number)
     {   
         $code_number = request('code_number', '000'); // Use a default value of '000' if not present in the request
+        // $patient = Patient::where('code_number', $code_number)->first();
+
         return view('maininformation', compact('code_number'));
     }
     public function store(Request $request, $code_number)
     {
-        $validatedData = $request->validate([
-            'patient_pin' => 'sometimes|nullable|integer',
-            'first_name' => 'sometimes|nullable|string',
-            'last_name' => 'sometimes|nullable|string',
-            'middle_name' => 'sometimes|nullable|string',
-            'suffix' => 'sometimes|nullable|string',
-            'visit_number' => 'sometimes|nullable|integer',
-            'birthday' => 'sometimes|nullable|date',
-            'age' => 'sometimes|nullable|integer',
-            'sex' => 'sometimes|nullable|string',
-            'height' => 'sometimes|nullable|numeric',
-            'weight' => 'sometimes|nullable|numeric',
-            'allergies' => 'sometimes|nullable|string',
-            'location' => 'sometimes|nullable|string',
-        ]);
-               
-
-    $patient = new Patient;
-
-    $patient->patient_pin = $validatedData['patient_pin'];
-    $patient->first_name = $validatedData['first_name'];
-    $patient->last_name = $validatedData['last_name'];
-    $patient->middle_name = $validatedData['middle_name'];
-    $patient->suffix = $validatedData['suffix'];
-    $patient->visit_number = $validatedData['visit_number'];
-    $patient->birthday = $validatedData['birthday'];
-    $patient->age = $validatedData['age'];
-    $patient->sex = $validatedData['sex'];
-    $patient->height = $validatedData['height'];
-    $patient->weight = $validatedData['weight'];
-    $patient->allergies = $validatedData['allergies'];
-    $patient->location = $validatedData['location'];
-
-    $patient->save();
-    $patientPin = $patient->patient_pin;
-
-    $validatedData2 = $request->validate([
-        'code_start_dt' => 'sometimes|nullable|date',
-        'arrest_dt' => 'sometimes|nullable|date',
-        'reason_for_activation' => 'required|in:unconscious,pulseless',
-        'initial_reporter' => 'sometimes|nullable|string',
-        'code_team_arrival_dt' => 'sometimes|nullable|date',
-        'e_cart_arrival_dt' => 'sometimes|nullable|date',
-        'witnessed' => 'required|in:yes,no',
-        'patient_pin' => 'sometimes|nullable|integer',
-    ]);
+            $patient = Patient::create([
+                'patient_pin' => $request->input('patient_pin'),
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'middle_name' => $request->input('middle_name'),
+                'suffix' => $request->input('suffix'),
+                'visit_number' => $request->input('visit_number'),
+                'birthday' => $request->input('birthday'),
+                'age' => $request->input('age'),
+                'sex' => $request->input('sex'),
+                'height' => $request->input('height'),
+                'weight' => $request->input('weight'),
+                'allergies' => $request->input('allergies'),
+                'location' => $request->input('location'),
+            ]);
     
-
-    $validatedData2['patient_pin'] = $patientPin;
-
-    $codeBlueActivation = new CodeBlueActivation;
-
-    // $codeBlueActivation->code_number =  $validatedData2['code_number'];
-    $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'];
-    $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
-    $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'];
-    $codeBlueActivation->initial_reporter = $validatedData2['initial_reporter'];
-    $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'];
-    $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'];
-    $codeBlueActivation->witnessed = $validatedData2['witnessed'];
-    $codeBlueActivation->patient_pin = $validatedData2['patient_pin'];
-
-    $codeBlueActivation->save();
+            $codeBlueActivation = CodeBlueActivation::create([
+                'code_number' => $request->input('code_number'),
+                'code_start_dt' => $request->input('code_start_dt'),
+                'arrest_dt' => $request->input('arrest_dt'),
+                'reason_for_activation' => $request->input('reason_for_activation'),
+                'initial_reporter' => $request->input('initial_reporter'),
+                'code_team_arrival_dt' => $request->input('code_team_arrival_dt'),
+                'e_cart_arrival_dt' => $request->input('e_cart_arrival_dt'),
+                'witnessed' => $request->input('witnessed'),
+                'patient_pin' => $request->input('patient_pin'),
+            ]);
 
     return view('initialresuscitation', ['code_number' => $code_number]);
-}
+    }
 }

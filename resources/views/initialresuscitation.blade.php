@@ -4,13 +4,11 @@
 <div class="jumbotron">
   <h1 class="display-10">Initial Resuscitation</h1>
   <p class="lead">Airway/Ventilation and Circulation</p>
-  <!-- Add a dropdown button to toggle the menu -->
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Toggle Menu
   </button>
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <!-- Your list of buttons goes here -->
     <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
     <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
     <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
@@ -78,12 +76,13 @@
                         
                     <div class="form-group">
                         <label for="et_tube_size">ET Tube Size:</label>
-                        <input type="number" class="form-control" name="et_tube_size" placeholder="0">
+                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" value="{{ $initialResuscitation->et_tube_size ?? old('et_tube_size') }}">
                     </div>
+
                    
                     <div class="form-group">
                         <label for="intubation_attempts">Number of intubation attempts:</label>
-                        <input type="number" class="form-control" name="intubation_attempts" placeholder="0">
+                        <input type="number" class="form-control" name="intubation_attempts" placeholder="0" value="{{ $initialResuscitation->intubation_attempts ?? old('intubation_attempts') }}">
                     </div>
                 
                     <div class="form-group">

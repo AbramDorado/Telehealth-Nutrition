@@ -32,48 +32,57 @@
                         <div class="form-group">
                             <label for="outcome">Outcome:</label>
                             <select class="form-control" name="outcome" id="outcome">
-                                <option value="Survived - Return of Spontaneous Circulation">Survived - Return of Spontaneous Circulation</option>
-                                <option value="Died - efforts terminated; no sustained return of circulation">Died - efforts terminated; no sustained return of circulation</option>
-                                <option value="Died - with Advanced Directives/DNR in place">Died - with Advanced Directives/DNR in place</option>
+                            @php
+                                $selectedOutcome = old('outcome', $outcome->outcome ?? ''); 
+                            @endphp
+
+                            @foreach(['Survived - Return of Spontaneous Circulation', 'Died - efforts terminated; no sustained return of circulation', 'Died - with Advanced Directives/DNR in place'] as $option)
+                                <option value="{{ $option }}" {{ $selectedOutcome === $option ? 'selected' : '' }}>
+                                    {{ $option }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
 
                         <div class="form-group" id="death_dt" style="display: none;">
                             <label for="death_dt">Date and Time of Death:</label>
-                            <input type="datetime-local" class="form-control" name="death_dt">
+                            <input type="datetime-local" class="form-control" name="death_dt" value="{{ old('death_dt', optional($outcome)->death_dt ? (\Carbon\Carbon::parse($outcome->death_dt))->format('Y-m-d\TH:i') : '') }}">
                         </div>
+
 
                         <div class="form-group" id="survived_fields" style="display: block;">
                             <h2>Assessment</h2>
 
                             <label for="bp_systolic">Blood Pressure, Systolic:</label>
-                            <input type="number" class="form-control" name="bp_systolic">
+                            <input type="number" class="form-control" name="bp_systolic" value="{{ $outcome->bp_systolic ?? old('bp_systolic') }}">
 
                             <label for="bp_diastolic">Blood Pressure, Diastolic:</label>
-                            <input type="number" class="form-control" name="bp_diastolic">
+                            <input type="number" class="form-control" name="bp_diastolic" value="{{ $outcome->bp_diastolic ?? old('bp_diastolic') }}">
 
                             <label for="heart_rate">Heart Rate:</label>
-                            <input type="number" class="form-control" name="heart_rate">
+                            <input type="number" class="form-control" name="heart_rate" value="{{ $outcome->heart_rate ?? old('heart_rate') }}">
 
                             <label for="respiratory_rate">Respiratory Rate:</label>
-                            <input type="number" class="form-control" name="respiratory_rate">
+                            <input type="number" class="form-control" name="respiratory_rate" value="{{ $outcome->respiratory_rate ?? old('respiratory_rate') }}">
 
                             <label for="rhythm">Rhythm:</label>
                             <select class="form-control" name="rhythm">
-                                <option value="Normal sinus rhythm">Normal sinus rhythm</option>
-                                <option value="Sinus bradycardia">Sinus bradycardia</option>
-                                <option value="Junctional rhythm">Junctional rhythm</option>
-                                <option value="Idioventricular rhythm">Idioventricular rhythm</option>
-                                <option value="AV Block">AV Block</option>
-                                <option value="Sinus pause">Sinus pause</option>
-                                <option value="Slow Atrial fibrillation">Slow Atrial fibrillation</option>
-                                <option value="Sinus tachycardia">Sinus tachycardia</option>
-                                <option value="Supraventricular tachycardia">Supraventricular tachycardia</option>
-                                <option value="Atrial flutter">Atrial flutter</option>
-                                <option value="Rapid Atrial fibrillation">Rapid Atrial fibrillation</option>
-                                <option value="Multifocal atrial tachycardia">Multifocal atrial tachycardia</option>
-                                <option value="Ventricular tachycardia">Ventricular tachycardia</option>
+                                @php
+                                    $selectedRhythm = old('rhythm', $outcome->rhythm ?? ''); 
+                                @endphp
+
+                                @foreach([
+                                    'Normal sinus rhythm', 'Sinus bradycardia', 'Junctional rhythm', 'Idioventricular rhythm',
+                                    'AV Block', 'Sinus pause', 'Slow Atrial fibrillation', 'Sinus tachycardia',
+                                    'Supraventricular tachycardia', 'Atrial flutter', 'Rapid Atrial fibrillation',
+                                    'Multifocal atrial tachycardia', 'Ventricular tachycardia'
+                                ] as $option)
+                                    <option value="{{ $option }}" {{ $selectedRhythm === $option ? 'selected' : '' }}>
+                                        {{ $option }}
+                                    </option>
+                                @endforeach
                             </select>
+
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
