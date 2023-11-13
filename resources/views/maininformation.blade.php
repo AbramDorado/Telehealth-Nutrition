@@ -155,24 +155,30 @@
 
                 <div class="form-group">
                     <label for="code_start_dt">Date/Time of Activation of Code:</label>
-                    <input type="datetime-local" class="form-control" name="code_start_dt" >
+                    <input type="datetime-local" class="form-control" name="code_start_dt" value="{{ old('code_start_dt', optional($codeBlueActivation ?? '')->code_start_dt ? (\Carbon\Carbon::parse($codeBlueActivation['code_start_dt'])->format('Y-m-d H:i:s')) : '') }}">
                 </div>
 
 
                 <div class="form-group">
                     <label for="arrest_dt">Date/Time of Arrest:</label>
-                    <input type="datetime-local" class="form-control" name="arrest_dt" >
+                    <input type="datetime-local" class="form-control" name="arrest_dt" value="{{ old('arrest_dt', optional($codeBlueActivation ?? '')->arrest_dt ? (\Carbon\Carbon::parse($codeBlueActivation['arrest_dt'])->format('Y-m-d H:i:s')) : '') }}">
                 </div>
 
                 <div class="form-group">
                     <label for="reason_for_activation">Reason for Code Blue Activation:</label>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="radio" name="reason_for_activation" value="unconscious"> Unconscious
+                            <label for="reason_unconscious">
+                                <input type="radio" name="reason_for_activation" value="unconscious" id="reason_unconscious" {{ old('reason_for_activation', optional($codeBlueActivation ?? '')->reason_for_activation) === 'unconscious' ? 'checked' : '' }}>
+                                Unconscious
+                            </label>
                         </div>
 
                         <div class="col-md-6">
-                            <input type="radio" name="reason_for_activation" value="pulseless"> Pulseless
+                            <label for="reason_pulseless">
+                                <input type="radio" name="reason_for_activation" value="pulseless" id="reason_pulseless" {{ old('reason_for_activation', optional($codeBlueActivation ?? '')->reason_for_activation) === 'pulseless' ? 'checked' : '' }}>
+                                Pulseless
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -182,33 +188,44 @@
                 <!-- Second Column -->
                 <div class="form-group">
                     <label for="initial_reporter">Initially Reported By:</label>
-                    <select class="form-control" name="initial_reporter">
-                        <option value="">Select a person</option>
-                        <option value="nurse">Nurse</option>
-                        <option value="doctor">Doctor</option>
-                        <option value="other">Other</option>
+                    <select class="form-control" name="initial_reporter" id="initial_reporter">
+                        @php
+                            $selectedReporter = old('initial_reporter', optional($codeBlueActivation ?? '')->initial_reporter ?? ''); 
+                        @endphp
+
+                        @foreach(['', 'nurse', 'doctor', 'other'] as $option)
+                            <option value="{{ $option }}" {{ $selectedReporter === $option ? 'selected' : '' }}>
+                                {{ ucfirst($option) }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="code_team_arrival_dt">Date/Time Code Team Arrival:</label>
-                    <input type="datetime-local" class="form-control" name="code_team_arrival_dt" >
+                    <input type="datetime-local" class="form-control" name="code_team_arrival_dt" value="{{ old('code_team_arrival_dt', optional($codeBlueActivation ?? '')->code_team_arrival_dt ? (\Carbon\Carbon::parse($codeBlueActivation['code_team_arrival_dt'])->format('Y-m-d H:i:s')) : '') }}">
                 </div>
 
                 <div class="form-group">
                     <label for="e_cart_arrival_dt">Date/Time e-Cart Arrival:</label>
-                    <input type="datetime-local" class="form-control" name="e_cart_arrival_dt" >
+                    <input type="datetime-local" class="form-control" name="e_cart_arrival_dt"  value="{{ old('e_cart_arrival_dt', optional($codeBlueActivation ?? '')->e_cart_arrival_dt ? (\Carbon\Carbon::parse($codeBlueActivation['e_cart_arrival_dt'])->format('Y-m-d H:i:s')) : '') }}">
                 </div>
 
                 <div class="form-group">
                     <label for="witnessed">Witnessed?</label>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="radio" name="witnessed" value="yes"> Yes
+                            <label for="witnessed_yes">
+                                <input type="radio" name="witnessed" value="yes" id="witnessed_yes" {{ old('witnessed', optional($codeBlueActivation ?? '')->witnessed) === 'yes' ? 'checked' : '' }}>
+                                Yes
+                            </label>
                         </div>
 
                         <div class="col-md-6">
-                            <input type="radio" name="witnessed" value="no"> No
+                            <label for="witnessed_no">
+                                <input type="radio" name="witnessed" value="no" id="witnessed_no" {{ old('witnessed', optional($codeBlueActivation ?? '')->witnessed) === 'no' ? 'checked' : '' }}>
+                                No
+                            </label>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ class Evaluation extends Model
     protected $primaryKey = 'evaluation_id';
 
     protected $fillable = ['question2', 'question2_1'];
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function codeBlueActivation()
     {

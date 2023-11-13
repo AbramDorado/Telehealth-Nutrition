@@ -76,6 +76,8 @@ Route::post('/maininformation/{code_number}', [MainInformationController::class,
 
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
+Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
+
 // Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
 
 // Route::post('/maininformationview', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');

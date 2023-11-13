@@ -33,14 +33,16 @@
                             <div class="card-header">Question 1</div>
                             <div class="card-body">
                                 <p>Was the code conducted in accordance with the current algorithm?</p>
-                                <label for="question1-yes">
-                                    <input type="radio" name="question1" value="Yes" id="question1-yes">
+                                <label for="question1_yes">
+                                    <input type="radio" name="question1" value="Yes" id="question1_yes" {{ old('question1', optional($questions ?? '')->question1) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
-                                <label for="question1-no">
-                                    <input type="radio" name="question1" value="No" id="question1-no">
+
+                                <label for="question1_no">
+                                <input type="radio" name="question1" value="Yes" id="question1_no" {{ old('question1', optional($questions ?? '')->question1) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
+
                             </div>
                         </div>
 
@@ -48,12 +50,11 @@
                             <div class="card-header">Question 2</div>
                             <div class="card-body">
                                 <p>Was there any problem with the response time of the team?</p>
-                                <label for="question2-yes">
-                                    <input type="radio" name="question2" value="Yes" id="question2-yes">
-                                    Yes
+                                <label for="question2_yes">
+                                    <input type="radio" name="question2" value="Yes" id="question2_yes" {{ old('question2', optional($questions ?? '')->question2) === 'Yes' ? 'checked' : '' }}>
                                 </label>
-                                <label for="question2-no">
-                                    <input type="radio" name="question2" value="No" id="question2-no">
+                                <label for="question2_no">
+                                    <input type="radio" name="question2" value="No" id="question2_no" {{ old('question2', optional($questions ?? '')->question2) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
                                 <div id="question2-explanation" style="display: none;">
@@ -66,16 +67,16 @@
                             <div class="card-header">Question 3</div>
                             <div class="card-body">
                                 <p>Were there any problems with equipment, supplies, or tests?</p>
-                                <label for="question3-yes">
-                                    <input type="radio" name="question3" value="Yes" id="question3-yes" {{ old('question3-yes', optional($questions)->{'question3-yes'}) === 'Yes' ? 'checked' : '' }}>
+                                <label for="question3_yes">
+                                    <input type="radio" name="question3" value="Yes" id="question3_yes" {{ old('question3', optional($questions ?? '')->question3) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
-                                <label for="question3-no">
-                                    <input type="radio" name="question3" value="No" id="question3-no">
+                                <label for="question3_no">
+                                    <input type="radio" name="question3" value="No" id="question3_no" {{ old('question3', optional($questions ?? '')->question3) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
 
-                                <div id="question3-details" style="display: none;">
+                                <div id="question3_details" style="display: none;">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -231,15 +232,15 @@
                             <div class="card-header">Question 4</div>
                             <div class="card-body">
                                 <p>Were policies and procedures followed?</p>
-                                <label for="question4-yes">
-                                    <input type="radio" name="question4" value="Yes" id="question4-yes">
+                                <label for="question4_yes">
+                                    <input type="radio" name="question4" value="Yes" id="question4_yes"  {{ old('question4', optional($questions ?? '')->question4) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
-                                <label for="question4-no">
-                                    <input type="radio" name="question4" value="No" id="question4-no">
+                                <label for="question4_no">
+                                    <input type="radio" name="question4" value="No" id="question4_no"  {{ old('question4', optional($questions ?? '')->question4) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
-                                <div id="question4-explanation" style="display: none;">
+                                <div id="question4_explanation" style="display: none;">
                                     <textarea name="question4_explanation" placeholder="Add an explanation (if necessary)"></textarea>
                                 </div>
                             </div>
@@ -249,15 +250,14 @@
                             <div class="card-header">Question 5</div>
                             <div class="card-body">
                                 <p>Were there any problems during the code?</p>
-                                <label for="question5-yes">
-                                    <input type="radio" name="question5" value="Yes" id="question5-yes">
+                                <label for="question5_yes">
+                                    <input type="radio" name="question5" value="Yes" id="question5_yes" {{ old('question5', optional($questions ?? '')->question5) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
-                                <label for="question5-no">
-                                    <input type="radio" name="question5" value="No" id="question5-no">
-                                    No
+                                <label for="question5_no">
+                                    <input type="radio" name="question5" value="No" id="question5_no"  {{ old('question5', optional($questions ?? '')->question5) === 'No' ? 'checked' : '' }}>
                                 </label>
-                                <div id="question5-explanation" style="display: none;">
+                                <div id="question5_explanation" style="display: none;">
                                     <textarea name="question5_explanation" placeholder="Add an explanation (if necessary)"></textarea>
                                 </div>
                             </div>
@@ -267,12 +267,12 @@
                             <div class="card-header">Question 6</div>
                             <div class="card-body">
                                 <p>Was family notified and updated on patient’s condition?</p>
-                                <label for="question6-yes">
-                                    <input type="radio" name="question6" value="Yes" id="question6-yes">
+                                <label for="question6_yes">
+                                    <input type="radio" name="question6" value="Yes" id="question6_yes" {{ old('question6', optional($questions ?? '')->question6) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
-                                <label for="question6-no">
-                                    <input type="radio" name="question6" value="No" id="question6-no">
+                                <label for="question6_no">
+                                    <input type="radio" name="question6" value="No" id="question6_no" {{ old('question6', optional($questions ?? '')->question6) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
                             </div>
@@ -282,7 +282,7 @@
                             <div class="card-header">Question 7</div>
                             <div class="card-body">
                                 <p>Other Remarks</p>
-                                <div id="question7-explanation">
+                                <div id="question7_explanation">
                                     <textarea name="question7_explanation" placeholder="Other remarks"></textarea>
                                 </div>
                             </div>
@@ -298,18 +298,18 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const question2Yes = document.getElementById("question2-yes");
-    const question2No = document.getElementById("question2-no");
-    const question3Yes = document.getElementById("question3-yes");
-    const question3No = document.getElementById("question3-no");
-    const question4Yes = document.getElementById("question4-yes");
-    const question4No = document.getElementById("question4-no");
-    const question5Yes = document.getElementById("question5-yes");
-    const question5No = document.getElementById("question5-no");
-    const question2explanationBox = document.getElementById("question2-explanation");
-    const question3Details = document.getElementById("question3-details");
-    const question4explanationBox = document.getElementById("question4-explanation");
-    const question5explanationBox = document.getElementById("question5-explanation");
+    const question2Yes = document.getElementById("question2_yes");
+    const question2No = document.getElementById("question2_no");
+    const question3Yes = document.getElementById("question3_yes");
+    const question3No = document.getElementById("question3_no");
+    const question4Yes = document.getElementById("question4_yes");
+    const question4No = document.getElementById("question4_no");
+    const question5Yes = document.getElementById("question5_yes");
+    const question5No = document.getElementById("question5_no");
+    const question2explanationBox = document.getElementById("question2_explanation");
+    const question3Details = document.getElementById("question3_details");
+    const question4explanationBox = document.getElementById("question4_explanation");
+    const question5explanationBox = document.getElementById("question5_explanation");
 
     question2Yes.addEventListener("change", function () {
         if (question2Yes.checked) {

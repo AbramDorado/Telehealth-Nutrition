@@ -13,7 +13,9 @@ class OutcomeController extends Controller
 
     public function index($code_number)
     {
-        $outcome = Outcome::where('code_number', $code_number)->first();
+        $outcome = Outcome::where('code_number', $code_number)
+            ->orderBy('created_at', 'desc')
+            ->first();
         // dd($outcome);
         return view('outcome', compact('code_number', 'outcome'));
     }

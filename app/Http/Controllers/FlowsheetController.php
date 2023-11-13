@@ -13,7 +13,7 @@ class FlowsheetController extends Controller
 
     public function index($code_number)
     { 
-        $flowsheer = Flowsheet::where('code_number', $code_number)->first();
+        $flowsheet = Flowsheet::where('code_number', $code_number)->first();
         // dd($flowsheet);
         return view('flowsheet', compact('code_number', 'flowsheet'));  
     }

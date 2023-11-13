@@ -12,7 +12,9 @@ class EvaluationController extends Controller
 
     public function index($code_number)
     {
-        $questions = Evaluation::where('code_number', $code_number)->first();
+        $questions = Evaluation::where('code_number', $code_number)
+        ->orderBy('created_at', 'desc')
+        ->first();
         // dd($questions);
         return view('evaluation', compact('code_number', 'questions'));
     } 
@@ -79,6 +81,6 @@ class EvaluationController extends Controller
         // Save the evaluation to the database
         $evaluation->save();
 
-        return back()->refresh();
+        return view('flowsheet', ['code_number' => $code_number]);
     }
 }

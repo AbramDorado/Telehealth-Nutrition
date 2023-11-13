@@ -47,8 +47,7 @@
 
                     <div class="form-group">
                         <label for="first_ventilation_dt">First Ventilation:</label>
-                        <input type="datetime-local" class="form-control" name="first_ventilation_dt" value="{{ old('first_ventilation_dt', optional($initialResuscitation ?? '')->first_ventilation_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_ventilation_dt'])->format('Y-m-d H:i:s') }}">
-                    
+                        <input type="datetime-local" class="form-control" name="first_ventilation_dt" value="{{ old('first_ventilation_dt', optional($initialResuscitation ?? '')->first_ventilation_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_ventilation_dt'])->format('Y-m-d H:i:s')) : '') }}">
                     </div>
 
                     <div class="form-group">
@@ -77,7 +76,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="intubation_dt">Intubation:</label>
-                        <input type="datetime-local" class="form-control" name="intubation_dt" value="{{ old('intubation_dt', optional($initialResuscitation ?? '')->intubation_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->intubation_dt))->format('Y-m-d\TH:i') : '') }}">
+                        <input type="datetime-local" class="form-control" name="intubation_dt" value="{{ old('intubation_dt', optional($initialResuscitation ?? '')->intubation_dt ? (\Carbon\Carbon::parse($initialResuscitation['intubation_dt'])->format('Y-m-d H:i:s')) : '') }}">
                     </div>
                         
                     <div class="form-group">
@@ -119,12 +118,12 @@
 
                     <div class="form-group">
                         <label for="first_pulseless_rhythm_dt">1st Pulseless Rhythm Detected Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="first_pulseless_rhythm_dt" value="{{ old('first_pulseless_rhythm_dt', optional($initialResuscitation ?? '')->first_pulseless_rhythm_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->first_pulseless_rhythm_dt))->format('Y-m-d\TH:i') : '') }}">
+                        <input type="datetime-local" class="form-control" name="first_pulseless_rhythm_dt" value="{{ old('first_pulseless_rhythm_dt', optional($initialResuscitation ?? '')->first_pulseless_rhythm_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_pulseless_rhythm_dt'])->format('Y-m-d H:i:s')) : '') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="compressions_dt">Compressions Started Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="compressions_dt" value="{{ old('compressions_dt', optional($initialResuscitation ?? '')->compressions_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->compressions_dt))->format('Y-m-d\TH:i') : '') }}">
+                        <input type="datetime-local" class="form-control" name="compressions_dt" value="{{ old('compressions_dt', optional($initialResuscitation ?? '')->compressions_dt ? (\Carbon\Carbon::parse($initialResuscitation['compressions_dt'])->format('Y-m-d H:i:s')) : '') }}">
                     </div>
 
                 </div>
@@ -144,7 +143,7 @@
                         </label>
                         <div id ="aed_applied_dt_div" style="display: none;">
                             <label for="aed_applied_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="aed_applied_dt" id="aed_applied_dt" value="{{ old('aed_applied_dt', optional($initialResuscitation ?? '' ?? '')->aed_applied_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? '' ?? ''->aed_applied_dt))->format('Y-m-d\TH:i') : '') }}">
+                            <input type="datetime-local" class="form-control" name="aed_applied_dt" id="aed_applied_dt" value="{{ old('aed_applied_dt', optional($initialResuscitation ?? '')->aed_applied_dt ? (\Carbon\Carbon::parse($initialResuscitation['aed_applied_dt'])->format('Y-m-d H:i:s')) : '') }}">
                         </div>
                     </div>
 
@@ -160,7 +159,7 @@
                     </label>
                         <div id ="pacemaker_on_dt_div" style="display: none;">
                             <label for="pacemaker_on_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="pacemaker_on_dt" id="pacemaker_on_dt" value="{{ old('pacemaker_on_dt', optional($initialResuscitation ?? '' ?? '')->pacemaker_on_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? '' ?? ''->pacemaker_on_dt))->format('Y-m-d\TH:i') : '') }}">>
+                            <input type="datetime-local" class="form-control" name="pacemaker_on_dt" id="pacemaker_on_dt" value="{{ old('pacemaker_on_dt', optional($initialResuscitation ?? '')->pacemaker_on_dt ? (\Carbon\Carbon::parse($initialResuscitation['pacemaker_on_dt'])->format('Y-m-d H:i:s')) : '') }}">
                         </div>
                     </div>
                 </div>

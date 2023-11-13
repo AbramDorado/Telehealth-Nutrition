@@ -12,11 +12,14 @@ class MainInformationController extends Controller
 {
     public function index($code_number)
     {   
-        $code_number = request('code_number', '000'); // Use a default value of '000' if not present in the request
+        $code_number = request('code_number', '000'); 
         // $patient = Patient::where('code_number', $code_number)->first();
 
-        return view('maininformation', compact('code_number'));
+        $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+        // dd($codeBlueActivation);
+        return view('maininformation', compact('code_number', 'codeBlueActivation'));
     }
+    
     public function store(Request $request, $code_number)
     {
         $validatedData = $request->validate([
@@ -84,5 +87,27 @@ class MainInformationController extends Controller
     $codeBlueActivation->save();
 
     return view('initialresuscitation', ['code_number' => $code_number]);
-}
+    }
+
+    public function updatePatient(Request $request, $patient_pin)
+    {   
+        $patient = Patient::findOrFail($patient_pin);
+        $patient->patient_pin = $request->input('patient_pin');
+        $patient->first_name = $request->input('first_name');
+        $patient->last_name = $request->input('last_name');
+        $patient->middle_name = $request->input('middle_name');
+        $patient->suffix = $request->input('suffix');
+        $patient->visit_number = $request->input('visit_number');
+        $patient->birthday = $request->input('birthday');
+        $patient->age = $request->input('age');
+        $patient->sex = $request->input('sex');
+        $patient->height = $request->input('height');
+        $patient->weight = $request->input('weight');
+        $patient->allergies = $request->input('allergies');
+        $patient->location = $request->input('location');
+     
+        $patient->save();
+
+        return redirect()->back()->with('success', 'Patient updated successfully.');
+    }
 }
