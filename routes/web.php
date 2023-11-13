@@ -58,6 +58,8 @@ Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
 Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
+Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
+
 Route::get('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'index'])->name('initialresuscitation');
 Route::post('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'store'])->name('store_initialresuscitation');
 
