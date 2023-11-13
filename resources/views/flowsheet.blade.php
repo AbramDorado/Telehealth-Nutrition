@@ -11,11 +11,11 @@
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <!-- Your list of buttons goes here -->
-    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
+    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number ?? '']) }}">Main Information</a>
+    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number ?? '']) }}">Initial Resuscitation</a>
+    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number ?? '']) }}">Flowsheet</a>
+    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number ?? '']) }}">Outcome of the Code</a>
+    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number ?? '']) }}">Debriefing and Evaluation</a>
     <a class="dropdown-item" href="/codeteam">Code Team</a>
   </div>
 </div>
@@ -24,7 +24,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
     
-    <form method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number]) }}"> 
+    <form method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number ?? '']) }}"> 
     @csrf
 
     <div class="card">
@@ -212,7 +212,7 @@
             <button type="submit" class="btn btn-primary btn-block">Log</button>
         </form>
 
-        <form method="GET" action="{{ route('outcome', ['code_number' => $code_number]) }}">
+        <form method="GET" action="{{ route('outcome', ['code_number' => $code_number ?? '']) }}">
         @csrf
         <button type="submit" class="btn btn-primary btn-block">Next</button>
     </form>

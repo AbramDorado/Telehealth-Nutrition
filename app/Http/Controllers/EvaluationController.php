@@ -12,8 +12,9 @@ class EvaluationController extends Controller
 
     public function index($code_number)
     {
-        $questions = Evaluation::all(); // Replace 'Question' with your actual model
-        return view('evaluation', compact('code_number'));
+        $questions = Evaluation::where('code_number', $code_number)->first();
+        // dd($questions);
+        return view('evaluation', compact('code_number', 'questions'));
     } 
 
     public function store(Request $request, $code_number)
@@ -49,36 +50,35 @@ class EvaluationController extends Controller
 
         // Create a new Evaluation model instance and fill it with the user's responses
         $evaluation = new Evaluation();
-        $evaluation->question1 = $validatedData['question1'];
-        $evaluation->question2 = $validatedData['question2'];
-        $evaluation->question2_1 = $validatedData['question2_explanation'];
-        $evaluation->question3 = $validatedData['question3'];
-        $evaluation->question3_1 = $validatedData['question3_1'];
-        $evaluation->question3_2 = $validatedData['question3_2'];
-        $evaluation->question3_3 = $validatedData['question3_3'];
-        $evaluation->question3_4 = $validatedData['question3_4'];
-        $evaluation->question3_5 = $validatedData['question3_5'];
-        $evaluation->question3_6 = $validatedData['question3_6'];
-        $evaluation->question3_7 = $validatedData['question3_7'];
-        $evaluation->question3_8 = $validatedData['question3_8'];
-        $evaluation->question3_9 = $validatedData['question3_9'];
-        $evaluation->question3_10 = $validatedData['question3_10'];
-        $evaluation->question3_11 = $validatedData['question3_11'];
-        $evaluation->question3_12 = $validatedData['question3_12'];
-        $evaluation->question3_13 = $validatedData['question3_13'];
-        $evaluation->question3_14 = $validatedData['question3_14'];
-        $evaluation->question4 = $validatedData['question4'];
-        $evaluation->question4_1 = $validatedData['question4_explanation'];
-        $evaluation->question5 = $validatedData['question5'];
-        $evaluation->question5_1 = $validatedData['question5_explanation'];
-        $evaluation->question6 = $validatedData['question6'];
-        $evaluation->question7 = $validatedData['question7_explanation'];
+        $evaluation->question1 = $validatedData['question1'] ?? null;
+        $evaluation->question2 = $validatedData['question2'] ?? null;
+        $evaluation->question2_1 = $validatedData['question2_explanation'] ?? null;
+        $evaluation->question3 = $validatedData['question3'] ?? null;
+        $evaluation->question3_1 = $validatedData['question3_1'] ?? null;
+        $evaluation->question3_2 = $validatedData['question3_2'] ?? null;
+        $evaluation->question3_3 = $validatedData['question3_3'] ?? null;
+        $evaluation->question3_4 = $validatedData['question3_4'] ?? null;
+        $evaluation->question3_5 = $validatedData['question3_5'] ?? null;
+        $evaluation->question3_6 = $validatedData['question3_6'] ?? null;
+        $evaluation->question3_7 = $validatedData['question3_7'] ?? null;
+        $evaluation->question3_8 = $validatedData['question3_8'] ?? null;
+        $evaluation->question3_9 = $validatedData['question3_9'] ?? null;
+        $evaluation->question3_10 = $validatedData['question3_10'] ?? null;
+        $evaluation->question3_11 = $validatedData['question3_11'] ?? null;
+        $evaluation->question3_12 = $validatedData['question3_12'] ?? null;
+        $evaluation->question3_13 = $validatedData['question3_13'] ?? null;
+        $evaluation->question3_14 = $validatedData['question3_14'] ?? null;
+        $evaluation->question4 = $validatedData['question4'] ?? null;
+        $evaluation->question4_1 = $validatedData['question4_explanation'] ?? null;
+        $evaluation->question5 = $validatedData['question5'] ?? null;
+        $evaluation->question5_1 = $validatedData['question5_explanation'] ?? null;
+        $evaluation->question6 = $validatedData['question6'] ?? null;
+        $evaluation->question7 = $validatedData['question7_explanation'] ?? null;
         $evaluation->code_number =  $code_number;
 
         // Save the evaluation to the database
         $evaluation->save();
 
-        return view('codeteam');
+        return back()->refresh();
     }
-
 }

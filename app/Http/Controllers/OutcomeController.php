@@ -34,7 +34,7 @@ class OutcomeController extends Controller
                 'death_dt' => 'sometimes|nullable|date', // Validate the death date and time, nullable and sometimes
             ]);
 
-            $outcome->death_dt = $request->input('death_dt');
+            $outcome->death_dt = $request->input('death_dt') ?? null;
         } elseif ($request->input('outcome') === 'Survived - Return of Spontaneous Circulation') {
             $request->validate([
                 'bp_systolic' => 'sometimes|nullable|integer', // Validate the blood pressure fields, nullable and sometimes
@@ -44,11 +44,11 @@ class OutcomeController extends Controller
                 'rhythm' => 'sometimes|nullable', // You may want to define validation rules for rhythm options
             ]);
 
-            $outcome->bp_systolic = $request->input('bp_systolic');
-            $outcome->bp_diastolic = $request->input('bp_diastolic');
-            $outcome->heart_rate = $request->input('heart_rate');
-            $outcome->respiratory_rate = $request->input('respiratory_rate');
-            $outcome->rhythm = $request->input('rhythm');
+            $outcome->bp_systolic = $request->input('bp_systolic') ?? null;
+            $outcome->bp_diastolic = $request->input('bp_diastolic') ?? null;
+            $outcome->heart_rate = $request->input('heart_rate') ?? null;
+            $outcome->respiratory_rate = $request->input('respiratory_rate') ?? null;
+            $outcome->rhythm = $request->input('rhythm') ?? null;
         }
 
         // Save the outcome to the database

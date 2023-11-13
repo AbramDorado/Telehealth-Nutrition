@@ -29,69 +29,74 @@
     <div class="card-body">
 
             <div class="row">
-                <!-- First Column -->
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="breathing_upon_ca">Breathing upon code activation:</label>
-                        <select name="breathing_upon_ca" class="form-control">
-                            <option value="">Select an option</option>
-                            <option value="Spontaneous">Spontaneous</option>
-                            <option value="Apneic">Apneic</option>
-                            <option value="Agonal">Agonal</option>
-                            <option value="Assisted">Assisted</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="breathing_upon_ca">Breathing upon code activation:</label>
+                    <select class="form-control" name="breathing_upon_ca" id="breathing_upon_ca">
+                        @php
+                            $selectedBreathing = old('breathing_upon_ca', optional($initialResuscitation ?? '' ?? '')->breathing_upon_ca ?? ''); 
+                        @endphp
+
+                        @foreach(['', 'Spontaneous', 'Apneic', 'Agonal', 'Assisted'] as $option)
+                            <option value="{{ $option }}" {{ $selectedBreathing === $option ? 'selected' : '' }}>
+                                {{ $option }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
                     <div class="form-group">
-                        <label for="first_ventilation_dt">1st Assisted Ventilation Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="first_ventilation_dt">
+                        <label for="first_ventilation_dt">First Ventilation:</label>
+                        <input type="datetime-local" class="form-control" name="first_ventilation_dt" value="{{ old('first_ventilation_dt', optional($initialResuscitation ?? '')->first_ventilation_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_ventilation_dt'])->format('Y-m-d H:i:s') }}">
+                    
                     </div>
 
                     <div class="form-group">
                         <label for="ventilation">Ventilation via:</label>
-                        <select name="ventilation" id="ventilation" class="form-control">
-                            <option value="">Select an option</option>
-                            <option value="Bag-Valve Mask">Bag-Valve Mask</option>
-                            <option value="Tracheostomy">Tracheostomy</option>
-                            <option value="Endotracheal Tube">Endotracheal Tube</option>
-                            <option value="others">Others</option>
+                        <select class="form-control" name="ventilation" id="ventilation">
+                            @php
+                                $selectedVentilation = old('ventilation', optional($initialResuscitation ?? '' ?? '')->ventilation ?? ''); 
+                            @endphp
+
+                            @foreach(['', 'Bag-Valve Mask', 'Tracheostomy', 'Endotracheal Tube', 'Others'] as $option)
+                                <option value="{{ $option }}" {{ $selectedVentilation === $option ? 'selected' : '' }}>
+                                    {{ $option }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group" id="othersText" style="display: none;">
                         <label for="other_ventilation">Other Ventilation Method:</label>
-                        <input type="text" name="other_ventilation" id="other_ventilation" class="form-control">
+                        <input type="text" name="other_ventilation" id="other_ventilation" class="form-control" value="{{ $initialResuscitation ?? '' ?? ''->othersText ?? old('othersText') }}">
                     </div>
-
-                    
                 </div>
 
                 <!-- Second Column -->
                 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="intubation_dt">Intubated Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="intubation_dt">
+                        <label for="intubation_dt">Intubation:</label>
+                        <input type="datetime-local" class="form-control" name="intubation_dt" value="{{ old('intubation_dt', optional($initialResuscitation ?? '')->intubation_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->intubation_dt))->format('Y-m-d\TH:i') : '') }}">
                     </div>
                         
                     <div class="form-group">
                         <label for="et_tube_size">ET Tube Size:</label>
-                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" value="{{ $initialResuscitation->et_tube_size ?? old('et_tube_size') }}">
+                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" value="{{ $initialResuscitation ?? ''->et_tube_size ?? old('et_tube_size') }}">
                     </div>
 
-                   
                     <div class="form-group">
                         <label for="intubation_attempts">Number of intubation attempts:</label>
-                        <input type="number" class="form-control" name="intubation_attempts" placeholder="0" value="{{ $initialResuscitation->intubation_attempts ?? old('intubation_attempts') }}">
+                        <input type="number" class="form-control" name="intubation_attempts" placeholder="0"  value="{{ $initialResuscitation ?? ''->intubation_attempts ?? old('intubation_attempts') }}">
                     </div>
                 
                     <div class="form-group">
                         <label for="et_tube_information">ET Tube Information</label>
                         <div id="et_tube_information">
-                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation">
+                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" @if(is_array(old('et_tube_information')) && in_array('Auscultation', old('et_tube_information'))) checked @endif>
                             <label for="auscultation-checkbox">Auscultation</label>
-
-                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2">
+                                                
+                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" @if(is_array(old('et_tube_information')) && in_array('Exhaled CO2', old('et_tube_information'))) checked @endif>
                             <label for="exhaled-co2-checkbox">Exhaled CO2</label>
                         </div>
                     </div>
@@ -108,19 +113,20 @@
             <div class="col-md-6">
                 <!-- First Column -->
                     <div class="form-group">
-                    <label for="first_documented_rhythm_dt">1st Documented Rhythm:</label>
-                        <textarea type="text" class="form-control" name="first_documented_rhythm_dt"></textarea>
+                        <label for="first_documented_rhythm_dt">1st Documented Rhythm:</label>
+                        <textarea type="text" class="form-control" name="first_documented_rhythm_dt" value="{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '' ?? '')->first_documented_rhythm_dt ?? '') }}"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="first_pulseless_rhythm_dt">1st Pulseless Rhythm Detected Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="first_pulseless_rhythm_dt">
+                        <input type="datetime-local" class="form-control" name="first_pulseless_rhythm_dt" value="{{ old('first_pulseless_rhythm_dt', optional($initialResuscitation ?? '')->first_pulseless_rhythm_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->first_pulseless_rhythm_dt))->format('Y-m-d\TH:i') : '') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="compressions_dt">Compressions Started Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="compressions_dt">
+                        <input type="datetime-local" class="form-control" name="compressions_dt" value="{{ old('compressions_dt', optional($initialResuscitation ?? '')->compressions_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? ''->compressions_dt))->format('Y-m-d\TH:i') : '') }}">
                     </div>
+
                 </div>
 
                 <!-- Second Column -->
@@ -129,38 +135,37 @@
                     <div class="form-group">
                         <label for="aed_applied">AED Applied:</label>
                         <label for="aed_applied_yes">
-                            <input type="radio" name="aed_applied" value="Yes" id="aed_applied_yes">
-                                Yes
+                            <input type="radio" name="aed_applied" value="Yes" id="aed_applied_yes" {{ old('aed_applied', optional($initialResuscitation ?? '')->aed_applied) === 'Yes' ? 'checked' : '' }}>
+                            Yes
                         </label>
                         <label for="aed_applied_no">
-                            <input type="radio" name="aed_applied" value="No" id="aed_applied_no">
-                                No
+                            <input type="radio" name="aed_applied" value="No" id="aed_applied_no" {{ old('aed_applied', optional($initialResuscitation ?? '')->aed_applied) === 'No' ? 'checked' : '' }}>
+                            No
                         </label>
                         <div id ="aed_applied_dt_div" style="display: none;">
                             <label for="aed_applied_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="aed_applied_dt" id="aed_applied_dt">
+                            <input type="datetime-local" class="form-control" name="aed_applied_dt" id="aed_applied_dt" value="{{ old('aed_applied_dt', optional($initialResuscitation ?? '' ?? '')->aed_applied_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? '' ?? ''->aed_applied_dt))->format('Y-m-d\TH:i') : '') }}">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="pacemaker_on">Pacemaker on:</label>
-                        <label for="pacemaker_on_yes">
-                            <input type="radio" name="pacemaker_on" value="Yes" id="pacemaker_on_yes">
-                                Yes
-                        </label>
-                        <label for="pacemaker_on_no">
-                            <input type="radio" name="pacemaker_on" value="No" id="pacemaker_on_no">
-                                No
-                        </label>
+                    <label for="pacemaker_on">Pacemaker on:</label>
+                    <label for="pacemaker_on_yes">
+                        <input type="radio" name="pacemaker_on" value="Yes" id="pacemaker_on_yes" {{ old('pacemaker_on', optional($initialResuscitation ?? '')->pacemaker_on) === 'Yes' ? 'checked' : '' }}>
+                        Yes
+                    </label>
+                    <label for="pacemaker_on_no">
+                        <input type="radio" name="pacemaker_on" value="No" id="pacemaker_on_no" {{ old('pacemaker_on', optional($initialResuscitation ?? '')->pacemaker_on) === 'No' ? 'checked' : '' }}>
+                        No
+                    </label>
                         <div id ="pacemaker_on_dt_div" style="display: none;">
                             <label for="pacemaker_on_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="pacemaker_on_dt" id="pacemaker_on_dt">
+                            <input type="datetime-local" class="form-control" name="pacemaker_on_dt" id="pacemaker_on_dt" value="{{ old('pacemaker_on_dt', optional($initialResuscitation ?? '' ?? '')->pacemaker_on_dt ? (\Carbon\Carbon::parse($initialResuscitation ?? '' ?? ''->pacemaker_on_dt))->format('Y-m-d\TH:i') : '') }}">>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-                
 </div>
 
         <form action="{{ url('/store_initialresuscitation') }}" method="post">

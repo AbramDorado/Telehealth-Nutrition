@@ -13,43 +13,6 @@
                                     <i class="ti-forms"></i> <span> Code Blue Forms </span>
                                 </a>
                             </li>
-
-                            <li class="">
-                                <a href="/maininformation" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Main Information </span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="/initialresuscitation" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Initial Resuscitation </span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="/flowsheet" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Flowsheet </span>
-                                </a>
-                            </li>
-
-
-                            <li class="">
-                                <a href="/outcome" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Outcome of the Code </span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="/evaluation" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Debriefing and Evaluation </span>
-                                </a>
-                            </li>
-                           
-                            <li class="">
-                                <a href="/codeteam" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Code Team </span>
-                                </a>
-                            </li>
             
 
                         </ul>

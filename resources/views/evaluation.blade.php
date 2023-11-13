@@ -67,7 +67,7 @@
                             <div class="card-body">
                                 <p>Were there any problems with equipment, supplies, or tests?</p>
                                 <label for="question3-yes">
-                                    <input type="radio" name="question3" value="Yes" id="question3-yes">
+                                    <input type="radio" name="question3" value="Yes" id="question3-yes" {{ old('question3-yes', optional($questions)->{'question3-yes'}) === 'Yes' ? 'checked' : '' }}>
                                     Yes
                                 </label>
                                 <label for="question3-no">
