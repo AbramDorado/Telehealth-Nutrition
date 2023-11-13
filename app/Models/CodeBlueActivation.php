@@ -35,6 +35,4 @@ class CodeBlueActivation extends Model
 
 
 
-    
-
 }

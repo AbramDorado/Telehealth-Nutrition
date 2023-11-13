@@ -58,6 +58,7 @@ Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
 Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
+
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
 
 Route::get('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'index'])->name('initialresuscitation');
@@ -77,6 +78,8 @@ Route::post('/maininformation/{code_number}', [MainInformationController::class,
 
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
+Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
+
 // Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
 
 // Route::post('/maininformationview', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
@@ -87,9 +90,6 @@ Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name
 Route::post('/store_codeteam', '\App\Http\Controllers\CodeTeamController@store')->name('store_codeteam');
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
-
-
- 
 
 Route::group(['middleware' => ['auth']], function () {
 
