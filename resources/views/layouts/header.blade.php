@@ -14,13 +14,17 @@
     <nav class="navbar-custom">
         <ul class="navbar-right d-flex list-inline float-right mb-0">
             <!-- Users Dropdown in a Card -->
-            <li class="dropdown notification-list">
-                <div class="dropdown-toggle nav-link waves-effect">
-                    <a href="/users">
+            <?php
+            $currentUser = Auth::user()->name; // Replace this with the actual username of the logged-in user
+            if ($currentUser === "Admin"): ?>
+                <li class="dropdown notification-list">
+                    <div class="dropdown-toggle nav-link waves-effect">
+                        <a href="/users">
                             <i class="ti-forms"></i> Users
-                    </a>
-                </div>
-            </li>
+                        </a>
+                    </div>
+                </li>
+            <?php endif; ?>
 
             <!-- Full Screen -->
             <li class="dropdown notification-list d-none d-md-block">
@@ -33,7 +37,7 @@
             <li class="dropdown notification-list">
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/profile-icon.png" alt="user" class="rounded-circle"> Administrator
+                        <img src="assets/images/profile-icon.png" alt="user" class="rounded-circle"> {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                         <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
@@ -56,4 +60,10 @@
             </li>
         </ul>
     </nav>
+
+    <script>
+        // Assuming that $currentUser is a PHP variable, you can pass its value to a JavaScript variable like this
+        var currentUser = <?php echo json_encode($currentUser); ?>;
+        console.log("currentUser:", currentUser);
+    </script>
 </div>

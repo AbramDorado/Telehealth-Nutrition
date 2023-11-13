@@ -33,6 +33,6 @@ class CodeTeamController extends Controller
         // Save the CodeTeam instance to the database
         $codeTeam->save();
 
-        return view('codeblueforms');
+        return view('includes/codeblueforms');
     }
 }

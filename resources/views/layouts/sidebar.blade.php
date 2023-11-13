@@ -12,8 +12,7 @@
                                 <a href="/codeblueforms" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
                                     <i class="ti-forms"></i> <span> Code Blue Forms </span>
                                 </a>
-                            </li>
-            
+                            </li>            
 
                         </ul>
 						

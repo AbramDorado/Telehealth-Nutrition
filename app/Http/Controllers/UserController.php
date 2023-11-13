@@ -69,5 +69,20 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
+
+    public function updateUser(Request $request, $id)
+    {
+        // Validation logic if needed
+
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->username = $request->input('username');
+        $user->pin_code = $request->input('pin_code');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return redirect()->back()->with('success', 'User updated successfully.');
+    }
+
 }
 
