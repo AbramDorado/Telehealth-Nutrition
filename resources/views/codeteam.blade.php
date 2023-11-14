@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="jumbotron">
-  <h1 class="display-10">Main Information</h1>
-  <p class="lead">Patient Information and Code Blue Activation.</p>
+  <h1 class="display-10">Code Team</h1>
+  <p class="lead">Code Team</p>
   <!-- Add a dropdown button to toggle the menu -->
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Toggle Menu
@@ -13,12 +13,12 @@
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <!-- Your list of buttons goes here -->
-    <a class="dropdown-item" href="/maininformation">Main Information</a>
-    <a class="dropdown-item" href="/initialresuscitation">Initial Resuscitation</a>
-    <a class="dropdown-item" href="/flowsheet">Flowsheet</a>
-    <a class="dropdown-item" href="/outcome">Outcome of the Code</a>
-    <a class="dropdown-item" href="/evaluation">Debriefing and Evaluation</a>
-    <a class="dropdown-item" href="/codeteam">Code Team</a>
+    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
+    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
+    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
+    <a class="dropdown-item" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
   </div>
 </div>
 
@@ -28,9 +28,9 @@
             <div class="card">
                 <div class="card-header">Code Team</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('store_codeteam') }}">
-                        @csrf
-
+                   
+                <form method="POST" action="{{ route('store_codeteam', ['code_number' => $code_number]) }}">
+    @csrf
                         <div class="form-group">
                         <label for="code_team_leader">Code Team Leader:</label>
                             <select class="form-control" name="code_team_leader" id="code_team_leader">
@@ -86,8 +86,12 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                        <form action="{{ url('/store_codeteam') }}" method="post">
+                    @csrf 
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+</form>
+                    
                 </div>
             </div>
         </div>

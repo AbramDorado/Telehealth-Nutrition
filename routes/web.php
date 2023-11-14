@@ -54,12 +54,16 @@ Route::get('/users', function(){
     return view('users');
 });
 
-Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
+Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'showCodeTeamForm']);
 Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
 
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
+
+
+Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'index'])->name('codeteam');
+Route::post('/codeteam/{code_number}', [CodeTeamController::class, 'store'])->name('store_codeteam');
 
 Route::get('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'index'])->name('initialresuscitation');
 Route::post('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'store'])->name('store_initialresuscitation');
@@ -76,18 +80,15 @@ Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name
 Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
 
+
+
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
 Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
 
 // Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
 
-// Route::post('/maininformationview', '\App\Http\Controllers\MainInformationController@store')->name('store_maininformation');
-// Route::post('/store_initialresuscitation', '\App\Http\Controllers\InitialResuscitationController@store')->name('store_initialresuscitation');
-// Route::post('/store_flowsheet', '\App\Http\Controllers\FlowsheetController@store')->name('store_flowsheet');
-// Route::post('/store_evaluation', '\App\Http\Controllers\EvaluationController@store')->name('store_evaluation');
-// Route::post('/store_outcome', '\App\Http\Controllers\OutcomeController@store')->name('store_outcome');
-Route::post('/store_codeteam', '\App\Http\Controllers\CodeTeamController@store')->name('store_codeteam');
+
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
 

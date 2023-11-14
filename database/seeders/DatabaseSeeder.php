@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin123',
             'password' => Hash::make('codeblue128.1'),
         ]);
-        $role = Role::create([
-            'slug' => 'admin',
-            'name' => 'Adminstrator',
-        ]);
-        $user->roles()->sync($role->id);
+        // $role = Role::create([
+        //     'slug' => 'admin',
+        //     'name' => 'Adminstrator',
+        // ]);
+        // $user->roles()->sync($role->id);
     }
 }
