@@ -24,7 +24,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
     
-    <form method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number]) }}"> 
+    <form method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number ?? '']) }}"> 
     @csrf
 
     <div class="card">
@@ -212,7 +212,7 @@
             <button type="submit" class="btn btn-primary btn-block">Log</button>
         </form>
 
-        <form method="GET" action="{{ route('outcome', ['code_number' => $code_number]) }}">
+        <form method="GET" action="{{ route('outcome', ['code_number' => $code_number ?? '']) }}">
         @csrf
         <button type="submit" class="btn btn-primary btn-block">Next</button>
     </form>

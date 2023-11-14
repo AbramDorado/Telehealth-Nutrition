@@ -10,11 +10,16 @@ use App\Models\CodeBlueActivation;
 
 class MainInformationController extends Controller
 {
-    public function index()
+    public function index($code_number)
     {   
-        $code_number = request('code_number', '000'); // Use a default value of '000' if not present in the request
-        return view('maininformation', compact('code_number'));
+        $code_number = request('code_number', '000'); 
+        // $patient = Patient::where('code_number', $code_number)->first();
+
+        $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+        // dd($codeBlueActivation);
+        return view('maininformation', compact('code_number', 'codeBlueActivation'));
     }
+    
     public function store(Request $request, $code_number)
     {
         $validatedData = $request->validate([
@@ -36,19 +41,19 @@ class MainInformationController extends Controller
 
     $patient = new Patient;
 
-    $patient->patient_pin = $validatedData['patient_pin'];
-    $patient->first_name = $validatedData['first_name'];
-    $patient->last_name = $validatedData['last_name'];
-    $patient->middle_name = $validatedData['middle_name'];
-    $patient->suffix = $validatedData['suffix'];
-    $patient->visit_number = $validatedData['visit_number'];
-    $patient->birthday = $validatedData['birthday'];
-    $patient->age = $validatedData['age'];
-    $patient->sex = $validatedData['sex'];
-    $patient->height = $validatedData['height'];
-    $patient->weight = $validatedData['weight'];
-    $patient->allergies = $validatedData['allergies'];
-    $patient->location = $validatedData['location'];
+    $patient->patient_pin = $validatedData['patient_pin'] ?? null;
+    $patient->first_name = $validatedData['first_name'] ?? null;
+    $patient->last_name = $validatedData['last_name'] ?? null;
+    $patient->middle_name = $validatedData['middle_name'] ?? null;
+    $patient->suffix = $validatedData['suffix'] ?? null;
+    $patient->visit_number = $validatedData['visit_number'] ?? null;
+    $patient->birthday = $validatedData['birthday'] ?? null;
+    $patient->age = $validatedData['age'] ?? null;
+    $patient->sex = $validatedData['sex'] ?? null;
+    $patient->height = $validatedData['height'] ?? null;
+    $patient->weight = $validatedData['weight'] ?? null;
+    $patient->allergies = $validatedData['allergies'] ?? null;
+    $patient->location = $validatedData['location'] ?? null;
 
     $patient->save();
     $patientPin = $patient->patient_pin;
@@ -56,11 +61,11 @@ class MainInformationController extends Controller
     $validatedData2 = $request->validate([
         'code_start_dt' => 'sometimes|nullable|date',
         'arrest_dt' => 'sometimes|nullable|date',
-        'reason_for_activation' => 'sometimes|in:unconscious,pulseless',
+        'reason_for_activation' => 'sometimes|nullable|in:unconscious,pulseless',
         'initial_reporter' => 'sometimes|nullable|string',
         'code_team_arrival_dt' => 'sometimes|nullable|date',
         'e_cart_arrival_dt' => 'sometimes|nullable|date',
-        'witnessed' => 'sometimes|in:yes,no',
+        'witnessed' => 'sometimes|nullable|in:yes,no',  
         'patient_pin' => 'sometimes|nullable|integer',
     ]);
     
@@ -70,17 +75,39 @@ class MainInformationController extends Controller
     $codeBlueActivation = new CodeBlueActivation;
 
     // $codeBlueActivation->code_number =  $validatedData2['code_number'];
-    $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'];
+    $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'] ?? null;
     $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
-    $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'];
-    $codeBlueActivation->initial_reporter = $validatedData2['initial_reporter'];
-    $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'];
-    $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'];
-    $codeBlueActivation->witnessed = $validatedData2['witnessed'];
-    $codeBlueActivation->patient_pin = $validatedData2['patient_pin'];
+    $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'] ?? null;
+    $codeBlueActivation->initial_reporter = $validatedData2['initial_reporter'] ?? null;
+    $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'] ?? null;
+    $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'] ?? null;
+    $codeBlueActivation->witnessed = $validatedData2['witnessed'] ?? null;
+    $codeBlueActivation->patient_pin = $validatedData2['patient_pin'] ?? null;
 
     $codeBlueActivation->save();
 
     return view('initialresuscitation', ['code_number' => $code_number]);
-}
+    }
+
+    public function updatePatient(Request $request, $patient_pin)
+    {   
+        $patient = Patient::findOrFail($patient_pin);
+        $patient->patient_pin = $request->input('patient_pin');
+        $patient->first_name = $request->input('first_name');
+        $patient->last_name = $request->input('last_name');
+        $patient->middle_name = $request->input('middle_name');
+        $patient->suffix = $request->input('suffix');
+        $patient->visit_number = $request->input('visit_number');
+        $patient->birthday = $request->input('birthday');
+        $patient->age = $request->input('age');
+        $patient->sex = $request->input('sex');
+        $patient->height = $request->input('height');
+        $patient->weight = $request->input('weight');
+        $patient->allergies = $request->input('allergies');
+        $patient->location = $request->input('location');
+     
+        $patient->save();
+
+        return redirect()->back()->with('success', 'Patient updated successfully.');
+    }
 }

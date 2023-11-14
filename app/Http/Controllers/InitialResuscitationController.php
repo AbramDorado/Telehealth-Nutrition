@@ -11,8 +11,12 @@ class InitialResuscitationController extends Controller
     private $initialResuscitation;
 
     public function index($code_number)
-    {   
-        return view('initialresuscitation', compact('code_number'));
+    {
+        $initialResuscitation = InitialResuscitation::where('code_number', $code_number)
+            ->orderBy('created_at', 'desc')
+            ->first();
+        // dd($initialResuscitation);
+        return view('initialresuscitation', compact('code_number', 'initialResuscitation'));
     }
 
     public function store(Request $request, $code_number)
@@ -37,21 +41,22 @@ class InitialResuscitationController extends Controller
 
         $initialResuscitation = new InitialResuscitation;
 
-        $initialResuscitation->breathing_upon_ca = $validatedData['breathing_upon_ca'];
-        $initialResuscitation->first_ventilation_dt = $validatedData['first_ventilation_dt'];
-        $initialResuscitation->ventilation = $validatedData['ventilation'];
-        $initialResuscitation->intubation_dt = $validatedData['intubation_dt'];
-        $initialResuscitation->et_tube_size = $validatedData['et_tube_size'];
-        $initialResuscitation->intubation_attempts = $validatedData['intubation_attempts'];
-        $initialResuscitation->et_tube_information = json_encode($validatedData['et_tube_information'] ?? []);
-        $initialResuscitation->first_documented_rhythm_dt = $validatedData['first_documented_rhythm_dt'];
-        $initialResuscitation->first_pulseless_rhythm_dt = $validatedData['first_pulseless_rhythm_dt'];
-        $initialResuscitation->compressions_dt = $validatedData['compressions_dt'];
-        $initialResuscitation->aed_applied = $validatedData['aed_applied'];
-        $initialResuscitation->aed_applied_dt = $validatedData['aed_applied_dt'];
-        $initialResuscitation->pacemaker_on = $validatedData['pacemaker_on'];
-        $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'];
+        $initialResuscitation->breathing_upon_ca = $validatedData['breathing_upon_ca'] ?? null;
+        $initialResuscitation->first_ventilation_dt = $validatedData['first_ventilation_dt'] ?? null;
+        $initialResuscitation->ventilation = $validatedData['ventilation'] ?? null;
+        $initialResuscitation->intubation_dt = $validatedData['intubation_dt'] ?? null;
+        $initialResuscitation->et_tube_size = $validatedData['et_tube_size'] ?? null;
+        $initialResuscitation->intubation_attempts = $validatedData['intubation_attempts'] ?? null;
+        $initialResuscitation->et_tube_information = json_encode($validatedData['et_tube_information'] ?? []) ?? null;
+        $initialResuscitation->first_documented_rhythm_dt = $validatedData['first_documented_rhythm_dt'] ?? null;
+        $initialResuscitation->first_pulseless_rhythm_dt = $validatedData['first_pulseless_rhythm_dt'] ?? null;
+        $initialResuscitation->compressions_dt = $validatedData['compressions_dt'] ?? null;
+        $initialResuscitation->aed_applied = $validatedData['aed_applied'] ?? null;
+        $initialResuscitation->aed_applied_dt = $validatedData['aed_applied_dt'] ?? null;
+        $initialResuscitation->pacemaker_on = $validatedData['pacemaker_on'] ?? null;
+        $initialResuscitation->pacemaker_on_dt = $validatedData['pacemaker_on_dt'] ?? null;
         
+        $initialResuscitation->code_number = $code_number;
         $initialResuscitation->save();
 
         return view('flowsheet', ['code_number' => $code_number]);
