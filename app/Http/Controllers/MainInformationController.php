@@ -56,11 +56,11 @@ class MainInformationController extends Controller
     $validatedData2 = $request->validate([
         'code_start_dt' => 'sometimes|nullable|date',
         'arrest_dt' => 'sometimes|nullable|date',
-        'reason_for_activation' => 'required|in:unconscious,pulseless',
+        'reason_for_activation' => 'sometimes|in:unconscious,pulseless',
         'initial_reporter' => 'sometimes|nullable|string',
         'code_team_arrival_dt' => 'sometimes|nullable|date',
         'e_cart_arrival_dt' => 'sometimes|nullable|date',
-        'witnessed' => 'required|in:yes,no',
+        'witnessed' => 'sometimes|in:yes,no',
         'patient_pin' => 'sometimes|nullable|integer',
     ]);
     

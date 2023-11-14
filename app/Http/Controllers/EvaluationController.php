@@ -73,12 +73,12 @@ class EvaluationController extends Controller
         $evaluation->question5_1 = $validatedData['question5_explanation'];
         $evaluation->question6 = $validatedData['question6'];
         $evaluation->question7 = $validatedData['question7_explanation'];
-        $evaluation->code_number =  $code_number;
-
+        
         // Save the evaluation to the database
+        $evaluation->code_number =  $code_number;
         $evaluation->save();
 
-        return view('codeteam');
+        return view('codeteam', ['code_number' => $code_number]);
     }
 
 }
