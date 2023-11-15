@@ -54,13 +54,12 @@ Route::get('/users', function(){
     return view('users');
 });
 
-Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'showCodeTeamForm']);
-Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
+// Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
+// Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
 
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
-
 
 Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'index'])->name('codeteam');
 Route::post('/codeteam/{code_number}', [CodeTeamController::class, 'store'])->name('store_codeteam');
@@ -90,6 +89,11 @@ Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePat
 
 
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
+
+
+Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->name('view_codeblueforms');
+Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
+Route::post('/codeblueforms/{code_number}/delete', [FormController::class, 'delete'])->name('delete_codeblueforms');
 
 
 Route::group(['middleware' => ['auth']], function () {

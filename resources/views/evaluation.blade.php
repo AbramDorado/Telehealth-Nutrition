@@ -288,8 +288,11 @@
                             </div>
                         </div>
 
+                        <form action="{{ url('/store_codeteam') }}" method="post">
+                    @csrf 
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+        </form>
                 </div>
             </div>
         </div>

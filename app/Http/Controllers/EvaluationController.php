@@ -83,7 +83,7 @@ class EvaluationController extends Controller
         $evaluation->code_number =  $code_number;
         $evaluation->save();
       
-        return view('codeteam', ['code_number' => $code_number]);
+        return redirect()->route('codeteam', ['code_number' => $code_number]);
 
     }
 }
