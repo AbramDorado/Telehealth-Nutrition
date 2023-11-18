@@ -46,12 +46,13 @@
                                         <th data-priority="5">Resuscitation Event Time Ended</th>
                                         <th data-priority="6">Code Leader</th>
                                         <th data-priority="7">Action</th>
+                                        <th data-priority="8">Download</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($resuscitationEvents as $event)
                                     <tr>
-                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $event->code_number }}</td>
                                         <td>{{ $event->created_at }}</td>
                                         <td>{{ $event->location }}</td>
                                         <td>{{ $event->first_name }} {{ $event->last_name }}</td>
@@ -64,6 +65,9 @@
                                                 <a href="{{ route('edit_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                                 <a href="{{ route('delete_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                             </div>
+                                        </td>
+                                        <td>        
+                                            <a href="{{ route('download-pdf', ['codeEvent' => $event->code_number]) }}" class="btn btn-danger">PDF</a>
                                         </td>
                                     </tr>
                                     @endforeach
