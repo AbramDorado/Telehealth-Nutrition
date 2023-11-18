@@ -14,6 +14,7 @@ class FlowsheetController extends Controller
     public function index($code_number)
     { 
         $flowsheets = Flowsheet::where('code_number', $code_number)->get();
+        // dd($flowsheets);
         return view('flowsheet', compact('code_number', 'flowsheets'));  
     }
 
@@ -76,5 +77,4 @@ class FlowsheetController extends Controller
 
         return view('flowsheet', compact('code_number'));
     } 
-
 }

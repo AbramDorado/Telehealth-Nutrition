@@ -153,7 +153,6 @@ class MainInformationController extends Controller
     {
         $input = $request->input('query');
 
-        // Your logic to fetch matching patient PINs from the database
         $patientPins = Patient::where('patient_pin', 'LIKE', $input . '%')->pluck('patient_pin');
 
         return response()->json($patientPins);

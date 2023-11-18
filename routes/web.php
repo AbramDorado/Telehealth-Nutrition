@@ -69,6 +69,7 @@ Route::get('/initialresuscitation/{code_number}', [InitialResuscitationControlle
 Route::post('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'store'])->name('store_initialresuscitation');
 
 Route::get('/flowsheet/{code_number}', [FlowsheetController::class, 'index'])->name('flowsheet');
+// Route::get('/flowsheet/{code_number}/data', [FlowsheetController::class, 'getFlowsheetsData'])->name('flowsheets.index');
 Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
 
 Route::get('/evaluation/{code_number}', [EvaluationController::class, 'index'])->name('evaluation');
@@ -101,6 +102,9 @@ Route::post('/codeblueforms/{code_number}/delete', [FormController::class, 'dele
 
 Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
 
+
 Route::group(['middleware' => ['auth']], function () {
+
+    
 
 });

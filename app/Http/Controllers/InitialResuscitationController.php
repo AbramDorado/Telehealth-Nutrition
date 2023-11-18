@@ -16,9 +16,11 @@ class InitialResuscitationController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
         // dd($initialResuscitation);
-        $etTubeInformation = json_decode($initialResuscitation->et_tube_information, true) ?? [];
+        $etTubeInformation = [];
+        if ($initialResuscitation !== null) {
+            $etTubeInformation = json_decode($initialResuscitation->et_tube_information, true) ?? [];
+        }
 
-    // Pass both code_number and etTubeInformation to the view
         return view('initialresuscitation', compact('code_number', 'initialResuscitation', 'etTubeInformation'));
     }
 

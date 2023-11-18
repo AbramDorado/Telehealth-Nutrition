@@ -231,7 +231,7 @@
                             </div>
                         </div>          
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Log</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="logButton">Log</button>
                     </form>    
                 </div>
             </div>
@@ -316,10 +316,10 @@
 </div>
 
 <script>
-  document.getElementById('showTable').addEventListener('click', function () {
-    $('#tableModal').modal('show');
-  });
-
+    document.getElementById('showTable').addEventListener('click', function () {
+        $('#tableModal').modal('show');
+    });
 </script>
+
 
 @endsection
