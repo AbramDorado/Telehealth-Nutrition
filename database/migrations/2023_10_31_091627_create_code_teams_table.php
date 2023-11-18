@@ -21,6 +21,10 @@ class CreateCodeTeamsTable extends Migration
             $table->string('code_team_member')->nullable();
             $table->string('intubated_by')->nullable();
 
+            $table->unsignedInteger('code_number')->nullable();
+ 
+
+            $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
             $table->timestamps();
         });
     }

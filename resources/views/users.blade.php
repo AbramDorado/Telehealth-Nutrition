@@ -10,7 +10,6 @@
                 <th>Name</th>
                 <th>Username</th>
                 <th>Pin Code</th>
-                <th>Permissions</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -21,11 +20,13 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->pin_code }}</td>
-                <td>{{ $user->permissions }}</td>
                 <td>
                     @if ($user->name != 'Admin')
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
                             <i class="fas fa-trash"></i> 
+                        </button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#editUserModal{{ $user->id }}">
+                            <i class="fas fa-pen"></i> 
                         </button>
                     @endif
                 </td>
@@ -64,9 +65,54 @@
                 </div>
             </div>
         </div>
+        <!-- Pop-up modal for editing the user -->
+        <div class="modal fade" id="editUserModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel{{ $user->id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel{{ $user->id }}">Edit User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for editing the user -->
+                        <form method="POST" action="{{ route('update_user', ['id' => $user->id]) }}">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" value="{{ $user->username }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for "pin_code">Pin Code</label>
+                                <input type="text" name="pin_code" id="pin_code" class="form-control" value="{{ $user->pin_code }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePasswordVisibility('password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 @endforeach
-</div>
+
 
 <!-- Pop-up modal for adding a new user -->
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
@@ -96,17 +142,33 @@
                         <input type="text" name="pin_code" id="pin_code" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="permissions">Permissions</label>
-                        <textarea name="permissions" id="permissions" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" required>
-                    </div>
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePasswordVisibility('password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                     <button type="submit" class="btn btn-primary">Add User</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function togglePasswordVisibility(inputId) {
+        const passwordInput = document.getElementById(inputId);
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
+
 @endsection

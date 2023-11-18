@@ -16,7 +16,7 @@
     <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
     <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
     <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="dropdown-item" href="/codeteam">Code Team</a>
+    <a class="dropdown-item" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
   </div>
 </div>
 
@@ -52,6 +52,7 @@
                                 <p>Was there any problem with the response time of the team?</p>
                                 <label for="question2_yes">
                                     <input type="radio" name="question2" value="Yes" id="question2_yes" {{ old('question2', optional($questions ?? '')->question2) === 'Yes' ? 'checked' : '' }}>
+                                    Yes
                                 </label>
                                 <label for="question2_no">
                                     <input type="radio" name="question2" value="No" id="question2_no" {{ old('question2', optional($questions ?? '')->question2) === 'No' ? 'checked' : '' }}>
@@ -257,6 +258,7 @@
                                 </label>
                                 <label for="question5_no">
                                     <input type="radio" name="question5" value="No" id="question5_no"  {{ old('question5', optional($questions ?? '')->question5) === 'No' ? 'checked' : '' }}>
+                                    No
                                 </label>
                                 <div id="question5_explanation" style="display: none;">
                                     <textarea name="question5_explanation" placeholder="Add an explanation (if necessary)"></textarea>
@@ -290,9 +292,11 @@
                             </div>
                         </div>
 
-
+                        <form action="{{ url('/store_codeteam') }}" method="post">
+                    @csrf 
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+        </form>
                 </div>
             </div>
         </div>
