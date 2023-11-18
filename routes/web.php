@@ -9,6 +9,7 @@ use App\Http\Controllers\FingerDevicesControlller;
 use App\Http\Controllers\CodeTeamController;
 use App\Http\Controllers\MainInformationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -80,7 +81,6 @@ Route::get('/maininformation/{code_number}', [MainInformationController::class, 
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
 
 
-
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
 Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
@@ -93,7 +93,14 @@ Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteU
 
 Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->name('view_codeblueforms');
 Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
-Route::post('/codeblueforms/{code_number}/delete', [FormController::class, 'delete'])->name('delete_codeblueforms');
+Route::post('/codeblueforms/{code_number}/archive', [FormController::class, 'archive'])->name('archive_codeblueforms');
+
+
+//for achrive
+Route::get('/archived_codeblueforms', 'App\Http\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
+
+Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'unarchive'])->name('unarchive_codeblueforms');
+
 
 
 Route::group(['middleware' => ['auth']], function () {

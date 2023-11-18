@@ -20,7 +20,8 @@ class CodeBlueActivation extends Model
         'code_team_arrival_dt',
         'e-cart_arrival_dt',
         'witnessed',
-        'patient_pin'
+        'patient_pin',
+        'is_archived'
     ];
 
     public function patient()
@@ -30,9 +31,27 @@ class CodeBlueActivation extends Model
 
     public function initialResuscitation()
     {
-    return $this->hasOne(InitialResuscitation::class, 'code_number', 'code_number');
+        return $this->hasOne(InitialResuscitation::class, 'code_number', 'code_number');
     }
 
-
+    public function flowsheet()
+    {
+        return $this->hasOne(Flowsheet::class, 'code_number', 'code_number');
+    }
+    
+    public function outcome()
+    {
+        return $this->hasOne(Outcome::class, 'code_number', 'code_number');
+    }
+    
+    public function evaluation()
+    {
+        return $this->hasOne(Evaluation::class, 'code_number', 'code_number');
+    }
+    
+    public function codeTeam()
+    {
+        return $this->hasOne(CodeTeam::class, 'code_number', 'code_number');
+    }
 
 }

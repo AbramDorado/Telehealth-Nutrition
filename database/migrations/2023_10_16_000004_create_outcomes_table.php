@@ -23,9 +23,12 @@ class CreateOutcomesTable extends Migration
             $table->unsignedInteger('respiratory_rate')->nullable();
             $table->string('rhythm')->nullable();
             $table->dateTime('code_end_dt')->default(now());
+            
+            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('code_number')->nullable();
             
-            $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
+            // Foreign key with ON DELETE CASCADE
+            $table->foreign('code_number')->references('code_number')->on('code_blue_activations')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }
