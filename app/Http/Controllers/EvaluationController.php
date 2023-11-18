@@ -52,6 +52,7 @@ class EvaluationController extends Controller
 
         // Create a new Evaluation model instance and fill it with the user's responses
         $evaluation = new Evaluation();
+
         $evaluation->question1 = $validatedData['question1'] ?? null;
         $evaluation->question2 = $validatedData['question2'] ?? null;
         $evaluation->question2_1 = $validatedData['question2_explanation'] ?? null;
@@ -79,8 +80,10 @@ class EvaluationController extends Controller
         $evaluation->code_number =  $code_number;
 
         // Save the evaluation to the database
+        $evaluation->code_number =  $code_number;
         $evaluation->save();
+      
+        return redirect()->route('codeteam', ['code_number' => $code_number]);
 
-        return view('flowsheet', ['code_number' => $code_number]);
     }
 }
