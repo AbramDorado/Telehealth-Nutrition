@@ -24,6 +24,10 @@ class MainInformationController extends Controller
     
     public function store(Request $request, $code_number)
     {
+        // dd($request->all());
+        // dd($request->input('patient_pin'));
+
+        //Patient
         $validatedData = $request->validate([
             'patient_pin' => 'sometimes|nullable|integer',
             'first_name' => 'sometimes|nullable|string',
@@ -67,6 +71,7 @@ class MainInformationController extends Controller
     $patient->save();
     $patientPin = $patient->patient_pin;
 
+    //Code blue Activation
     $validatedData2 = $request->validate([
         'code_start_dt' => 'sometimes|nullable|date',
         'arrest_dt' => 'sometimes|nullable|date',
@@ -78,12 +83,16 @@ class MainInformationController extends Controller
         'patient_pin' => 'sometimes|nullable|integer',
     ]);
     
-
     $validatedData2['patient_pin'] = $patientPin;
+    
+    $existingCodeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+
+    if ($existingCodeBlueActivation) {
+        return $this->updateCodeBlueActivation($request, $code_number);
+    }
 
     $codeBlueActivation = new CodeBlueActivation;
 
-    // $codeBlueActivation->code_number =  $validatedData2['code_number'];
     $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'] ?? null;
     $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
     $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'] ?? null;
@@ -92,61 +101,56 @@ class MainInformationController extends Controller
     $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'] ?? null;
     $codeBlueActivation->witnessed = $validatedData2['witnessed'] ?? null;
     $codeBlueActivation->patient_pin = $validatedData2['patient_pin'] ?? null;
+    $codeBlueActivation->code_number = $code_number; // Add this line to set the code_number
 
     $codeBlueActivation->save();
 
     return view('initialresuscitation', ['code_number' => $code_number]);
     }
 
-    public function updatePatient(Request $request, $patient_pin, $code_number)
-    {   
+    private function updatePatientAndCodeBlueActivation(Request $request, $patient_pin, $code_number)
+    {
+        // Update Patient
         $patient = Patient::findOrFail($patient_pin);
-        $patient->patient_pin = $request->input('patient_pin');
-        $patient->first_name = $request->input('first_name');
-        $patient->last_name = $request->input('last_name');
-        $patient->middle_name = $request->input('middle_name');
-        $patient->suffix = $request->input('suffix');
-        $patient->visit_number = $request->input('visit_number');
-        $patient->birthday = $request->input('birthday');
-        $patient->age = $request->input('age');
-        $patient->sex = $request->input('sex');
-        $patient->height = $request->input('height');
-        $patient->weight = $request->input('weight');
-        $patient->allergies = $request->input('allergies');
-        $patient->location = $request->input('location');
-     
+        $patient->fill($request->only([
+            'patient_pin', 'first_name', 'last_name', 'middle_name', 'suffix',
+            'visit_number', 'birthday', 'age', 'sex', 'height', 'weight', 'allergies', 'location'
+        ]));
         $patient->save();
 
-        $validatedData2 = $request->validate([
-            'code_start_dt' => 'sometimes|nullable|date',
-            'arrest_dt' => 'sometimes|nullable|date',
-            'reason_for_activation' => 'sometimes|nullable|in:unconscious,pulseless',
-            'initial_reporter' => 'sometimes|nullable|string',
-            'code_team_arrival_dt' => 'sometimes|nullable|date',
-            'e_cart_arrival_dt' => 'sometimes|nullable|date',
-            'witnessed' => 'sometimes|nullable|in:yes,no',  
-            'patient_pin' => 'sometimes|nullable|integer',
-        ]);
-        
-    
-        $validatedData2['patient_pin'] = $patient_pin;
-    
-        $codeBlueActivation = new CodeBlueActivation;
-    
-        // $codeBlueActivation->code_number =  $validatedData2['code_number'];
-        $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'] ?? null;
-        $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
-        $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'] ?? null;
-        $codeBlueActivation->initial_reporter = $validatedData2['initial_reporter'] ?? null;
-        $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'] ?? null;
-        $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'] ?? null;
-        $codeBlueActivation->witnessed = $validatedData2['witnessed'] ?? null;
-        $codeBlueActivation->patient_pin = $validatedData2['patient_pin'] ?? null;
-    
+        // Update CodeBlueActivation
+        $codeBlueActivation = CodeBlueActivation::findOrFail($code_number);
+        $codeBlueActivation->fill($request->only([
+            'code_start_dt', 'arrest_dt', 'reason_for_activation',
+            'initial_reporter', 'code_team_arrival_dt', 'e_cart_arrival_dt',
+            'witnessed', 'patient_pin',
+        ]));
         $codeBlueActivation->save();
-    
+    }
+
+    public function updatePatient(Request $request, $patient_pin, $code_number)
+    {
+        $this->updatePatientAndCodeBlueActivation($request, $patient_pin, $code_number);
         return view('initialresuscitation', ['code_number' => $code_number]);
     }
+
+//     public function updateCodeBlueActivation(Request $request, $code_number)
+// {
+//     // Find the existing CodeBlueActivation
+//     $existingCodeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+
+//     if (!$existingCodeBlueActivation) {
+//         // Handle the case where the CodeBlueActivation is not found
+//         // You can return an error response or redirect as needed
+//         return response()->json(['error' => 'CodeBlueActivation not found'], 404);
+//     }
+
+//     // Update the patient and code blue activation
+//     $this->updatePatientAndCodeBlueActivation($request, $existingCodeBlueActivation->patient_pin, $code_number);
+
+//     // Redirect or return a response as needed
+//     return view('initialresuscitation', ['code_number' => $code_number]);
+// }
 
 
     public function searchPatientPins(Request $request)
@@ -174,5 +178,4 @@ class MainInformationController extends Controller
             return response()->json(['error' => 'Patient not found'], 404);
         }
     }
-    
 }

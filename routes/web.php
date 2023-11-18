@@ -89,6 +89,7 @@ Route::get('/fetchPatientPin', [MainInformationController::class, 'fetchPatientP
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
 Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
+Route::put('/update_cba/{code_number}', [MainInformationController::class, 'updateCodeBlueActivation'])->name('update_cba');
 
 // Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
 

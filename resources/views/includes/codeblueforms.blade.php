@@ -59,16 +59,7 @@
                                         <td>{{ $event->code_start_dt }}</td>
                                         <td>{{ $event->code_end_dt }}</td>
                                         <td>{{ $event->code_team_leader }}</td>
-                                        <td>
-                                            <div class="btn-group" role="group">
-                                                <a href="{{ route('view_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('edit_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                                                <a href="{{ route('delete_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                            </div>
-                                        </td>
-                                        <td>        
-                                            <a href="{{ route('download-pdf', ['codeEvent' => $event->code_number]) }}" class="btn btn-danger">PDF</a>
-                                        </td>
+                                       
                                     </tr>
                                     @endforeach
                                 </tbody>
