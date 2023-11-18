@@ -10,14 +10,15 @@ use App\Models\CodeBlueActivation;
 
 class MainInformationController extends Controller
 {
-    public function index($code_number)
+    function index($code_number)
     {   
-        $code_number = request('code_number', '000'); 
-        // $patient = Patient::where('code_number', $code_number)->first();
-
         $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
-        $patient = Patient::where('patient_pin', $codeBlueActivation->patient_pin)->first();
-        // dd($codeBlueActivation);
+
+        $patient = null;
+        if ($codeBlueActivation) {
+            $patient = Patient::where('patient_pin', $codeBlueActivation->patient_pin)->first();
+        }
+
         return view('maininformation', compact('code_number', 'codeBlueActivation', 'patient'));
     }
     

@@ -89,16 +89,16 @@
                         <input type="number" class="form-control" name="intubation_attempts" placeholder="0"  value="{{ $initialResuscitation ?? ''->intubation_attempts ?? old('intubation_attempts') }}">
                     </div>
                 
-                    <div class="form-group">
-                        <label for="et_tube_information">ET Tube Information</label>
-                        <div id="et_tube_information">
-                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', (array) $etTubeInformation ?? '' ?? '' ?? '') ? 'checked' : '' }}>
-                            <label for="auscultation-checkbox">Auscultation</label>
+                    <<div class="form-group">
+    <label for="et_tube_information">ET Tube Information</label>
+    <div id="et_tube_information">
+        <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
+        <label for="auscultation-checkbox">Auscultation</label>
 
-                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', (array) $etTubeInformation ?? '' ?? '' ?? '') ? 'checked' : '' }}>
-                            <label for="exhaled-co2-checkbox">Exhaled CO2</label>
-                        </div>
-                    </div>
+        <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
+        <label for="exhaled-co2-checkbox">Exhaled CO2</label>
+    </div>
+</div>
 
                 </div>
             </div>
