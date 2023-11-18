@@ -92,13 +92,14 @@
                     <div class="form-group">
                         <label for="et_tube_information">ET Tube Information</label>
                         <div id="et_tube_information">
-                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" @if(is_array(old('et_tube_information')) && in_array('Auscultation', old('et_tube_information'))) checked @endif>
+                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', (array) $etTubeInformation ?? '' ?? '' ?? '') ? 'checked' : '' }}>
                             <label for="auscultation-checkbox">Auscultation</label>
-                                                
-                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" @if(is_array(old('et_tube_information')) && in_array('Exhaled CO2', old('et_tube_information'))) checked @endif>
+
+                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', (array) $etTubeInformation ?? '' ?? '' ?? '') ? 'checked' : '' }}>
                             <label for="exhaled-co2-checkbox">Exhaled CO2</label>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -113,8 +114,9 @@
                 <!-- First Column -->
                     <div class="form-group">
                         <label for="first_documented_rhythm_dt">1st Documented Rhythm:</label>
-                        <textarea type="text" class="form-control" name="first_documented_rhythm_dt" value="{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '' ?? '')->first_documented_rhythm_dt ?? '') }}"></textarea>
+                        <textarea class="form-control" name="first_documented_rhythm_dt">{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '')->first_documented_rhythm_dt ?? '') }}</textarea>
                     </div>
+
 
                     <div class="form-group">
                         <label for="first_pulseless_rhythm_dt">1st Pulseless Rhythm Detected Date/Time:</label>

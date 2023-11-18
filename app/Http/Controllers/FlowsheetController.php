@@ -13,9 +13,9 @@ class FlowsheetController extends Controller
 
     public function index($code_number)
     { 
-        $flowsheet = Flowsheet::where('code_number', $code_number)->first();
+        $flowsheets = Flowsheet::where('code_number', $code_number)->get();
         // dd($flowsheet);
-        return view('flowsheet', compact('code_number', 'flowsheet'));  
+        return view('flowsheet', compact('code_number', 'flowsheets'));  
     }
 
     public function store(Request $request, $code_number)
@@ -76,5 +76,21 @@ class FlowsheetController extends Controller
         $flowsheet->save();
 
         return view('flowsheet', compact('code_number'));
-    }     
+    } 
+    
+        // Function to retrieve flowsheet data based on the form index
+    function getFlowsheetData($formIndex) {
+        // Retrieve flowsheet data for the given form index
+        $flowsheets = Flowsheets::where('form_index', $formIndex)->get();
+
+        // Check if flowsheet data exists
+        if ($flowsheets->count() > 0) {
+
+            return $flowsheets->first();
+        } else {
+            // Return null or an empty array, depending on your needs
+            return null;
+        }
+    }
+
 }

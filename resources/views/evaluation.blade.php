@@ -58,9 +58,10 @@
                                     <input type="radio" name="question2" value="No" id="question2_no" {{ old('question2', optional($questions ?? '')->question2) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
-                                <div id="question2_explanation" style="display: none;">
-                                    <textarea name="question2_explanation" placeholder="Add an explanation (if necessary)"></textarea>
+                                <div id="question2-explanation" style="display: none;">
+                                    <textarea name="question2_explanation" placeholder="Add an explanation (if necessary)">{{ old('question2_explanation', optional($model ?? '')->question2_explanation ?? '') }}</textarea>
                                 </div>
+
                             </div>
                         </div>
 
@@ -284,8 +285,9 @@
                             <div class="card-header">Question 7</div>
                             <div class="card-body">
                                 <p>Other Remarks</p>
-                                <div id="question7_explanation">
-                                    <textarea name="question7_explanation" placeholder="Other remarks"></textarea>
+                                <div class="form-group">
+                                    <label for="question7_explanation">Question 7:</label>
+                                    <textarea class="form-control" name="question7_explanation">{{ old('question7_explanation', optional($questions ?? '')->question7_explanation ?? '') }}</textarea>
                                 </div>
                             </div>
                         </div>
