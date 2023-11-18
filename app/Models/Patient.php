@@ -26,11 +26,12 @@ class Patient extends Model
         'weight',
         'allergies',
         'location',
+        'is_archived'
     ];
 
     public function codeBlueActivation()
     {
-    return $this->hasMany(codeBlueActivation::class, 'code_number', 'code_number');
+    return $this->hasMany(codeBlueActivation::class, 'patient_pin', 'patient_pin');
     }
 
 

@@ -17,6 +17,6 @@ class Evaluation extends Model
 
     public function codeBlueActivation()
     {
-        return $this->belongsTo(codeBlueActivation::class);
+        return $this->belongsTo(codeBlueActivation::class, 'code_number', 'code_number');
     }
 }

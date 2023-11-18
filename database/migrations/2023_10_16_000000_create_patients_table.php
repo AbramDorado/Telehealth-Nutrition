@@ -28,6 +28,8 @@ class CreatePatientsTable extends Migration
             $table->text('allergies')->nullable();
             $table->string('location')->nullable();
 
+            $table->boolean('is_archived')->default(false);
+
             $table->timestamps();
         });
     }
