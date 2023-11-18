@@ -9,6 +9,7 @@ use App\Http\Controllers\FingerDevicesControlller;
 use App\Http\Controllers\CodeTeamController;
 use App\Http\Controllers\MainInformationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PdfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -98,6 +99,7 @@ Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->nam
 Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
 Route::post('/codeblueforms/{code_number}/delete', [FormController::class, 'delete'])->name('delete_codeblueforms');
 
+Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
 
 Route::group(['middleware' => ['auth']], function () {
 
