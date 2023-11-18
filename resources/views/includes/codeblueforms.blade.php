@@ -29,40 +29,6 @@
     @section('content')
     @include('includes.flash')
 
-<<<<<<< HEAD
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-rep-plugin">
-                    <div class="table-responsive mb-0" data-pattern="priority-columns">
-                        <table id="datatable-buttons" class="table table-hover table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th data-priority="1">#</th>
-                                    <th data-priority="2">Date</th>
-                                    <th data-priority="2">Location</th>
-                                    <th data-priority="3">Patient Name</th>
-                                    <th data-priority="4">Resuscitation Event Time Started</th>
-                                    <th data-priority="5">Resuscitation Event Time Ended</th>
-                                    <th data-priority="6">Code Leader</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($resuscitationEvents as $event)
-                                <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $event->created_at }}</td>
-                                    <td>{{ $event->location }}</td>
-                                    <td>{{ $event->first_name }} {{ $event->last_name }}</td>
-                                    <td>{{ $event->code_start_dt }}</td>
-                                    <td>{{ $event->code_end_dt }}</td>
-                                    <td>Code Leader</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-=======
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -108,7 +74,6 @@
                                 </tbody>
                             </table>
                         </div>
->>>>>>> origin/main
                     </div>
                 </div>
             </div>
