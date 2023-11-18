@@ -43,7 +43,6 @@
                                     <th data-priority="4">Resuscitation Event Time Started</th>
                                     <th data-priority="5">Resuscitation Event Time Ended</th>
                                     <th data-priority="6">Code Leader</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

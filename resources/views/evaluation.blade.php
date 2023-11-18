@@ -52,12 +52,13 @@
                                 <p>Was there any problem with the response time of the team?</p>
                                 <label for="question2_yes">
                                     <input type="radio" name="question2" value="Yes" id="question2_yes" {{ old('question2', optional($questions ?? '')->question2) === 'Yes' ? 'checked' : '' }}>
+                                    Yes
                                 </label>
                                 <label for="question2_no">
                                     <input type="radio" name="question2" value="No" id="question2_no" {{ old('question2', optional($questions ?? '')->question2) === 'No' ? 'checked' : '' }}>
                                     No
                                 </label>
-                                <div id="question2-explanation" style="display: none;">
+                                <div id="question2_explanation" style="display: none;">
                                     <textarea name="question2_explanation" placeholder="Add an explanation (if necessary)"></textarea>
                                 </div>
                             </div>
@@ -256,6 +257,7 @@
                                 </label>
                                 <label for="question5_no">
                                     <input type="radio" name="question5" value="No" id="question5_no"  {{ old('question5', optional($questions ?? '')->question5) === 'No' ? 'checked' : '' }}>
+                                    No
                                 </label>
                                 <div id="question5_explanation" style="display: none;">
                                     <textarea name="question5_explanation" placeholder="Add an explanation (if necessary)"></textarea>

@@ -95,7 +95,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePasswordVisibility('password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
@@ -135,13 +142,33 @@
                         <input type="text" name="pin_code" id="pin_code" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" required>
-                    </div>
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePasswordVisibility('password')">
+                                            <i class="fas fa-eye"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                     <button type="submit" class="btn btn-primary">Add User</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function togglePasswordVisibility(inputId) {
+        const passwordInput = document.getElementById(inputId);
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
+
 @endsection

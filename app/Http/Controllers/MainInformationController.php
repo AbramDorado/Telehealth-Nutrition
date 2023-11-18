@@ -16,8 +16,9 @@ class MainInformationController extends Controller
         // $patient = Patient::where('code_number', $code_number)->first();
 
         $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+        $patient = Patient::where('patient_pin', $codeBlueActivation->patient_pin)->first();
         // dd($codeBlueActivation);
-        return view('maininformation', compact('code_number', 'codeBlueActivation'));
+        return view('maininformation', compact('code_number', 'codeBlueActivation', 'patient'));
     }
     
     public function store(Request $request, $code_number)
@@ -38,6 +39,13 @@ class MainInformationController extends Controller
             'location' => 'sometimes|nullable|string',
         ]);
                
+        // Check if the patient with the given patient_pin already exists
+    $existingPatient = Patient::where('patient_pin', $validatedData['patient_pin'])->first();
+
+    if ($existingPatient) {
+        // If the patient exists, update the existing patient's information
+        return $this->updatePatient($request, $validatedData['patient_pin'], $code_number);
+    }
 
     $patient = new Patient;
 
@@ -89,7 +97,7 @@ class MainInformationController extends Controller
     return view('initialresuscitation', ['code_number' => $code_number]);
     }
 
-    public function updatePatient(Request $request, $patient_pin)
+    public function updatePatient(Request $request, $patient_pin, $code_number)
     {   
         $patient = Patient::findOrFail($patient_pin);
         $patient->patient_pin = $request->input('patient_pin');
@@ -108,6 +116,63 @@ class MainInformationController extends Controller
      
         $patient->save();
 
-        return redirect()->back()->with('success', 'Patient updated successfully.');
+        $validatedData2 = $request->validate([
+            'code_start_dt' => 'sometimes|nullable|date',
+            'arrest_dt' => 'sometimes|nullable|date',
+            'reason_for_activation' => 'sometimes|nullable|in:unconscious,pulseless',
+            'initial_reporter' => 'sometimes|nullable|string',
+            'code_team_arrival_dt' => 'sometimes|nullable|date',
+            'e_cart_arrival_dt' => 'sometimes|nullable|date',
+            'witnessed' => 'sometimes|nullable|in:yes,no',  
+            'patient_pin' => 'sometimes|nullable|integer',
+        ]);
+        
+    
+        $validatedData2['patient_pin'] = $patient_pin;
+    
+        $codeBlueActivation = new CodeBlueActivation;
+    
+        // $codeBlueActivation->code_number =  $validatedData2['code_number'];
+        $codeBlueActivation->code_start_dt = $validatedData2['code_start_dt'] ?? null;
+        $codeBlueActivation->arrest_dt = $validatedData2['arrest_dt'];
+        $codeBlueActivation->reason_for_activation = $validatedData2['reason_for_activation'] ?? null;
+        $codeBlueActivation->initial_reporter = $validatedData2['initial_reporter'] ?? null;
+        $codeBlueActivation->code_team_arrival_dt = $validatedData2['code_team_arrival_dt'] ?? null;
+        $codeBlueActivation->e_cart_arrival_dt = $validatedData2['e_cart_arrival_dt'] ?? null;
+        $codeBlueActivation->witnessed = $validatedData2['witnessed'] ?? null;
+        $codeBlueActivation->patient_pin = $validatedData2['patient_pin'] ?? null;
+    
+        $codeBlueActivation->save();
+    
+        return view('initialresuscitation', ['code_number' => $code_number]);
     }
+
+
+    public function searchPatientPins(Request $request)
+    {
+        $input = $request->input('query');
+
+        // Your logic to fetch matching patient PINs from the database
+        $patientPins = Patient::where('patient_pin', 'LIKE', $input . '%')->pluck('patient_pin');
+
+        return response()->json($patientPins);
+    }
+
+
+    public function fetchPatientInformation(Request $request)
+    {
+        $patientPin = $request->input('patient_pin');
+
+        // Your logic to fetch patient information from the database based on $patientPin
+        $patientInformation = Patient::where('patient_pin', $patientPin)->first();
+
+        if ($patientInformation) {
+            // If patient information is found, return it as JSON response
+            return response()->json($patientInformation);
+        } else {
+            // If patient is not found, return an error response
+            return response()->json(['error' => 'Patient not found'], 404);
+        }
+    }
+    
 }

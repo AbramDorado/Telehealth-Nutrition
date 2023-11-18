@@ -26,9 +26,9 @@ Route::get('/codeblueforms', function(){
     return view('includes/codeblueforms');
 });
 
-// Route::get('/maininformation', function () {
-//     return view('maininformation');
-// });
+Route::get('/maininformation', function () {
+    return view('maininformation');
+});
 
 Route::get('/initialresuscitation', function(){
     return view('initialresuscitation');
@@ -75,6 +75,9 @@ Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name
 
 Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
+Route::get('/searchPatientPins', [MainInformationController::class, 'searchPatientPins'])->name('searchPatientPins');
+Route::get('/fetchPatientInformation', [MainInformationController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
+Route::get('/fetchPatientPin', [MainInformationController::class, 'fetchPatientPin'])->name('fetchPatientPin');
 
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
