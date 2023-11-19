@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FingerDevicesControlller;
 use App\Http\Controllers\CodeTeamController;
 use App\Http\Controllers\MainInformationController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
 
@@ -80,19 +81,11 @@ Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name
 
 Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
-Route::get('/searchPatientPins', [MainInformationController::class, 'searchPatientPins'])->name('searchPatientPins');
-Route::get('/fetchPatientInformation', [MainInformationController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
-Route::get('/fetchPatientPin', [MainInformationController::class, 'fetchPatientPin'])->name('fetchPatientPin');
-
-
+Route::get('/searchPatientPins', [PatientController::class, 'searchPatientPins'])->name('searchPatientPins');
+Route::get('/fetchPatientInformation', [PatientController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
+Route::get('/fetchPatientPin', [PatientController::class, 'fetchPatientPin'])->name('fetchPatientPin');
 
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
-
-Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
-Route::put('/update_cba/{code_number}', [MainInformationController::class, 'updateCodeBlueActivation'])->name('update_cba');
-
-// Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
-
 
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
