@@ -42,6 +42,7 @@ class CreateCodeBlueActivationsTable extends Migration
             $table->dateTime('e_cart_arrival_dt')->nullable();
             $table->string('witnessed')->nullable();
 
+            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('patient_pin');
             $table->timestamps();
 

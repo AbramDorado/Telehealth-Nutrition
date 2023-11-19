@@ -21,10 +21,10 @@ class CreateCodeTeamsTable extends Migration
             $table->string('code_team_member')->nullable();
             $table->string('intubated_by')->nullable();
 
+            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('code_number')->nullable();
  
-
-            $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
+            $table->foreign('code_number')->references('code_number')->on('code_blue_activations')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }

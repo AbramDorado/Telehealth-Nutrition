@@ -29,9 +29,11 @@ class CreateInitialResuscitationsTable extends Migration
             $table->dateTime('aed_applied_dt')->nullable();
             $table->string('pacemaker_on')->nullable();
             $table->dateTime('pacemaker_on_dt')->nullable();
+            
+            $table->boolean('is_archived')->default(false);
             $table->unsignedBigInteger('code_number')->nullable();
 
-            $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
+            $table->foreign('code_number')->references('code_number')->on('code_blue_activations')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }
