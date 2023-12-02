@@ -11,6 +11,7 @@ use App\Http\Controllers\MainInformationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ExcelController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -108,7 +109,7 @@ Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'u
 
 
 Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
-
+Route::get('/download-excel', [ExcelController::class, 'export'])->name('download-excel');
 
 Route::group(['middleware' => ['auth']], function () {
 

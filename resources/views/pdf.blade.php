@@ -1,221 +1,78 @@
 <!DOCTYPE html>
-<html>
-	<!-- <head>
-		<meta charset="utf-8" />
-		<title>#{{$event->code_number }} - {{$event->patient->last_name }}, {{$event->patient->first_name }}</title>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <style>
+    <!--
+    /* Font Definitions */
+    @font-face
+        {font-family:Helvetica;
+        panose-1:0 0 0 0 0 0 0 0 0 0;}
+    @font-face
+        {font-family:"Cambria Math";
+        panose-1:2 4 5 3 5 4 6 3 2 4;}
+    /* Style Definitions */
+    p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {margin:0cm;
+        font-size:12.0pt;
+        font-family:"Times New Roman",serif;}
+    .MsoChpDefault
+        {font-family:"Calibri",sans-serif;}
+    @page WordSection1
+        {size:612.0pt 792.0pt;
+        margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+    div.WordSection1
+        {page:WordSection1;}
 
-		<style>
-			.invoice-box {
-				max-width: 800px;
-				margin: auto;
-				padding: 30px;
-				border: 1px solid #eee;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-				font-size: 16px;
-				line-height: 24px;
-				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-				color: #555;
-			}
+    header {
+        position: fixed;
+        top: 0cm;
+        left: 0cm;
+        right: 0cm;
+        height: 3.5cm;
+    }
 
-			.invoice-box table {
-				width: 100%;
-				line-height: inherit;
-				text-align: left;
-			}
+    footer {
+        position: fixed; 
+        bottom: -60px; 
+        left: 0px; 
+        right: 0px;
+        height: 50px; 
+    }
 
-			.invoice-box table td {
-				padding: 5px;
-				vertical-align: top;
-			}
-
-			.invoice-box table tr td:nth-child(2) {
-				text-align: right;
-			}
-
-			.invoice-box table tr.top table td {
-				padding-bottom: 20px;
-			}
-
-			.invoice-box table tr.top table td.title {
-				font-size: 45px;
-				line-height: 45px;
-				color: #333;
-			}
-
-			.invoice-box table tr.information table td {
-				padding-bottom: 40px;
-			}
-
-			.invoice-box table tr.heading td {
-				background: #eee;
-				border-bottom: 1px solid #ddd;
-				font-weight: bold;
-			}
-
-			.invoice-box table tr.details td {
-				padding-bottom: 20px;
-			}
-
-			.invoice-box table tr.i td {
-				border-bottom: 1px solid #eee;
-			}
-
-			.invoice-box table tr.i.last td {
-				border-bottom: none;
-			}
-
-			.invoice-box table tr.total td:nth-child(2) {
-				border-top: 2px solid #eee;
-				font-weight: bold;
-			}
-
-			@media only screen and (max-width: 600px) {
-				.invoice-box table tr.top table td {
-					width: 100%;
-					display: block;
-					text-align: center;
-				}
-
-				.invoice-box table tr.information table td {
-					width: 100%;
-					display: block;
-					text-align: center;
-				}
-			}
-
-			/** RTL **/
-			.invoice-box.rtl {
-				direction: rtl;
-				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-			}
-
-			.invoice-box.rtl table {
-				text-align: right;
-			}
-
-			.invoice-box.rtl table tr td:nth-child(2) {
-				text-align: left;
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="invoice-box">
-			<table cellpadding="0" cellspacing="0">
-				<tr class="top">
-					<td colspan="2">
-						<table>
-							<tr>
-								<td class="title">
-									Hospital Name
-								</td>
-
-								<td>
-									<h2>Code Event <b>#{{$event->code_number }} </b> </h2>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-                
-                <b>CARDIOPULMONARY RESUSCITATION RECORD</b>
-
-				<tr class="information">
-					<td colspan="2">
-						<table>
-							<tr>
-								<td>
-                                    Patient: {{$event->patient->last_name }}, {{$event->patient->first_name }} {{$event->patient->middle_name}}<br />
-								    Age: {{$event->patient->age }} Y/O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sex: {{$event->patient->sex }}<br />
-									Height: {{$event->patient->height }} cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Weight: {{$event->patient->weight }} kg<br />
-								</td>
-
-								<td>
-									Time started: {{$event->code_start_dt }} <br />
-                                    Time ended: {{$outcome->code_end_dt }}<br />
-                                    Location: {{$event->patient->location}}
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-
-				<tr class="heading">
-					<td></td>
-
-					<td></td>
-				</tr>
-
-				<tr class="details">
-					<td></td>
-					<td></td>
-				</tr>
-
-				<tr class="heading">
-					<td></td>
-					<td></td>
-				</tr>
-
-				<tr class="i">
-					<td></td>
-
-					<td></td>
-				</tr>
-
-				<tr class="i">
-					<td></td>
-
-					<td></td>
-				</tr>
-
-				<tr class="i last">
-					<td></td>
-
-					<td></td>
-				</tr>
-
-				<tr class="total">
-					<td></td>
-
-					<td></td>
-				</tr>
-			</table>
-		</div>
-	</body> -->
-    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:Helvetica;
-	panose-1:0 0 0 0 0 0 0 0 0 0;}
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	font-size:12.0pt;
-	font-family:"Times New Roman",serif;}
-.MsoChpDefault
-	{font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
-</style>
+    body {
+        padding-top: 3.5cm;
+    }
+    </style>
 
 </head>
 
 <body lang=EN-PH style='word-wrap:break-word'>
 
-<div class=WordSection1>
+<header>
+    <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+    style='font-size:24.0pt;font-family:Helvetica'>Hospital Name</span></b><span
+    lang=EN-US style='font-size:24.0pt;font-family:Helvetica'>                                    
+    </span><span lang=EN-US style='font-family:Helvetica'>Code Event #<b>{{$event->code_number ?? '---'}}</b></span></p>
 
-<p class=MsoNormal style='text-align:justify'><span lang=EN-US
-style='font-family:Helvetica'>&nbsp;</span></p>
+    <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+    style='font-size:10.0pt;font-family:Helvetica'>Address Line</span></p>
+
+    <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>+63
+    2 8888 8888 (Telephone) / +63 999 999 9999 (Mobile)<br>
+    www.hospitalname.com | hospital@mail.com</span></p>
+
+    <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>--------------------------------------------------------------------------------------------------------------------------------------------------------------</span></p>
+    <p class=MsoNormal align=center style='text-align:center'><b><u><span
+    lang=EN-US style='font-family:Helvetica'>CARDIOPULMONARY RESUSCITATION RECORD</span></u></b></p> 
+</header>
+
+<footer>
+<p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>ABC-FORM-1281     Generated on: {{ now()->format('Y-m-d H:i:s') }}</span></p>
+</footer>
+
+<main>
+<div class=WordSection1>
 
 <div align=center>
 
@@ -476,7 +333,7 @@ style='font-family:Helvetica'>&nbsp;</span></p>
 </div>
 
 <p class=MsoNormal>&nbsp;</p>
-
+<p class=MsoNormal>&nbsp;</p>
 
 <div align=center>
 
@@ -689,6 +546,7 @@ style='font-family:Helvetica'>&nbsp;</span></p>
 
 </div>
 
+<p class=MsoNormal>&nbsp;</p>
 <p class=MsoNormal>&nbsp;</p>
 
 <div align=center>
@@ -953,6 +811,7 @@ style='font-family:Helvetica'>&nbsp;</span></p>
  </div>
  
 <p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
 
 <div align=center>
 
@@ -1090,6 +949,7 @@ style='font-family:Helvetica'>&nbsp;</span></p>
   </td>
  </tr>
  </div>
+ <p class=MsoNormal>&nbsp;</p>
  <p class=MsoNormal>&nbsp;</p>
 
 <div align=center>
@@ -1491,6 +1351,7 @@ style='font-family:Helvetica'>&nbsp;</span></p>
  </tr>
 </table>
 <p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>&nbsp;</p>
 
 <div align=center>
 
@@ -1578,6 +1439,6 @@ style='font-family:Helvetica'>&nbsp;</span></p>
 
 </div>
 
-</div>
+</main>
 </body>
 </html>

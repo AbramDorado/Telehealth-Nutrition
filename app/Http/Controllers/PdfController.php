@@ -25,9 +25,10 @@ class PdfController extends Controller
 
         $evaluation = Evaluation::where('code_number', $event->code_number)->firstOrFail();
 
-        $codeTeam = Codeteam::where('code_number', $event->code_number)->firstOrFail();
+        $codeTeam = CodeTeam::where('code_number', $event->code_number)->firstOrFail();
 
         $pdf = PDF::loadView('pdf', ['event' => $event, 'initialResuscitation' => $initialResuscitation, 'flowsheet' => $flowsheet, 'outcome' => $outcome, 'evaluation' => $evaluation, 'codeTeam' => $codeTeam]);
+
 
         return $pdf->download("code_event_{$event->code_number}.pdf");
     }
