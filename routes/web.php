@@ -71,7 +71,8 @@ Route::post('/initialresuscitation/{code_number}', [InitialResuscitationControll
 
 Route::get('/flowsheet/{code_number}', [FlowsheetController::class, 'index'])->name('flowsheet');
 // Route::get('/flowsheet/{code_number}/data', [FlowsheetController::class, 'getFlowsheetsData'])->name('flowsheets.index');
-Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
+
+// Route::match(['get', 'post'], '/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet');
 
 Route::get('/evaluation/{code_number}', [EvaluationController::class, 'index'])->name('evaluation');
 Route::post('/evaluation/{code_number}', [EvaluationController::class, 'store'])->name('store_evaluation');
@@ -84,7 +85,13 @@ Route::post('/maininformation/{code_number}', [MainInformationController::class,
 Route::get('/searchPatientPins', [PatientController::class, 'searchPatientPins'])->name('searchPatientPins');
 Route::get('/fetchPatientInformation', [PatientController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
 Route::get('/fetchPatientPin', [PatientController::class, 'fetchPatientPin'])->name('fetchPatientPin');
+Route::get('/fetchFlowsheetInformation/{code_number}', [FlowsheetController::class, 'fetchFlowsheetInformation'])->name('fetchFlowsheetInformation');
 
+Route::get('/destroy/{id}', [FlowsheetController::class, 'destroy'])->name('destroy');
+Route::get('/edit/{id}', [FlowsheetController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [FlowsheetController::class, 'update'])->name('update');
+Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
+// Route::post('/store', [FlowsheetController::class, 'store'])->name('store_flowsheet');
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
