@@ -11,6 +11,7 @@ use App\Http\Controllers\MainInformationController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\FormController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -102,13 +103,19 @@ Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteU
 
 Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->name('view_codeblueforms');
 Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
-Route::post('/codeblueforms/{code_number}/delete', [FormController::class, 'delete'])->name('delete_codeblueforms');
+Route::post('/codeblueforms/{code_number}/archive', [FormController::class, 'archive'])->name('archive_codeblueforms');
+
+
+//for achrive
+Route::get('/archived_codeblueforms', 'App\Http\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
+
+Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'unarchive'])->name('unarchive_codeblueforms');
+
 
 Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
 
 
 Route::group(['middleware' => ['auth']], function () {
 
-    
 
 });

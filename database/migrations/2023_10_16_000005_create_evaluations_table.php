@@ -39,9 +39,11 @@ class CreateEvaluationsTable extends Migration
             $table->text('question5_1')->nullable();
             $table->string('question6')->nullable();
             $table->text('question7')->nullable();
+            
+            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('code_number')->nullable();
 
-            $table->foreign('code_number')->references('code_number')->on('code_blue_activations');
+            $table->foreign('code_number')->references('code_number')->on('code_blue_activations')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }
