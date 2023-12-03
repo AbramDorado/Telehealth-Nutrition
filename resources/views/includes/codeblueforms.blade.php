@@ -29,6 +29,11 @@
             <button type="submit" class="btn btn-secondary btn-block">Archived Records</button>
         </form>
 
+        <form method="GET" action="{{ route('download-excel') }}">
+            @csrf
+            <button type="submit" class="btn btn-success btn-block">Generate report (.xlsx)</button>
+        </form>
+
     @endsection
 
 
