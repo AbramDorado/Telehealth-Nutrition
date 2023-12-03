@@ -11,6 +11,8 @@ use App\Http\Controllers\MainInformationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ViewController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -96,14 +98,13 @@ Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePat
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
 
-Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->name('view_codeblueforms');
-Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
+Route::get('/codeblueforms/{patient_pin}/{code_number}/view', [FormController::class, 'viewCodeBlue'])->name('view_codeblueforms');
+// Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
 Route::post('/codeblueforms/{code_number}/archive', [FormController::class, 'archive'])->name('archive_codeblueforms');
 
 
 //for achrive
 Route::get('/archived_codeblueforms', 'App\Http\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
-
 Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'unarchive'])->name('unarchive_codeblueforms');
 
 

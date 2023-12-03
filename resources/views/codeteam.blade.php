@@ -110,116 +110,115 @@
 <!-- ... (previous code) ... -->
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var container = document.getElementById('code_team_member_container');
-        var addButton = document.getElementById('add_member');
-        var removeButton = document.getElementById('remove_member');
-        var numMembersInput = document.getElementById('num_members');
+document.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('code_team_member_container');
+    var addButton = document.getElementById('add_member');
+    var removeButton = document.getElementById('remove_member');
+    var numMembersInput = document.getElementById('num_members');
 
-        var maxFields = 12; // Set the maximum number of fields
+    var maxFields = 12; // Set the maximum number of fields
 
-        var counter = 1;
+    var counter = 1;
 
-        addButton.addEventListener('click', function () {
+    addButton.addEventListener('click', function () {
+        if (counter < maxFields) {
+            addDropdowns(1);
+            counter++;
+        } else {
+            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+        }
+    });
+
+    removeButton.addEventListener('click', function () {
+        if (counter > 1) {
+            removeDropdowns(1);
+            counter--;
+        }
+    });
+
+    numMembersInput.addEventListener('change', function () {
+        var numMembers = parseInt(numMembersInput.value);
+        if (numMembers < 1) {
+            numMembersInput.value = 1;
+        } else if (numMembers > maxFields) {
+            numMembersInput.value = maxFields;
+            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+        }
+
+        // Update dropdowns to match the desired count
+        updateDropdowns(numMembers);
+    });
+
+    numMembersInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
             var numMembers = parseInt(numMembersInput.value);
-            if (counter + numMembers <= maxFields) {
-                addDropdowns(numMembers);
-                counter += numMembers;
-            } else {
-                alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-            }
-        });
-
-        removeButton.addEventListener('click', function () {
-            var numMembers = parseInt(numMembersInput.value);
-            if (counter - numMembers >= 1) {
-                removeDropdowns(numMembers);
-                counter -= numMembers;
-            }
-        });
-
-        numMembersInput.addEventListener('change', function () {
-            var numMembers = parseInt(numMembersInput.value);
-            if (numMembers < 1) {
-                numMembersInput.value = 1;
+            if (numMembers > 0 && numMembers <= maxFields) {
+                updateDropdowns(numMembers);
             } else if (numMembers > maxFields) {
                 numMembersInput.value = maxFields;
                 alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
             }
-
-            // Update dropdowns to match the desired count
-            updateDropdowns(numMembers);
-        });
-
-        numMembersInput.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                var numMembers = parseInt(numMembersInput.value);
-                if (numMembers > 0 && numMembers <= maxFields) {
-                    updateDropdowns(numMembers);
-                } else if (numMembers > maxFields) {
-                    numMembersInput.value = maxFields;
-                    alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-                }
-            }
-        });
-
-        function addDropdowns(num) {
-            for (var i = 0; i < num; i++) {
-                var newDropdown = document.createElement('div');
-                newDropdown.className = 'form-group';
-
-                var selectDropdown = document.createElement('select');
-                selectDropdown.className = 'form-control';
-                selectDropdown.name = 'code_team_member[]';
-                selectDropdown.id = 'user' + counter;
-
-                var defaultOption = document.createElement('option');
-                defaultOption.value = '';
-                defaultOption.disabled = true;
-                defaultOption.selected = true;
-                defaultOption.appendChild(document.createTextNode('Select'));
-
-                selectDropdown.appendChild(defaultOption);
-
-                @foreach($users as $user)
-                    var option = document.createElement('option');
-                    option.value = '{{ $user->name }}';
-                    option.appendChild(document.createTextNode('{{ $user->name }}'));
-                    selectDropdown.appendChild(option);
-                @endforeach
-
-                newDropdown.appendChild(selectDropdown);
-                container.appendChild(newDropdown);
-            }
-        }
-
-        function removeDropdowns(num) {
-            var dropdowns = document.querySelectorAll('.form-group');
-            var numToRemove = Math.min(num, dropdowns.length);
-
-            for (var i = 0; i < numToRemove; i++) {
-                container.removeChild(container.lastChild);
-            }
-        }
-
-        function updateDropdowns(num) {
-            // Ensure the current count is correct
-            numMembersInput.value = num;
-
-            // Remove excess dropdowns
-            while (counter > num) {
-                removeDropdowns(1);
-                counter--;
-            }
-
-            // Add or update dropdowns to match the desired count
-            while (counter < num) {
-                addDropdowns(1);
-                counter++;
-            }
         }
     });
+
+    function addDropdowns(num) {
+        for (var i = 0; i < num; i++) {
+            var newDropdown = document.createElement('div');
+            newDropdown.className = 'form-group';
+
+            var selectDropdown = document.createElement('select');
+            selectDropdown.className = 'form-control';
+            selectDropdown.name = 'code_team_member[]';
+            selectDropdown.id = 'user' + counter;
+
+            var defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            defaultOption.appendChild(document.createTextNode('Select'));
+
+            selectDropdown.appendChild(defaultOption);
+
+            @foreach($users as $user)
+                var option = document.createElement('option');
+                option.value = '{{ $user->name }}';
+                option.appendChild(document.createTextNode('{{ $user->name }}'));
+                selectDropdown.appendChild(option);
+            @endforeach
+
+            newDropdown.appendChild(selectDropdown);
+            container.appendChild(newDropdown);
+        }
+    }
+
+    function removeDropdowns(num) {
+        var dropdowns = document.querySelectorAll('.form-group');
+        var numToRemove = Math.min(num, dropdowns.length);
+
+        for (var i = 0; i < numToRemove; i++) {
+            container.removeChild(container.lastChild);
+        }
+    }
+
+    function updateDropdowns(num) {
+        // Ensure the current count is correct
+        numMembersInput.value = num;
+
+        // Remove excess dropdowns
+        while (counter > num) {
+            removeDropdowns(1);
+            counter--;
+        }
+
+        // Add or update dropdowns to match the desired count
+        while (counter < num) {
+            addDropdowns(1);
+            counter++;
+        }
+    }
+});
+
 </script>
 
 <!-- ... (remaining code) ... -->
