@@ -16,6 +16,7 @@ class CreateFlowsheetsTable extends Migration
         Schema::create('flowsheets', function (Blueprint $table) {
             $table->increments('flowsheet_id');
             $table->dateTime('log_time');
+            $table->dateTime('last_edited_time')->nullable();
             $table->string('breathing')->nullable();
             $table->string('pulse')->nullable();
             $table->unsignedInteger('bp_systolic')->nullable();

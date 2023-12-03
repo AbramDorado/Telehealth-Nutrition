@@ -6,24 +6,27 @@ use App\Models\CodeTeam;
 use Illuminate\Http\Request;
 
 class CodeTeamController extends Controller
+
 {
     private $codeTeam;
 
     public function index($code_number)
-    {   
+    {
         $usersController = new UserController();
-        $users = $usersController->getNames(); 
+        $users = $usersController->getNames();
         return view('codeteam', compact('code_number', 'users'));
     }
 
-    public function showCodeTeamForm($code_number) {
+    public function showCodeTeamForm($code_number)
+    {
         $usersController = new UserController();
-        $users = $usersController->getNames(); 
+        $users = $usersController->getNames();
         return view('codeteam', ['code_number' => $code_number, 'users' => $users]);
     }
 
     public function store(Request $request, $code_number)
     {
+        // dd(session()->all());
         // Validate the form data
         $validatedData = $request->validate([
             'code_team_leader' => 'required',
@@ -42,7 +45,7 @@ class CodeTeamController extends Controller
 
         // Check if 'intubated_by' is set, if not, set it to null
         $intubated_by = isset($validatedData['intubated_by']) ? $validatedData['intubated_by'] : null;
-    
+
         // Create a new CodeTeam instance and fill it with the user's responses
         $codeTeam = new CodeTeam();
         $codeTeam->code_team_leader = $validatedData['code_team_leader'];
@@ -50,13 +53,12 @@ class CodeTeamController extends Controller
         $codeTeam->recorder = $validatedData['recorder'];
         $codeTeam->code_team_member = $code_team_member;
         $codeTeam->intubated_by = $intubated_by;
-    
+
         // Save the CodeTeam instance to the database
         $codeTeam->code_number = $code_number;
         $codeTeam->save();
-    
-        // Redirect to the home page after form submission
-        return redirect('codeblueforms');
+
+        // Redirect back to the 'codeteam' view with the old input data
+        return redirect()->back()->withInput();
     }
-        
 }

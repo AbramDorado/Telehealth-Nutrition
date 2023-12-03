@@ -12,6 +12,8 @@ class Flowsheet extends Model
     protected $primaryKey = 'flowsheet_id';
 
     protected $fillable = [
+        'log_time',
+        'last_edited_time',
         'breathing',
         'pulse',
         'bp_systolic',
