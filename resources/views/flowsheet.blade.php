@@ -257,6 +257,8 @@
           <table class="table">
           <thead>
             <tr>
+            <th>Log Time</th>
+            <th>Last Edited</th>
             <th>Breathing</th>
             <th>Pulse</th>
             <th>Blood Pressure, Systolic</th>
@@ -284,6 +286,8 @@
         <tbody id="flowsheetTableBody">
             @foreach ($flowsheets ?? [] as $flowsheet)
             <tr>
+                <td>{{ $flowsheet->log_time ?? '' }}</td>
+                <td>{{ $flowsheet->last_edited_time ?? '' }}</td>
                 <td>{{ $flowsheet->breathing ?? '' }}</td>
                 <td>{{ $flowsheet->pulse ?? '' }}</td>
                 <td>{{ $flowsheet->bp_systolic ?? '' }}</td>
@@ -379,6 +383,8 @@ function fetchAndFillTable() {
         // Iterate through the flowsheets and append rows to the table
         data.forEach(function (flowsheet) {
             var row = '<tr>' +
+                '<td>' + (flowsheet.log_time || '') + '</td>' +
+                '<td>' + (flowsheet.last_edited_time || '') + '</td>' +
                 '<td>' + (flowsheet.breathing || '') + '</td>' +
                 '<td>' + (flowsheet.pulse || '') + '</td>' +
                 '<td>' + (flowsheet.bp_systolic || '') + '</td>' +
@@ -543,27 +549,30 @@ function fetchAndFillTable() {
     var tableRow = $('#flowsheetTableBody tr[data-id="' + data.id + '"]');
 
     // Update each cell in the row with the new data
-    tableRow.find('td:eq(0)').text(data.breathing || '');
-    tableRow.find('td:eq(1)').text(data.pulse || '');
-    tableRow.find('td:eq(2)').text(data.bp_systolic || '');
-    tableRow.find('td:eq(3)').text(data.bp_diastolic || '');
-    tableRow.find('td:eq(4)').text(data.rhythm_on_check || '');
-    tableRow.find('td:eq(5)').text(data.rhythm_with_pulse || '');
-    tableRow.find('td:eq(6)').text(data.rhythm_intervention || '');
-    tableRow.find('td:eq(7)').text(data.joules || '');
-    tableRow.find('td:eq(8)').text(data.epinephrine_dose || '');
-    tableRow.find('td:eq(9)').text(data.epinephrine_route || '');
-    tableRow.find('td:eq(10)').text(data.amiodarone_dose || '');
-    tableRow.find('td:eq(11)').text(data.amiodarone_route || '');
-    tableRow.find('td:eq(12)').text(data.lidocaine_dose || '');
-    tableRow.find('td:eq(13)').text(data.lidocaine_route || '');
-    tableRow.find('td:eq(14)').text(data.free1_label || '');
-    tableRow.find('td:eq(15)').text(data.free1_dose || '');
-    tableRow.find('td:eq(16)').text(data.free1_route || '');
-    tableRow.find('td:eq(17)').text(data.free2_label || '');
-    tableRow.find('td:eq(18)').text(data.free2_dose || '');
-    tableRow.find('td:eq(19)').text(data.free2_route || '');
-    tableRow.find('td:eq(20)').text(data.comments || '');
+    tableRow.find('td:eq(0)').text(data.log_time || '');
+    tableRow.find('td:eq(1)').text(data.last_edited_time || '');
+    tableRow.find('td:eq(2)').text(data.breathing || '');
+    tableRow.find('td:eq(3)').text(data.pulse || '');
+    tableRow.find('td:eq(4)').text(data.bp_systolic || '');
+    tableRow.find('td:eq(5)').text(data.bp_diastolic || '');
+    tableRow.find('td:eq(6)').text(data.rhythm_on_check || '');
+    tableRow.find('td:eq(7)').text(data.rhythm_with_pulse || '');
+    tableRow.find('td:eq(8)').text(data.rhythm_intervention || '');
+    tableRow.find('td:eq(9)').text(data.joules || '');
+    tableRow.find('td:eq(10)').text(data.epinephrine_dose || '');
+    tableRow.find('td:eq(11)').text(data.epinephrine_route || '');
+    tableRow.find('td:eq(12)').text(data.amiodarone_dose || '');
+    tableRow.find('td:eq(13)').text(data.amiodarone_route || '');
+    tableRow.find('td:eq(14)').text(data.lidocaine_dose || '');
+    tableRow.find('td:eq(15)').text(data.lidocaine_route || '');
+    tableRow.find('td:eq(16)').text(data.free1_label || '');
+    tableRow.find('td:eq(17)').text(data.free1_dose || '');
+    tableRow.find('td:eq(18)').text(data.free1_route || '');
+    tableRow.find('td:eq(19)').text(data.free2_label || '');
+    tableRow.find('td:eq(20)').text(data.free2_dose || '');
+    tableRow.find('td:eq(21)').text(data.free2_route || '');
+    tableRow.find('td:eq(22)').text(data.comments || '');
+
 
     // Optionally, you can also highlight the updated row to provide visual feedback
     tableRow.addClass('updated-row');

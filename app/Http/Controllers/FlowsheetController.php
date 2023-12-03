@@ -72,8 +72,12 @@ class FlowsheetController extends Controller
 
         $time = $request->input('time');
         $carbonTime = Carbon::parse($time);
+        
         $flowsheet->log_time = $carbonTime;
+        $flowsheet->last_edited_time = now(); 
+        
         $flowsheet->save();
+        
 
         return view('flowsheet', compact('code_number'));
     } 
@@ -144,6 +148,7 @@ class FlowsheetController extends Controller
         if (!$flowsheet) {
             return response()->json(['error' => 'Flowsheet not found'], 404);
         }
+        $flowsheet->last_edited_time = now(); 
 
         $flowsheet->update($validatedData);
 
