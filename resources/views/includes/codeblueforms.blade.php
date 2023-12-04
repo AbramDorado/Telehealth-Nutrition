@@ -88,8 +88,8 @@
                                         <td>{{ $event->code_team_leader }}</td>
                                         <td>
                                         <div class="btn-group" role="group" style="height: 28px;">
-                                            <a href="{{ route('view_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-primary" style="border-radius: 5px;"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('edit_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-warning" style="border-radius: 5px;"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('view_codeblueforms', ['patient_pin' => $event->patient_pin, 'code_number' => $event->code_number]) }}" class="btn btn-primary" style="border-radius: 5px;"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('maininformation', ['code_number' => $event->code_number]) }}"  class="btn btn-warning" style="border-radius: 5px;"><i class="fas fa-pencil-alt"></i></a>
 
                                             <!-- Archive button using a form with POST method -->
                                             <form action="{{ route('archive_codeblueforms', ['code_number' => $event->code_number]) }}" method="POST" style="display: inline;">

@@ -168,7 +168,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 
 
 <div class="card">
@@ -242,6 +242,7 @@
 
   </div>
 </div>
+</div>
 
 <script>
     const ventilationSelect = document.getElementById('ventilation');
@@ -296,4 +297,3 @@
 });
 </script>
 @endsection
-
