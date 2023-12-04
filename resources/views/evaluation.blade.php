@@ -1,36 +1,96 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="jumbotron">
+<style>
+    #patientPinDropdown {
+        position: absolute;
+        z-index: 1000; /* Adjust the z-index as needed to ensure it's above other elements */
+        width: 90%; /* Set the width to match the input field */
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .question-mark-btn {
+        position: fixed;
+        bottom: 20px; /* Adjust the distance from the bottom */
+        right: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    #dropdownMenuButton{
+        position: fixed;
+        top: 100px; /* Adjust the distance from the bottom */
+        left: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .fixed-header {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            position: fixed;
+            top: 70px; /* Adjust as needed based on your header height */
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background-color: #ECECF1; /* Adjust background color if needed */
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .fixed-header a.btn {
+            width: 16%;
+            margin-left: 5px; /* Adjust spacing between buttons */
+        }
+
+        .fixed-header a.btn.btn-secondary {
+            background-color: #ECECF1;
+            color: #000; /* Text color */
+            border-color: #ECECF1; /* Border color */
+        }
+
+    </style>
+
+<button type="button" class="btn btn-primary question-mark-btn" data-toggle="modal" data-target="#jumbotronModal">
+  ?
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="jumbotronModal" tabindex="-1" role="dialog" aria-labelledby="jumbotronModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="jumbotron">
   <h1 class="display-10">Debriefing and Evaluation</h1>
   <p class="lead">Debriefing and Evaluation</p>
-  <!-- Add a dropdown button to toggle the menu -->
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Toggle Menu
-  </button>
-  
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <!-- Your list of buttons goes here -->
-    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="dropdown-item" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+            
+<div class="fixed-header">
+    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
+    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
+    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
 </div>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Questions</div>
-                <div class="card-body">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
                     <form method="POST" action="{{ route('store_evaluation', ['code_number' => $code_number]) }}">
                         @csrf
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 1</div>
+                            <div class="card-header bg-secondary text-white py-2">Question 1</div>
                             <div class="card-body">
                                 <p>Was the code conducted in accordance with the current algorithm?</p>
                                 <label for="question1_yes">
@@ -47,7 +107,7 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 2</div>
+                        <div class="card-header bg-secondary text-white py-2">Question 2</div>
                             <div class="card-body">
                                 <p>Was there any problem with the response time of the team?</p>
                                 <label for="question2_yes">
@@ -66,7 +126,7 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 3</div>
+                        <div class="card-header bg-secondary text-white py-2">Question 3</div>
                             <div class="card-body">
                                 <p>Were there any problems with equipment, supplies, or tests?</p>
                                 <label for="question3_yes">
@@ -231,7 +291,7 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 4</div>
+                        <div class="card-header bg-secondary text-white py-2">Question 4</div>
                             <div class="card-body">
                                 <p>Were policies and procedures followed?</p>
                                 <label for="question4_yes">
@@ -249,7 +309,7 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 5</div>
+                        <div class="card-header bg-secondary text-white py-2">Question 5</div>
                             <div class="card-body">
                                 <p>Were there any problems during the code?</p>
                                 <label for="question5_yes">
@@ -267,7 +327,7 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 6</div>
+                        <div class="card-header bg-secondary text-white py-2">Question 6</div>
                             <div class="card-body">
                                 <p>Was family notified and updated on patient’s condition?</p>
                                 <label for="question6_yes">
@@ -282,24 +342,18 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Question 7</div>
-                            <div class="card-body">
-                                <p>Other Remarks</p>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="question7">{{ old('question7', optional($questions ?? '')->question7 ?? '') }}</textarea>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                                    <label for="question7_explanation">Other Remarks:</label>
+                                    <textarea class="form-control" name="question7_explanation">{{ old('question7_explanation', optional($questions ?? '')->question7_explanation ?? '') }}</textarea>
                         </div>
 
                         <form action="{{ url('/store_codeteam') }}" method="post">
                     @csrf 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                     </form>
         </form>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
 </div>
 
 <script>

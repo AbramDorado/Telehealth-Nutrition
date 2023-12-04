@@ -22,8 +22,7 @@ class CreateOutcomesTable extends Migration
             $table->unsignedInteger('heart_rate')->nullable();
             $table->unsignedInteger('respiratory_rate')->nullable();
             $table->string('rhythm')->nullable();
-            $table->dateTime('code_end_dt')->default(now());
-            
+            $table->dateTime('code_end_dt')->nullable();
             $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('code_number')->nullable();
             

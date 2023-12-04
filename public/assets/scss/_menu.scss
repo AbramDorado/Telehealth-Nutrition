@@ -69,8 +69,8 @@
   background-color: $topbar-background;
   border-radius: 0;
   margin-bottom: 0;
-  padding: 0 10px 0 0;
-  margin-left: 240px;
+  padding: 0 10px 0 10px;
+  padding-left: 10px;
   min-height: 70px;
 
   .nav-link {
@@ -122,12 +122,11 @@
 }
 
 .content-page {
-  margin-left: 240px;
-  overflow: hidden;
+  overflow: visible;
 
   .content {
     padding: 0 15px 10px 15px;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 60px;
   }
 }

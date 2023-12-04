@@ -1,15 +1,18 @@
-<div class="topbar">
-    <!-- LOGO -->
-    <div class="topbar-left">
-        <a href="/codeblueforms" class="logo">
-            <span>
-                <h1 style="color: white;">ERE</h1>
-            </span>
-            <i>
-                <h1>E*</h1>
-            </i>
-        </a>
-    </div>
+<style>
+    .bg-hospital-blue img {
+        display: block;
+        height: 60px;
+        margin: 0 auto; /* Center the image */
+        max-width: 100%; /* Adjust the image size */
+    }
+
+    /* Increase z-index to make it appear on top */
+    .topbar {
+        z-index: 9999;
+        /* Add other styles as needed */
+    }
+</style>
+<div class="topbar" style="z-index: 1000;">
 
     <nav class="navbar-custom">
         <ul class="navbar-right d-flex list-inline float-right mb-0">
@@ -37,7 +40,7 @@
             <li class="dropdown notification-list">
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/profile-icon.png" alt="user" class="rounded-circle"> {{ Auth::user()->username }}
+                        <i class="fas fa-user user-icon"></i> {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                         <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
@@ -52,11 +55,16 @@
             </li>
         </ul>
 
-        <ul class="list-inline menu-left mb-0">
+        <ul class="list-inline menu-left mb-0" style="padding-left: 10px;">
             <li class="float-left">
-                <button class="button-menu-mobile open-left waves-effect">
-                    <i class="mdi mdi-menu"></i>
-                </button>
+                <a href="/codeblueforms" class="logo">
+                <span>
+                <div class="bg-hospital-blue">
+                <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
+                </div>
+                    <!-- <h1 style="color: blue;">ERE</h1> -->
+                </span>
+                </a>
             </li>
         </ul>
     </nav>

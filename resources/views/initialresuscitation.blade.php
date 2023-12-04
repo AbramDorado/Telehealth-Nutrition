@@ -1,26 +1,91 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="jumbotron">
-  <h1 class="display-10">Initial Resuscitation</h1>
-  <p class="lead">Airway/Ventilation and Circulation</p>
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Toggle Menu
-  </button>
-  
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="dropdown-item" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+<style>
+    #patientPinDropdown {
+        position: absolute;
+        z-index: 1000; /* Adjust the z-index as needed to ensure it's above other elements */
+        width: 90%; /* Set the width to match the input field */
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .question-mark-btn {
+        position: fixed;
+        bottom: 20px; /* Adjust the distance from the bottom */
+        right: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    #dropdownMenuButton{
+        position: fixed;
+        top: 100px; /* Adjust the distance from the bottom */
+        left: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .fixed-header {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            position: fixed;
+            top: 70px; /* Adjust as needed based on your header height */
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background-color: #ECECF1; /* Adjust background color if needed */
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .fixed-header a.btn {
+            width: 16%;
+            margin-left: 5px; /* Adjust spacing between buttons */
+        }
+
+        .fixed-header a.btn.btn-secondary {
+            background-color: #ECECF1;
+            color: #000; /* Text color */
+            border-color: #ECECF1; /* Border color */
+        }
+
+    </style>
+
+<button type="button" class="btn btn-primary question-mark-btn" data-toggle="modal" data-target="#jumbotronModal">
+  ?
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="jumbotronModal" tabindex="-1" role="dialog" aria-labelledby="jumbotronModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="jumbotron">
+          <h1 class="display-4">Initial Resuscitation</h1>
+          <p class="lead">Airway/Ventilation and Circulation</p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+            
+<div class="fixed-header">
+    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
+    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
+    <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
+    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
 </div>
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
     
     <form method="POST" action="{{ route('store_initialresuscitation', ['code_number' => $code_number]) }}">
     @csrf
@@ -90,13 +155,14 @@
                     </div>
                 
                     <div class="form-group">
-                        <label for="et_tube_information">ET Tube Information</label>
-                        <div id="et_tube_information">
-                            <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
-                            <label for="auscultation-checkbox">Auscultation</label>
+                            <label for="et_tube_information">ET Tube Information</label>
+                            <div id="et_tube_information">
+                                <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
+                                <label for="auscultation-checkbox">Auscultation</label>
 
-                            <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
-                            <label for="exhaled-co2-checkbox">Exhaled CO2</label>
+                                <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
+                                <label for="exhaled-co2-checkbox">Exhaled CO2</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +236,7 @@
 
         <form action="{{ url('/store_initialresuscitation') }}" method="post">
             @csrf 
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </form>
 </form> 
 

@@ -16,7 +16,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ExcelController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 })->name('welcome');
 Route::get('attended/{user_id}', '\App\Http\Controllers\AttendanceController@attended' )->name('attended');
 Route::get('attended-before/{user_id}', '\App\Http\Controllers\AttendanceController@attendedBefore' )->name('attendedBefore');

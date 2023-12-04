@@ -1,0 +1,45 @@
+/* Styling for the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Styling for buttons */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: 1px solid #6c757d;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.8;
+}

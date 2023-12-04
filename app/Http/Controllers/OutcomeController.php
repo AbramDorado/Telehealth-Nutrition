@@ -25,6 +25,7 @@ class OutcomeController extends Controller
         // Validate the incoming request data
         $request->validate([
             'outcome' => 'required', // Adjust validation rules as needed
+            'code_end_dt' => 'sometimes|nullable|date',
         ]);
 
         $existingOutcome = Outcome::where('code_number', $code_number)->first();
@@ -58,6 +59,8 @@ class OutcomeController extends Controller
             $outcome->rhythm = $request->input('rhythm') ?? null;
         }
 
+        // Save the outcome to the database
+        $outcome->code_end_dt = $request->input('code_end_dt') ?? null;
         $outcome->code_number = $code_number;
         $outcome->save();
 

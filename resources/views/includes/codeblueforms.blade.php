@@ -1,10 +1,24 @@
-    @extends('layouts.master')
+@extends('layouts.master')
 
-    @section('css')
-        <!-- Table css -->
-        <link href="{{ URL::asset('plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css') }}" rel="stylesheet" type="text/css" media="screen">
-        <!-- Font Awesome css -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+@section('css')
+    <!-- Table css -->
+    <link href="{{ URL::asset('plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <!-- Font Awesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Custom hospital style -->
+    <style>
+        /* Add your custom hospital styles here */
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* Add more styles as needed */
+    </style>
     </section>
 
     @section('button')
@@ -73,15 +87,15 @@
                                         <td>{{ $event->code_end_dt }}</td>
                                         <td>{{ $event->code_team_leader }}</td>
                                         <td>
-                                        
-                                            <a href="{{ route('view_codeblueforms', ['patient_pin' => $event->patient_pin, 'code_number' => $event->code_number]) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('maininformation', ['code_number' => $event->code_number]) }}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                                            
+                                        <div class="btn-group" role="group" style="height: 28px;">
+                                            <a href="{{ route('view_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-primary" style="border-radius: 5px;"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('edit_codeblueforms', ['code_number' => $event->code_number]) }}" class="btn btn-warning" style="border-radius: 5px;"><i class="fas fa-pencil-alt"></i></a>
+
                                             <!-- Archive button using a form with POST method -->
                                             <form action="{{ route('archive_codeblueforms', ['code_number' => $event->code_number]) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('POST')
-                                                <button type="submit" class="btn btn-info" onclick="return confirm('Are you sure you want to archive this record?')">
+                                                <button type="submit" class="btn btn-info" style:="height: 30px;" onclick="return confirm('Are you sure you want to archive this record?')">
                                                     <i class="fas fa-archive"></i>
                                                 </button>
                                             </form>

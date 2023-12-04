@@ -62,7 +62,7 @@ body {
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: visible;
   position: relative;
   min-height: 100%;
 }
@@ -113,7 +113,7 @@ b, strong {
 
 #wrapper {
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
 }
 
@@ -663,7 +663,7 @@ dt {
   line-height: 70px;
 }
 
-.topbar .topbar-left .logo i {
+.topbar .topbar-left .logo i {   
   display: none;
 }
 
@@ -671,8 +671,8 @@ dt {
   background-color: #ececf1;
   border-radius: 0;
   margin-bottom: 0;
-  padding: 0 10px 0 0;
-  margin-left: 240px;
+  padding: 0 10px 0 10px;
+  margin-left: 0px;
   min-height: 70px;
 }
 
@@ -716,8 +716,8 @@ dt {
 }
 
 .content-page {
-  margin-left: 240px;
-  overflow: hidden;
+  margin-left: 0px;
+  overflow: visible;
 }
 
 .content-page .content {
@@ -800,10 +800,10 @@ dt {
 }
 
 .enlarged #wrapper .navbar-custom {
-  margin-left: 70px;
+  margin-left: 0px;
 }
 
-.enlarged #wrapper #sidebar-menu .menu-title, .enlarged #wrapper #sidebar-menu .menu-arrow, .enlarged #wrapper #sidebar-menu .badge {
+/* .enlarged #wrapper #sidebar-menu .menu-title, .enlarged #wrapper #sidebar-menu .menu-arrow, .enlarged #wrapper #sidebar-menu .badge {
   display: none !important;
 }
 
@@ -940,7 +940,7 @@ dt {
 
 .enlarged #wrapper #sidebar-menu > ul > li:hover > a.mm-active :after {
   display: none;
-}
+} */
 
 /* Footer */
 .footer {
@@ -1110,7 +1110,7 @@ dt {
 }
 
 .page-title-box {
-  padding: 20px 0px;
+  padding: 50px 0px;
 }
 
 .page-title-box .page-title {
@@ -1170,6 +1170,22 @@ button:focus {
 .btn-primary {
   background-color: #626ed4;
   border: 1px solid #626ed4;
+}
+
+.btn.btn-primary.btn-block{
+  /* Change button color scheme */
+  background-color: #626ed4; /* Your color */
+  border: 1px solid #626ed4; /* Your color */
+  /* Adjust size and centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  font-size: 24px;
+  /* Other styles for aesthetics */
+  border-radius: 8px; /* Rounded corners */
+  color: #fff; /* Text color */
+  cursor: pointer; /* Cursor on hover */
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,
@@ -1379,6 +1395,8 @@ button:focus {
 .card-columns .card {
   margin-bottom: 30px;
 }
+
+
 
 /* ======
 08. Email
@@ -3781,13 +3799,13 @@ Invoice
 
 @media (min-width: 768px) and (max-width: 991px) {
   body {
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 }
 
 @media (max-width: 768px) {
   body {
-    overflow-x: hidden;
+    overflow-x: visible;
   }
   .topbar-left {
     width: 70px !important;
@@ -3800,7 +3818,7 @@ Invoice
     line-height: 70px !important;
   }
   .navbar-custom {
-    margin-left: 70px !important;
+    margin-left: 0px !important;
   }
   .topbar .topbar-left {
     height: 70px;
@@ -3812,7 +3830,7 @@ Invoice
     padding: 0px;
   }
   .enlarged .left.side-menu {
-    margin-left: -70px;
+    margin-left: 0px;
   }
   .footer {
     left: 0 !important;
@@ -3835,7 +3853,7 @@ Invoice
   }
 }
 
-@media (max-width: 419px) {
+/* @media (max-width: 419px) {
   .topbar-left {
     width: 70px !important;
   }
@@ -3858,5 +3876,5 @@ Invoice
 }
 .modal-content {
   text-align: center;
-}
+} */
 /*# sourceMappingURL=style.css.map */
