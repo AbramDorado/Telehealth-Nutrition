@@ -50,11 +50,15 @@ RUN apt-get update \
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 
-RUN groupadd --force -g $WWWGROUP sail
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
+# Install Node.js dependencies
+COPY package*.json ./
+RUN npm install -g npm \
+    && npm install -g pnpm \
+    && npm install -g bun
+
 
 COPY start-container /usr/local/bin/start-container
-COPY vendor/laravel/sail/runtimes/8.2/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.2/cli/conf.d/99-sail.ini
 
 RUN chmod +x /usr/local/bin/start-container
