@@ -1,23 +1,148 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="jumbotron">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="..." crossorigin="anonymous" />
+<style>
+    /* Style for the floating container */
+    .floating-container {
+        position: fixed;
+        top: 50px; /* Adjust as needed */
+        left: 50px; /* Adjust as needed */
+        z-index: 1000;
+    }
+
+    /* Style for the timer container */
+    .timer-container {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: move;
+        position: absolute; /* Ensure the position is absolute */
+        transition: box-shadow 0.3s ease-in-out; /* Smooth transition for box-shadow */
+    }
+
+    /* Style for indicating draggable on hover */
+    .timer-container:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Style for the timer header */
+    .timer-header {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* Style for the elapsed time */
+    .elapsed-time {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Style for the timer buttons */
+    .timer-buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Style for the individual timer buttons */
+    .timer-button {
+        padding: 8px 15px;
+        margin: 0 5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    /* Style for the button hover effect */
+    .timer-button:hover {
+        background-color: #e0e0e0;
+    }
+
+    #patientPinDropdown {
+        position: absolute;
+        z-index: 1000; /* Adjust the z-index as needed to ensure it's above other elements */
+        width: 90%; /* Set the width to match the input field */
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .question-mark-btn {
+        position: fixed;
+        bottom: 20px; /* Adjust the distance from the bottom */
+        right: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    #dropdownMenuButton{
+        position: fixed;
+        top: 100px; /* Adjust the distance from the bottom */
+        left: 20px; /* Adjust the distance from the right */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .fixed-header {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            position: fixed;
+            top: 70px; /* Adjust as needed based on your header height */
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background-color: #ECECF1; /* Adjust background color if needed */
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .fixed-header a.btn {
+            width: 16%;
+            margin-left: 5px; /* Adjust spacing between buttons */
+        }
+
+        .fixed-header a.btn.btn-secondary {
+            background-color: #ECECF1;
+            color: #000; /* Text color */
+            border-color: #ECECF1; /* Border color */
+        }
+
+    </style>
+
+<button type="button" class="btn btn-primary question-mark-btn" data-toggle="modal" data-target="#jumbotronModal">
+  ?
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="jumbotronModal" tabindex="-1" role="dialog" aria-labelledby="jumbotronModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="jumbotron">
   <h1 class="display-10">Flowsheet</h1>
   <p class="lead">Flowsheet and Medication</p>
-  <!-- Add a dropdown button to toggle the menu -->
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Toggle Menu
-  </button>
-  
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <!-- Your list of buttons goes here -->
-    <a class="dropdown-item" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="dropdown-item" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="dropdown-item" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="dropdown-item" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="dropdown-item" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="dropdown-item" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+            
+<div class="fixed-header">
+    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
+    <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
+    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
 </div>
 
 <div class="row">
@@ -43,7 +168,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
                 
                 <form method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number ?? '']) }}"> 
                 @csrf
@@ -80,12 +205,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bp_systolic">Blood Pressure, Systolic:</label>
+                                    <label for="bp_systolic">Blood Pressure, Systolic (mmHg):</label>
                                     <input type="number" class="form-control" name="bp_systolic" placeholder="0">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bp_diastolic">Blood Pressure, Diastolic:</label>
+                                    <label for="bp_diastolic">Blood Pressure, Diastolic (mmHg):</label>
                                     <input type="number" class="form-control" name="bp_diastolic" placeholder="0">
                                 </div>                
                             </div>
@@ -195,12 +320,12 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="free1_label">[Free text medication #1]</span></label>
+                                        <label for="free1_label">Other Medications (unit of measure)</span></label>
                                         <input type="text" class="form-control" name="free1_label" placeholder="[Free text medication #1]">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free1_dose">Dose</span></label>
+                                        <label for="free1_dose">Dose (mg)</span></label>
                                         <input type="number" class="form-control" name="free1_dose" placeholder="0">    
                                     </div>
 
@@ -210,12 +335,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_label">[Free text medication #2]</span></label>
+                                        <label for="free2_label">Other Medications (unit of measure)</span></label>
                                         <input type="text" class="form-control" name="free2_label" placeholder="[Free text medication #2]">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_dose">Dose</span></label>
+                                        <label for="free2_dose">Dose (mg)</span></label>
                                         <input type="number" class="form-control" name="free2_dose" placeholder="0">    
                                     </div>
 
@@ -238,6 +363,7 @@
         </div>
     </form>
 </div>
+
 
 <div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="tableModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
@@ -314,6 +440,92 @@
     </div>
   </div>
 </div>
+
+<!-- Add this inside your content section -->
+<div class="floating-container">
+    <div id="timerContainer" class="timer-container">
+        <div class="icon-container">
+            <i class="fas fa-arrows-alt" style=" display: flex; align-items: center; justify-content: center; margin-bottom: 10px; "></i>
+        </div>
+        <h3 class="timer-header">Timer</h3>
+        <p id="elapsedTime" class="elapsed-time">00:00:00</p>
+        <div class="timer-buttons">
+            <button id="startStopButton" class="timer-button">Start</button>
+            <button id="resetButton" class="timer-button">Reset</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Add this JavaScript at the end of your content section -->
+<script>
+    const timerContainer = document.getElementById('timerContainer');
+    let offsetX, offsetY;
+    let isDragging = false;
+
+    timerContainer.addEventListener('mousedown', function (event) {
+        event.preventDefault();
+        offsetX = event.clientX - timerContainer.getBoundingClientRect().left;
+        offsetY = event.clientY - timerContainer.getBoundingClientRect().top;
+        isDragging = true;
+    });
+
+    document.addEventListener('mousemove', function (event) {
+        if (isDragging) {
+            event.preventDefault();
+            const x = event.clientX - offsetX;
+            const y = event.clientY - offsetY;
+
+            timerContainer.style.left = `${x}px`;
+            timerContainer.style.top = `${y}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', function () {
+        isDragging = false;
+    });
+
+    let timerInterval = null;
+    let timerRunning = false;
+    let elapsedTime = 1;
+
+    function startStopTimer() {
+        if (!timerRunning) {
+            startTimer();
+            document.getElementById('startStopButton').textContent = 'Stop';
+        } else {
+            stopTimer();
+            document.getElementById('startStopButton').textContent = 'Resume';
+        }
+    }
+
+    function startTimer() {
+        timerRunning = true;
+        timerInterval = setInterval(() => {
+            const hours = Math.floor(elapsedTime / 3600);
+            const minutes = Math.floor((elapsedTime % 3600) / 60);
+            const seconds = elapsedTime % 60;
+            document.getElementById('elapsedTime').textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            elapsedTime++;
+        }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+        timerRunning = false;
+    }
+
+    function resetTimer() {
+        stopTimer();
+        elapsedTime = 0;
+        document.getElementById('elapsedTime').textContent = '00:00:00';
+        document.getElementById('startStopButton').textContent = 'Start';
+    }
+
+    document.getElementById('startStopButton').addEventListener('click', startStopTimer);
+    document.getElementById('resetButton').addEventListener('click', resetTimer);
+</script>
+
 
 <script>
     document.getElementById('showTable').addEventListener('click', function () {

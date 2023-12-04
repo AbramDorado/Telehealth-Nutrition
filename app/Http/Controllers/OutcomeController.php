@@ -25,6 +25,7 @@ class OutcomeController extends Controller
         // Validate the incoming request data
         $request->validate([
             'outcome' => 'required', // Adjust validation rules as needed
+            'code_end_dt' => 'sometimes|nullable|date',
         ]);
 
         // Create a new Outcome instance and populate its fields
@@ -54,6 +55,7 @@ class OutcomeController extends Controller
         }
 
         // Save the outcome to the database
+        $outcome->code_end_dt = $request->input('code_end_dt') ?? null;
         $outcome->code_number = $code_number;
         $outcome->save();
 
