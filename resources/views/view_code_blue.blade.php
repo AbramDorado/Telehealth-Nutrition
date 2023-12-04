@@ -166,7 +166,7 @@
                                     <tr>
                                     <tr>
                                         <th>Ventilation via:</th>
-                                        <td>{{ $initialResuscitation->ventilation }}</td>
+                                        <td>{{ $initialResuscitation->ventilation ?? 'N/A'  }}</td>
                                     </tr>
                                     <tr>
                                         <th>Other Ventilation Method:</th>
