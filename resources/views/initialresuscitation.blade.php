@@ -132,7 +132,7 @@
 
                     <div class="form-group" id="othersText" style="display: none;">
                         <label for="other_ventilation">Other Ventilation Method:</label>
-                        <input type="text" name="other_ventilation" id="other_ventilation" class="form-control" value="{{ $initialResuscitation ?? '' ?? ''->othersText ?? old('othersText') }}">
+                        <input type="text" name="other_ventilation" id="other_ventilation" class="form-control" value="{{ old('other_ventilation', optional($initialResuscitation ?? '')->other_ventilation) }}">
                     </div>
                 </div>
 
@@ -155,16 +155,16 @@
                     </div>
                 
                     <div class="form-group">
-    <label for="et_tube_information">ET Tube Information</label>
-    <div id="et_tube_information">
-        <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
-        <label for="auscultation-checkbox">Auscultation</label>
+                            <label for="et_tube_information">ET Tube Information</label>
+                            <div id="et_tube_information">
+                                <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
+                                <label for="auscultation-checkbox">Auscultation</label>
 
-        <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
-        <label for="exhaled-co2-checkbox">Exhaled CO2</label>
-    </div>
-</div>
-
+                                <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
+                                <label for="exhaled-co2-checkbox">Exhaled CO2</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -249,7 +249,7 @@
     const otherVentilationInput = document.getElementById('other_ventilation');
 
     ventilationSelect.addEventListener('change', function() {
-        if (ventilationSelect.value === 'others') {
+        if (ventilationSelect.value === 'Others') {
             othersText.style.display = 'block';
             otherVentilationInput.required = true;
         } else {

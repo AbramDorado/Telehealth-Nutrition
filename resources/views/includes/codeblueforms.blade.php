@@ -43,6 +43,11 @@
             <button type="submit" class="btn btn-secondary btn-block">Archived Records</button>
         </form>
 
+        <form method="GET" action="{{ route('download-excel') }}">
+            @csrf
+            <button type="submit" class="btn btn-success btn-block">Generate report (.xlsx)</button>
+        </form>
+
     @endsection
 
 
@@ -73,6 +78,7 @@
                                 <tbody>
                                     @foreach ($resuscitationEvents as $event)
                                     <tr>
+
                                         <td>{{ $event->code_number }}</td>
                                         <td>{{ $event->created_at }}</td>
                                         <td>{{ $event->location }}</td>
@@ -93,7 +99,6 @@
                                                     <i class="fas fa-archive"></i>
                                                 </button>
                                             </form>
-                                        </div>
                                         </td>
                                         <td>        
                                             <a href="{{ route('download-pdf', ['codeEvent' => $event->code_number]) }}" class="btn btn-danger">PDF</a>

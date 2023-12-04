@@ -3,19 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Patient;
 use App\Models\CodeBlueActivation;
+use App\Models\InitialResuscitation;
+use App\Models\Flowsheet;
+use App\Models\Outcome;
+use App\Models\Evaluation;
+use App\Models\CodeTeam;
 
 class FormController extends Controller
 {
+    //VIEW FUNCTION IN CASE IN THE FUTURE
+    public function viewCodeBlue($patient_pin, $code_number)
+    {
+        // Fetch information from each table based on the code_number
+        $patient = Patient::where('patient_pin', $patient_pin)->first();
+        $codeBlueActivation = CodeBlueActivation::where('code_number', $code_number)->first();
+        $initialResuscitation = InitialResuscitation::where('code_number', $code_number)->first();
+        $flowsheet = Flowsheet::where('code_number', $code_number)->first();
+        $outcome = Outcome::where('code_number', $code_number)->first();
+        $evaluation = Evaluation::where('code_number', $code_number)->first();
+        $codeTeam = CodeTeam::where('code_number', $code_number)->first();
 
-    // public function viewCodeBlueForms($code_number) {
-    //     // Logic for viewing a resuscitation event
-    // }
+        // Pass the data to the view
+        return view('view_code_blue', compact('patient', 'codeBlueActivation', 'initialResuscitation', 'flowsheet', 'outcome', 'evaluation', 'codeTeam'));
+    }
     
-    // public function editCodeBlueForms($code_number) {
-    //     // Logic for editing a resuscitation event
-    // }
-    
+    //DELETE FUNCTION IN CASE IN THE FUTURE
     // public function deleteCodeBlueForms($code_number) {
     //     // Delete all records associated with the specified code blue forms event
     //     CodeBlueActivation::where('code_number', $code_number)->delete();
@@ -75,6 +89,7 @@ class FormController extends Controller
     {
 
         $resuscitationEvents = CodeBlueActivation::select(
+            'table1.patient_pin',
             'table2.code_number',
             'table1.created_at',
             'table1.location',

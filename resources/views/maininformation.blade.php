@@ -351,8 +351,6 @@
         });
     }
 
-        
-
         $(document).ready(function () {
             // Reference to the dropdown
             var dropdown = $('#patientPinDropdown');

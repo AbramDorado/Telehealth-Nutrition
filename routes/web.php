@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FingerDevicesControlller;
 use App\Http\Controllers\CodeTeamController;
 use App\Http\Controllers\MainInformationController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\ExcelController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -63,7 +66,10 @@ Route::post('/store_user', [UserController::class, 'store'])->name('store_user')
 
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
 
-Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'index'])->name('codeteam');
+Route::get('/codeteam/{code_number}', [CodeTeamController::class, 'index'])
+    ->name('codeteam')
+    ->middleware('web');
+
 Route::post('/codeteam/{code_number}', [CodeTeamController::class, 'store'])->name('store_codeteam');
 
 Route::get('/initialresuscitation/{code_number}', [InitialResuscitationController::class, 'index'])->name('initialresuscitation');
@@ -71,7 +77,8 @@ Route::post('/initialresuscitation/{code_number}', [InitialResuscitationControll
 
 Route::get('/flowsheet/{code_number}', [FlowsheetController::class, 'index'])->name('flowsheet');
 // Route::get('/flowsheet/{code_number}/data', [FlowsheetController::class, 'getFlowsheetsData'])->name('flowsheets.index');
-Route::post('/flowsheet/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
+
+// Route::match(['get', 'post'], '/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet');
 
 Route::get('/evaluation/{code_number}', [EvaluationController::class, 'index'])->name('evaluation');
 Route::post('/evaluation/{code_number}', [EvaluationController::class, 'store'])->name('store_evaluation');
@@ -81,34 +88,33 @@ Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name
 
 Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
-Route::get('/searchPatientPins', [MainInformationController::class, 'searchPatientPins'])->name('searchPatientPins');
-Route::get('/fetchPatientInformation', [MainInformationController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
-Route::get('/fetchPatientPin', [MainInformationController::class, 'fetchPatientPin'])->name('fetchPatientPin');
+Route::get('/searchPatientPins', [PatientController::class, 'searchPatientPins'])->name('searchPatientPins');
+Route::get('/fetchPatientInformation', [PatientController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
+Route::get('/fetchPatientPin', [PatientController::class, 'fetchPatientPin'])->name('fetchPatientPin');
+Route::get('/fetchFlowsheetInformation/{code_number}', [FlowsheetController::class, 'fetchFlowsheetInformation'])->name('fetchFlowsheetInformation');
 
-
+Route::get('/destroy/{id}', [FlowsheetController::class, 'destroy'])->name('destroy');
+Route::get('/edit/{id}', [FlowsheetController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [FlowsheetController::class, 'update'])->name('update');
+Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
+// Route::post('/store', [FlowsheetController::class, 'store'])->name('store_flowsheet');
 Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
-
-Route::put('/update_patient/{id}', [MainInformationController::class, 'updatePatient'])->name('update_patient');
-
-// Route::get('/maininformationview', '\App\Http\Controllers\MainInformationController@index')->name('maininformationview');
-
 
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
 
-Route::get('/codeblueforms/{code_number}', [FormController::class, 'view'])->name('view_codeblueforms');
-Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
+Route::get('/codeblueforms/{patient_pin}/{code_number}/view', [FormController::class, 'viewCodeBlue'])->name('view_codeblueforms');
+// Route::get('/codeblueforms/{code_number}/edit', [FormController::class, 'edit'])->name('edit_codeblueforms');
 Route::post('/codeblueforms/{code_number}/archive', [FormController::class, 'archive'])->name('archive_codeblueforms');
 
 
 //for achrive
 Route::get('/archived_codeblueforms', 'App\Http\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
-
 Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'unarchive'])->name('unarchive_codeblueforms');
 
 
 Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
-
+Route::get('/download-excel', [ExcelController::class, 'export'])->name('download-excel');
 
 Route::group(['middleware' => ['auth']], function () {
 
