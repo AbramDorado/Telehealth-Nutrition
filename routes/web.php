@@ -15,6 +15,8 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ExcelController;
 
+URL::forceScheme('https');
+
 Route::get('/', function () {
     return view('auth/login');
 })->name('welcome');
