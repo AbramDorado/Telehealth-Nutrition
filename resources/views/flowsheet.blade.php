@@ -111,6 +111,11 @@
             border-color: #ECECF1; /* Border color */
         }
 
+        .custom-btn {
+            margin-right: 5px; 
+        }
+
+
     </style>
 
 <button type="button" class="btn btn-primary question-mark-btn" data-toggle="modal" data-target="#jumbotronModal">
@@ -147,14 +152,14 @@
 
 <div class="row">
   <div class="col-auto">
-    <button type="button" class="btn btn-success btn-sm" id="showTable">
+    <button type="button" class="btn btn-primary btn-sm" id="showTable">
       <i class="fas fa-table"></i>
     </button>
   </div>
   <div class="col-auto ml-auto">
     <form method="GET" action="{{ route('outcome', ['code_number' => $code_number ?? '']) }}">
       @csrf
-      <button type="submit" class="btn btn-success btn-sm">
+      <button type="submit" class="btn btn-primary btn-sm">
         <i class="fas fa-arrow-right"></i>
       </button>
     </form>
@@ -165,7 +170,7 @@
     <form id="baseForm" method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number ?? '']) }}"> 
         @csrf
     
-        <input name="flowsheet_id" id="flowsheet_id" value="">
+        <input type="hidden" name="flowsheet_id" id="flowsheet_id" value="">
 
         <div class="container">
             <div class="row justify-content-center">
@@ -378,33 +383,33 @@
 
       @if(!is_null($flowsheets ?? ''))
 
-          <table class="table">
-          <thead>
+      <table class="table">
+        <thead class="thead-dark">
             <tr>
-            <th>Log Time</th>
-            <th>Last Edited</th>
-            <th>Breathing</th>
-            <th>Pulse</th>
-            <th>Blood Pressure, Systolic</th>
-            <th>Blood Pressure, Diastolic</th>
-            <th>Rhythm on check</th>
-            <th>Rhythm with pulse</th>
-            <th>Rhythm Intervention</th>
-            <th>Joules</th>
-            <th>Epinephrine Dose</th>
-            <th>Epinephrine Route</th>
-            <th>Amiodarone Dose</th>
-            <th>Amiodarone Route</th>
-            <th>Lidocaine Dose</th>
-            <th>Lidocaine Route</th>
-            <th>Free 1 Label</th>   
-            <th>Free 1 Dose</th>
-            <th>Free 1 Route</th>
-            <th>Free 2 Label</th>
-            <th>Free 2 Dose</th>
-            <th>Free 2 Route</th>
-            <th>Comments</th>  
-            <th></th> 
+                <th>Log Time</th>
+                <th>Last Edited</th>
+                <th>Breathing</th>
+                <th>Pulse</th>
+                <th>Blood Pressure, Systolic</th>
+                <th>Blood Pressure, Diastolic</th>
+                <th>Rhythm on check</th>
+                <th>Rhythm with pulse</th>
+                <th>Rhythm Intervention</th>
+                <th>Joules</th>
+                <th>Epinephrine Dose</th>
+                <th>Epinephrine Route</th>
+                <th>Amiodarone Dose</th>
+                <th>Amiodarone Route</th>
+                <th>Lidocaine Dose</th>
+                <th>Lidocaine Route</th>
+                <th>Free 1 Label</th>   
+                <th>Free 1 Dose</th>
+                <th>Free 1 Route</th>
+                <th>Free 2 Label</th>
+                <th>Free 2 Dose</th>
+                <th>Free 2 Route</th>
+                <th>Comments</th>  
+                <th>Actions</th> 
             </tr>
         </thead>
         <tbody id="flowsheetTableBody">
@@ -434,13 +439,20 @@
                 <td>{{ $flowsheet->free2_route ?? '' }}</td>
                 <td>{{ $flowsheet->comments ?? '' }}</td>
                 <td>
-                    <button>Edit</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteRow({{ $flowsheet->id }})">Delete</button>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary btn-sm custom-btn" onclick="editRow({{ $flowsheet->id }})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm custom-btn" onclick="deleteRow({{ $flowsheet->id }})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
-          </table>
+    </table>
+
         @else
           <p>No flowsheet data available.</p>
         @endif
@@ -615,8 +627,11 @@ function fetchAndFillTable() {
                 '<td>' + (flowsheet.free2_route || '') + '</td>' +
                 '<td>' + (flowsheet.comments || '') + '</td>' +
                 '<td>' +
-                '<button onclick="editRow(' + flowsheet.flowsheet_id + ')">Edit</button>' +
-                '<button class="btn btn-danger btn-sm" onclick="deleteRow(' + flowsheet.flowsheet_id + ')">Delete</button>' +
+                '<div class="btn-group" role="group">' +
+                    '<button class="btn btn-primary btn-sm custom-btn" onclick="editRow(' + flowsheet.flowsheet_id + ')"><i class="fas fa-edit"></i></button>' +
+                    '<button class="btn btn-danger btn-sm custom-btn" onclick="deleteRow(' + flowsheet.flowsheet_id + ')"><i class="fas fa-trash"></i></button>' +
+                '</div>';
+
                 '</td>' +
             '</tr>';
             tableBody.append(row);

@@ -17,7 +17,11 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        /* Add more styles as needed */
+       
+        .table-responsive .rwd-table-priority-toggle {
+            display: none !important;
+        }
+
     </style>
     </section>
 
@@ -36,18 +40,6 @@
             @csrf
             <button type="submit" class="btn btn-primary btn-block">New Resuscitation Event</button>
         </form>
-
-        <!-- archive -->
-        <form method="GET" action="{{ route('archived_codeblueforms') }}">
-            @csrf
-            <button type="submit" class="btn btn-secondary btn-block">Archived Records</button>
-        </form>
-
-        <form method="GET" action="{{ route('download-excel') }}">
-            @csrf
-            <button type="submit" class="btn btn-success btn-block">Generate report (.xlsx)</button>
-        </form>
-
     @endsection
 
 
@@ -56,63 +48,84 @@
     @include('includes.flash')
 
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-rep-plugin">
-                        <div class="table-responsive mb-0" data-pattern="priority-columns">
-                            <table id="datatable-buttons" class="table table-hover table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th data-priority="1">#</th>
-                                        <th data-priority="2">Date</th>
-                                        <th data-priority="2">Location</th>
-                                        <th data-priority="3">Patient Name</th>
-                                        <th data-priority="4">Resuscitation Event Time Started</th>
-                                        <th data-priority="5">Resuscitation Event Time Ended</th>
-                                        <th data-priority="6">Code Leader</th>
-                                        <th data-priority="7">Action</th>
-                                        <th data-priority="8">Download</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($resuscitationEvents as $event)
-                                    <tr>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+            <div class="table-rep-plugin">
+                <div class="d-flex justify-content-between mb-3">
+                    <form method="GET" action="{{ route('archived_codeblueforms') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-archive fa-2x"></i>
+                        </button>
+                    </form>
 
-                                        <td>{{ $event->code_number }}</td>
-                                        <td>{{ $event->created_at }}</td>
-                                        <td>{{ $event->location }}</td>
-                                        <td>{{ $event->first_name }} {{ $event->last_name }}</td>
-                                        <td>{{ $event->code_start_dt }}</td>
-                                        <td>{{ $event->code_end_dt }}</td>
-                                        <td>{{ $event->code_team_leader }}</td>
-                                        <td>
-                                        <div class="btn-group" role="group" style="height: 28px;">
-                                            <a href="{{ route('view_codeblueforms', ['patient_pin' => $event->patient_pin, 'code_number' => $event->code_number]) }}" class="btn btn-primary" style="border-radius: 5px;"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('maininformation', ['code_number' => $event->code_number]) }}"  class="btn btn-warning" style="border-radius: 5px;"><i class="fas fa-pencil-alt"></i></a>
+                    <form method="GET" action="{{ route('download-excel') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-file-excel fa-2x"></i>
+                        </button>
+                    </form>
+                </div>
 
-                                            <!-- Archive button using a form with POST method -->
-                                            <form action="{{ route('archive_codeblueforms', ['code_number' => $event->code_number]) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('POST')
-                                                <button type="submit" class="btn btn-info" style:="height: 30px;" onclick="return confirm('Are you sure you want to archive this record?')">
-                                                    <i class="fas fa-archive"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td>        
-                                            <a href="{{ route('download-pdf', ['codeEvent' => $event->code_number]) }}" class="btn btn-danger">PDF</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+
+                    <div class="table-responsive" style="overflow-x: auto;">
+                        <table id="datatable-buttons" class="table table-hover table-striped table-bordered dt-responsive nowrap">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Patient Name</th>
+                                    <th>Event Time Started</th>
+                                    <th>Event Time Ended</th>
+                                    <th>Code Leader</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($resuscitationEvents as $event)
+                                <tr>
+                                    <td>{{ $event->code_number }}</td>
+                                    <td>{{ $event->created_at }}</td>
+                                    <td>{{ $event->location }}</td>
+                                    <td>{{ $event->first_name }} {{ $event->last_name }}</td>
+                                    <td>{{ $event->code_start_dt }}</td>
+                                    <td>{{ $event->code_end_dt }}</td>
+                                    <td>{{ $event->code_team_leader }}</td>
+                                    <td>
+                                    <div class="btn-group" role="group" style="height: 100%;">
+                                        <a href="{{ route('view_codeblueforms', ['patient_pin' => $event->patient_pin, 'code_number' => $event->code_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('maininformation', ['code_number' => $event->code_number]) }}" class="btn btn-primary btn-sm" style="display: inline; height: 100%; border-radius: 0;">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <form action="{{ route('archive_codeblueforms', ['code_number' => $event->code_number]) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                                <i class="fas fa-archive"></i>
+                                            </button>
+                                        </form>
+                                        <a href="{{ route('download-pdf', ['codeEvent' => $event->code_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </a>
+                                    </div>
+
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
     @endsection
 
     @section('script')
