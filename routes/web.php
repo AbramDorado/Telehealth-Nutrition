@@ -18,13 +18,13 @@ use App\Http\Controllers\ExcelController;
 Route::get('/', function () {
     return view('auth/login');
 })->name('welcome');
-Route::get('attended/{user_id}', '\App\Https\Controllers\AttendanceController@attended' )->name('attended');
-Route::get('attended-before/{user_id}', '\App\Https\Controllers\AttendanceController@attendedBefore' )->name('attendedBefore');
+Route::get('attended/{user_id}', '\App\Http\Controllers\AttendanceController@attended' )->name('attended');
+Route::get('attended-before/{user_id}', '\App\Http\Controllers\AttendanceController@attendedBefore' )->name('attendedBefore');
 Auth::routes(['register' => false, 'reset' => false]);
 
 Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function () {
 
-    Route::get('/admin', '\App\Https\Controllers\AdminController@index')->name('admin');
+    Route::get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
 });
 
 Route::get('/codeblueforms', function(){
@@ -98,9 +98,9 @@ Route::get('/edit/{id}', [FlowsheetController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [FlowsheetController::class, 'update'])->name('update');
 Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
 // Route::post('/store', [FlowsheetController::class, 'store'])->name('store_flowsheet');
-Route::get('/codeblueforms', '\App\Https\Controllers\FormController@index')->name('includes/codeblueforms');
+Route::get('/codeblueforms', '\App\Http\Controllers\FormController@index')->name('includes/codeblueforms');
 
-Route::delete('/delete-user/{id}', '\App\Https\Controllers\UserController@deleteUser')->name('delete_user');
+Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
 
 Route::get('/codeblueforms/{patient_pin}/{code_number}/view', [FormController::class, 'viewCodeBlue'])->name('view_codeblueforms');
@@ -109,7 +109,7 @@ Route::post('/codeblueforms/{code_number}/archive', [FormController::class, 'arc
 
 
 //for achrive
-Route::get('/archived_codeblueforms', 'App\Https\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
+Route::get('/archived_codeblueforms', 'App\Http\Controllers\ArchiveController@archivedCodeBlueForms')->name('archived_codeblueforms');
 Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'unarchive'])->name('unarchive_codeblueforms');
 
 
