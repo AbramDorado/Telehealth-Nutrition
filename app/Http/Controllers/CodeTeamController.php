@@ -14,7 +14,10 @@ class CodeTeamController extends Controller
     {
         $usersController = new UserController();
         $users = $usersController->getNames();
-        return view('codeteam', compact('code_number', 'users'));
+        $codeTeam = CodeTeam::where('code_number', $code_number)
+        ->orderBy('created_at', 'desc')
+        ->first();
+        return view('codeteam', compact('code_number', 'users', 'codeTeam'));
     }
 
     public function showCodeTeamForm($code_number)
