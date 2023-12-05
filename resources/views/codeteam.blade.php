@@ -101,7 +101,7 @@
                             <select class="form-control" name="code_team_leader" id="code_team_leader" required>
                                 <option value="" disabled>Select</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}" {{ old('code_team_leader') == $user->name ? 'selected' : '' }}>
+                                    <option value="{{ $user->name }}" {{ old('code_team_leader', $codeTeam->code_team_leader) == $user->name ? 'selected' : '' }}>
                                         {{ $user->name }}
                                     </option>
                                 @endforeach
@@ -112,21 +112,22 @@
                             <label for="code_team_co_leader">Code Team Co-Leader:</label>
                             <select class="form-control" name="code_team_co_leader" id="code_team_co_Leader">
                                 <option value="" disabled>Select</option>
-                                <option value="-1" {{ old('code_team_co_leader') == -1 ? 'selected' : '' }}>None</option>
+                                <option value="-1" {{ old('code_team_co_leader', $codeTeam->code_team_co_leader) == -1 ? 'selected' : '' }}>None</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}" {{ old('code_team_co_leader') == $user->name ? 'selected' : '' }}>
+                                    <option value="{{ $user->name }}" {{ old('code_team_co_leader', $codeTeam->code_team_co_leader) == $user->name ? 'selected' : '' }}>
                                         {{ $user->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
+
                         <div class="form-group">
                             <label for="recorder">Recorder:</label>
                             <select class="form-control" name="recorder" id="recorder" required>
                                 <option value="" disabled>Select</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}" {{ old('recorder') == $user->name ? 'selected' : '' }}>
+                                    <option value="{{ $user->name }}" {{ old('recorder', $codeTeam->recorder) == $user->name ? 'selected' : '' }}>
                                         {{ $user->name }}
                                     </option>
                                 @endforeach
@@ -139,16 +140,19 @@
                                 <button type="button" class="btn btn-danger mr-2" id="remove_member">-</button>
                                 <button type="button" class="btn btn-success mr-2" id="add_member">+</button>
                                 <label for="num_members" class="mr-2">Number of Members:</label>
-                                <input type="number" class="form-control mr-2" id="num_members" name="num_members" value="{{ old('num_members', 1) }}" min="1" max="15">
+                                <input type="number" class="form-control mr-2" id="num_members" name="num_members" value="{{ old('num_members', $codeTeam->num_members) }}" min="1" max="15">
                             </div>
                             <div id="code_team_member_container" class="mt-2">
                                 <!-- Initial dropdown field -->
-                                @for ($i = 1; $i <= old('num_members', 1); $i++)
+                                @php
+                                    $numMembers = old('num_members', $codeTeam->num_members);
+                                @endphp
+                                @for ($i = 1; $i <= $numMembers; $i++)
                                     <div class="form-group">
                                         <select class="form-control" name="code_team_member[]" id="user{{ $i }}">
-                                            <option value="" disabled {{ old('code_team_member.' . ($i - 1)) ? '' : 'selected' }}>Select</option>
+                                            <option value="" disabled {{ !old('code_team_member.' . ($i - 1)) ? 'selected' : '' }}>Select</option>
                                             @foreach($users as $user)
-                                                <option value="{{ $user->name }}" {{ old('code_team_member.' . ($i - 1)) == $user->name ? 'selected' : '' }}>
+                                                <option value="{{ $user->name }}" {{ old('code_team_member.' . ($i - 1), isset($codeTeam->code_team_member[$i - 1]) ? $codeTeam->code_team_member[$i - 1] : '') == $user->name ? 'selected' : '' }}>
                                                     {{ $user->name }}
                                                 </option>
                                             @endforeach
@@ -158,18 +162,20 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label for="intubated_by">Intubated by:</label>
                             <select class="form-control" name="intubated_by" id="intubated_by">
                                 <option value="" disabled>Select</option>
-                                <option value="-1" {{ old('intubated_by') == -1 ? 'selected' : '' }}>None</option>
+                                <option value="-1" {{ old('intubated_by', $codeTeam->intubated_by) == -1 ? 'selected' : '' }}>None</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}" {{ old('intubated_by') == $user->name ? 'selected' : '' }}>
+                                    <option value="{{ $user->name }}" {{ old('intubated_by', $codeTeam->intubated_by) == $user->name ? 'selected' : '' }}>
                                         {{ $user->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
 </form>
                     

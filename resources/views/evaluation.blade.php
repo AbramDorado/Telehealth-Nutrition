@@ -280,7 +280,7 @@
                                             <tr>
                                                 <td>Others</td>
                                                 <td>
-                                                    <textarea name="question3_14" placeholder="Enter details"></textarea>
+                                                    <textarea name="question3_14" placeholder="Enter details">{{ old('question3_14', optional($questions ?? '')->question3_14 ?? '') }}</textarea>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -342,10 +342,12 @@
                         </div>
 
                         <div class="card mb-4">
-                        <div class="form-group">
-                                    <label for="question7_explanation">Other Remarks:</label>
-                                    <textarea class="form-control" name="question7_explanation">{{ old('question7_explanation', optional($questions ?? '')->question7_explanation ?? '') }}</textarea>
+                            <div class="form-group">
+                                <label for="question7">Other Remarks:</label>
+                                <textarea class="form-control" name="question7">{{ old('question7', optional($questions ?? '')->question7 ?? '') }}</textarea>
+                            </div>
                         </div>
+
 
                         <form action="{{ url('/store_codeteam') }}" method="post">
                     @csrf 
