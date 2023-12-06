@@ -83,13 +83,16 @@
 </div>
             
 <div class="fixed-header">
-    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+    <a class="btn btn-secondary main-info-btn" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a class="btn btn-secondary initial-resuscitation-btn" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}" disabled>Initial Resuscitation</a>
+    <a class="btn btn-secondary flowsheet-btn" href="{{ route('flowsheet', ['code_number' => $code_number]) }}" disabled>Flowsheet</a>
+    <!-- Add additional buttons below -->
+    <a class="btn btn-secondary outcome-btn" href="{{ route('outcome', ['code_number' => $code_number]) }}" disabled>Outcome of the Code</a>
+    <a class="btn btn-secondary evaluation-btn" href="{{ route('evaluation', ['code_number' => $code_number]) }}" disabled>Debriefing and Evaluation</a>
+    <a class="btn btn-secondary code-team-btn" href="{{ route('codeteam', ['code_number' => $code_number]) }}" disabled>Code Team</a>
+    <!-- Add more buttons if needed -->
 </div>
+
 
 
 
@@ -407,38 +410,35 @@
                     }
                 });
             });
+
         });
     </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const patientPin = document.getElementById("patient_pin");
+    $(document).ready(function () {
+        // Initially, disable all buttons except the main info button
+        $('.fixed-header a.btn').not('.main-info-btn').attr('disabled', 'disabled');
 
-        // Get all buttons with the data-disabled attribute
-        const buttons = document.querySelectorAll('[data-disabled]');
+        // Function to enable/disable buttons based on the patient PIN field
+        function toggleButtons() {
+            var pinValue = $('#patient_pin').val().trim();
 
-        // Loop through each button and disable/enable based on the presence of patient_pin
-        buttons.forEach(function (button) {
-            const isDisabled = button.getAttribute('data-disabled') === 'true';
-
-            if (isDisabled && patientPin === '') {
-                button.classList.add('disabled');
-                button.setAttribute('aria-disabled', 'true');
-                button.setAttribute('tabindex', '-1');
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                });
+            // Enable/disable buttons based on the patient PIN input
+            if (pinValue !== '') {
+                $('.fixed-header a.btn').removeAttr('disabled');
             } else {
-                button.classList.remove('disabled');
-                button.removeAttribute('aria-disabled');
-                button.removeAttribute('tabindex');
-                button.removeEventListener('click', function (event) {
-                    event.preventDefault();
-                });
+                $('.fixed-header a.btn').not('.main-info-btn').attr('disabled', 'disabled');
             }
+        }
+
+        // Listen for input changes in the patient PIN field
+        $('#patient_pin').on('input', function () {
+            toggleButtons(); // Toggle button states on input changes
         });
+
+        // Trigger initial button state on page load
+        toggleButtons();
     });
 </script>
-
 
 @endsection
