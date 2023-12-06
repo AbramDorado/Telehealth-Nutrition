@@ -83,13 +83,13 @@
 </div>
             
 <div class="fixed-header">
-    <a class="btn btn-secondary main-info-btn" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="btn btn-secondary initial-resuscitation-btn" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}" disabled>Initial Resuscitation</a>
-    <a class="btn btn-secondary flowsheet-btn" href="{{ route('flowsheet', ['code_number' => $code_number]) }}" disabled>Flowsheet</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
+    <a id="initialResuscitationBtn" class="btn btn-secondary disabled" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}" >Initial Resuscitation</a>
+    <a id="flowsheetBtn" class="btn btn-secondary disabled" href="{{ route('flowsheet', ['code_number' => $code_number]) }}" >Flowsheet</a>
     <!-- Add additional buttons below -->
-    <a class="btn btn-secondary outcome-btn" href="{{ route('outcome', ['code_number' => $code_number]) }}" disabled>Outcome of the Code</a>
-    <a class="btn btn-secondary evaluation-btn" href="{{ route('evaluation', ['code_number' => $code_number]) }}" disabled>Debriefing and Evaluation</a>
-    <a class="btn btn-secondary code-team-btn" href="{{ route('codeteam', ['code_number' => $code_number]) }}" disabled>Code Team</a>
+    <a id="outcomeBtn" class="btn btn-secondary disabled" href="{{ route('outcome', ['code_number' => $code_number]) }}" >Outcome of the Code</a>
+    <a id="evaluationBtn" class="btn btn-secondary disabled" href="{{ route('evaluation', ['code_number' => $code_number]) }}" >Debriefing and Evaluation</a>
+    <a id="codeteamBtn" class="btn btn-secondary disabled" href="{{ route('codeteam', ['code_number' => $code_number]) }}" >Code Team</a>
     <!-- Add more buttons if needed -->
 </div>
 
@@ -411,34 +411,19 @@
                 });
             });
 
-        });
+                });
     </script>
 
 <script>
-    $(document).ready(function () {
-        // Initially, disable all buttons except the main info button
-        $('.fixed-header a.btn').not('.main-info-btn').attr('disabled', 'disabled');
+$(document).ready(function() {
+    // Check if the patient PIN exists
+    var patientPIN = "{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}";
 
-        // Function to enable/disable buttons based on the patient PIN field
-        function toggleButtons() {
-            var pinValue = $('#patient_pin').val().trim();
-
-            // Enable/disable buttons based on the patient PIN input
-            if (pinValue !== '') {
-                $('.fixed-header a.btn').removeAttr('disabled');
-            } else {
-                $('.fixed-header a.btn').not('.main-info-btn').attr('disabled', 'disabled');
-            }
-        }
-
-        // Listen for input changes in the patient PIN field
-        $('#patient_pin').on('input', function () {
-            toggleButtons(); // Toggle button states on input changes
-        });
-
-        // Trigger initial button state on page load
-        toggleButtons();
-    });
+    if (patientPIN !== '') {
+        // If patient PIN exists, enable buttons
+        $("#initialResuscitationBtn, #flowsheetBtn, #outcomeBtn, #evaluationBtn, #codeteamBtn").removeClass('disabled');
+    }
+});
 </script>
 
 @endsection
