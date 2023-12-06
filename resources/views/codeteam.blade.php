@@ -137,9 +137,7 @@
                         <div class="form-group">
                             <label for="code_team_member">Code Team Member:</label>
                             <div class="form-inline mt-2">
-                                <button type="button" class="btn btn-danger mr-2" id="remove_member">-</button>
-                                <button type="button" class="btn btn-success mr-2" id="add_member">+</button>
-                                <label for="num_members" class="mr-2">Number of Members:</label>
+                                <label for="num_members" class="mr-2" style="color: #AAAAAA;">Number of Members:</label>
                                 <input type="number" class="form-control mr-2" id="num_members" name="num_members" value="{{ isset($codeTeam) && old('num_members', $codeTeam->num_members) }}" min="1" max="15">
                             </div>
                             <div id="code_team_member_container" class="mt-2">
@@ -190,55 +188,12 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var container = document.getElementById('code_team_member_container');
-    var addButton = document.getElementById('add_member');
-    var removeButton = document.getElementById('remove_member');
     var numMembersInput = document.getElementById('num_members');
 
     var maxFields = 12; // Set the maximum number of fields
 
-    var counter = 1;
-
-    addButton.addEventListener('click', function () {
-        if (counter < maxFields) {
-            addDropdowns(1);
-            counter++;
-        } else {
-            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-        }
-    });
-
-    removeButton.addEventListener('click', function () {
-        if (counter > 1) {
-            removeDropdowns(1);
-            counter--;
-        }
-    });
-
-    numMembersInput.addEventListener('change', function () {
-        var numMembers = parseInt(numMembersInput.value);
-        if (numMembers < 1) {
-            numMembersInput.value = 1;
-        } else if (numMembers > maxFields) {
-            numMembersInput.value = maxFields;
-            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-        }
-
-        // Update dropdowns to match the desired count
-        updateDropdowns(numMembers);
-    });
-
-    numMembersInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            var numMembers = parseInt(numMembersInput.value);
-            if (numMembers > 0 && numMembers <= maxFields) {
-                updateDropdowns(numMembers);
-            } else if (numMembers > maxFields) {
-                numMembersInput.value = maxFields;
-                alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-            }
-        }
-    });
+    // Ensure that there's at least one dropdown field initially
+    addDropdowns(1);
 
     function addDropdowns(num) {
         for (var i = 0; i < num; i++) {
@@ -248,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var selectDropdown = document.createElement('select');
             selectDropdown.className = 'form-control';
             selectDropdown.name = 'code_team_member[]';
-            selectDropdown.id = 'user' + counter;
+            selectDropdown.id = 'user' + (container.children.length + 1);
 
             var defaultOption = document.createElement('option');
             defaultOption.value = '';
@@ -284,17 +239,47 @@ document.addEventListener('DOMContentLoaded', function () {
         numMembersInput.value = num;
 
         // Remove excess dropdowns
-        while (counter > num) {
+        while (container.children.length > num) {
             removeDropdowns(1);
-            counter--;
         }
 
         // Add or update dropdowns to match the desired count
-        while (counter < num) {
+        for (var i = container.children.length + 1; i <= num; i++) {
             addDropdowns(1);
-            counter++;
         }
     }
+
+    // Set the initial value of the "Number of Members" text box to 1
+    numMembersInput.value = 1;
+
+    numMembersInput.addEventListener('change', function () {
+        var numMembers = parseInt(numMembersInput.value);
+        if (numMembers < 1) {
+            numMembersInput.value = 1;
+        } else if (numMembers > maxFields) {
+            numMembersInput.value = maxFields;
+            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+        }
+
+        // Update dropdowns to match the desired count
+        updateDropdowns(numMembers);
+    });
+
+    numMembersInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            var numMembers = parseInt(numMembersInput.value);
+            if (numMembers > 0 && numMembers <= maxFields) {
+                updateDropdowns(numMembers);
+            } else if (numMembers > maxFields) {
+                numMembersInput.value = maxFields;
+                alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+            }
+        }
+    });
+
+    // Initial update based on the existing number of members
+    updateDropdowns(parseInt(numMembersInput.value));
 });
 
 </script>
