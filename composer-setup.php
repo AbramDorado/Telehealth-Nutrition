@@ -1326,10 +1326,16 @@ class NoProxyPattern
         }
 
         if (strpos($url, 'http://') === 0) {
-            $port = 80;
-        } else {
+            $url = 'https://' . substr($url, 7);
             $port = 443;
+        } elseif (strpos($url, 'https://') !== false) {
+            // The URL already has the HTTPS scheme
+            $port = 443;
+        } else {
+            // Handle other cases if needed
+            $port = 80; // Default to port 80 for HTTP
         }
+        
 
         return in_array($port, $this->rulePorts);
     }
@@ -1527,10 +1533,16 @@ class HttpClient {
             if (isset($proxy['port'])) {
                 $proxyURL .= ":" . $proxy['port'];
             } elseif (strpos($proxyURL, 'http://') === 0) {
-                $proxyURL .= ":80";
+                $defaultPort = 80;
             } elseif (strpos($proxyURL, 'https://') === 0) {
-                $proxyURL .= ":443";
+                $defaultPort = 443;
             }
+            
+            // Append default port only if not already present
+            if (isset($defaultPort) && strpos($proxyURL, ':') === false) {
+                $proxyURL .= ":" . $defaultPort;
+            }            
+        
 
             // check for a secure proxy
             if (strpos($proxyURL, 'https://') === 0) {
@@ -1550,7 +1562,7 @@ class HttpClient {
             );
 
             // add request_fulluri for http requests
-            if ('http' === parse_url($url, PHP_URL_SCHEME)) {
+            if ('https' === parse_url($url, PHP_URL_SCHEME)) {
                 $options['http']['request_fulluri'] = true;
             }
 
@@ -1577,6 +1589,13 @@ class HttpClient {
         $options['http']['header'] .= "User-Agent: ".COMPOSER_INSTALLER."\r\n";
         $options['http']['protocol_version'] = 1.1;
         $options['http']['timeout'] = 600;
+        
+        // Set HTTPS scheme for the request
+        if ('https' === parse_url($url, PHP_URL_SCHEME)) {
+            $options['ssl']['verify_peer'] = true;  // Enable peer verification for SSL/TLS
+            $options['ssl']['verify_peer_name'] = true;  // Enable peer name verification
+            $options['ssl']['allow_self_signed'] = false;  // Do not allow self-signed certificates
+        }        
 
         return stream_context_create($options);
     }
