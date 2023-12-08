@@ -61,7 +61,7 @@
                 <a href="/codeblueforms" class="logo">
                 <span>
                 <div class="bg-hospital-blue">
-                <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
+                <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
                 </div>
                     <!-- <h1 style="color: blue;">ERE</h1> -->
                 </span>

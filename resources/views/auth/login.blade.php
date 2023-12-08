@@ -150,7 +150,7 @@
         <div class="left-content">
         <div class="card overflow-hidden account-card mx-3">
         <div class="bg-hospital-blue">
-            <img src="assets/images/en.png" alt="enCODE Logo">
+            <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
         </div>
             <div class="account-card-content">
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
