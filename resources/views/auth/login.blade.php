@@ -153,7 +153,7 @@
             <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
         </div>
             <div class="account-card-content">
-                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+            <form class="form-horizontal" method="POST" action="{{ secure(route('login')) }}">
                     @csrf
 
                     <div class="form-group">
