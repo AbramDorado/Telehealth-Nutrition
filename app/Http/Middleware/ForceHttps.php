@@ -8,6 +8,7 @@ class ForceHttps
 {
     public function handle($request, Closure $next)
     {
+        Log::info('ForceHttps middleware is executing.');
         // Check if the request is not secure (not using HTTPS)
         if (!$request->secure()) {
             // Redirect to the HTTPS version of the URL
