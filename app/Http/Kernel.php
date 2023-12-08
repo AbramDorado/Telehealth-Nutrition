@@ -67,7 +67,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'Role' => \App\Http\Middleware\RoleMiddleware::class,
     ];
+
     protected $middlewarePriority = [
+        \App\Http\Middleware\ForceHttps::class, 
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,
@@ -75,4 +77,5 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
+    
 }
