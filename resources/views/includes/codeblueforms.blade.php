@@ -112,7 +112,10 @@
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
                                     </div>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                                     </td>
                                 </tr>
                                 @endforeach

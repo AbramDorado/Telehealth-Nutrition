@@ -18,8 +18,9 @@
         <ul class="navbar-right d-flex list-inline float-right mb-0">
             <!-- Users Dropdown in a Card -->
             <?php
-            $currentUser = Auth::user()->name; // Replace this with the actual username of the logged-in user
-            if ($currentUser === "Admin"): ?>
+            $currentUser = Auth::user();
+
+            if ($currentUser && $currentUser->name === "Admin"): ?>
                 <li class="dropdown notification-list">
                     <div class="dropdown-toggle nav-link waves-effect">
                         <a href="/users">

@@ -84,12 +84,15 @@
             
 <div class="fixed-header">
     <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
-    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
-    <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+    <a id="initialResuscitationBtn" class="btn btn-secondary disabled" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}" >Initial Resuscitation</a>
+    <a id="flowsheetBtn" class="btn btn-secondary disabled" href="{{ route('flowsheet', ['code_number' => $code_number]) }}" >Flowsheet</a>
+    <!-- Add additional buttons below -->
+    <a id="outcomeBtn" class="btn btn-secondary disabled" href="{{ route('outcome', ['code_number' => $code_number]) }}" >Outcome of the Code</a>
+    <a id="evaluationBtn" class="btn btn-secondary disabled" href="{{ route('evaluation', ['code_number' => $code_number]) }}" >Debriefing and Evaluation</a>
+    <a id="codeteamBtn" class="btn btn-secondary disabled" href="{{ route('codeteam', ['code_number' => $code_number]) }}" >Code Team</a>
+    <!-- Add more buttons if needed -->
 </div>
+
 
 
 
@@ -407,38 +410,20 @@
                     }
                 });
             });
-        });
+
+                });
     </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const patientPin = document.getElementById("patient_pin");
+$(document).ready(function() {
+    // Check if the patient PIN exists
+    var patientPIN = "{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}";
 
-        // Get all buttons with the data-disabled attribute
-        const buttons = document.querySelectorAll('[data-disabled]');
-
-        // Loop through each button and disable/enable based on the presence of patient_pin
-        buttons.forEach(function (button) {
-            const isDisabled = button.getAttribute('data-disabled') === 'true';
-
-            if (isDisabled && patientPin === '') {
-                button.classList.add('disabled');
-                button.setAttribute('aria-disabled', 'true');
-                button.setAttribute('tabindex', '-1');
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                });
-            } else {
-                button.classList.remove('disabled');
-                button.removeAttribute('aria-disabled');
-                button.removeAttribute('tabindex');
-                button.removeEventListener('click', function (event) {
-                    event.preventDefault();
-                });
-            }
-        });
-    });
+    if (patientPIN !== '') {
+        // If patient PIN exists, enable buttons
+        $("#initialResuscitationBtn, #flowsheetBtn, #outcomeBtn, #evaluationBtn, #codeteamBtn").removeClass('disabled');
+    }
+});
 </script>
-
 
 @endsection
