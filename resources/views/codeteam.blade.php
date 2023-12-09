@@ -137,20 +137,18 @@
                         <div class="form-group">
                             <label for="code_team_member">Code Team Member:</label>
                             <div class="form-inline mt-2">
+                                
                                 <label for="num_members" class="mr-2" style="color: #AAAAAA;">Number of Members:</label>
-                                <input type="number" class="form-control mr-2" id="num_members" name="num_members" value="{{ isset($codeTeam) && old('num_members', $codeTeam->num_members) }}" min="1" max="15">
+                                <input type="number" class="form-control mr-2" id="num_members" name="num_members" value="{{ old('num_members', 1) }}" min="1" max="15">
                             </div>
                             <div id="code_team_member_container" class="mt-2">
                                 <!-- Initial dropdown field -->
-                                @php
-                                    $numMembers = isset($codeTeam) && old('num_members', $codeTeam->num_members);
-                                @endphp
-                                @for ($i = 1; $i <= $numMembers; $i++)
+                                @for ($i = 1; $i <= old('num_members', 1); $i++)
                                     <div class="form-group">
                                         <select class="form-control" name="code_team_member[]" id="user{{ $i }}">
-                                            <option value="" disabled {{ isset($codeTeam) && !old('code_team_member.' . ($i - 1)) ? 'selected' : '' }}>Select</option>
+                                            <option value="" disabled {{ old('code_team_member.' . ($i - 1)) ? '' : 'selected' }}>Select</option>
                                             @foreach($users as $user)
-                                                <option value="{{ $user->name }}" {{ isset($codeTeam) && old('code_team_member.' . ($i - 1), isset($codeTeam->code_team_member[$i - 1]) ? $codeTeam->code_team_member[$i - 1] : '') == $user->name ? 'selected' : '' }}>
+                                                <option value="{{ $user->name }}" {{ old('code_team_member.' . ($i - 1)) == $user->name ? 'selected' : '' }}>
                                                     {{ $user->name }}
                                                 </option>
                                             @endforeach
@@ -189,11 +187,34 @@
 document.addEventListener('DOMContentLoaded', function () {
     var container = document.getElementById('code_team_member_container');
     var numMembersInput = document.getElementById('num_members');
-
     var maxFields = 12; // Set the maximum number of fields
+    var counter = 1;
 
-    // Ensure that there's at least one dropdown field initially
-    addDropdowns(1);
+    numMembersInput.addEventListener('change', function () {
+        var numMembers = parseInt(numMembersInput.value);
+        if (numMembers < 1) {
+            numMembersInput.value = 1;
+        } else if (numMembers > maxFields) {
+            numMembersInput.value = maxFields;
+            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+        }
+
+        // Update dropdowns to match the desired count
+        updateDropdowns(numMembers);
+    });
+
+    numMembersInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            var numMembers = parseInt(numMembersInput.value);
+            if (numMembers > 0 && numMembers <= maxFields) {
+                updateDropdowns(numMembers);
+            } else if (numMembers > maxFields) {
+                numMembersInput.value = maxFields;
+                alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
+            }
+        }
+    });
 
     function addDropdowns(num) {
         for (var i = 0; i < num; i++) {
@@ -203,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var selectDropdown = document.createElement('select');
             selectDropdown.className = 'form-control';
             selectDropdown.name = 'code_team_member[]';
-            selectDropdown.id = 'user' + (container.children.length + 1);
+            selectDropdown.id = 'user' + counter;
 
             var defaultOption = document.createElement('option');
             defaultOption.value = '';
@@ -239,49 +260,19 @@ document.addEventListener('DOMContentLoaded', function () {
         numMembersInput.value = num;
 
         // Remove excess dropdowns
-        while (container.children.length > num) {
+        while (counter > num) {
             removeDropdowns(1);
+            counter--;
         }
 
         // Add or update dropdowns to match the desired count
-        for (var i = container.children.length + 1; i <= num; i++) {
+        while (counter < num) {
             addDropdowns(1);
+            counter++;
         }
     }
-
-    // Set the initial value of the "Number of Members" text box to 1
-    numMembersInput.value = 1;
-
-    numMembersInput.addEventListener('change', function () {
-        var numMembers = parseInt(numMembersInput.value);
-        if (numMembers < 1) {
-            numMembersInput.value = 1;
-        } else if (numMembers > maxFields) {
-            numMembersInput.value = maxFields;
-            alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-        }
-
-        // Update dropdowns to match the desired count
-        updateDropdowns(numMembers);
-    });
-
-    numMembersInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            var numMembers = parseInt(numMembersInput.value);
-            if (numMembers > 0 && numMembers <= maxFields) {
-                updateDropdowns(numMembers);
-            } else if (numMembers > maxFields) {
-                numMembersInput.value = maxFields;
-                alert('Exceeds the maximum limit of ' + maxFields + ' fields.');
-            }
-        }
-    });
-
-    // Initial update based on the existing number of members
-    updateDropdowns(parseInt(numMembersInput.value));
 });
-
 </script>
+
 
 @endsection

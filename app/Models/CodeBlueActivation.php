@@ -21,7 +21,8 @@ class CodeBlueActivation extends Model
         'e-cart_arrival_dt',
         'witnessed',
         'patient_pin',
-        'is_archived'
+        'is_archived',
+        'is_finalized'
     ];
 
     public function patient()
