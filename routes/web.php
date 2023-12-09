@@ -116,6 +116,9 @@ Route::patch('/unarchive_codeblueforms/{code_number}', [FormController::class,'u
 Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
 Route::get('/download-excel', [ExcelController::class, 'export'])->name('download-excel');
 
+Route::post('/codeblueforms/{code_number}/finalize', [FormController::class, 'finalize'])->name('finalize_codeblueforms');
+
+
 Route::group(['middleware' => ['auth']], function () {
 
 
