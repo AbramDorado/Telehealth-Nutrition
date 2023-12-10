@@ -111,15 +111,18 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="patient_pin">Patient PIN:</label>
-                    <input type="text" class="form-control" name="patient_pin" id="patient_pin" value="{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}">
+                    <input type="text" class="form-control" name="patient_pin" id="patient_pin" 
+                    value="{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}"
+                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only">  
                     <div id="patientPinDropdown"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="visit_number">Patient Visit/Encounter Number:</label>
-                    <input type="text" class="form-control" name="visit_number" value="{{ old('visit_number', optional($patient ?? '')->visit_number) }}">
+                    <input type="text" class="form-control" name="visit_number" id="visit_number" 
+                    value="{{ old('visit_number', optional($patient ?? '')->visit_number) }}"
+                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only">                
                 </div>
-
                 <label for="patient_name">Patient Name:</label>
                 <div class="row">
                     <div class="col-md-6">
@@ -151,7 +154,7 @@
 
                 <div class="form-group">
                     <label for="birthday">Date of Birth:</label>
-                    <input type="date" class="form-control" name="birthday" value="{{ old('birthday', optional($patient ?? '')->birthday) }}">
+                    <input type="date" class="form-control" name="birthday" value="{{ old('birthday', optional($patient ?? '')->birthday) }}" oninput="calculateAge()">
                 </div>
             </div>
 
@@ -182,14 +185,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="height">Height (cm):</label>
-                            <input type="number" class="form-control" name="height" value="{{ old('height', optional($patient ?? '')->height) }}">
+                            <input type="text" class="form-control" name="height" pattern="\d+(\.\d{1})?" title="Please enter a valid decimal number with one decimal place" value="{{ old('height', optional($patient ?? '')->height) }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="weight">Weight (kg):</label>
-                            <input type="number" class="form-control" name="weight" value="{{ old('weight', optional($patient ?? '')->weight) }}">
+                            <input type="text" class="form-control" name="weight" pattern="\d+(\.\d{1})?" title="Please enter a valid decimal number with one decimal place" value="{{ old('weight', optional($patient ?? '')->weight) }}">
                         </div>
                     </div>
                 </div>
@@ -426,4 +429,31 @@ $(document).ready(function() {
 });
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('[name="birthday"]').on('blur change', function() {
+            calculateAge();
+        });
+
+        function calculateAge() {
+            var birthdayInput = $('[name="birthday"]').val();
+            var ageInput = $('[name="age"]');
+
+            if (birthdayInput) {
+                var dob = new Date(birthdayInput);
+                var today = new Date();
+
+                var age = today.getFullYear() - dob.getFullYear();
+
+                if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                ageInput.val(age);
+            } else {
+                ageInput.val('');
+            }
+        }
+    });
+</script>
 @endsection

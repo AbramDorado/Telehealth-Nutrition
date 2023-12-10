@@ -1392,7 +1392,8 @@
   border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
   height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$codeTeam->code_team_co_leader ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{ $codeTeam->code_team_co_leader == -1 ? '---' : $codeTeam->code_team_co_leader ?? '---' }}
+</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
@@ -1432,7 +1433,7 @@
   border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
   height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$codeTeam->intubated_by ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{ $codeTeam->intubated_by == -1 ? '---' : $codeTeam->intubated_by ?? '---' }}</span></p>
   </td>
  </tr>
 </table>

@@ -20,7 +20,7 @@ class CreateInitialResuscitationsTable extends Migration
             $table->string('ventilation')->nullable();
             $table->text('other_ventilation')->nullable();
             $table->dateTime('intubation_dt')->nullable();
-            $table->unsignedInteger('et_tube_size')->nullable();
+            $table->decimal('et_tube_size', 3, 1)->nullable();
             $table->unsignedInteger('intubation_attempts')->nullable();
             $table->json('et_tube_information')->nullable();
             $table->text('first_documented_rhythm_dt')->nullable();
