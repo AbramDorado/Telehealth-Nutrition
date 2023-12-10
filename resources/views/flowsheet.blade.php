@@ -638,7 +638,7 @@ function fetchAndFillTable() {
         });
     } else {
         console.error('Invalid or missing data for populating the table.');
-    }
+    } 
     }
 
     function deleteRow(id) {
@@ -653,6 +653,8 @@ function fetchAndFillTable() {
                 console.log('Delete request successful:', response);
                 
                 $('#flowsheetTableBody tr[data-id="' + id + '"]').remove();
+                $('#tableModal').modal('hide');
+                
             },
             error: function (error) {
                 console.error('Error deleting row:', error);
@@ -660,6 +662,7 @@ function fetchAndFillTable() {
         });
     }
 }
+
 
 
     function editRow(id) {
@@ -679,6 +682,7 @@ function fetchAndFillTable() {
             error: function (error) {
                 console.error('Error fetching flowsheet data for edit:', error);
             }
+
         });
     }
 
@@ -738,10 +742,11 @@ function fetchAndFillTable() {
             } else {
                 // If it's a new entry, submit the form normally
                 submitFormNormally(action);
-            }
+            } 
         } else {
             console.error("Code Number not found in the form action");
         }
+        
     });
 
     function updateEntryWithAjax(action) {
@@ -751,7 +756,6 @@ function fetchAndFillTable() {
     method: 'PUT',  // Ensure this is set to PUT
     data: $('#baseForm').serialize(),
     success: function (response) {
-        // Handle success
     },
     error: function (error) {
         console.error('Error updating flowsheet entry:', error);
