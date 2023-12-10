@@ -23,8 +23,8 @@ class CreatePatientsTable extends Migration
             $table->date('birthday')->default(date("Y-m-d"))->nullable();
             $table->unsignedInteger('age')->nullable();
             $table->string('sex')->nullable();
-            $table->double('height')->nullable();
-            $table->double('weight')->nullable();
+            $table->decimal('height', 5, 1)->nullable();
+            $table->decimal('weight', 5, 1)->nullable();
             $table->text('allergies')->nullable();
             $table->string('location')->nullable();
 

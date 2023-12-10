@@ -15,17 +15,17 @@ use App\Models\CodeTeam;
 class PdfController extends Controller
 {
     public function download($code_number) {
-        $event = CodeBlueActivation::with('patient')->where('code_number', $code_number)->firstOrFail();
+        $event = CodeBlueActivation::with('patient')->where('code_number', $code_number)->first();
 
-        $initialResuscitation = InitialResuscitation::where('code_number', $event->code_number)->firstOrFail();
+        $initialResuscitation = InitialResuscitation::where('code_number', $event->code_number)->first();
          
         $flowsheet = Flowsheet::where('code_number', $event->code_number)->distinct()->get();
         
-        $outcome = Outcome::where('code_number', $event->code_number)->firstOrFail();
+        $outcome = Outcome::where('code_number', $event->code_number)->first();
 
-        $evaluation = Evaluation::where('code_number', $event->code_number)->firstOrFail();
+        $evaluation = Evaluation::where('code_number', $event->code_number)->first();
 
-        $codeTeam = CodeTeam::where('code_number', $event->code_number)->firstOrFail();
+        $codeTeam = CodeTeam::where('code_number', $event->code_number)->first();
 
         $pdf = PDF::loadView('pdf', ['event' => $event, 'initialResuscitation' => $initialResuscitation, 'flowsheet' => $flowsheet, 'outcome' => $outcome, 'evaluation' => $evaluation, 'codeTeam' => $codeTeam]);
 

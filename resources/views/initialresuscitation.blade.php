@@ -146,7 +146,9 @@
                         
                     <div class="form-group">
                         <label for="et_tube_size">ET Tube Size:</label>
-                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" value="{{ $initialResuscitation ?? ''->et_tube_size ?? old('et_tube_size') }}">
+                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" 
+                        value="{{ $initialResuscitation ?? ''->et_tube_size ?? old('et_tube_size') }}"
+                        step="0.1" min="0.0" max="11.0">
                     </div>
 
                     <div class="form-group">
