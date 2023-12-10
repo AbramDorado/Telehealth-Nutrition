@@ -151,9 +151,15 @@
                                                 <td>IV Supplies</td>
                                                 <td>
                                                     <select name="question3_1">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_1', optional($questions ?? '')->question3_1 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -161,9 +167,15 @@
                                                 <td>Central Line Kit</td>
                                                 <td>
                                                     <select name="question3_2">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_2', optional($questions ?? '')->question3_2 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -171,9 +183,15 @@
                                                 <td>Suction</td>
                                                 <td>
                                                     <select name="question3_3">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_3', optional($questions ?? '')->question3_3 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -181,9 +199,15 @@
                                                 <td>Medications</td>
                                                 <td>
                                                     <select name="question3_4">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_4', optional($questions ?? '')->question3_4 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -191,9 +215,15 @@
                                                 <td>ECG monitor</td>
                                                 <td>
                                                     <select name="question3_5">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_5', optional($questions ?? '')->question3_5 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -201,9 +231,15 @@
                                                 <td>Defibrillator</td>
                                                 <td>
                                                     <select name="question3_6">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_6', optional($questions ?? '')->question3_6 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -211,9 +247,15 @@
                                                 <td>External pacemaker</td>
                                                 <td>
                                                     <select name="question3_7">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_7', optional($questions ?? '')->question3_7 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -221,9 +263,15 @@
                                                 <td>Pacing or defibrillator pad</td>
                                                 <td>
                                                     <select name="question3_8">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_8', optional($questions ?? '')->question3_8 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -231,9 +279,15 @@
                                                 <td>Intubation supplies</td>
                                                 <td>
                                                     <select name="question3_9">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_9', optional($questions ?? '')->question3_9 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -241,9 +295,15 @@
                                                 <td>Bag-Valve mask</td>
                                                 <td>
                                                     <select name="question3_10">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_10', optional($questions ?? '')->question3_10 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -251,9 +311,15 @@
                                                 <td>Oxygen supplies</td>
                                                 <td>
                                                     <select name="question3_11">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_11', optional($questions ?? '')->question3_11 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -261,9 +327,15 @@
                                                 <td>Laboratory results</td>
                                                 <td>
                                                     <select name="question3_12">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_12', optional($questions ?? '')->question3_12 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -271,9 +343,15 @@
                                                 <td>Chest x-ray</td>
                                                 <td>
                                                     <select name="question3_13">
-                                                        <option value="No problem encountered">No problem encountered</option>
-                                                        <option value="Absent">Absent</option>
-                                                        <option value="Malfunctioning">Malfunctioning</option>
+                                                    @php
+                                                        $selectedOption = old('question3_13', optional($questions ?? '')->question3_13 ?? ''); 
+                                                    @endphp
+
+                                                    @foreach(['No problem encountered', 'Absent', 'Malfunctioning'] as $option)
+                                                        <option value="{{ $option }}" {{ $selectedOption === $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
@@ -365,70 +443,128 @@ document.addEventListener("DOMContentLoaded", function () {
     const question2explanationBox = document.getElementById("question2_1");
     const question3Yes = document.getElementById("question3_yes");
     const question3No = document.getElementById("question3_no");
+    const question3Details = document.getElementById("question3_details");
     const question4Yes = document.getElementById("question4_yes");
     const question4No = document.getElementById("question4_no");
+    const question4explanationBox = document.getElementById("question4_1");
     const question5Yes = document.getElementById("question5_yes");
     const question5No = document.getElementById("question5_no");
-    const question3Details = document.getElementById("question3_details");
-    const question4explanationBox = document.getElementById("question4_1");
     const question5explanationBox = document.getElementById("question5_1");
 
-    question2Yes.addEventListener("change", function () {
-        if (question2Yes.checked) {
-            question2explanationBox.style.display = "block";
-        } else {
-            question2explanationBox.style.display = "none";
-        }
-    });
-
     question2No.addEventListener("change", function () {
-        if (question2No.checked) {
-            question2explanationBox.style.display = "none";
-        }
+        setLocalStorageItem(question2No.id, question2No.checked);
+        question2explanationBox.style.display = question2No.checked ? "none" : "block";
     });
 
-    question3Yes.addEventListener("change", function () {
-        if (question3Yes.checked) {
-            question3Details.style.display = "block";
-        } else {
-            question3Details.style.display = "none";
-        }
+    question2Yes.addEventListener("change", function () {
+        setLocalStorageItem(question2Yes.id, question2Yes.checked);
+        question2explanationBox.style.display = question2Yes.checked ? "block" : "none";
     });
 
     question3No.addEventListener("change", function () {
-        if (question3No.checked) {
-            question3Details.style.display = "none";
-        }
+        setLocalStorageItem(question3No.id, question3No.checked);
+        question3Details.style.display = question3No.checked ? "none" : "block";
     });
 
-    question4No.addEventListener("change", function () {
-        if (question4No.checked) {
-            question4explanationBox.style.display = "block";
-        } else {
-            question4explanationBox.style.display = "none";
-        }
+    question3Yes.addEventListener("change", function () {
+        setLocalStorageItem(question3Yes.id, question3Yes.checked);
+        question3Details.style.display = question3Yes.checked ? "block" : "none";
     });
 
     question4Yes.addEventListener("change", function () {
-        if (question4Yes.checked) {
-            question4explanationBox.style.display = "none";
-        }
+        setLocalStorageItem(question4Yes.id, question4Yes.checked);
+        question4explanationBox.style.display = question4Yes.checked ? "none" : "block";
+    });
+
+    question4No.addEventListener("change", function () {
+        setLocalStorageItem(question4No.id, question4No.checked);
+        question4explanationBox.style.display = question4No.checked ? "block" : "none";
     });
 
     question5Yes.addEventListener("change", function () {
-        if (question5Yes.checked) {
-            question5explanationBox.style.display = "block";
-        } else {
-            question5explanationBox.style.display = "none";
-        }
+        setLocalStorageItem(question5Yes.id, question5Yes.checked);
+        question5explanationBox.style.display = question5Yes.checked ? "block" : "none";
     });
 
     question5No.addEventListener("change", function () {
-        if (question5No.checked) {
-            question5explanationBox.style.display = "none";
-        }
+        setLocalStorageItem(question5No.id, question5No.checked);
+        question5explanationBox.style.display = question5No.checked ? "none" : "block";
     });
+
+    function setLocalStorageItem(item, value) {
+    console.log(`Item: ${item}, Value: ${value}`);
+    localStorage.setItem(item, value);
+}
+
+
+    function getLocalStorageItem(item) {
+        console.log(`Item: ${item}`);
+        return item;
+    }
+
+    function handleCheckboxState(checkbox, explanationBox) {
+    console.log(`checkbox: ${checkbox}`);
+    console.log(`checkbox.checked: ${checkbox.checked}`);
+        const isChecked = getLocalStorageItem(checkbox.id);
+         console.log(`checkbox.id: ${getLocalStorageItem(checkbox.id)}`);
+         if ( checkbox.checked === true) {    
+            console.log(`yey`);
+            explanationBox.style.display = "block";
+        } else {
+            explanationBox.style.display = "none";
+        }
+        console.log(`explanationBox.style.display: ${explanationBox.style.display}`);
+    }
+
+    handleCheckboxState(question2Yes, question2explanationBox);
+    // handleCheckboxState(question2No, question2explanationBox);
+    handleCheckboxState(question3Yes, question3Details);
+    // handleCheckboxState(question3No, question3Details);
+    // handleCheckboxState(question4Yes, question4explanationBox);
+    handleCheckboxState(question4No, question4explanationBox);
+    handleCheckboxState(question5Yes, question5explanationBox);
+    // handleCheckboxState(question5No, question5explanationBox);
 });
+
 </script>
+<!-- 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleVisibility = (element, targetElement, showCondition) => {
+            element.addEventListener("change", function () {
+                if (element.checked && showCondition) {
+                    targetElement.style.display = "block";
+                } else {
+                    targetElement.style.display = "none";
+                }
+            });
+        };
+
+        const question2Yes = document.getElementById("question2_yes");
+        const question2No = document.getElementById("question2_no");
+        const question2explanationBox = document.getElementById("question2_1");
+
+        toggleVisibility(question2Yes, question2explanationBox, true);
+        toggleVisibility(question2No, question2explanationBox, false);
+
+        const question3Yes = document.getElementById("question3_yes");
+        const question3No = document.getElementById("question3_no");
+        const question3Details = document.getElementById("question3_details");
+        toggleVisibility(question3Yes, question3Details, true);
+        toggleVisibility(question3No, question3Details, false);
+
+        const question4Yes = document.getElementById("question4_yes");
+        const question4No = document.getElementById("question4_no");
+        const question4explanationBox = document.getElementById("question4_1");
+        toggleVisibility(question4Yes, question4explanationBox, false);
+        toggleVisibility(question4No, question4explanationBox, true);
+
+        const question5Yes = document.getElementById("question5_yes");
+        const question5No = document.getElementById("question5_no");
+        const question5explanationBox = document.getElementById("question5_1");
+        toggleVisibility(question5Yes, question5explanationBox, true);
+        toggleVisibility(question5No, question5explanationBox, false);
+    });
+</script> -->
 
 @endsection

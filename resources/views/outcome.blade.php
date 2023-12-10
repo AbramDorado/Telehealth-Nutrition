@@ -55,6 +55,7 @@
   ?
 </button>
 
+
 <!-- Modal -->
 <div class="modal fade" id="jumbotronModal" tabindex="-1" role="dialog" aria-labelledby="jumbotronModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -162,24 +163,30 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const outcomeSelect = document.getElementById("outcome");
-    const deathDtField = document.getElementById("death_dt");
-    const survivedFields = document.getElementById("survived_fields");
+    document.addEventListener("DOMContentLoaded", function () {
+        const outcomeSelect = document.getElementById("outcome");
+        const deathDtField = document.getElementById("death_dt");
+        const survivedFields = document.getElementById("survived_fields");
 
-    outcomeSelect.addEventListener("change", function () {
-        if (outcomeSelect.value === "Died - efforts terminated; no sustained return of circulation" || outcomeSelect.value === "Died - with Advanced Directives/DNR in place") {
-            deathDtField.style.display = "block";
-            survivedFields.style.display = "none";
-        } else if (outcomeSelect.value === "Survived - Return of Spontaneous Circulation") {
-            deathDtField.style.display = "none";
-            survivedFields.style.display = "block";
-        } else {
-            deathDtField.style.display = "none";
-            survivedFields.style.display = "none";
+        function toggleFields() {
+            const selectedOutcome = outcomeSelect.value;
+
+            if (selectedOutcome === "Died - efforts terminated; no sustained return of circulation" || selectedOutcome === "Died - with Advanced Directives/DNR in place") {
+                deathDtField.style.display = "block";
+                survivedFields.style.display = "none";
+            } else if (selectedOutcome === "Survived - Return of Spontaneous Circulation") {
+                deathDtField.style.display = "none";
+                survivedFields.style.display = "block";
+            } else {
+                deathDtField.style.display = "none";
+                survivedFields.style.display = "none";
+            }
         }
+
+        toggleFields(); // Initial toggle based on selected outcome
+
+        outcomeSelect.addEventListener("change", toggleFields); // Event listener for outcome select change
     });
-});
 </script>
 
 @endsection

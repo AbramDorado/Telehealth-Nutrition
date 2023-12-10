@@ -292,7 +292,7 @@
                                     <tr>
                                     <tr>
                                         <th>Blood Pressure, Systolic:</th>
-                                        <td>{{ $flowsheet->bp_systolic }}</td>
+                                        <td>{{ $flowsheet->bp_systolic ?? 'N/A'  }}</td>
                                     </tr>
                                     <tr>
                                         <th>Blood Pressure, Diastolic:</th>
@@ -500,24 +500,41 @@
                             <tr>
                                 <th>Question 2:
                                 <p>Was there any problem with the response time of the team?</p></th>
-                                <td>{{ $evaluation->question2 ?? 'N/A'  }}</td>
+                                <td>{{ $evaluation->question2 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question2_1 ?? 'N/A'  }}</td>
                             </tr>
                             <tr>
                             <tr>
                                 <th>Question 3:
                                 <p>Were there any problems with equipment, supplies, or tests?</p></th>
-                                <td>{{ $evaluation->question3 ?? 'N/A'  }}</td>
+                                <td>{{ $evaluation->question3 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_1 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_2 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_3 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_4 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_5 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_6 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_7 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_8 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_9 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_10 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_11 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_12 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_13 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question3_14 ?? 'N/A'  }}
+                            </td>
                             </tr>
                             <tr>
                                 <th>Question 4:
                                 <p>Were policies and procedures followed?</p></th>
                                 <td>{{ $evaluation->question4 ?? 'N/A'  }}<br>
-                                {{ $evaluation->question4_explanation ?? 'N/A'  }}</td>
+                                {{ $evaluation->question4_1 ?? 'N/A'  }}</td>
                             </tr>
                             <tr>
                                 <th>Question 5:
                                 <p>Were there any problems during the code?</p></th>
-                                <td>{{ $evaluation->question5 ?? 'N/A'  }}</td>
+                                <td>{{ $evaluation->question5 ?? 'N/A'  }}<br>
+                                {{ $evaluation->question5_1 ?? 'N/A'  }}</td>
                             </tr>
                             <tr>
                                 <th>Question 6:
