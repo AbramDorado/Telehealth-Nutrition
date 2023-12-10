@@ -180,7 +180,7 @@
             <div class="col-md-6">
                 <!-- First Column -->
                     <div class="form-group">
-                        <label for="first_documented_rhythm_dt">1st Documented Rhythm:</label>
+                        <label for="first_documented_rhythm_dt">Comments/Remarks:</label>
                         <textarea class="form-control" name="first_documented_rhythm_dt">{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '')->first_documented_rhythm_dt ?? '') }}</textarea>
                     </div>
 
@@ -251,15 +251,21 @@
     const othersText = document.getElementById('othersText'); 
     const otherVentilationInput = document.getElementById('other_ventilation');
 
-    ventilationSelect.addEventListener('change', function() {
-        if (ventilationSelect.value === 'Others') {
-            othersText.style.display = 'block';
-            otherVentilationInput.required = true;
-        } else {
-            othersText.style.display = 'none';
-            otherVentilationInput.required = false;
+        function toggleFields() {
+            const selectedValue = ventilationSelect.value; 
+
+            if (selectedValue === 'Others') {
+                othersText.style.display = 'block';
+                otherVentilationInput.required = true;
+            } else {
+                othersText.style.display = 'none';
+                otherVentilationInput.required = false;
+            }
         }
-    });
+
+        toggleFields(); // Initial toggle based on selected outcome
+
+        ventilationSelect.addEventListener('change', toggleFields);
 
     document.addEventListener("DOMContentLoaded", function () {
     const aedAppliedYes = document.getElementById("aed_applied_yes");
@@ -269,33 +275,48 @@
     const pacemakerOnNo = document.getElementById("pacemaker_on_no");
     const pacemakerOnDT = document.getElementById("pacemaker_on_dt_div");
 
-    aedAppliedYes.addEventListener("change", function () {
-        if (aedAppliedYes.checked) {
-            aedAppliedDT.style.display = "block";
-        } else {
-            aedAppliedDT.style.display = "none";
-        }
+    aedAppliedNo.addEventListener("change", function () {
+        setLocalStorageItem(aedAppliedNo.id, aedAppliedNo.checked);
+        aedAppliedDT.style.display = aedAppliedNo.checked ? "none" : "block";
     });
 
-    aedAppliedNo.addEventListener("change", function () {
-        if (aedAppliedNo.checked) {
-            aedAppliedDT.style.display = "none";
-        }
+    aedAppliedYes.addEventListener("change", function () {
+        setLocalStorageItem(aedAppliedYes.id, aedAppliedYes.checked);
+        aedAppliedDT.style.display = aedAppliedYes.checked ? "block" : "none";
     });
 
     pacemakerOnYes.addEventListener("change", function () {
-        if (pacemakerOnYes.checked) {
-            pacemakerOnDT.style.display = "block";
-        } else {
-            pacemakerOnDT.style.display = "none";
-        }
+        setLocalStorageItem(pacemakerOnYes.id, pacemakerOnYes.checked);
+        pacemakerOnDT.style.display = pacemakerOnYes.checked ? "block" : "none";
     });
 
     pacemakerOnNo.addEventListener("change", function () {
-        if (pacemakerOnNo.checked) {
-            pacemakerOnDT.style.display = "none";
-        }
+        setLocalStorageItem(pacemakerOnNo.id, pacemakerOnNo.checked);
+        pacemakerOnDT.style.display = pacemakerOnNo.checked ? "none" : "block";
     });
+
+
+    function setLocalStorageItem(item, value) {
+    localStorage.setItem(item, value);
+}
+
+
+    function getLocalStorageItem(item) {
+        return item;
+    }
+
+    function handleCheckboxState(checkbox, explanationBox) {
+        const isChecked = getLocalStorageItem(checkbox.id);
+         if ( checkbox.checked === true) {    
+            explanationBox.style.display = "block";
+        } else {
+            explanationBox.style.display = "none";
+        }
+        console.log(`explanationBox.style.display: ${explanationBox.style.display}`);
+    }
+
+    handleCheckboxState(aedAppliedYes, aedAppliedDT);
+    handleCheckboxState(pacemakerOnYes, pacemakerOnDT);
 });
 </script>
 @endsection

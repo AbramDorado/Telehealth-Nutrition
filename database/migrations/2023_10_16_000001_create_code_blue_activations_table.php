@@ -43,6 +43,7 @@ class CreateCodeBlueActivationsTable extends Migration
             $table->string('witnessed')->nullable();
 
             $table->boolean('is_archived')->default(false);
+            $table->boolean('is_finalized')->default(false);
             $table->unsignedInteger('patient_pin');
             $table->timestamps();
 
@@ -58,5 +59,6 @@ class CreateCodeBlueActivationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('code_blue_activations');
+        $table->dropColumn('is_finalized');
     }
 }

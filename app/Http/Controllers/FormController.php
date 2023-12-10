@@ -10,6 +10,8 @@ use App\Models\Flowsheet;
 use App\Models\Outcome;
 use App\Models\Evaluation;
 use App\Models\CodeTeam;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class FormController extends Controller
 {
@@ -84,6 +86,50 @@ class FormController extends Controller
         return redirect()->back()->with('error', 'Code Blue Activation Event not found.');
     }
 
+    public function finalize(Request $request, $codeNumber)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'code_team_leader_password' => 'required',
+        ]);
+    
+        $codeBlueActivation = CodeBlueActivation::where('code_number', $codeNumber)->first();
+    
+        if ($codeBlueActivation) {
+            // Check if the provided password matches the code team leader's password
+            $password = $validatedData['code_team_leader_password'];
+    
+            // Assuming you're using Eloquent and the User model
+            $codeTeamLeader = User::join('code_teams', 'users.name', '=', 'code_teams.code_team_leader')
+                ->where('code_teams.code_number', $codeNumber)
+                ->first();
+    
+            // dd($codeTeamLeader);
+    
+            if ($codeTeamLeader) {
+                // Check if the password is correct
+                if (Hash::check($password, $codeTeamLeader->password)) {
+                    // Password is correct, finalize the event
+                    $codeBlueActivation->update(['is_finalized' => true]);
+    
+                    return redirect()->back()->with('success', 'Code Blue Activation Event finalized successfully.');
+                } else {
+                    // Password is incorrect, show an error message
+                    session(['error_code_number' => $codeNumber]);
+                    session(['error' => 'Incorrect code team leader password.']);
+                    return redirect()->back()->with('error', 'Incorrect code team leader password.');
+                }
+            } else {
+                // Code team leader not found, show an error message
+                session(['error_code_number' => $codeNumber]);
+            session(['error' => 'Code team leader not found.']);
+                return redirect()->back()->with('error', 'Code team leader not found.');
+            }
+        }
+        session(['error_code_number' => $codeNumber]);
+        session(['error' => 'Code Blue Activation Event not found.']);
+        return redirect()->back()->with('error', 'Code Blue Activation Event not found.');
+    }    
 
     public function index()
     {
@@ -97,7 +143,8 @@ class FormController extends Controller
             'table1.last_name',
             'table2.code_start_dt',
             'table3.code_end_dt',
-            'table4.code_team_leader'
+            'table4.code_team_leader',
+            'table2.is_finalized' // Include the is_finalized column
         )
         ->from('patients as table1')
         ->leftjoin('code_blue_activations as table2', 'table1.patient_pin', '=', 'table2.patient_pin')

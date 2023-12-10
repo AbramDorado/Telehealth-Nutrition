@@ -152,7 +152,7 @@ class FlowsheetController extends Controller
 
         $flowsheet->update($validatedData);
 
-        return response()->json(['success' => 'Flowsheet updated successfully', 'flowsheet' => $flowsheet]);
+        return view('flowsheet', compact('code_number'));
     }
 
     
