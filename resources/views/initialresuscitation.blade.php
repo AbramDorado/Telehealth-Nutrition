@@ -283,15 +283,16 @@
         aedAppliedDT.style.display = aedAppliedYes.checked ? "block" : "none";
     });
 
+    pacemakerOnYes.addEventListener("change", function () {
+        setLocalStorageItem(pacemakerOnYes.id, pacemakerOnYes.checked);
+        pacemakerOnDT.style.display = pacemakerOnYes.checked ? "block" : "none";
+    });
+
     pacemakerOnNo.addEventListener("change", function () {
         setLocalStorageItem(pacemakerOnNo.id, pacemakerOnNo.checked);
         pacemakerOnDT.style.display = pacemakerOnNo.checked ? "none" : "block";
     });
 
-    pacemakerOnYes.addEventListener("change", function () {
-        setLocalStorageItem(pacemakerOnYes.id, pacemakerOnYes.checked);
-        pacemakerOnDT.style.display = pacemakerOnDT.checked ? "block" : "none";
-    });
 
     function setLocalStorageItem(item, value) {
     localStorage.setItem(item, value);
