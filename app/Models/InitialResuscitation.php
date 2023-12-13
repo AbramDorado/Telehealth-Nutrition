@@ -20,7 +20,7 @@ class InitialResuscitation extends Model
         'et_tube_size',
         'intubation_attempts',
         'et_tube_information',
-        'first_documented_rhythm_dt',
+        'first_documented_rhythm',
         'first_pulseless_rhythm_dt',
         'compressions_dt',
         'aed_applied',

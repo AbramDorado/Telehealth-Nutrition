@@ -218,7 +218,7 @@
                                 <tbody>
                                     <tr>
                                         <th>1st Documented Rhythm:</th>
-                                        <td>{{ $initialResuscitation->first_documented_rhythm_dt ?? 'N/A'  }}</td>
+                                        <td>{{ $initialResuscitation->first_documented_rhythm ?? 'N/A'  }}</td>
                                     </tr>
                                     <tr>
                                         <th>1st Pulseless Rhythm Detected Date/Time:</th>

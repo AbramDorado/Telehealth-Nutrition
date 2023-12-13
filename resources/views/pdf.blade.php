@@ -474,7 +474,7 @@
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->first_documented_rhythm_dt ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->first_documented_rhythm ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
