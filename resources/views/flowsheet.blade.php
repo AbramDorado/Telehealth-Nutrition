@@ -269,7 +269,7 @@
                                 
                                 <div class="form-group" id="joulesField" style="display: none;">
                                     <label for="joules">Joules:</label>
-                                    <input type="number" class="form-control" name="joules" id="joules" placeholder="0" id="joules">
+                                    <input type="number" class="form-control" name="joules" placeholder="0" id="joules">
                                 </div>
                             </div>
                         </div>
@@ -908,6 +908,9 @@ function fetchAndFillTable() {
 
     $('#saveButton').hide();
     $('#logButton').show();
+
+    joulesField.style.display = 'none';
+    joulesField.querySelector('input').removeAttribute('required');
 });
 
 </script>
