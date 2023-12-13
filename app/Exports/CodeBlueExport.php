@@ -32,7 +32,7 @@ class CodeBlueExport implements FromQuery, WithHeadings, ShouldAutoSize
                     'code_blue_activations.code_team_arrival_dt',
                     'code_blue_activations.e_cart_arrival_dt',
                     'code_blue_activations.witnessed',
-                    'initial_resuscitations.first_documented_rhythm_dt',
+                    'initial_resuscitations.first_documented_rhythm',
                     'initial_resuscitations.first_pulseless_rhythm_dt',
                     'initial_resuscitations.compressions_dt',
                     'initial_resuscitations.breathing_upon_ca',

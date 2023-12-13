@@ -109,13 +109,14 @@
         <div class="row">
             <!-- First Column -->
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="patient_pin">Patient PIN:</label>
-                    <input type="text" class="form-control" name="patient_pin" id="patient_pin" 
+            <div class="form-group">
+                <label for="patient_pin">Patient PIN:</label>
+                <input type="text" class="form-control" name="patient_pin" id="patient_pin" 
                     value="{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}"
-                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only">  
-                    <div id="patientPinDropdown"></div>
-                </div>
+                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only" required>  
+                <div id="patientPinDropdown"></div>
+            </div>
+
 
                 <div class="form-group">
                     <label for="visit_number">Patient Visit/Encounter Number:</label>

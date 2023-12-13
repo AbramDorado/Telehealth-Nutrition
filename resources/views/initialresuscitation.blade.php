@@ -180,8 +180,8 @@
             <div class="col-md-6">
                 <!-- First Column -->
                     <div class="form-group">
-                        <label for="first_documented_rhythm_dt">1st Documented Rhythm</label>
-                        <textarea class="form-control" name="first_documented_rhythm_dt">{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '')->first_documented_rhythm_dt ?? '') }}</textarea>
+                        <label for="first_documented_rhythm">1st Documented Rhythm</label>
+                        <textarea class="form-control" name="first_documented_rhythm">{{ old('first_documented_rhythm', optional($initialResuscitation ?? '')->first_documented_rhythm ?? '') }}</textarea>
                     </div>
 
 
