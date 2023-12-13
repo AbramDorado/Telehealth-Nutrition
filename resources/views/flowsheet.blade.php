@@ -225,7 +225,7 @@
                             <!-- Second Column -->
                             
                             <div class="col-md-6">
-                            <div class="form-group">
+                                <div class="form-group">
                                     <label for="rhythm_on_check">Rhythm on Check</label>
                                     <select name="rhythm_on_check" id="rhythm_on_check" class="form-control">
                                         <option value="">Select an option</option>
@@ -237,8 +237,8 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="rhythm_with_pulse">Rhythm, with pulse</label>
+                                <div class="form-group" id="rhythmWithPulseGroup" style="display: none;">
+                                    <label for="rhythm_with_pulse">Rhythm, with pulse:</label>
                                     <select name="rhythm_with_pulse" id="rhythm_with_pulse" class="form-control">
                                         <option value="">Select an option</option>
                                         <option value="Normal sinus rhythm">Normal sinus rhythm</option>
@@ -266,10 +266,10 @@
                                         <option value="None, continued chest compressions">None, continued chest compressions</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="joules">Joules</label>
-                                    <input type="number" class="form-control" name="joules" placeholder="0" id="joules">
+                                
+                                <div class="form-group" id="joulesField" style="display: none;">
+                                    <label for="joules">Joules:</label>
+                                    <input type="number" class="form-control" name="joules" id="joules" placeholder="0" id="joules">
                                 </div>
                             </div>
                         </div>
@@ -283,8 +283,8 @@
                             <div class="col-md-6">
                                 <!-- First Column -->
                                     <div class="form-group">
-                                        <label for="epinephrine_dose">Epinephrine Dose Given (mg)</label>
-                                        <input type="number" class="form-control" name="epinephrine_dose" placeholder="0" id="epinephrine_dose">
+                                        <label for="epinephrine_dose">Epinephrine Dose Given (mg):</label>
+                                        <input type="number" class="form-control" name="epinephrine_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="epinephrine_dose">
                                     </div>
 
                                     <div class="form-group">
@@ -298,8 +298,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="amiodarone_dose">Amiodarone Dose Given (mg)</label>
-                                        <input type="number" class="form-control" name="amiodarone_dose" placeholder="0" id="amiodarone_dose">
+                                        <label for="amiodarone_dose">Amiodarone Dose Given (mg):</label>
+                                        <input type="number" class="form-control" name="amiodarone_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="amiodarone_dose">
                                     </div>
 
                                     <div class="form-group">
@@ -312,8 +312,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="lidocaine_dose">Lidocaine Dose Given (mg)</label>
-                                        <input type="number" class="form-control" name="lidocaine_dose" placeholder="0" id="lidocaine_dose">
+                                        <label for="lidocaine_dose">Lidocaine Dose Given (mg):</label>
+                                        <input type="number" class="form-control" name="lidocaine_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="lidocaine_dose">
                                     </div>
 
                                     <div class="form-group">
@@ -336,7 +336,7 @@
 
                                     <div class="form-group">
                                         <label for="free1_dose">Dose</span></label>
-                                        <input type="number" class="form-control" name="free1_dose" placeholder="0" id="free1_dose">    
+                                        <input type="number" class="form-control" name="free1_dose" id="free1_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
                                     </div>
 
                                     <div class="form-group">
@@ -351,7 +351,7 @@
 
                                     <div class="form-group">
                                         <label for="free2_dose">Dose</span></label>
-                                        <input type="number" class="form-control" name="free2_dose" placeholder="0" id="free2_dose">    
+                                        <input type="number" class="form-control" name="free2_dose" id="free2_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
                                     </div>
 
                                     <div class="form-group">
@@ -723,7 +723,27 @@ function fetchAndFillTable() {
 
     // Set the entry ID in a hidden field
     $('#baseForm #flowsheet_id').val(data.flowsheet_id);
+
+    const rhythmIntervention = data.rhythm_intervention;
+    const joulesField = $('#baseForm #joules');
+
+    if (rhythmIntervention === 'Defibrillation' || rhythmIntervention === 'Cardioversion') {
+        joulesField.closest('.form-group').show();
+    } else {
+        joulesField.closest('.form-group').hide();
     }
+
+    // Display rhythmWithPulseGroup based on rhythm_on_check value
+    const rhythmOnCheck = data.rhythm_on_check;
+    const rhythmWithPulseGroup = $('#baseForm #rhythmWithPulseGroup');
+
+    if (rhythmOnCheck === 'With Pulse') {
+        rhythmWithPulseGroup.show();
+    } else {
+        rhythmWithPulseGroup.hide();
+    }
+}
+
 
     // Handle form submission
     $('#baseForm').submit(function (e) {
@@ -819,6 +839,42 @@ function fetchAndFillTable() {
         tableRow.removeClass('updated-row');
     }, 3000);
     }
+
+    const rhythmInterventionSelect = document.getElementById('rhythm_intervention');
+    const joulesField = document.getElementById('joulesField');
+
+    function toggleJoulesField() {
+        const selectedValue = rhythmInterventionSelect.value;
+
+        if (selectedValue === 'Defibrillation' || selectedValue === 'Cardioversion') {
+            joulesField.style.display = 'block';
+            joulesField.querySelector('input').setAttribute('required', 'true');
+        } else {
+            joulesField.style.display = 'none';
+            joulesField.querySelector('input').removeAttribute('required');
+        }
+    }
+
+    toggleJoulesField(); // Initial toggle based on selected outcome
+
+    rhythmInterventionSelect.addEventListener('change', toggleJoulesField);
+
+    const rhythmOnCheckSelect = document.getElementById('rhythm_on_check');
+    const rhythmWithPulseGroup = document.getElementById('rhythmWithPulseGroup');
+
+    function toggleRhythmWithPulse() {
+        const selectedValue = rhythmOnCheckSelect.value;
+
+        if (selectedValue === 'With Pulse') {
+            rhythmWithPulseGroup.style.display = 'block';
+        } else {
+            rhythmWithPulseGroup.style.display = 'none';
+        }
+    }
+
+    toggleRhythmWithPulse(); // Initial toggle based on selected outcome
+
+    rhythmOnCheckSelect.addEventListener('change', toggleRhythmWithPulse);
 
     $('#refreshForm').click(function() {
     // Clear the form fields

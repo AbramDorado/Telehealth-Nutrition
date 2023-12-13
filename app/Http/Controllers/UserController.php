@@ -28,7 +28,6 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|unique:users',
-            'pin_code' => 'nullable|string',
             'password' => 'required|string',
         ]);
 
@@ -40,7 +39,6 @@ class UserController extends Controller
         $user = new User();
         $user->name = $validatedData['name'];
         $user->username = $validatedData['username'];
-        $user->pin_code = $validatedData['pin_code'];
         $user->password = $validatedData['password'];
 
         // Save the user to the database
