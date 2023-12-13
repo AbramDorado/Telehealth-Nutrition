@@ -111,7 +111,7 @@
                 </div>
 
                     <div class="form-group">
-                        <label for="first_ventilation_dt">First Ventilation:</label>
+                        <label for="first_ventilation_dt">First Assisted Ventilation:</label>
                         <input type="datetime-local" class="form-control" name="first_ventilation_dt" value="{{ old('first_ventilation_dt', optional($initialResuscitation ?? '')->first_ventilation_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_ventilation_dt'])->format('Y-m-d H:i:s')) : '') }}">
                     </div>
 
@@ -157,7 +157,7 @@
                     </div>
                 
                     <div class="form-group">
-                            <label for="et_tube_information">ET Tube Information</label>
+                            <label for="et_tube_information">ET Tube Confirmation</label>
                             <div id="et_tube_information">
                                 <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
                                 <label for="auscultation-checkbox">Auscultation</label>
@@ -180,8 +180,8 @@
             <div class="col-md-6">
                 <!-- First Column -->
                     <div class="form-group">
-                        <label for="first_documented_rhythm_dt">Comments/Remarks:</label>
-                        <textarea class="form-control" name="first_documented_rhythm_dt">{{ old('first_documented_rhythm_dt', optional($initialResuscitation ?? '')->first_documented_rhythm_dt ?? '') }}</textarea>
+                        <label for="first_documented_rhythm">1st Documented Rhythm</label>
+                        <textarea class="form-control" name="first_documented_rhythm">{{ old('first_documented_rhythm', optional($initialResuscitation ?? '')->first_documented_rhythm ?? '') }}</textarea>
                     </div>
 
 

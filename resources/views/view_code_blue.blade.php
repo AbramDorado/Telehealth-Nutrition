@@ -218,7 +218,7 @@
                                 <tbody>
                                     <tr>
                                         <th>1st Documented Rhythm:</th>
-                                        <td>{{ $initialResuscitation->first_documented_rhythm_dt ?? 'N/A'  }}</td>
+                                        <td>{{ $initialResuscitation->first_documented_rhythm ?? 'N/A'  }}</td>
                                     </tr>
                                     <tr>
                                         <th>1st Pulseless Rhythm Detected Date/Time:</th>
@@ -578,7 +578,7 @@
                             </tr>
                             <tr>
                                 <th>Code Team Co-Leader:</th>
-                                <td>{{ $codeTeam->code_team_co_leader ?? 'N/A'  }}</td>
+                                <td>{{ $codeTeam->code_team_co_leader == -1 ? 'N/A' : $codeTeam->code_team_co_leader ?? 'N/A' }}</td>
                             </tr>
                             <tr>
                                 <th>Recorder:</th>
@@ -590,7 +590,7 @@
                             </tr>
                             <tr>
                                 <th>Intubated by:</th>
-                                <td>{{ $codeTeam->intubated_by ?? 'N/A'  }}</td>
+                                <td>{{ $codeTeam->intubated_by == -1 ? 'N/A' : $codeTeam->intubated_by ?? 'N/A' }}</td>
                             </tr>
                         </tbody>
                     </table>

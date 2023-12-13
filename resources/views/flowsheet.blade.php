@@ -6,8 +6,8 @@
     /* Style for the floating container */
     .floating-container {
         position: fixed;
-        top: 50px; /* Adjust as needed */
-        left: 50px; /* Adjust as needed */
+        top: 200px; /* Adjust as needed */
+        left: 0px; /* Adjust as needed */
         z-index: 1000;
     }
 
@@ -15,7 +15,7 @@
     .timer-container {
         background-color: #f8f8f8;
         border: 1px solid #ddd;
-        padding: 15px;
+        padding: 8px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         cursor: move;
@@ -155,6 +155,9 @@
     <button type="button" class="btn btn-primary btn-sm" id="showTable">
       <i class="fas fa-table"></i>
     </button>
+    <button type="button" class="btn btn-primary btn-sm" id="refreshForm">
+      <i class="fas fa-undo"></i>
+    </button>
   </div>
   <div class="col-auto ml-auto">
     <form method="GET" action="{{ route('outcome', ['code_number' => $code_number ?? '']) }}">
@@ -175,6 +178,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
+                <p id="editMode" style="display: none;">Edit mode</p>
                 
                 <div class="card">
                 <div class="card-header bg-secondary text-white py-2">Flowsheet</div>
@@ -184,7 +188,7 @@
                             <!-- First Column -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <label for="breathing">Breathing:</label>
+                                <label for="breathing">Breathing</label>
                                     <select name="breathing" class="form-control" id="breathing">
                                     @php
                                         $selectedBreathing = old('breathing', optional($flowsheet ?? '' ?? '')->breathing ?? ''); 
@@ -199,7 +203,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label for="pulse">Pulse:</label>
+                                <label for="pulse">Pulse</label>
                                     <select name="pulse" class="form-control" id="pulse">
                                         <option value="">Select an option</option>
                                         <option value="Spontaneous">Spontaneous</option>
@@ -209,12 +213,12 @@
 
                                 <div class="form-group">
                                     <label for="bp_systolic">Blood Pressure, Systolic (mmHg):</label>
-                                    <input type="number" class="form-control" name="bp_systolic" placeholder="0">
+                                    <input type="number" class="form-control" name="bp_systolic" placeholder="0" id="bp_systolic">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="bp_diastolic">Blood Pressure, Diastolic (mmHg):</label>
-                                    <input type="number" class="form-control" name="bp_diastolic" placeholder="0">
+                                    <input type="number" class="form-control" name="bp_diastolic" placeholder="0" id="bp_diastolic">
                                 </div>                
                             </div>
 
@@ -262,7 +266,7 @@
                                         <option value="None, continued chest compressions">None, continued chest compressions</option>
                                     </select>
                                 </div>
-
+                                
                                 <div class="form-group" id="joulesField" style="display: none;">
                                     <label for="joules">Joules:</label>
                                     <input type="number" class="form-control" name="joules" id="joules" placeholder="0" id="joules">
@@ -279,12 +283,12 @@
                             <div class="col-md-6">
                                 <!-- First Column -->
                                     <div class="form-group">
-                                        <label for="epinephrine_dose">Epinephrine Dose Given:</label>
+                                        <label for="epinephrine_dose">Epinephrine Dose Given (mg):</label>
                                         <input type="number" class="form-control" name="epinephrine_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="epinephrine_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="epinephrine_route">Epinephrine Route:</label>
+                                    <label for="epinephrine_route">Epinephrine Route</label>
                                         <select name="epinephrine_route" class="form-control" id="epinephrine_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -294,12 +298,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="amiodarone_dose">Amiodarone Dose Given:</label>
+                                        <label for="amiodarone_dose">Amiodarone Dose Given (mg):</label>
                                         <input type="number" class="form-control" name="amiodarone_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="amiodarone_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="amiodarone_route">Amiodarone Route:</label>
+                                    <label for="amiodarone_route">Amiodarone Route</label>
                                         <select name="amiodarone_route" class="form-control" id="amiodarone_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -308,12 +312,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="lidocaine_dose">Lidocaine Dose Given:</label>
+                                        <label for="lidocaine_dose">Lidocaine Dose Given (mg):</label>
                                         <input type="number" class="form-control" name="lidocaine_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1" id="lidocaine_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="lidocaine_route">Lidocaine Route:</label>
+                                    <label for="lidocaine_route">Lidocaine Route</label>
                                         <select name="lidocaine_route" class="form-control" id="lidocaine_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -326,13 +330,13 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="free1_label">Other Medications (unit of measure)</span></label>
-                                        <input type="text" class="form-control" name="free1_label" placeholder="[Free text medication #1]">
+                                        <label for="free1_label">Other Medications (indicate unit of measure)</span></label>
+                                        <input type="text" class="form-control" name="free1_label" placeholder="[Other medication #1]" id="free1_label">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free1_dose">Dose (mg)</span></label>
-                                        <input type="number" class="form-control" name="free1_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
+                                        <label for="free1_dose">Dose</span></label>
+                                        <input type="number" class="form-control" name="free1_dose" id="free1_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
                                     </div>
 
                                     <div class="form-group">
@@ -341,17 +345,17 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_label">Other Medications (unit of measure)</span></label>
-                                        <input type="text" class="form-control" name="free2_label" placeholder="[Free text medication #2]">
+                                        <label for="free2_label">Other Medications (indicate unit of measure)</span></label>
+                                        <input type="text" class="form-control" name="free2_label" placeholder="[Other medication #2]" id="free2_label">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_dose">Dose (mg)</span></label>
-                                        <input type="number" class="form-control" name="free2_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
+                                        <label for="free2_dose">Dose</span></label>
+                                        <input type="number" class="form-control" name="free2_dose" id="free2_dose" pattern="\d+(\.\d{1})?" placeholder="00.0" step="0.1">    
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="free2_route">Route:</label>
+                                    <label for="free2_route">Route</label>
                                         <input type="text" class="form-control" name="free2_route" id="free2_route">
                                     </div>
                                 </div>
@@ -363,6 +367,7 @@
                         </div>          
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" id="logButton">Log</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="saveButton" style="display: none;">Save</button>
 
                     </form>    
                 </div>
@@ -673,6 +678,12 @@ function fetchAndFillTable() {
                 // Set the flowsheet_id for updating
                 $('#baseForm #flowsheet_id').val(response.id);
 
+                //Show edit mode text
+                $('#editMode').show();
+
+                $('#logButton').hide();
+                $('#saveButton').show();
+
                 // Populate the form fields with the fetched data
                 populateForm(response);
 
@@ -757,16 +768,16 @@ function fetchAndFillTable() {
             var action = flowsheetId ? '/update/' + flowsheetId : '/store/' + codeNumber;
 
             if (flowsheetId) {
-                // If it's an update, use AJAX
+                // If it's an update, use AJAX        
                 updateEntryWithAjax(action);
             } else {
                 // If it's a new entry, submit the form normally
+
                 submitFormNormally(action);
             } 
         } else {
             console.error("Code Number not found in the form action");
-        }
-        
+        }  
     });
 
     function updateEntryWithAjax(action) {
@@ -820,7 +831,6 @@ function fetchAndFillTable() {
     tableRow.find('td:eq(21)').text(data.free2_route || '');
     tableRow.find('td:eq(22)').text(data.comments || '');
 
-
     // Optionally, you can also highlight the updated row to provide visual feedback
     tableRow.addClass('updated-row');
 
@@ -866,7 +876,39 @@ function fetchAndFillTable() {
 
     rhythmOnCheckSelect.addEventListener('change', toggleRhythmWithPulse);
 
+    $('#refreshForm').click(function() {
+    // Clear the form fields
+    $('#baseForm #breathing').val('');
+    $('#baseForm #pulse').val('');
+    $('#baseForm #bp_systolic').val('');
+    $('#baseForm #bp_diastolic').val('');
+    $('#baseForm #rhythm_on_check').val('');
+    $('#baseForm #rhythm_with_pulse').val('');
+    $('#baseForm #rhythm_intervention').val('');
+    $('#baseForm #joules').val('');
+    $('#baseForm #epinephrine_dose').val('');
+    $('#baseForm #epinephrine_route').val('');
+    $('#baseForm #amiodarone_dose').val('');
+    $('#baseForm #amiodarone_route').val('');
+    $('#baseForm #lidocaine_dose').val('');
+    $('#baseForm #lidocaine_route').val('');
+    $('#baseForm #free1_label').val('');
+    $('#baseForm #free1_dose').val('');
+    $('#baseForm #free1_route').val('');
+    $('#baseForm #free2_label').val('');
+    $('#baseForm #free2_dose').val('');
+    $('#baseForm #free2_route').val('');
+    $('#baseForm #comments').val('');
 
+    // Clear the entry ID
+    $('#baseForm #flowsheet_id').val('');
+
+    //Show edit mode text
+    $('#editMode').hide();
+
+    $('#saveButton').hide();
+    $('#logButton').show();
+});
 
 </script>
 @endsection

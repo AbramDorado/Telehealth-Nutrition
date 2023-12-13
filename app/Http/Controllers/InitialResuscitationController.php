@@ -36,7 +36,7 @@ class InitialResuscitationController extends Controller
         'intubation_attempts' => 'sometimes|nullable|integer',
         'et_tube_information' => 'sometimes|nullable|array',
         'et_tube_information.*' => 'sometimes|nullable|string',
-        'first_documented_rhythm_dt' => 'sometimes|nullable|string',
+        'first_documented_rhythm' => 'sometimes|nullable|string',
         'first_pulseless_rhythm_dt' => 'sometimes|nullable|date',
         'compressions_dt' => 'sometimes|nullable|date',
         'aed_applied' => 'sometimes|required|in:Yes,No',
@@ -60,7 +60,7 @@ class InitialResuscitationController extends Controller
     $initialResuscitation->intubation_dt = $validatedData['intubation_dt'] ?? null;
     $initialResuscitation->et_tube_size = $validatedData['et_tube_size'] ?? null;
     $initialResuscitation->intubation_attempts = $validatedData['intubation_attempts'] ?? null;
-    $initialResuscitation->first_documented_rhythm_dt = $validatedData['first_documented_rhythm_dt'] ?? null;
+    $initialResuscitation->first_documented_rhythm = $validatedData['first_documented_rhythm'] ?? null;
     $initialResuscitation->first_pulseless_rhythm_dt = $validatedData['first_pulseless_rhythm_dt'] ?? null;
     $initialResuscitation->compressions_dt = $validatedData['compressions_dt'] ?? null;
     $initialResuscitation->aed_applied = $validatedData['aed_applied'] ?? null;
