@@ -134,8 +134,8 @@ class FormController extends Controller
     public function index()
     {
 
-        $resuscitationEvents = CodeBlueActivation::select(
-            'table1.patient_pin',
+        $resuscitationEvents = CodeBlueActivation::distinct()
+            ->select('table1.patient_pin',
             'table2.code_number',
             'table1.created_at',
             'table1.location',
@@ -145,7 +145,7 @@ class FormController extends Controller
             'table3.code_end_dt',
             'table4.code_team_leader',
             'table2.is_finalized' // Include the is_finalized column
-        )
+            )
         ->from('patients as table1')
         ->leftjoin('code_blue_activations as table2', 'table1.patient_pin', '=', 'table2.patient_pin')
         ->leftjoin('outcomes as table3', 'table2.code_number', '=', 'table3.code_number')

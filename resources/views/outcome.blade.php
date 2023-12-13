@@ -128,10 +128,10 @@
                             <label for="bp_diastolic">Blood Pressure, Diastolic (mmHg):</label>
                             <input type="number" class="form-control" name="bp_diastolic" value="{{ $outcome->bp_diastolic ?? old('bp_diastolic') }}">
 
-                            <label for="heart_rate">Heart Rate:</label>
+                            <label for="heart_rate">Heart Rate (beats per minute):</label>
                             <input type="number" class="form-control" name="heart_rate" value="{{ $outcome->heart_rate ?? old('heart_rate') }}">
 
-                            <label for="respiratory_rate">Respiratory Rate:</label>
+                            <label for="respiratory_rate">Respiratory Rate (breaths per minute):</label>
                             <input type="number" class="form-control" name="respiratory_rate" value="{{ $outcome->respiratory_rate ?? old('respiratory_rate') }}">
 
                             <label for="rhythm">Rhythm:</label>
