@@ -25,17 +25,17 @@ class CreateFlowsheetsTable extends Migration
             $table->string('rhythm_with_pulse')->nullable();
             $table->string('rhythm_intervention')->nullable();
             $table->unsignedInteger('joules')->nullable();
-            $table->double('epinephrine_dose')->nullable();
+            $table->decimal('epinephrine_dose', 3, 1)->nullable();
             $table->string('epinephrine_route')->nullable();
-            $table->double('amiodarone_dose')->nullable();
+            $table->decimal('amiodarone_dose', 3, 1)->nullable();
             $table->string('amiodarone_route')->nullable();
-            $table->double('lidocaine_dose')->nullable();
+            $table->decimal('lidocaine_dose', 3, 1)->nullable();
             $table->string('lidocaine_route')->nullable();
             $table->string('free1_label')->nullable();
-            $table->double('free1_dose')->nullable();
+            $table->decimal('free1_dose', 3, 1)->nullable();
             $table->string('free1_route')->nullable();
             $table->string('free2_label')->nullable();
-            $table->double('free2_dose')->nullable();
+            $table->decimal('free2_dose', 3, 1)->nullable();
             $table->string('free2_route')->nullable();
             $table->text('comments')->nullable();
             
