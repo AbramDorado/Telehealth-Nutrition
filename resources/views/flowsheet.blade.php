@@ -184,7 +184,7 @@
                             <!-- First Column -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <label for="breathing">Breathing:</label>
+                                <label for="breathing">Breathing</label>
                                     <select name="breathing" class="form-control" id="breathing">
                                     @php
                                         $selectedBreathing = old('breathing', optional($flowsheet ?? '' ?? '')->breathing ?? ''); 
@@ -199,7 +199,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label for="pulse">Pulse:</label>
+                                <label for="pulse">Pulse</label>
                                     <select name="pulse" class="form-control" id="pulse">
                                         <option value="">Select an option</option>
                                         <option value="Spontaneous">Spontaneous</option>
@@ -208,12 +208,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bp_systolic">Blood Pressure, Systolic (mmHg):</label>
+                                    <label for="bp_systolic">Blood Pressure, Systolic (mmHg)</label>
                                     <input type="number" class="form-control" name="bp_systolic" placeholder="0">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bp_diastolic">Blood Pressure, Diastolic (mmHg):</label>
+                                    <label for="bp_diastolic">Blood Pressure, Diastolic (mmHg)</label>
                                     <input type="number" class="form-control" name="bp_diastolic" placeholder="0">
                                 </div>                
                             </div>
@@ -234,7 +234,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="rhythm_with_pulse">Rhythm, with pulse:</label>
+                                    <label for="rhythm_with_pulse">Rhythm, with pulse</label>
                                     <select name="rhythm_with_pulse" id="rhythm_with_pulse" class="form-control">
                                         <option value="">Select an option</option>
                                         <option value="Normal sinus rhythm">Normal sinus rhythm</option>
@@ -264,7 +264,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="joules">Joules:</label>
+                                    <label for="joules">Joules</label>
                                     <input type="number" class="form-control" name="joules" placeholder="0" id="joules">
                                 </div>
                             </div>
@@ -279,12 +279,12 @@
                             <div class="col-md-6">
                                 <!-- First Column -->
                                     <div class="form-group">
-                                        <label for="epinephrine_dose">Epinephrine Dose Given:</label>
+                                        <label for="epinephrine_dose">Epinephrine Dose Given (mg)</label>
                                         <input type="number" class="form-control" name="epinephrine_dose" placeholder="0" id="epinephrine_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="epinephrine_route">Epinephrine Route:</label>
+                                    <label for="epinephrine_route">Epinephrine Route</label>
                                         <select name="epinephrine_route" class="form-control" id="epinephrine_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -294,12 +294,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="amiodarone_dose">Amiodarone Dose Given:</label>
+                                        <label for="amiodarone_dose">Amiodarone Dose Given (mg)</label>
                                         <input type="number" class="form-control" name="amiodarone_dose" placeholder="0" id="amiodarone_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="amiodarone_route">Amiodarone Route:</label>
+                                    <label for="amiodarone_route">Amiodarone Route</label>
                                         <select name="amiodarone_route" class="form-control" id="amiodarone_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -308,12 +308,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="lidocaine_dose">Lidocaine Dose Given:</label>
+                                        <label for="lidocaine_dose">Lidocaine Dose Given (mg)</label>
                                         <input type="number" class="form-control" name="lidocaine_dose" placeholder="0" id="lidocaine_dose">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="lidocaine_route">Lidocaine Route:</label>
+                                    <label for="lidocaine_route">Lidocaine Route</label>
                                         <select name="lidocaine_route" class="form-control" id="lidocaine_route">
                                             <option value="">Select an option</option>
                                             <option value="Intravenous">Intravenous</option>
@@ -326,12 +326,12 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="free1_label">Other Medications (unit of measure)</span></label>
-                                        <input type="text" class="form-control" name="free1_label" placeholder="[Free text medication #1]">
+                                        <label for="free1_label">Other Medications (indicate unit of measure)</span></label>
+                                        <input type="text" class="form-control" name="free1_label" placeholder="[Other medication #1]">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free1_dose">Dose (mg)</span></label>
+                                        <label for="free1_dose">Dose</span></label>
                                         <input type="number" class="form-control" name="free1_dose" placeholder="0">    
                                     </div>
 
@@ -341,17 +341,17 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_label">Other Medications (unit of measure)</span></label>
-                                        <input type="text" class="form-control" name="free2_label" placeholder="[Free text medication #2]">
+                                        <label for="free2_label">Other Medications (indicate unit of measure)</span></label>
+                                        <input type="text" class="form-control" name="free2_label" placeholder="[Other medication #2]">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="free2_dose">Dose (mg)</span></label>
+                                        <label for="free2_dose">Dose</span></label>
                                         <input type="number" class="form-control" name="free2_dose" placeholder="0">    
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="free2_route">Route:</label>
+                                    <label for="free2_route">Route</label>
                                         <input type="text" class="form-control" name="free2_route" id="free2_route">
                                     </div>
                                 </div>
