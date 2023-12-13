@@ -133,10 +133,6 @@
                         <input type="text" name="username" id="username" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for "pin_code">Pin Code</label>
-                        <input type="text" name="pin_code" id="pin_code" class="form-control">
-                    </div>
-                    <div class="form-group">
                                 <label for="password">Password</label>
                                 <div class="input-group">
                                     <input type="password" name="password" id="password" class="form-control" required>
