@@ -568,8 +568,6 @@
         <div class="card">
                 <div class="card-header bg-secondary text-white py-2">Code Team</div>
                 <div class="card-body">
-                    
-
                     <table class="table">
                         <tbody>
                             <tr>
@@ -578,7 +576,8 @@
                             </tr>
                             <tr>
                                 <th>Code Team Co-Leader:</th>
-                                <td>{{ $codeTeam->code_team_co_leader == -1 ? 'N/A' : $codeTeam->code_team_co_leader ?? 'N/A' }}</td>
+                                <td>{{ $codeTeam ? ($codeTeam->code_team_co_leader == -1 ? 'N/A' : $codeTeam->code_team_co_leader) : 'N/A' }}</td>
+
                             </tr>
                             <tr>
                                 <th>Recorder:</th>
@@ -590,7 +589,7 @@
                             </tr>
                             <tr>
                                 <th>Intubated by:</th>
-                                <td>{{ $codeTeam->intubated_by == -1 ? 'N/A' : $codeTeam->intubated_by ?? 'N/A' }}</td>
+                                <td>{{ $codeTeam ? (is_null($codeTeam->intubated_by) ? 'N/A' : $codeTeam->intubated_by) : 'N/A' }}</td>
                             </tr>
                         </tbody>
                     </table>
