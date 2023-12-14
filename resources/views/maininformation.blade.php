@@ -113,7 +113,7 @@
                 <label for="patient_pin">Patient PIN:</label>
                 <input type="text" class="form-control" name="patient_pin" id="patient_pin" 
                     value="{{ old('patient_pin', optional($patient ?? '')->patient_pin) }}"
-                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only" required>  
+                    pattern="[0-9]{1,11}" title="Please enter up to 10 numeric characters only" required>  
                 <div id="patientPinDropdown"></div>
             </div>
 
@@ -122,7 +122,7 @@
                     <label for="visit_number">Patient Visit/Encounter Number:</label>
                     <input type="text" class="form-control" name="visit_number" id="visit_number" 
                     value="{{ old('visit_number', optional($patient ?? '')->visit_number) }}"
-                    pattern="[0-9]{1,10}" title="Please enter up to 10 numeric characters only">                
+                    pattern="[0-9]{1,11}" title="Please enter up to 10 numeric characters only">                
                 </div>
                 <label for="patient_name">Patient Name:</label>
                 <div class="row">
