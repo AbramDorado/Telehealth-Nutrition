@@ -297,6 +297,7 @@
                                         <option value="Defibrillation">Defibrillation</option>
                                         <option value="Cardioversion">Cardioversion</option>
                                         <option value="None, continued chest compressions">None, continued chest compressions</option>
+                                        <option value="Others, pharmacologic">Others, pharmacologic</option>
                                     </select>
                                 </div>
                                 
