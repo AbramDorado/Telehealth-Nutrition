@@ -88,12 +88,13 @@ Route::post('/outcome/{code_number}', [OutcomeController::class, 'store'])->name
 
 Route::get('/maininformation/{code_number}', [MainInformationController::class, 'index'])->name('maininformation');
 Route::post('/maininformation/{code_number}', [MainInformationController::class, 'store'])->name('store_maininformation');
+
 Route::get('/searchPatientPins', [PatientController::class, 'searchPatientPins'])->name('searchPatientPins');
 Route::get('/fetchPatientInformation', [PatientController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
 Route::get('/fetchPatientPin', [PatientController::class, 'fetchPatientPin'])->name('fetchPatientPin');
 Route::get('/fetchFlowsheetInformation/{code_number}', [FlowsheetController::class, 'fetchFlowsheetInformation'])->name('fetchFlowsheetInformation');
 
-Route::get('/destroy/{id}', [FlowsheetController::class, 'destroy'])->name('destroy');
+Route::delete('/destroy/{id}', [FlowsheetController::class, 'destroy'])->name('destroy');
 Route::get('/edit/{id}', [FlowsheetController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [FlowsheetController::class, 'update'])->name('update');
 Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
