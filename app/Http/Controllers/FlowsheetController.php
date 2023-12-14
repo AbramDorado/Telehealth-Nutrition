@@ -13,8 +13,10 @@ class FlowsheetController extends Controller
 
     public function index($code_number)
     { 
-        $flowsheets = Flowsheet::where('code_number', $code_number)->get();
-        // dd($flowsheets);
+        $flowsheets = Flowsheet::where('code_number', $code_number)
+        ->orderBy('flowsheet_id', 'asc')
+        ->get();
+
         return view('flowsheet', compact('code_number', 'flowsheets'));  
     }
 
@@ -84,7 +86,9 @@ class FlowsheetController extends Controller
 
     public function fetchFlowsheetInformation(Request $request, $code_number)
     {
-        $flowsheets = Flowsheet::where('code_number', $code_number)->get();
+        $flowsheets = Flowsheet::where('code_number', $code_number)
+        ->orderBy('flowsheet_id', 'asc')
+        ->get();
 
         if ($flowsheets) {
             return response()->json($flowsheets);

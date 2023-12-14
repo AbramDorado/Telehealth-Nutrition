@@ -386,7 +386,7 @@
       </div>
       <div class="modal-body">
 
-      @if(!is_null($flowsheets ?? ''))
+      @if(!is_null($flowsheets ?? '' ?? ''))
 
       <table class="table">
         <thead class="thead-dark">
