@@ -262,17 +262,15 @@
                         <!-- Second Column -->
                         <div class="form-group">
                             <label for="initial_reporter">Initially Reported By:</label>
-                            <select class="form-control" name="initial_reporter" id="initial_reporter">
-                                @php
-                                    $selectedReporter = old('initial_reporter', optional($codeBlueActivation ?? '')->initial_reporter ?? ''); 
-                                @endphp
-
-                                @foreach(['', 'nurse', 'doctor', 'other'] as $option)
-                                    <option value="{{ $option }}" {{ $selectedReporter === $option ? 'selected' : '' }}>
-                                        {{ ucfirst($option) }}
+                            <select class="form-control" name="initial_reporter" id="initial_reporter" style="margin-bottom: 8px;">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->name }}" {{ (session('old.initial_reporter') ?? '') == $user->name ? 'selected' : '' }}>
+                                        {{ $user->name }}
                                     </option>
                                 @endforeach
+                                <option value="other" {{ (session('old.initial_reporter') ?? '') == 'other' ? 'selected' : '' }}>Other</option>
                             </select>
+                            <input type="text" class="form-control" name="other_reporter" id="other_reporter" placeholder="Enter other name" style="{{ (session('old.initial_reporter') ?? '') == 'other' ? '' : 'display: none;' }}" value="{{ session('old.other_reporter') }}">
                         </div>
 
                         <div class="form-group">
@@ -455,5 +453,5 @@ $(document).ready(function() {
             }
         }
     });
-</script>
+</script> 
 @endsection
