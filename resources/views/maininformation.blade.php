@@ -455,4 +455,23 @@ $(document).ready(function() {
         }
     });
 </script> 
+
+<!-- Add this script to toggle the visibility of the other reporter text input -->
+<script>
+    $(document).ready(function () {
+        // Initially hide the other reporter text input
+        $('#other_reporter').hide();
+
+        // Listen for changes in the initial reporter select box
+        $('#initial_reporter').on('change', function () {
+            // If "other" is selected, show the text input; otherwise, hide it
+            if ($(this).val() === 'other') {
+                $('#other_reporter').show();
+            } else {
+                $('#other_reporter').hide();
+            }
+        });
+    });
+</script>
+
 @endsection
