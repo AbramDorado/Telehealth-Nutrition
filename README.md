@@ -1,5 +1,5 @@
-# Code-Blue
-"CSMC 128.1 Code Blue Project: Health record software for resuscitation scenarios. Enhances accessibility to critical patient information during emergencies, optimizing resuscitation efforts."
+# HI 191
+"HI 191 Nutrittion System: Medical Health Record software for nutrition."
 
 ## Program Setup
 ### Local version
@@ -14,7 +14,7 @@ Source Code:
     * DB_PASSWORD to your pgadmin password (e.g. password)
 
 ## PostgreSQL
-Create database named “codeblue”
+Create database named “nutrition”
 
 ## Computer Terminal
 Type the following commands:
@@ -27,4 +27,4 @@ Type the following commands:
 
 ## Log-in details
 * Email: admin123
-* Password: codeblue128.1
+* Password: nutrition123
