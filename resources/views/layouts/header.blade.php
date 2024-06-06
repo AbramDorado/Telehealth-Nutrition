@@ -13,7 +13,7 @@
     }
 </style>
 <div class="topbar" style="z-index: 1000;">
-
+    
     <nav class="navbar-custom">
         <ul class="navbar-right d-flex list-inline float-right mb-0">
             <!-- Users Dropdown in a Card -->
@@ -58,8 +58,11 @@
             <li class="float-left">
                 <a href="/codeblueforms" class="logo">
                 <span>
+                <!-- <div class="bg-hospital-blue">
+                    <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
+                </div> -->
                 <div class="bg-hospital-blue">
-                <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
+                    <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
                 </div>
                     <!-- <h1 style="color: blue;">ERE</h1> -->
                 </span>
