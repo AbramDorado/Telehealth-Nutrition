@@ -75,9 +75,9 @@
 </div>
             
 <div class="fixed-header">
-    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Main Information</a>
-    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">Initial Resuscitation</a>
-    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Flowsheet</a>
+    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Patient Information</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">S.O.A.P.</a>
+    <a class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Lab Test Requests</a>
     <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Outcome of the Code</a>
     <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">Debriefing and Evaluation</a>
     <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
@@ -89,152 +89,226 @@
     
     <form method="POST" action="{{ route('store_initialresuscitation', ['code_number' => $code_number]) }}">
     @csrf
+
     <div class="card">
-    <div class="card-header bg-secondary text-white py-2">Airway/Ventilation</div>
-    <div class="card-body">
+        <div class="card-header bg-secondary text-white py-2">Details of Visit</div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="soap_dt">Date of Visit:</label>
+                    <input type="date" class="form-control" name="soap_dt" value="{{ old('soap_dt', optional($soap ?? '')->soap_dt) }}">
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label for="subjective">Subjective / Chief Complaint:</label>
+                    <input type="text" class="form-control" name="subjective" placeholder="Reason for Visit?" value="{{ old('subjective', optional($soap ?? '')->subjective) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-header bg-secondary text-white py-2">Vital Signs</div>
+        <div class="card-body">
+            <div class="row"> 
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="bp">Blood Pressure:</label>
+                        <input type="text" class="form-control" name="bp" value="{{ old('bp', optional($soap ?? '')->bp) }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="hr">Heart Rate:</label>
+                        <input type="text" class="form-control" name="hr" value="{{ old('hr', optional($soap ?? '')->hr) }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="rr">Respiratory Rate:</label>
+                        <input type="text" class="form-control" name="rr" value="{{ old('rr', optional($soap ?? '')->rr) }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="temp">Temperature (C):</label>
+                        <input type="text" class="form-control" name="temp" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('temp', optional($soap ?? '')->temp) }}">
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
-                <div class="col-md-6">
-                <div class="form-group">
-                    <label for="breathing_upon_ca">Breathing upon code activation:</label>
-                    <select class="form-control" name="breathing_upon_ca" id="breathing_upon_ca">
-                        @php
-                            $selectedBreathing = old('breathing_upon_ca', optional($initialResuscitation ?? '' ?? '')->breathing_upon_ca ?? ''); 
-                        @endphp
-
-                        @foreach(['', 'Spontaneous', 'Apneic', 'Agonal', 'Assisted'] as $option)
-                            <option value="{{ $option }}" {{ $selectedBreathing === $option ? 'selected' : '' }}>
-                                {{ $option }}
-                            </option>
-                        @endforeach
-                    </select>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="text" class="form-control" name="height" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('height', optional($soap ?? '')->height) }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="text" class="form-control" name="weight" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('weight', optional($soap ?? '')->weight) }}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="bmi">Body Mass Index:</label>
+                        <input type="text" class="form-control" name="bmi" value="{{ old('bmi', optional($soap ?? '')->bmi) }}">
+                    </div>
                 </div>
 
-                    <div class="form-group">
-                        <label for="first_ventilation_dt">First Assisted Ventilation:</label>
-                        <input type="datetime-local" class="form-control" name="first_ventilation_dt" value="{{ old('first_ventilation_dt', optional($initialResuscitation ?? '')->first_ventilation_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_ventilation_dt'])->format('Y-m-d H:i:s')) : '') }}">
-                    </div>
+            </div>
+            
 
-                    <div class="form-group">
-                        <label for="ventilation">Ventilation via:</label>
-                        <select class="form-control" name="ventilation" id="ventilation">
-                            @php
-                                $selectedVentilation = old('ventilation', optional($initialResuscitation ?? '' ?? '')->ventilation ?? ''); 
-                            @endphp
+        </div>
+    </div>
 
-                            @foreach(['', 'Bag-Valve Mask', 'Tracheostomy', 'Endotracheal Tube', 'Others'] as $option)
-                                <option value="{{ $option }}" {{ $selectedVentilation === $option ? 'selected' : '' }}>
-                                    {{ $option }}
-                                </option>
-                            @endforeach
-                        </select>
+    <div class="card">
+        <div class="card-header bg-secondary text-white py-2">Laboratory Test Results</div>
+        <div class="card-body">
+        <div class="row"> 
+                <!-- First Column -->
+                <div class="col-md-6">
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ecg">Electrocardiogram:</label>
+                            <input type="text" class="form-control" name="ecg" value="{{ old('ecg', optional($soap ?? '')->ecg) }}">
+                        </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ecg">Chest X-Ray:</label>
+                            <input type="text" class="form-control" name="cxr" value="{{ old('cxr', optional($soap ?? '')->cxr) }}">
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group" id="othersText" style="display: none;">
-                        <label for="other_ventilation">Other Ventilation Method:</label>
-                        <input type="text" name="other_ventilation" id="other_ventilation" class="form-control" value="{{ old('other_ventilation', optional($initialResuscitation ?? '')->other_ventilation) }}">
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cbc">Complete Blood Count:</label>
+                            <input type="text" class="form-control" name="cbc" value="{{ old('cbc', optional($soap ?? '')->cbc) }}">
+                        </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ua">Urinalysis:</label>
+                            <input type="text" class="form-control" name="ua" value="{{ old('ua', optional($soap ?? '')->ua) }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="crea">Creatinine:</label>
+                            <input type="text" class="form-control" name="crea" value="{{ old('crea', optional($soap ?? '')->crea) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="bun">Blood Urea Nitrogen:</label>
+                            <input type="text" class="form-control" name="bun" value="{{ old('bua', optional($soap ?? '')->bun) }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="bua">Blood Uric Acid:</label>
+                            <input type="text" class="form-control" name="bua" value="{{ old('bua', optional($soap ?? '')->bua) }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lipid_profile">Lipid Profile:</label>
+                            <input type="text" class="form-control" name="lipid_profile" value="{{ old('lipid_profile', optional($soap ?? '')->lipid_profile) }}">
+                        </div>
+                    </div>
+                </div>
+
+                
                 </div>
 
                 <!-- Second Column -->
-                
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="intubation_dt">Intubation:</label>
-                        <input type="datetime-local" class="form-control" name="intubation_dt" value="{{ old('intubation_dt', optional($initialResuscitation ?? '')->intubation_dt ? (\Carbon\Carbon::parse($initialResuscitation['intubation_dt'])->format('Y-m-d H:i:s')) : '') }}">
-                    </div>
-                        
-                    <div class="form-group">
-                        <label for="et_tube_size">ET Tube Size:</label>
-                        <input type="number" class="form-control" name="et_tube_size" placeholder="0" 
-                        value="{{ $initialResuscitation ?? ''->et_tube_size ?? old('et_tube_size') }}"
-                        step="0.1" min="0.0" max="11.0">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="intubation_attempts">Number of intubation attempts:</label>
-                        <input type="number" class="form-control" name="intubation_attempts" placeholder="0"  value="{{ $initialResuscitation ?? ''->intubation_attempts ?? old('intubation_attempts') }}">
-                    </div>
                 
-                    <div class="form-group">
-                            <label for="et_tube_information">ET Tube Confirmation</label>
-                            <div id="et_tube_information">
-                                <input type="checkbox" id="auscultation-checkbox" name="et_tube_information[]" value="Auscultation" {{ in_array('Auscultation', $etTubeInformation ?? []) ? 'checked' : '' }}>
-                                <label for="auscultation-checkbox">Auscultation</label>
-
-                                <input type="checkbox" id="exhaled-co2-checkbox" name="et_tube_information[]" value="Exhaled CO2" {{ in_array('Exhaled CO2', $etTubeInformation ?? []) ? 'checked' : '' }}>
-                                <label for="exhaled-co2-checkbox">Exhaled CO2</label>
+                    
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sgot">SGOT:</label>
+                                <input type="text" class="form-control" name="sgot" value="{{ old('sgot', optional($soap ?? '')->sgot) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sgpt">SGPT:</label>
+                                <input type="text" class="form-control" name="sgpt" value="{{ old('sgpt', optional($soap ?? '')->sgpt) }}">
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    
 
-
-<div class="card">
-    <div class="card-header card-header bg-secondary text-white py-2">Circulation</div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <!-- First Column -->
-                    <div class="form-group">
-                        <label for="first_documented_rhythm">1st Documented Rhythm</label>
-                        <textarea class="form-control" name="first_documented_rhythm">{{ old('first_documented_rhythm', optional($initialResuscitation ?? '')->first_documented_rhythm ?? '') }}</textarea>
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fbs">Fasting Blood Sugar:</label>
+                                <input type="text" class="form-control" name="fbs" value="{{ old('fbs', optional($soap ?? '')->fbs) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nak">Potassium Blood Test (NaK):</label>
+                                <input type="text" class="form-control" name="nak" value="{{ old('nak', optional($soap ?? '')->nak) }}">
+                            </div>
+                        </div>
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="first_pulseless_rhythm_dt">1st Pulseless Rhythm Detected Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="first_pulseless_rhythm_dt" value="{{ old('first_pulseless_rhythm_dt', optional($initialResuscitation ?? '')->first_pulseless_rhythm_dt ? (\Carbon\Carbon::parse($initialResuscitation['first_pulseless_rhythm_dt'])->format('Y-m-d H:i:s')) : '') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="compressions_dt">Compressions Started Date/Time:</label>
-                        <input type="datetime-local" class="form-control" name="compressions_dt" value="{{ old('compressions_dt', optional($initialResuscitation ?? '')->compressions_dt ? (\Carbon\Carbon::parse($initialResuscitation['compressions_dt'])->format('Y-m-d H:i:s')) : '') }}">
-                    </div>
-
-                </div>
-
-                <!-- Second Column -->
-                
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="aed_applied">AED Applied:</label>
-                        <label for="aed_applied_yes">
-                            <input type="radio" name="aed_applied" value="Yes" id="aed_applied_yes" {{ old('aed_applied', optional($initialResuscitation ?? '')->aed_applied) === 'Yes' ? 'checked' : '' }}>
-                            Yes
-                        </label>
-                        <label for="aed_applied_no">
-                            <input type="radio" name="aed_applied" value="No" id="aed_applied_no" {{ old('aed_applied', optional($initialResuscitation ?? '')->aed_applied) === 'No' ? 'checked' : '' }}>
-                            No
-                        </label>
-                        <div id ="aed_applied_dt_div" style="display: none;">
-                            <label for="aed_applied_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="aed_applied_dt" id="aed_applied_dt" value="{{ old('aed_applied_dt', optional($initialResuscitation ?? '')->aed_applied_dt ? (\Carbon\Carbon::parse($initialResuscitation['aed_applied_dt'])->format('Y-m-d H:i:s')) : '') }}">
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="hbaic">HbA1c:</label>
+                                <input type="text" class="form-control" name="hbaic" value="{{ old('hbaic', optional($soap ?? '')->hbaic) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="hepabs">HepaBS:</label>
+                                <input type="text" class="form-control" name="hepabs" value="{{ old('hepabs', optional($soap ?? '')->hepabs) }}">
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                    <label for="pacemaker_on">Pacemaker on:</label>
-                    <label for="pacemaker_on_yes">
-                        <input type="radio" name="pacemaker_on" value="Yes" id="pacemaker_on_yes" {{ old('pacemaker_on', optional($initialResuscitation ?? '')->pacemaker_on) === 'Yes' ? 'checked' : '' }}>
-                        Yes
-                    </label>
-                    <label for="pacemaker_on_no">
-                        <input type="radio" name="pacemaker_on" value="No" id="pacemaker_on_no" {{ old('pacemaker_on', optional($initialResuscitation ?? '')->pacemaker_on) === 'No' ? 'checked' : '' }}>
-                        No
-                    </label>
-                        <div id ="pacemaker_on_dt_div" style="display: none;">
-                            <label for="pacemaker_on_dt">Date/Time:</label>
-                            <input type="datetime-local" class="form-control" name="pacemaker_on_dt" id="pacemaker_on_dt" value="{{ old('pacemaker_on_dt', optional($initialResuscitation ?? '')->pacemaker_on_dt ? (\Carbon\Carbon::parse($initialResuscitation['pacemaker_on_dt'])->format('Y-m-d H:i:s')) : '') }}">
-                        </div>
+                        <label for="others">Others:</label>
+                        <input type="text" class="form-control" name="others" value="{{ old('others', optional($soap ?? '')->others) }}">
                     </div>
                 </div>
             </div>
         </div>
-</div>
+    </div>
+
+    <div class="card">
+        <div class="card-header card-header bg-secondary text-white py-2">Assessment & Plan</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="assessment">Assessment:</label>
+                <input type="text" class="form-control" name="assessment" value="{{ old('assessment', optional($soap ?? '')->assessment) }}">
+            </div>
+
+            <div class="form-group">
+                <label for="plan">Plan:</label>
+                <input type="text" class="form-control" name="plan" value="{{ old('plan', optional($soap ?? '')->plan) }}">
+            </div>
+        </div>
+    </div>
 
         <form action="{{ url('/store_initialresuscitation') }}" method="post">
             @csrf 
@@ -246,77 +320,31 @@
 </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    const ventilationSelect = document.getElementById('ventilation');
-    const othersText = document.getElementById('othersText'); 
-    const otherVentilationInput = document.getElementById('other_ventilation');
+    $(document).ready(function() {
+        $('[name="height"]').on('blur change', function() {
+            calculateBMI();
+        });
+        $('[name="weight"]').on('blur change', function() {
+            calculateBMI();
+        });
+            
+        function calculateBMI() {
+            console.log("i am here")
 
-        function toggleFields() {
-            const selectedValue = ventilationSelect.value; 
+            var heightInput = $('[name="height"]').val() / 100; 
+            var weightInput = $('[name="weight"]').val();
+            var bmiInput = $('[name="bmi"]');
 
-            if (selectedValue === 'Others') {
-                othersText.style.display = 'block';
-                otherVentilationInput.required = true;
+            if (heightInput && weightInput) {
+                var bmi = weightInput / (heightInput * heightInput)
+                bmiInput.val(bmi.toFixed(2))
             } else {
-                othersText.style.display = 'none';
-                otherVentilationInput.required = false;
+                ageInput.val('');
             }
         }
-
-        toggleFields(); // Initial toggle based on selected outcome
-
-        ventilationSelect.addEventListener('change', toggleFields);
-
-    document.addEventListener("DOMContentLoaded", function () {
-    const aedAppliedYes = document.getElementById("aed_applied_yes");
-    const aedAppliedNo = document.getElementById("aed_applied_no");
-    const aedAppliedDT = document.getElementById("aed_applied_dt_div");
-    const pacemakerOnYes = document.getElementById("pacemaker_on_yes");
-    const pacemakerOnNo = document.getElementById("pacemaker_on_no");
-    const pacemakerOnDT = document.getElementById("pacemaker_on_dt_div");
-
-    aedAppliedNo.addEventListener("change", function () {
-        setLocalStorageItem(aedAppliedNo.id, aedAppliedNo.checked);
-        aedAppliedDT.style.display = aedAppliedNo.checked ? "none" : "block";
     });
-
-    aedAppliedYes.addEventListener("change", function () {
-        setLocalStorageItem(aedAppliedYes.id, aedAppliedYes.checked);
-        aedAppliedDT.style.display = aedAppliedYes.checked ? "block" : "none";
-    });
-
-    pacemakerOnYes.addEventListener("change", function () {
-        setLocalStorageItem(pacemakerOnYes.id, pacemakerOnYes.checked);
-        pacemakerOnDT.style.display = pacemakerOnYes.checked ? "block" : "none";
-    });
-
-    pacemakerOnNo.addEventListener("change", function () {
-        setLocalStorageItem(pacemakerOnNo.id, pacemakerOnNo.checked);
-        pacemakerOnDT.style.display = pacemakerOnNo.checked ? "none" : "block";
-    });
-
-
-    function setLocalStorageItem(item, value) {
-    localStorage.setItem(item, value);
-}
-
-
-    function getLocalStorageItem(item) {
-        return item;
-    }
-
-    function handleCheckboxState(checkbox, explanationBox) {
-        const isChecked = getLocalStorageItem(checkbox.id);
-         if ( checkbox.checked === true) {    
-            explanationBox.style.display = "block";
-        } else {
-            explanationBox.style.display = "none";
-        }
-        console.log(`explanationBox.style.display: ${explanationBox.style.display}`);
-    }
-
-    handleCheckboxState(aedAppliedYes, aedAppliedDT);
-    handleCheckboxState(pacemakerOnYes, pacemakerOnDT);
-});
 </script>
+
 @endsection
