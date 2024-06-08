@@ -175,19 +175,19 @@
 </div>
             
 <div class="fixed-header">
-    <a class="btn btn-secondary" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Patient Information</a>
-    <a class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}">S.O.A.P.</a>
-    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('flowsheet', ['code_number' => $code_number]) }}">Lab Test Requests</a>
-    <a class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}">Diet History</a>
-    <a class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}">P.C.W.M.</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}">Code Team</a>
+    <a class="btn btn-secondary" href="{{ route('patientinformation', ['patient_number' => $patient_number]) }}">Patient Information</a>
+    <a class="btn btn-secondary" href="{{ route('soap', ['patient_number' => $patient_number]) }}">S.O.A.P.</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">Lab Test Requests</a>
+    <a class="btn btn-secondary" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}">Diet History</a>
+    <a class="btn btn-secondary" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}">P.C.W.M.</a>
+    <a class="btn btn-secondary" href="{{ route('codeteam', ['patient_number' => $patient_number]) }}">Code Team</a>
 </div>
 
 <div id="formContainer">
-    <form id="baseForm" method="POST" action="{{ route('store_flowsheet', ['code_number' => $code_number ?? '']) }}"> 
+    <form id="baseForm" method="POST" action="{{ route('store_labrequest', ['patient_number' => $patient_number ?? '']) }}"> 
         @csrf
     
-        <input type="hidden" name="flowsheet_id" id="flowsheet_id" value="">
+        <input type="hidden" name="labrequest_id" id="labrequest_id" value="">
 
         <div class="container">
             <div class="row justify-content-center">

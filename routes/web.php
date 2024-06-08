@@ -15,6 +15,14 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ExcelController;
 
+///////////////////////////////////////////////////////////
+use App\Http\Controllers\PatientInformationController;
+use App\Http\Controllers\SoapController;
+use App\Http\Controllers\LabRequestController;
+use App\Http\Controllers\DietHistoryController;
+use App\Http\Controllers\PcwmController;
+///////////////////////////////////////////////////////////
+
 Route::get('/', function () {
     return view('auth/login');
 })->name('welcome');
@@ -58,6 +66,28 @@ Route::get('/codeteam', function(){
 Route::get('/users', function(){
     return view('users');
 });
+
+///////////////////////////////////////////////////////////
+Route::get('/patientinformation', function () {
+    return view('patientinformation');
+});
+
+Route::get('/soap', function(){
+    return view('soap');
+});
+
+Route::get('/labrequest', function(){
+    return view('labrequest');
+});
+
+Route::get('/diethistory', function(){
+    return view('diethistory');
+});
+
+Route::get('/pcwm', function(){
+    return view('pcwm');
+});
+///////////////////////////////////////////////////////////
 
 // Route::get('/codeteam', [CodeTeamController::class, 'showCodeTeamForm']);
 // Route::get('/evaluation', [EvaluationController::class, 'index'])->name('evaluation');

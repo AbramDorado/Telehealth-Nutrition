@@ -83,12 +83,12 @@
 </div>
             
 <div class="fixed-header">
-    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('maininformation', ['code_number' => $code_number]) }}">Patient Information</a>
-    <a id="initialResuscitationBtn" class="btn btn-secondary" href="{{ route('initialresuscitation', ['code_number' => $code_number]) }}" >S.O.A.P.</a>
-    <a id="flowsheetBtn" class="btn btn-secondary" href="{{ route('flowsheet', ['code_number' => $code_number]) }}" >Lab Test Requests</a>
-    <a id="outcomeBtn" class="btn btn-secondary" href="{{ route('outcome', ['code_number' => $code_number]) }}" >Diet History</a>
-    <a id="evaluationBtn" class="btn btn-secondary" href="{{ route('evaluation', ['code_number' => $code_number]) }}" >P.C.W.M.</a>
-    <a id="codeteamBtn" class="btn btn-secondary" href="{{ route('codeteam', ['code_number' => $code_number]) }}" >Code Team</a>
+    <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('patientinformation', ['patient_number' => $patient_number]) }}">Patient Information</a>
+    <a id="soapBtn" class="btn btn-secondary" href="{{ route('soap', ['patient_number' => $patient_number]) }}" >S.O.A.P.</a>
+    <a id="labrequestBtn" class="btn btn-secondary" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}" >Lab Test Requests</a>
+    <a id="diethistoryBtn" class="btn btn-secondary" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}" >Diet History</a>
+    <a id="pcwmBtn" class="btn btn-secondary" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}" >P.C.W.M.</a>
+    <a id="codeteamBtn" class="btn btn-secondary" href="{{ route('codeteam', ['patient_number' => $patient_number]) }}" >Code Team</a>
 </div>
 
 
@@ -98,7 +98,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
     
-    <form method="POST" action="{{ route('store_maininformation', ['code_number' => $code_number]) }}"> <!--start of the form submittion-->
+    <form method="POST" action="{{ route('store_patientinformation', ['patient_number' => $patient_number]) }}"> <!--start of the form submittion-->
         @csrf
 
     <div class="card">
@@ -548,7 +548,7 @@ $(document).ready(function() {
 
     if (patientPIN !== '') {
         // If patient PIN exists, enable buttons
-        $("#initialResuscitationBtn, #flowsheetBtn, #outcomeBtn, #evaluationBtn, #codeteamBtn").removeClass('disabled');
+        $("#soapBtn, #labrequestBtn, #diethistoryBtn, #pcwmBtn, #codeteamBtn").removeClass('disabled');
     }
 });
 </script>
