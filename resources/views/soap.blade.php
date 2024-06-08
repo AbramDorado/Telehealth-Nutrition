@@ -96,7 +96,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="soap_dt">Date of Visit:</label>
-                    <input type="date" class="form-control" name="soap_dt" value="{{ old('soap_dt', optional($soap ?? '')->soap_dt) }}">
+                    <input type="date" class="form-control" name="soap_dt" value="{{ old('soap_dt', optional($soap ?? '')->soap_dt) }}" required>
                 </div>
             </div>
 
@@ -118,19 +118,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="bp">Blood Pressure:</label>
-                        <input type="text" class="form-control" name="bp" value="{{ old('bp', optional($soap ?? '')->bp) }}">
+                        <input type="text" class="form-control" name="bp" pattern="\d+/\d+" title="Please enter a valid BP in the format Systolic/Diastolic, e.g., 120/80" placeholder="Systolic/Diastolic" value="{{ old('bp', optional($soap ?? '')->bp) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="hr">Heart Rate:</label>
-                        <input type="text" class="form-control" name="hr" value="{{ old('hr', optional($soap ?? '')->hr) }}">
+                        <label for="pr">Pulse Rate (bpm):</label>
+                        <input type="text" class="form-control" name="pr" pattern="\d+" value="{{ old('pr', optional($soap ?? '')->pr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="rr">Respiratory Rate:</label>
-                        <input type="text" class="form-control" name="rr" value="{{ old('rr', optional($soap ?? '')->rr) }}">
+                        <input type="text" class="form-control" name="rr" pattern="\d+" value="{{ old('rr', optional($soap ?? '')->rr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -156,8 +156,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="bmi">Body Mass Index:</label>
-                        <input type="text" class="form-control" name="bmi" value="{{ old('bmi', optional($soap ?? '')->bmi) }}">
+                        <label for="bmi_1">Body Mass Index:</label>
+                        <input type="text" class="form-control" name="bmi_1" value="{{ old('bmi_1', optional($soap ?? '')->bmi_1) }}">
                     </div>
                 </div>
 
@@ -309,10 +309,12 @@
         </div>
     </div>
 
-        <form action="{{ url('/store_soap') }}" method="post">
-            @csrf 
-            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-        </form>
+
+    <button type="submit" class="btn btn-primary btn-block">
+        Log
+        <!-- <i class="fa fa-chevron-right" aria-hidden="true"></i> -->
+    </button>
+
 </form> 
 
   </div>
@@ -334,7 +336,7 @@
 
             var heightInput = $('[name="height"]').val() / 100; 
             var weightInput = $('[name="weight"]').val();
-            var bmiInput = $('[name="bmi"]');
+            var bmiInput = $('[name="bmi_1"]');
 
             if (heightInput && weightInput) {
                 var bmi = weightInput / (heightInput * heightInput)
