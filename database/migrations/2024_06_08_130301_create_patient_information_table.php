@@ -18,10 +18,10 @@ class CreatePatientInformationTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
-            $table->string('sex_1')->nullable();
+            $table->string('sex')->nullable();
             $table->string('civil_status')->nullable();
             $table->date('birthday')->default(date("Y-m-d"))->nullable();
-            $table->unsignedInteger('age_1')->nullable();
+            $table->unsignedInteger('age')->nullable();
             $table->text('allergies')->nullable();
             $table->string('position')->nullable();
             $table->string('unit_assignment')->nullable();
@@ -53,8 +53,6 @@ class CreatePatientInformationTable extends Migration
             $table->string('menarche')->nullable();
 
             $table->boolean('is_archived')->default(false);
-            $table->boolean('is_finalized')->default(false);
-
             $table->timestamps();
         });
     }

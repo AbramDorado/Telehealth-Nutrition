@@ -4,7 +4,7 @@
         @if (Route::has('login'))
         <div class="top-right links color-white">
             @auth
-            <a href="{{ url('/codeblueforms') }}">Admin</a>
+            <a href="{{ url('/nutritionforms') }}">Admin</a>
             @else
             <a class="btn btn-secondary btn-md" style="color: white" href="{{ route('login') }}">Go To Login Panel</a>
 

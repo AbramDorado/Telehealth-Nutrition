@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PatientInformation extends Model
 {
     use HasFactory;
-    protected $table = 'patient_infomration'; 
+    protected $table = 'patient_information'; 
     protected $primaryKey = 'patient_number'; 
 
     protected $fillable = [
@@ -16,9 +16,9 @@ class PatientInformation extends Model
         'first_name',
         'middle_name',
         'sex',
-        'civil staus',
+        'civil status',
         'birthday',
-        'age_1',
+        'age',
         'allergies',
         'position',
         'unit_assignment',
@@ -49,7 +49,6 @@ class PatientInformation extends Model
         'lmp',
         'menarche',
         'is_archived',
-        'is_finalized',
     ];
 
     public function soap()

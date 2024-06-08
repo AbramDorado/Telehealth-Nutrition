@@ -45,7 +45,7 @@ class CreateSoapTable extends Migration
             $table->boolean('is_archived')->default(false);
             $table->unsignedBigInteger('patient_number')->nullable();
 
-            $table->foreign('patient_number')->references('patient_number')->on('patient')->onDelete('cascade'); // This line adds ON DELETE CASCADE
+            $table->foreign('patient_number')->references('patient_number')->on('patient_information')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }

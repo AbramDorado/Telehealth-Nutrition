@@ -80,7 +80,6 @@
     <a class="btn btn-secondary" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">Lab Test Requests</a>
     <a class="btn btn-secondary" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}">Diet History</a>
     <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}">P.C.W.M.</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['patient_number' => $patient_number]) }}">Code Team</a>
 </div>
 
 <div class="container">
@@ -152,79 +151,4 @@
   </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const question2Yes = document.getElementById("question2_yes");
-    const question2No = document.getElementById("question2_no");
-    const question2explanationBox = document.getElementById("question2_1");
-    const question3Yes = document.getElementById("question3_yes");
-    const question3No = document.getElementById("question3_no");
-    const question3Details = document.getElementById("question3_details");
-    const question4Yes = document.getElementById("question4_yes");
-    const question4No = document.getElementById("question4_no");
-    const question4explanationBox = document.getElementById("question4_1");
-    const question5Yes = document.getElementById("question5_yes");
-    const question5No = document.getElementById("question5_no");
-    const question5explanationBox = document.getElementById("question5_1");
-
-    question2No.addEventListener("change", function () {
-        setLocalStorageItem(question2No.id, question2No.checked);
-        question2explanationBox.style.display = question2No.checked ? "none" : "block";
-    });
-
-    question2Yes.addEventListener("change", function () {
-        setLocalStorageItem(question2Yes.id, question2Yes.checked);
-        question2explanationBox.style.display = question2Yes.checked ? "block" : "none";
-    });
-
-    question3No.addEventListener("change", function () {
-        setLocalStorageItem(question3No.id, question3No.checked);
-        question3Details.style.display = question3No.checked ? "none" : "block";
-    });
-
-    question3Yes.addEventListener("change", function () {
-        setLocalStorageItem(question3Yes.id, question3Yes.checked);
-        question3Details.style.display = question3Yes.checked ? "block" : "none";
-    });
-
-    question4Yes.addEventListener("change", function () {
-        setLocalStorageItem(question4Yes.id, question4Yes.checked);
-        question4explanationBox.style.display = question4Yes.checked ? "none" : "block";
-    });
-
-    question4No.addEventListener("change", function () {
-        setLocalStorageItem(question4No.id, question4No.checked);
-        question4explanationBox.style.display = question4No.checked ? "block" : "none";
-    });
-
-    question5Yes.addEventListener("change", function () {
-        setLocalStorageItem(question5Yes.id, question5Yes.checked);
-        question5explanationBox.style.display = question5Yes.checked ? "block" : "none";
-    });
-
-    question5No.addEventListener("change", function () {
-        setLocalStorageItem(question5No.id, question5No.checked);
-        question5explanationBox.style.display = question5No.checked ? "none" : "block";
-    });
-
-    function setLocalStorageItem(item, value) {
-        localStorage.setItem(item, value);
-    }
-
-    function getLocalStorageItem(item) {
-        return localStorage.getItem(item) === 'true';
-    }
-
-    function handleCheckboxState(checkbox, explanationBox) {
-        const isChecked = getLocalStorageItem(checkbox.id);
-        checkbox.checked = isChecked;
-        explanationBox.style.display = isChecked ? "block" : "none";
-    }
-
-    handleCheckboxState(question2Yes, question2explanationBox);
-    handleCheckboxState(question3Yes, question3Details);
-    handleCheckboxState(question4No, question4explanationBox);
-    handleCheckboxState(question5Yes, question5explanationBox);
-});
-</script>
 @endsection

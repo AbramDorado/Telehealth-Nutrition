@@ -49,7 +49,7 @@ class CreateDietHistoriesTable extends Migration
             $table->unsignedInteger('patient_number')->nullable();
             
             // Foreign key with ON DELETE CASCADE
-            $table->foreign('patient_number')->references('patient_number')->on('patient')->onDelete('cascade'); // This line adds ON DELETE CASCADE
+            $table->foreign('patient_number')->references('patient_number')->on('patient_information')->onDelete('cascade'); // This line adds ON DELETE CASCADE
             $table->timestamps();
         });
     }

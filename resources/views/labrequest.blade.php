@@ -180,7 +180,6 @@
     <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">Lab Test Requests</a>
     <a class="btn btn-secondary" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}">Diet History</a>
     <a class="btn btn-secondary" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}">P.C.W.M.</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['patient_number' => $patient_number]) }}">Code Team</a>
 </div>
 
 <div id="formContainer">
@@ -266,14 +265,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="medical_officer">Medical Officer:</label>
-                            <input type="text" class="form-control" name="medical_officer" value="{{ old('medical_officer', optional($lab_request ?? '')->medical_officer) }}"> 
+                            <input type="text" class="form-control" name="medical_officer" value="{{ old('medical_officer', optional($labrequest ?? '')->medical_officer) }}"> 
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="license_num">License Number:</label>
-                            <input type="text" class="form-control" name="license_num" pattern="\d+" title="Please enter only numbers" value="{{ old('license_num', optional($lab_request ?? '')->license_num) }}">
+                            <input type="text" class="form-control" name="license_num" pattern="\d+" title="Please enter only numbers" value="{{ old('license_num', optional($labrequest ?? '')->license_num) }}">
                         </div>
                     </div>
                 </div>

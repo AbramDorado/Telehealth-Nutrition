@@ -102,7 +102,6 @@
     <a class="btn btn-secondary" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">Lab Test Requests</a>
     <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}">Diet History</a>
     <a class="btn btn-secondary" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}">P.C.W.M.</a>
-    <a class="btn btn-secondary" href="{{ route('codeteam', ['patient_number' => $patient_number]) }}">Code Team</a>
 </div>
 
 <div class="container">

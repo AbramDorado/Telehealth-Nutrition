@@ -9,7 +9,7 @@
                         <ul class="metismenu" id="side-menu">
 
                             <li class="">
-                                <a href="/codeblueforms" class="waves-effect {{ request()->is("codeblueforms") || request()->is("codeblueforms/*") ? "mm active" : "" }}">
+                                <a href="/nutritionforms" class="waves-effect {{ request()->is("nutritionforms") || request()->is("nutritionforms/*") ? "mm active" : "" }}">
                                     <i class="ti-forms"></i> <span> Code Blue Forms </span>
                                 </a>
                             </li>            

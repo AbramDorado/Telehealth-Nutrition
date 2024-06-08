@@ -56,7 +56,7 @@
 
         <ul class="list-inline menu-left mb-0" style="padding-left: 10px;">
             <li class="float-left">
-                <a href="/codeblueforms" class="logo">
+                <a href="/nutritionforms" class="logo">
                 <span>
                 <!-- <div class="bg-hospital-blue">
                     <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
