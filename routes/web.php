@@ -149,6 +149,11 @@ Route::get('/download-excel', [ExcelController::class, 'export'])->name('downloa
 
 Route::post('/codeblueforms/{code_number}/finalize', [FormController::class, 'finalize'])->name('finalize_codeblueforms');
 
+///////////////////////////////////////////////////////////
+Route::get('/patientinformation/{patient_number}', [PatientInformationController::class, 'index'])->name('patientinformation');
+
+
+///////////////////////////////////////////////////////////
 
 Route::group(['middleware' => ['auth']], function () {
 
