@@ -17,8 +17,6 @@
         <div class="content-page" style="z-index: 0;">
             <div class="content">
                 <div class="container-fluid">
-                    
-
                     @include('layouts.settings')
                     @yield('content')
                 </div>

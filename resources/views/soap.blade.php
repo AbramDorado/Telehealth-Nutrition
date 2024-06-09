@@ -112,7 +112,7 @@
 
 
     <div class="card">
-        <div class="card-header bg-secondary text-white py-2">Vital Signs</div>
+        <div class="card-header bg-secondary text-white py-2">Vital Signs & Measurements</div>
         <div class="card-body">
             <div class="row"> 
                 <div class="col-md-3">
@@ -264,7 +264,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nak">Potassium Blood Test (NaK):</label>
+                                <label for="nak">Sodium and Potassium:</label>
                                 <input type="text" class="form-control" name="nak" value="{{ old('nak', optional($soap ?? '')->nak) }}">
                             </div>
                         </div>

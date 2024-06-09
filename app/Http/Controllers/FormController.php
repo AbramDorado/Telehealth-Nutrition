@@ -8,6 +8,7 @@ use App\Models\Soap;
 use App\Models\LabRequest;
 use App\Models\DietHistory;
 use App\Models\Pcwm;
+use App\Models\PcwmLog;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,17 +16,18 @@ use Illuminate\Support\Facades\Hash;
 class FormController extends Controller
 {
     // VIEW FUNCTION IN CASE IN THE FUTURE
-    public function viewMedicalRecord($patient_pin, $patient_number)
+    public function viewMedicalRecord($patient_number)
     {
         // Fetch information from each table based on the patient_number
         $patientInformation = PatientInformation::where('patient_number', $patient_number)->first();
-        $soap = Soap::where('patient_number', $patient_number)->first();
+        $soaps = Soap::where('patient_number', $patient_number)->get();
         $labRequest = LabRequest::where('patient_number', $patient_number)->first();
         $dietHistory = DietHistory::where('patient_number', $patient_number)->first();
         $pcwm = Pcwm::where('patient_number', $patient_number)->first();
+        $pcwmlogs = PcwmLog::where('pcwm_id', $pcwm->pcwm1_id)->orderBy('pcwm2_dt', 'asc')->get();;
 
         // Pass the data to the view
-        return view('view_medical_record', compact('patientInformation', 'soap', 'labRequest', 'dietHistory', 'pcwm'));
+        return view('view_medical_record', compact('patientInformation', 'soaps', 'labRequest', 'dietHistory', 'pcwm', 'pcwmlogs'));
     }
     
     // ARCHIVE FUNCTION

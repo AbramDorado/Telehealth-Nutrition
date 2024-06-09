@@ -91,7 +91,7 @@
                                     <td>{{ $event->contact_number }}</td>
                                     <td>
                                         <!-- View the forms -->
-                                        <a href="{{ route('view_nutritionforms', ['patient_pin' => $event->patient_pin, 'patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                        <a href="{{ route('view_nutritionforms', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-eye"></i>
                                         </a>
 
