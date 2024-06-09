@@ -156,14 +156,14 @@
                     <label for="blood_type">Blood Type:</label>
                     <select class="form-control" name="blood_type">
                         <option value="">Select blood type</option>
-                        <option value="A+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'male' ? 'selected' : '' }}>A+</option>
-                        <option value="A-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'female' ? 'selected' : '' }}>A-</option>
-                        <option value="B+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>B+</option>
-                        <option value="B-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>B-</option>
-                        <option value="AB+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>AB+</option>
-                        <option value="AB-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>AB-</option>
-                        <option value="O+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>O+</option>
-                        <option value="O-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'other' ? 'selected' : '' }}>O-</option>
+                        <option value="A+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'A+' ? 'selected' : '' }}>A+</option>
+                        <option value="A-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'A-' ? 'selected' : '' }}>A-</option>
+                        <option value="B+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'B+' ? 'selected' : '' }}>B+</option>
+                        <option value="B-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'B-' ? 'selected' : '' }}>B-</option>
+                        <option value="AB+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'AB+' ? 'selected' : '' }}>AB+</option>
+                        <option value="AB-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'AB-' ? 'selected' : '' }}>AB-</option>
+                        <option value="O+" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'O+' ? 'selected' : '' }}>O+</option>
+                        <option value="O-" {{ old('blood_type', optional($patientinformation ?? '')->blood_type) === 'O-' ? 'selected' : '' }}>O-</option>
                     </select>
                 </div>
                 
@@ -428,5 +428,31 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('[name="birthday"]').on('blur change', function() {
+            calculateAge();
+        });
 
+        function calculateAge() {
+            var birthdayInput = $('[name="birthday"]').val();
+            var ageInput = $('[name="age"]');
+
+            if (birthdayInput) {
+                var dob = new Date(birthdayInput);
+                var today = new Date();
+
+                var age = today.getFullYear() - dob.getFullYear();
+
+                if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                
+                ageInput.val(age);
+            } else {
+                ageInput.val('');
+            }
+        }
+    });
+</script> 
 @endsection

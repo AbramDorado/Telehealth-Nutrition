@@ -4,32 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Models\CodeBlueActivation;
-use App\Models\Outcome;
-use App\Models\InitialResuscitation;
-use App\Models\Flowsheet;
-use App\Models\Evaluation;
-use App\Models\CodeTeam;
-
+use App\Models\PatientInformation;
 
 class PdfController extends Controller
 {
-    public function download($code_number) {
-        $event = CodeBlueActivation::with('patient')->where('code_number', $code_number)->first();
+    public function download($patient_number)
+    {
+        $patient = PatientInformation::with(['soap', 'labRequest', 'dietHistory', 'pcwm', 'pcwm.logs'])
+                                     ->where('patient_number', $patient_number)
+                                     ->firstOrFail();
 
-        $initialResuscitation = InitialResuscitation::where('code_number', $event->code_number)->first();
-         
-        $flowsheet = Flowsheet::where('code_number', $event->code_number)->distinct()->get();
-        
-        $outcome = Outcome::where('code_number', $event->code_number)->first();
+        $soap = $patient->soap;
+        $diethistory = $patient->dietHistory;
+        $labRequest = $patient->labRequest;
+        $pcwm = $patient->pcwm;
+        $pcwmlogs = $pcwm ? $pcwm->logs : collect();
 
-        $evaluation = Evaluation::where('code_number', $event->code_number)->first();
+        $pdf = PDF::loadView('pdf', [
+            'patient' => $patient,
+            'soap' => $soap,
+            'labRequest' => $labRequest,
+            'diethistory' => $diethistory,
+            'pcwm' => $pcwm,
+            'pcwmlogs' => $pcwmlogs
+        ]);
 
-        $codeTeam = CodeTeam::where('code_number', $event->code_number)->first();
+        return $pdf->download("patient_{$patient->patient_number}.pdf");
+    }
 
-        $pdf = PDF::loadView('pdf', ['event' => $event, 'initialResuscitation' => $initialResuscitation, 'flowsheet' => $flowsheet, 'outcome' => $outcome, 'evaluation' => $evaluation, 'codeTeam' => $codeTeam]);
+    public function labreq_download($patient_number)
+    {
+        $patient = PatientInformation::with(['soap', 'labRequest', 'dietHistory', 'pcwm', 'pcwm.logs'])
+                                     ->where('patient_number', $patient_number)
+                                     ->firstOrFail();
 
+        $soap = $patient->soap;
+        $diethistory = $patient->dietHistory;
+        $labRequest = $patient->labRequest;
+        $pcwm = $patient->pcwm;
+        $pcwmlogs = $pcwm ? $pcwm->logs : collect();
 
-        return $pdf->download("code_event_{$event->code_number}.pdf");
+        $pdf = PDF::loadView('labreq', [
+            'patient' => $patient,
+            'soap' => $soap,
+            'labRequest' => $labRequest,
+            'diethistory' => $diethistory,
+            'pcwm' => $pcwm,
+            'pcwmlogs' => $pcwmlogs
+        ]);
+
+        return $pdf->download("lab_request_form_patient_{$patient->patient_number}.pdf");
     }
 }

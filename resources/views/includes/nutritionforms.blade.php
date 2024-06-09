@@ -110,8 +110,12 @@
                                             </button>
                                         </form>
 
-                                        <a href="{{ route('download-pdf', ['codeEvent' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                        <a href="{{ route('download-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-file-pdf"></i>
+                                        </a>
+
+                                        <a href="{{ route('download-lab-req-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                            Lab Request Form
                                         </a>
                                     </td>
                                 </tr>

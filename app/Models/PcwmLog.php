@@ -25,4 +25,3 @@ class PcwmLog extends Model
         return $this->belongsTo(Pcwm::class, 'pcwm_id', 'pcwm1_id');
     }
 }
-

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\PatientInformation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PatientInformationController extends Controller
 {
@@ -12,11 +13,15 @@ class PatientInformationController extends Controller
 
     public function index($patient_number)
     {
-
         $patientinformation = PatientInformation::where('patient_number', $patient_number)
             ->orderBy('created_at', 'desc')
             ->first();
-        return view('patientinformation', compact('patient_number', 'patientinformation'));
+        if ($patientinformation) {
+            $past_medical_history = $patientinformation->past_medical_history;
+            return view('patientinformation', compact('patient_number', 'patientinformation', 'past_medical_history'));
+        } else {
+            return view('patientinformation', compact('patient_number', 'patientinformation'));
+        }
     }
 
     public function store(Request $request, $patient_number)
@@ -61,6 +66,8 @@ class PatientInformationController extends Controller
             'menarche' => 'nullable|string|max:255',
             'is_archived' => 'nullable|boolean',
         ]);
+
+        Log::debug("It reached here");
 
         // Create a new instance of the PatientInformation model and fill it with the validated data
         $patientinformation = new PatientInformation();
@@ -108,6 +115,8 @@ class PatientInformationController extends Controller
 
         // Save the medical information to the database
         $patientinformation->save();
+        
+        Log::debug("Save");
 
         // Set the patient_number in session
         session(['patient_number' => $patientinformation->patient_number]);

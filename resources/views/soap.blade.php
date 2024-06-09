@@ -124,13 +124,13 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="pr">Pulse Rate (bpm):</label>
-                        <input type="text" class="form-control" name="pr" pattern="\d+" value="{{ old('pr', optional($soap ?? '')->pr) }}">
+                        <input type="text" class="form-control" name="pr" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('pr', optional($soap ?? '')->pr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="rr">Respiratory Rate:</label>
-                        <input type="text" class="form-control" name="rr" pattern="\d+" value="{{ old('rr', optional($soap ?? '')->rr) }}">
+                        <input type="text" class="form-control" name="rr" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('rr', optional($soap ?? '')->rr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
