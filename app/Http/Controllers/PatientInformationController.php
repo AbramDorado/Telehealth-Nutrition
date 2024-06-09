@@ -21,10 +21,12 @@ class PatientInformationController extends Controller
 
     public function store(Request $request, $patient_number)
     {
-        $validated = $request->validate([
+        // Validate the incoming request data
+        $validatedData = $request->validate([
             'last_name' => 'nullable|string|max:255',
             'first_name' => 'nullable|string|max:255',
             'middle_name' => 'nullable|string|max:255',
+            'suffix' => 'nullable|string|max:255',
             'sex' => 'nullable|string|max:10',
             'civil_status' => 'nullable|string|max:10',
             'birthday' => 'nullable|date',
@@ -39,7 +41,6 @@ class PatientInformationController extends Controller
             'religion' => 'nullable|string|max:255',
             'contact_number' => 'nullable|integer',
             'referral_control_num' => 'nullable|integer',
-            'general_appearance' => 'nullable|string|max:255',
             'skin' => 'nullable|string|max:255',
             'heent' => 'nullable|string|max:255',
             'neck' => 'nullable|string|max:255',
@@ -61,11 +62,58 @@ class PatientInformationController extends Controller
             'is_archived' => 'nullable|boolean',
         ]);
 
-        $patient = PatientInformation::updateOrCreate(
-            ['patient_number' => $patient_number],
-            $validated
-        );
+        // Create a new instance of the PatientInformation model and fill it with the validated data
+        $patientinformation = new PatientInformation();
+        $patientinformation->last_name = $validatedData['last_name'] ?? null;
+        $patientinformation->first_name = $validatedData['first_name'] ?? null;
+        $patientinformation->middle_name = $validatedData['middle_name'] ?? null;
+        $patientinformation->suffix = $validatedData['suffix'] ?? null;
+        $patientinformation->sex = $validatedData['sex'] ?? null;
+        $patientinformation->civil_status = $validatedData['civil_status'] ?? null;
+        $patientinformation->birthday = $validatedData['birthday'] ?? null;
+        $patientinformation->age = $validatedData['age'] ?? null;
+        $patientinformation->allergies = $validatedData['allergies'] ?? null;
+        $patientinformation->position = $validatedData['position'] ?? null;
+        $patientinformation->unit_assignment = $validatedData['unit_assignment'] ?? null;
+        $patientinformation->home_address = $validatedData['home_address'] ?? null;
+        $patientinformation->bachelor_degree = $validatedData['bachelor_degree'] ?? null;
+        $patientinformation->date_entered_service = $validatedData['date_entered_service'] ?? null;
+        $patientinformation->blood_type = $validatedData['blood_type'] ?? null;
+        $patientinformation->religion = $validatedData['religion'] ?? null;
+        $patientinformation->contact_number = $validatedData['contact_number'] ?? null;
+        $patientinformation->referral_control_num = $validatedData['referral_control_num'] ?? null;
+        $patientinformation->skin = $validatedData['skin'] ?? null;
+        $patientinformation->heent = $validatedData['heent'] ?? null;
+        $patientinformation->neck = $validatedData['neck'] ?? null;
+        $patientinformation->chest = $validatedData['chest'] ?? null;
+        $patientinformation->heart = $validatedData['heart'] ?? null;
+        $patientinformation->breast = $validatedData['breast'] ?? null;
+        $patientinformation->abdomen = $validatedData['abdomen'] ?? null;
+        $patientinformation->musculoskeletal = $validatedData['musculoskeletal'] ?? null;
+        $patientinformation->neurologic = $validatedData['neurologic'] ?? null;
+        $patientinformation->past_medical_history = $validatedData['past_medical_history'] ?? null;
+        $patientinformation->operations = $validatedData['operations'] ?? null;
+        $patientinformation->previous_hospitalization = $validatedData['previous_hospitalization'] ?? null;
+        $patientinformation->current_medication = $validatedData['current_medication'] ?? null;
+        $patientinformation->family_history = $validatedData['family_history'] ?? null;
+        $patientinformation->psychosocial_history = $validatedData['psychosocial_history'] ?? null;
+        $patientinformation->obstetric_score = $validatedData['obstetric_score'] ?? null;
+        $patientinformation->lmp = $validatedData['lmp'] ?? null;
+        $patientinformation->menarche = $validatedData['menarche'] ?? null;
 
-        return redirect()->route('patientinformation', ['patient_number' => $patient->patient_number]);
+        // Create a new instance of the PatientInformation model and fill it with the validated data
+        $patientinformation = new PatientInformation();
+        $patientinformation->fill($validatedData);
+        $patientinformation->patient_number = $patient_number;
+
+        // Save the medical information to the database
+        $patientinformation->save();
+
+        // Set the patient_number in session
+        session(['patient_number' => $patientinformation->patient_number]);
+
+        // Redirect the user back to the previous page or wherever you want
+        return redirect()->route('includes/nutritionforms');
+        // return view('soap')->with('success', 'Patient information saved successfully.');
     }
 }

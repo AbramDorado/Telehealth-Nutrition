@@ -84,7 +84,7 @@
                             <tbody>
                                 @foreach ($nutritionEvents as $event)
                                 <tr>
-                                <td>{{ $event->patient_number }}</td>
+                                    <td>{{ $event->patient_number }}</td>
                                     <td>{{ $event->first_name }} {{ $event->last_name }}</td>
                                     <td>{{ $event->age }}</td>
                                     <td>{{ $event->home_address }}</td>

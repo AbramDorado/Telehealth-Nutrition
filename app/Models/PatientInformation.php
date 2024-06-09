@@ -10,13 +10,17 @@ class PatientInformation extends Model
     use HasFactory;
     protected $table = 'patient_information'; 
     protected $primaryKey = 'patient_number'; 
+    protected $casts = [
+        'past_medical_history' => 'array',
+    ];
 
     protected $fillable = [
         'last_name',
         'first_name',
         'middle_name',
+        'suffix',
         'sex',
-        'civil status',
+        'civil_status',
         'birthday',
         'age',
         'allergies',
@@ -29,7 +33,6 @@ class PatientInformation extends Model
         'religion',
         'contact_number',
         'referral_control_num',
-        'general_appearance',
         'skin',
         'heent',
         'neck',
