@@ -16,9 +16,9 @@ class CreateDietHistoriesTable extends Migration
         Schema::create('diet_histories', function (Blueprint $table) {
             $table->id('diet_history_id');
             $table->dateTime('diet_history_dt')->nullable();
-            $table->decimal('ht', 3, 1)->nullable();
-            $table->decimal('wt', 3, 1)->nullable();
-            $table->decimal('wasit_cir', 3, 1)->nullable();
+            $table->decimal('ht', 5, 1)->nullable();
+            $table->decimal('wt', 5, 1)->nullable();
+            $table->decimal('waist_cir', 3, 1)->nullable();
             $table->decimal('body_fat', 3, 1)->nullable();
             $table->decimal('bmi_2', 3, 1)->nullable();
             $table->decimal('dbw', 3, 1)->nullable();
@@ -33,7 +33,7 @@ class CreateDietHistoriesTable extends Migration
             $table->string('food_taken')->nullable();
             $table->string('food_taken_1')->nullable();
             $table->string('exercise')->nullable();
-            $table->decimal('target_weight', 3, 1)->nullable();
+            $table->decimal('target_weight_1', 3, 1)->nullable();
             $table->decimal('weight_loss', 3, 1)->nullable();
             $table->decimal('total_energy_allowance', 3, 1)->nullable();
             $table->string('vegetable_a')->nullable();

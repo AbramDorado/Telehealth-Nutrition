@@ -87,68 +87,115 @@
     <div class="col-md-12">
       <form method="POST" action="{{ route('store_pcwm', ['patient_number' => $patient_number]) }}">
         @csrf
-
         <div class="card mt-4">
           <div class="card-header bg-secondary text-white py-2">Progress Chart for Weight Management</div>
           <div class="card-body">
             <div class="form-group">
               <label for="target_weight_2">Target Weight</label>
-              <input type="text" class="form-control" name="target_weight_2" id="target_weight_2">
+              <input type="text" class="form-control" name="target_weight_2" id="target_weight_2" value="{{ old('target_weight_2', $pcwm->target_weight_2 ?? '') }}">
             </div>
 
             <div class="form-group">
               <label for="target_date">Target Date</label>
-              <input type="date" class="form-control" name="target_date" id="target_date">
+              <input type="date" class="form-control" name="target_date" id="target_date" value="{{ $pcwm->target_date ?? '' }}">
             </div>
 
             <div class="form-group">
               <label for="starting_weight">Starting Weight</label>
-              <input type="number" class="form-control" name="starting_weight" id="starting_weight">
+              <input type="number" class="form-control" name="starting_weight" id="starting_weight" value="{{ old('starting_weight', $pcwm->starting_weight ?? '') }}">
             </div>
 
             <div class="form-group">
               <label for="starting_date">Starting Date</label>
-              <input type="date" class="form-control" name="starting_date" id="starting_date">
-            </div>
+              <input type="date" class="form-control" name="starting_date" id="starting_date" value="{{ old('starting_date', $pcwm->starting_date ?? '') }}">
+              </div>
 
             <div class="form-group">
               <label for="weighing_day">Weighing Day, Every</label>
               <select class="form-control" name="weighing_day" id="weighing_day">
-                <option value="monday">Monday</option>
-                <option value="tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="thursday">Thursday</option>
-                <option value="friday">Friday</option>
-                <option value="saturday">Saturday</option>
-                <option value="sunday">Sunday</option>
+                <option value="monday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'monday' ? 'selected' : '' }}>Monday</option>
+                <option value="tuesday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'tuesday' ? 'selected' : '' }}>Tuesday</option>
+                <option value="wednesday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'wednesday' ? 'selected' : '' }}>Wednesday</option>
+                <option value="thursday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'thursday' ? 'selected' : '' }}>Thursday</option>
+                <option value="friday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'friday' ? 'selected' : '' }}>Friday</option>
+                <option value="saturday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'saturday' ? 'selected' : '' }}>Saturday</option>
+                <option value="sunday" {{ old('weighing_day', $pcwm->weighing_day ?? '') == 'sunday' ? 'selected' : '' }}>Sunday</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="weighing_time">Weighing Time</label>
-              <input type="time" class="form-control" name="weighing_time" id="weighing_time">
+              <input type="time" class="form-control" name="weighing_time" id="weighing_time" value="{{ old('weighing_time', $pcwm->weighing_time ?? '') }}">
             </div>
 
             <h5 class="mt-4">Log Weekly Weight</h5>
+            @if(isset($pcwm) && $pcwm->logs->isNotEmpty())
+            <button type="button" class="btn btn-info mt-4" data-toggle="collapse" data-target="#logsTable">Show Logs</button>
+            <div id="logsTable" class="collapse mt-2">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Actual Weekly Weight (KG)</th>
+                    <th>Loss</th>
+                    <th>Gain</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($pcwm->logs as $log)
+                    <tr>
+                      <td>{{ $log->pcwm2_dt }}</td>
+                      <td>{{ $log->actual_weekly_weight }}</td>
+                      <td>{{ $log->loss }}</td>
+                      <td>{{ $log->gain }}</td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            @endif
             <div id="weight-log">
-              <div class="form-group table-entry">
-                <input type="date" class="form-control" name="date[]" placeholder="Date">
-                <input type="number" class="form-control" name="weight[]" placeholder="Actual Weekly Weight (KG)">
-                <input type="number" class="form-control" name="loss[]" placeholder="Loss">
-                <input type="number" class="form-control" name="gain[]" placeholder="Gain">
-              </div>
+              @if(isset($pcwm) && $pcwm->logs->isNotEmpty())
+                @foreach($pcwm->logs as $log)
+                <br>
+                  <div class="form-group table-entry">
+                    <input type="date" class="form-control" name="pcwm2_dt[]" placeholder="Date" value="{{ $log->pcwm2_dt }}">
+                    <input type="number" class="form-control" name="weight[]" placeholder="Actual Weekly Weight (KG)" value="{{ $log->actual_weekly_weight }}">
+                    <input type="number" class="form-control" name="loss[]" placeholder="Loss" value="{{ $log->loss }}">
+                    <input type="number" class="form-control" name="gain[]" placeholder="Gain" value="{{ $log->gain }}">
+                  </div>
+                @endforeach
+              @else
+                <div class="form-group table-entry">
+                  <input type="date" class="form-control" name="pcwm2_dt[]" placeholder="Date">
+                  <input type="number" class="form-control" name="weight[]" placeholder="Actual Weekly Weight (KG)">
+                  <input type="number" class="form-control" name="loss[]" placeholder="Loss">
+                  <input type="number" class="form-control" name="gain[]" placeholder="Gain">
+                </div>
+              @endif
             </div>
             <button type="button" class="btn btn-secondary" id="add-row">Add</button>
           </div>
-
-          <form action="{{ url('/store_codeteam') }}" method="post">
-            @csrf 
-            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-          </form>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
       </form>
+
     </div>
   </div>
 </div>
 
+<script>
+  document.getElementById('add-row').addEventListener('click', function() {
+      var weightLog = document.getElementById('weight-log');
+      var newRow = document.createElement('div');
+      newRow.classList.add('form-group', 'table-entry');
+      newRow.innerHTML = `
+          <input type="date" class="form-control" name="pcwm2_dt[]" placeholder="Date">
+          <input type="number" class="form-control" name="weight[]" placeholder="Actual Weekly Weight (KG)">
+          <input type="number" class="form-control" name="loss[]" placeholder="Loss">
+          <input type="number" class="form-control" name="gain[]" placeholder="Gain">
+      `;
+      weightLog.appendChild(newRow);
+  });
+  </script>
 @endsection

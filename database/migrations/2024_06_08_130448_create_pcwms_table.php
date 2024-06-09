@@ -19,11 +19,11 @@ class CreatePcwmsTable extends Migration
             $table->unsignedInteger('age_3')->nullable();
             $table->string('prescribe_exer')->nullable();
             $table->decimal('target_weight_2', 3, 1)->nullable();
-            $table->dateTime('target_date')->nullable();
+            $table->date('target_date')->nullable();
             $table->decimal('starting_weight', 3, 1)->nullable();
-            $table->dateTime('starting_date')->nullable();
-            $table->dateTime('weighing_day')->nullable();
-            $table->dateTime('weighing_time')->nullable();
+            $table->date('starting_date')->nullable();
+            $table->string('weighing_day')->nullable();
+            $table->time('weighing_time')->nullable();
             $table->dateTime('pcwm2_dt')->nullable();
             $table->decimal('actual_weekly_weight', 3, 1)->nullable();
             $table->decimal('loss', 3, 1)->nullable();
