@@ -18,6 +18,7 @@ class CreatePatientInformationTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
+            $table->string('suffix')->nullable();
             $table->string('sex')->nullable();
             $table->string('civil_status')->nullable();
             $table->date('birthday')->default(date("Y-m-d"))->nullable();
@@ -30,9 +31,8 @@ class CreatePatientInformationTable extends Migration
             $table->date('date_entered_service')->default(date("Y-m-d"))->nullable();
             $table->string('blood_type')->nullable();
             $table->string('religion')->nullable();
-            $table->unsignedInteger('contact_number')->nullable();
+            $table->bigInteger('contact_number')->nullable();
             $table->unsignedInteger('referral_control_num')->nullable();
-            $table->string('general_appearance')->nullable();
             $table->string('skin')->nullable();
             $table->string('heent')->nullable();
             $table->string('neck')->nullable();

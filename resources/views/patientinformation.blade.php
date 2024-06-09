@@ -366,28 +366,28 @@
             </div>
 
             <div class="form-group">
-                <label for="heent">Operations:</label>
+                <label for="operations">Operations:</label>
                 <input type="text" class="form-control" name="operations" value="{{ old('operations', optional($patientinformation ?? '')->operations) }}">
             </div>
 
             <div class="form-group">
-                <label for="heent">Previous Hospitalization:</label>
+                <label for="previous_hospitalization">Previous Hospitalization:</label>
                 <input type="text" class="form-control" name="previous_hospitalization" value="{{ old('previous_hospitalization', optional($patientinformation ?? '')->previous_hospitalization) }}">
             </div>
 
             <div class="form-group">
-                <label for="heent">Current Medications:</label>
-                <input type="text" class="form-control" name="current_medications" value="{{ old('current_medications', optional($patientinformation ?? '')->current_medications) }}">
+                <label for="current_medication">Current Medications:</label>
+                <input type="text" class="form-control" name="current_medication" value="{{ old('current_medication', optional($patientinformation ?? '')->current_medication) }}">
             </div>
 
             <div class="form-group">
-                <label for="heent">Family History:</label>
-                <input type="text" class="form-control" name="heent" value="{{ old('heent', optional($patientinformation ?? '')->heent) }}">
+                <label for="family_history">Family History:</label>
+                <input type="text" class="form-control" name="family_history" value="{{ old('family_history', optional($patientinformation ?? '')->family_history) }}">
             </div>
 
             <div class="form-group">
-                <label for="heent">Psychosocial History:</label>
-                <input type="text" class="form-control" name="heent" value="{{ old('heent', optional($patientinformation ?? '')->heent) }}">
+                <label for="psychosocial_history">Psychosocial History:</label>
+                <input type="text" class="form-control" name="psychosocial_history" value="{{ old('psychosocial_history', optional($patientinformation ?? '')->psychosocial_history) }}">
             </div>
 
         </div>
@@ -412,8 +412,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="lmp">Menarche:</label>
-                        <input type="text" class="form-control" name="lmp" value="{{ old('lmp', optional($patientinformation ?? '')->lmp) }}">
+                        <label for="menarche">Menarche:</label>
+                        <input type="text" class="form-control" name="menarche" value="{{ old('menarche', optional($patientinformation ?? '')->menarche) }}">
                     </div>
                 </div>
             </div>

@@ -74,10 +74,13 @@ class FormController extends Controller
         $nutritionEvents = PatientInformation::select(
             'patient_number',
             'first_name',
+            'last_name',
             'age',
             'home_address',
-            'contact_number',
-        )->get();
+            'contact_number'
+        )
+        ->distinct()
+        ->get();
 
         return view('includes/nutritionforms', compact('nutritionEvents'));
     }
