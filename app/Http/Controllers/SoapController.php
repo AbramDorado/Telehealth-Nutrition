@@ -19,7 +19,7 @@ class SoapController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
 
-        // $soap->soap_dt = Carbon::parse($soap->soap_dt)->format('Y-m-d');
+        if ($soap) $soap->soap_dt = Carbon::parse($soap->soap_dt)->format('Y-m-d') ?? null;
         return view('soap', compact('patient_number', 'soap'));
     }
 
@@ -71,8 +71,8 @@ class SoapController extends Controller
         $soap->soap_dt = $validatedData['soap_dt'];
         $soap->subjective = $validatedData['subjective'] ?? null;
         $soap->bp = $validatedData['bp'] ?? null;
-        $soap->pr = intval($validatedData['pr']) ?? null;
-        $soap->rr = intval($validatedData['rr']) ?? null;
+        $soap->pr = floatval($validatedData['pr']) ?? null;
+        $soap->rr = floatval($validatedData['rr']) ?? null;
         $soap->temp = floatval($validatedData['temp']) ?? null;
         $soap->height = floatval($validatedData['height']) ?? null;
         $soap->weight = floatval($validatedData['weight']) ?? null;

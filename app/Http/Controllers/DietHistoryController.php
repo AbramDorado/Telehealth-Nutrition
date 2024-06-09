@@ -15,7 +15,6 @@ class DietHistoryController extends Controller
 
     public function index($patient_number)
     {
-
         $diethistory = DietHistory::where('patient_number', $patient_number)
             ->orderBy('created_at', 'desc')
             ->first();
