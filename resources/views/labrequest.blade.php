@@ -257,10 +257,16 @@
                             <input type="checkbox" name="request[]" value="HbA1C" {{ in_array('HbA1C', $request ?? []) ? 'checked' : ''}}>
                             <label for="hbaic-disease-checkbox">HbA1C</label> 
                         </div>
+                        <div class="col-md-3">
+                            <label for="others">Others (specify):</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="others" value="{{ old('others', optional($labrequest ?? '')->others) }}"> 
+                        </div>
                     </div>
                     </div>
-                    </div>
-                    
+                    </div>                    
+
                     <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

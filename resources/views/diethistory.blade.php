@@ -248,22 +248,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="rice">Rice</label>
-                        <input type="text" class="form-control" name="rice" id="rice" value="{{ old('rice', optional($diethistory)->rice) }}">
+                        <label for="rice_cereal">Rice, Cereal or Substitute</label>
+                        <input type="text" class="form-control" name="rice_cereal" id="rice_cereal" value="{{ old('rice_cereal', optional($diethistory)->rice_cereal) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="meat_a">Meat A</label>
-                        <input type="text" class="form-control" name="meat_a" id="meat_a" value="{{ old('meat_a', optional($diethistory)->meat_a) }}">
+                        <label for="meat">Meat/Fish/Poultry Products/Processed foods </label>
+                        <input type="text" class="form-control" name="meat" id="meat" value="{{ old('meat', optional($diethistory)->meat) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="meat_b">Meat B</label>
-                        <input type="text" class="form-control" name="meat_b" id="meat_b" value="{{ old('meat_b', optional($diethistory)->meat_b) }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="fat">Fat</label>
+                        <label for="fat">Fat, Oil, Dairy products</label>
                         <input type="text" class="form-control" name="fat" id="fat" value="{{ old('fat', optional($diethistory)->fat) }}">
                     </div>
 

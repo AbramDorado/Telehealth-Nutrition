@@ -13,7 +13,6 @@ class DietHistory extends Model
 
     protected $fillable = [
         'diet_history_id',
-        'diet_history_dt',
         'ht', 
         'wt', 
         'waist_cir',

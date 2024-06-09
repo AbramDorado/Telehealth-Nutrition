@@ -19,14 +19,18 @@ class SoapController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
 
-        $soap->soap_dt = Carbon::parse($soap->soap_dt)->format('Y-m-d');
+        // $soap->soap_dt = Carbon::parse($soap->soap_dt)->format('Y-m-d');
         return view('soap', compact('patient_number', 'soap'));
     }
 
     public function store(Request $request, $patient_number)
     {
         Log::debug("Function called");
+        $existingSoap = Soap::where('patient_number', $patient_number)->first();
 
+        if ($existingSoap) {
+            return $this->updateSoap($request, $existingSoap, $patient_number);
+        }
         $validatedData = $request->validate([
             'soap_dt' => 'required|date',
             'subjective' => 'sometimes|nullable|string',
@@ -95,7 +99,16 @@ class SoapController extends Controller
         $soap->patient_number = $patient_number; // Associate the SOAP record with the patient
         $soap->save();
 
-        return view('soap', compact('patient_number'));
+        // Redirect the user back to the next page
+        return view('labrequest', ['patient_number' => $patient_number]);
+    }
+
+    public function updateSoap(Request $request, Soap $existingSoap, $patient_number)
+    {
+        $existingSoap->fill($request->all());
+        $existingSoap->save();
         
+        // Redirect the user back to the next page
+        return view('labrequest', ['patient_number' => $patient_number]);
     }
 }

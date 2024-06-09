@@ -112,8 +112,7 @@ class PatientInformationController extends Controller
         // Set the patient_number in session
         session(['patient_number' => $patientinformation->patient_number]);
 
-        // Redirect the user back to the previous page or wherever you want
-        return redirect()->route('includes/nutritionforms');
-        // return view('soap')->with('success', 'Patient information saved successfully.');
+        // Redirect the user back to the next page
+        return view('soap', ['patient_number' => $patient_number]);
     }
 }

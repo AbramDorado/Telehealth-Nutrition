@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DietHistory;
 use App\Models\PatientInformation;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class DietHistoryController extends Controller
 {
@@ -59,38 +61,38 @@ class DietHistoryController extends Controller
             'sugar' => 'nullable|string|max:255',
         ]);
 
-        $dietHistory = new DietHistory();
-        $dietHistory->ht = $validated['ht'] ?? null;
-        $dietHistory->wt = $validated['wt'] ?? null;
-        $dietHistory->waist_cir = $validated['waist_cir'] ?? null;
-        $dietHistory->body_fat = $validated['body_fat'] ?? null;
-        $dietHistory->bmi_2 = $validated['bmi_2'] ?? null;
-        $dietHistory->dbw = $validated['dbw'] ?? null;
-        $dietHistory->dbw_range = $validated['dbw_range'] ?? null;
-        $dietHistory->case = $validated['case'] ?? null;
-        $dietHistory->diet_rx = $validated['diet_rx'] ?? null;
-        $dietHistory->food_recall_time = $validated['food_recall_time'] ?? null;
-        $dietHistory->where_eaten = $validated['where_eaten'] ?? null;
-        $dietHistory->foods = $validated['foods'] ?? null;
-        $dietHistory->description = $validated['description'] ?? null;
-        $dietHistory->amount = $validated['amount'] ?? null;
-        $dietHistory->food_taken = $validated['food_taken'] ?? null;
-        $dietHistory->food_taken_1 = $validated['food_taken_1'] ?? null;
-        $dietHistory->exercise = $validated['exercise'] ?? null;
-        $dietHistory->target_weight_1 = $validated['target_weight_1'] ?? null;
-        $dietHistory->weight_loss = $validated['weight_loss'] ?? null;
-        $dietHistory->total_energy_allowance = $validated['total_energy_allowance'] ?? null;
-        $dietHistory->vegetable_a = $validated['vegetable_a'] ?? null;
-        $dietHistory->vegetable_b = $validated['vegetable_b'] ?? null;
-        $dietHistory->fruit = $validated['fruit'] ?? null;
-        $dietHistory->milk = $validated['milk'] ?? null;
-        $dietHistory->rice_cereal = $validated['rice_cereal'] ?? null;
-        $dietHistory->meat = $validated['meat'] ?? null;
-        $dietHistory->fat = $validated['fat'] ?? null;
-        $dietHistory->sugar = $validated['sugar'] ?? null;
+        $diethistory = new DietHistory();
+        $diethistory->ht = $validated['ht'] ?? null;
+        $diethistory->wt = $validated['wt'] ?? null;
+        $diethistory->waist_cir = $validated['waist_cir'] ?? null;
+        $diethistory->body_fat = $validated['body_fat'] ?? null;
+        $diethistory->bmi_2 = $validated['bmi_2'] ?? null;
+        $diethistory->dbw = $validated['dbw'] ?? null;
+        $diethistory->dbw_range = $validated['dbw_range'] ?? null;
+        $diethistory->case = $validated['case'] ?? null;
+        $diethistory->diet_rx = $validated['diet_rx'] ?? null;
+        $diethistory->food_recall_time = $validated['food_recall_time'] ?? null;
+        $diethistory->where_eaten = $validated['where_eaten'] ?? null;
+        $diethistory->foods = $validated['foods'] ?? null;
+        $diethistory->description = $validated['description'] ?? null;
+        $diethistory->amount = $validated['amount'] ?? null;
+        $diethistory->food_taken = $validated['food_taken'] ?? null;
+        $diethistory->food_taken_1 = $validated['food_taken_1'] ?? null;
+        $diethistory->exercise = $validated['exercise'] ?? null;
+        $diethistory->target_weight_1 = $validated['target_weight_1'] ?? null;
+        $diethistory->weight_loss = $validated['weight_loss'] ?? null;
+        $diethistory->total_energy_allowance = $validated['total_energy_allowance'] ?? null;
+        $diethistory->vegetable_a = $validated['vegetable_a'] ?? null;
+        $diethistory->vegetable_b = $validated['vegetable_b'] ?? null;
+        $diethistory->fruit = $validated['fruit'] ?? null;
+        $diethistory->milk = $validated['milk'] ?? null;
+        $diethistory->rice_cereal = $validated['rice_cereal'] ?? null;
+        $diethistory->meat = $validated['meat'] ?? null;
+        $diethistory->fat = $validated['fat'] ?? null;
+        $diethistory->sugar = $validated['sugar'] ?? null;
 
-        $dietHistory->patient_number = $patient_number;
-        $dietHistory->save();
+        $diethistory->patient_number = $patient_number;
+        $diethistory->save();
 
         return view('pcwm', ['patient_number' => $patient_number]);
     }
@@ -100,6 +102,7 @@ class DietHistoryController extends Controller
         $existingDietHistory->fill($request->all());
         $existingDietHistory->save();
         
+        // Redirect the user back to the next page
         return view('pcwm', ['patient_number' => $patient_number]);
     }
 }

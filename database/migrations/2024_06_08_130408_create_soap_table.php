@@ -17,7 +17,7 @@ class CreateSoapTable extends Migration
             $table->bigIncrements('soap_id'); 
             $table->dateTime('soap_dt')->nullable();
             $table->string('subjective')->nullable();
-            $table->decimal('bp', 3, 1)->nullable();
+            $table->string('bp')->nullable();
             $table->decimal('pr', 3, 1)->nullable();
             $table->decimal('rr', 3, 1)->nullable();
             $table->decimal('temp', 3, 1)->nullable();

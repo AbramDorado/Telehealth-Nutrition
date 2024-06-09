@@ -213,7 +213,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bun">Blood Urea Nitrogen:</label>
-                            <input type="text" class="form-control" name="bun" value="{{ old('bua', optional($soap ?? '')->bun) }}">
+                            <input type="text" class="form-control" name="bun" value="{{ old('bun', optional($soap ?? '')->bun) }}">
                         </div>
                     </div>
                 </div>

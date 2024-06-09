@@ -15,7 +15,6 @@ class CreateDietHistoriesTable extends Migration
     {
         Schema::create('diet_histories', function (Blueprint $table) {
             $table->id('diet_history_id');
-            $table->dateTime('diet_history_dt')->nullable();
             $table->decimal('ht', 5, 1)->nullable();
             $table->decimal('wt', 5, 1)->nullable();
             $table->decimal('waist_cir', 3, 1)->nullable();
