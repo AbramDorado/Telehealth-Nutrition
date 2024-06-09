@@ -50,7 +50,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'console'],
             'ignore_exceptions' => false,
         ],
 
@@ -58,6 +58,16 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        
+        'console' => [
+            'driver' => 'monolog',
+            'handler' => StreamHandler::class,
+            'formatter' => env('LOG_CONSOLE_FORMATTER'),
+            'with' => [
+                'stream' => 'php://stdout',
+            ],
+            'level' => 'debug',
         ],
 
         'daily' => [
