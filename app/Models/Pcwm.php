@@ -9,7 +9,7 @@ class Pcwm extends Model
 {
     use HasFactory;
     protected $table = 'pcwms';
-    protected $primaryKey = 'pcwm_id';
+    protected $primaryKey = 'pcwm1_id';
 
     protected $fillable = [
         'target_weight_2',
@@ -18,17 +18,19 @@ class Pcwm extends Model
         'starting_date',
         'weighing_day',
         'weighing_time',
-        'pcwm2_dt',
-        'actual_weekly_weight',
-        'loss',
-        'gain',
         'is_archived',
         'patient_number',
     ];
+
     public $timestamps = true;
 
     public function patient()
     {
         return $this->belongsTo(PatientInformation::class, 'patient_number', 'patient_number');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(PcwmLog::class, 'pcwm_id', 'pcwm1_id');
     }
 }
