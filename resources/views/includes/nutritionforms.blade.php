@@ -90,18 +90,17 @@
                                     <td>{{ $event->home_address }}</td>
                                     <td>{{ $event->contact_number }}</td>
                                     <td>
-                                    <!-- <div class="btn-group" role="group" style="height: 100%;"> -->
+                                        <!-- View the forms -->
                                         <a href="{{ route('view_nutritionforms', ['patient_pin' => $event->patient_pin, 'patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-eye"></i>
                                         </a>
 
-                                        <!-- Hide the edit button if the event is finalized -->
-                                        @if (!$event->is_finalized)
+                                        <!-- Edit the forms -->
                                             <a href="{{ route('patientinformation', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                        @endif
-
+                                        
+                                        <!-- Archive the forms -->
                                         <form action="{{ route('archive_nutritionforms', ['patient_number' => $event->patient_number]) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('POST')
@@ -110,6 +109,7 @@
                                             </button>
                                         </form>
 
+                                        <!-- Download in PDF the forms -->
                                         <a href="{{ route('download-pdf', ['codeEvent' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
