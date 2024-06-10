@@ -86,7 +86,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
     
-    <form method="POST" action="{{ route('store_soap', ['patient_number' => $patient_number]) }}">
+    <form method="POST" action="{{ route('update_soap', ['log_id' => $soap->soap_id]) }}">
     @csrf
 
     <div class="card">
@@ -96,7 +96,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="soap_dt">Date of Visit:</label>
-                    <input type="date" class="form-control" name="soap_dt" value="{{ old('soap_dt', optional($soap ?? '')->soap_dt) }}">
+                    <input type="date" class="form-control" name="soap_dt" value="{{ old('soap_dt', optional($soap)->soap_dt ? \Carbon\Carbon::parse($soap->soap_dt)->format('Y-m-d') : '') }}">
                 </div>
             </div>
 
@@ -311,13 +311,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <a class="btn btn-primary btn-block" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
             <div class="col-12 mt-2">
-                <button type="submit" class="btn btn-primary btn-block">Log</button>
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
             </div>
         </div>
     </div>
@@ -328,50 +323,6 @@
   </div>
 </div>
 
-
-<!-- Display existing logs -->
-<div class="row justify-content-center mt-5">
-    <div class="col-md-12">
-        <h2>Previous SOAP Logs</h2>
-        @foreach($soap_logs as $log)
-        <div class="card mb-3">
-            <div class="card-header bg-secondary text-white py-2 d-flex justify-content-between align-items-center">  
-                <h6 class="mb-0">Log Date: {{ $log->soap_dt ? \Carbon\Carbon::parse($log->soap_dt)->format('Y-m-d') : 'N/A' }}</h6>
-                <a href="{{ route('update_form', ['log_id' => $log->soap_id]) }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-pencil-alt fa-sm"></i>
-                </a>
-            </div>
-            <div class="card-body">
-                <p><strong>Subjective / Chief Complaint:</strong> {{ $log->subjective }}</p>
-                <p><strong>Blood Pressure:</strong> {{ $log->bp }}</p>
-                <p><strong>Pulse Rate:</strong> {{ $log->pr }}</p>
-                <p><strong>Respiratory Rate:</strong> {{ $log->rr }}</p>
-                <p><strong>Temperature:</strong> {{ $log->temp }}</p>
-                <p><strong>Height:</strong> {{ $log->height }}</p>
-                <p><strong>Weight:</strong> {{ $log->weight }}</p>
-                <p><strong>Body Mass Index:</strong> {{ $log->bmi_1 }}</p>
-                <p><strong>ECG:</strong> {{ $log->ecg }}</p>
-                <p><strong>Chest X-Ray:</strong> {{ $log->cxr }}</p>
-                <p><strong>Complete Blood Count:</strong> {{ $log->cbc }}</p>
-                <p><strong>Urinalysis:</strong> {{ $log->ua }}</p>
-                <p><strong>Creatinine:</strong> {{ $log->crea }}</p>
-                <p><strong>Blood Urea Nitrogen:</strong> {{ $log->bun }}</p>
-                <p><strong>Blood Uric Acid:</strong> {{ $log->bua }}</p>
-                <p><strong>Lipid Profile:</strong> {{ $log->lipid_profile }}</p>
-                <p><strong>SGOT:</strong> {{ $log->sgot }}</p>
-                <p><strong>SGPT:</strong> {{ $log->sgpt }}</p>
-                <p><strong>Fasting Blood Sugar:</strong> {{ $log->fbs }}</p>
-                <p><strong>Sodium and Potassium:</strong> {{ $log->nak }}</p>
-                <p><strong>HbA1c:</strong> {{ $log->hbaic }}</p>
-                <p><strong>HepaBS:</strong> {{ $log->hepabs }}</p>
-                <p><strong>Others:</strong> {{ $log->others }}</p>
-                <p><strong>Assessment:</strong> {{ $log->assessment }}</p>
-                <p><strong>Plan:</strong> {{ $log->plan }}</p>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

@@ -91,4 +91,34 @@ class SoapController extends Controller
         // Redirect the user back to the SOAP page with the updated patient_number
         return redirect()->route('soap', ['patient_number' => $patient_number]);
     }
+
+    public function update_form($log_id)
+    {
+        Log::debug("It update form");
+
+        $soap = Soap::where('soap_id', $log_id)->first();
+        $patient_number = $soap->patient_number;
+
+        return view('update-soap', compact('patient_number', 'soap'));
+    }
+
+    public function update(Request $request, $log_id)
+    {
+        Log::debug("It update");
+
+        $soap = Soap::where('soap_id', $log_id)->first();
+        $patient_number = $soap->patient_number;
+
+        $soap->fill($request->all());
+
+        $soap->pr = floatval($request['pr']) ?? null;
+        $soap->rr = floatval($request['rr']) ?? null;
+        $soap->temp = floatval($request['temp']) ?? null;
+        $soap->height = floatval($request['height']) ?? null;
+        $soap->weight = floatval($request['weight']) ?? null;
+        $soap->bmi_1 = floatval($request['bmi_1']) ?? null;
+        $soap->save();
+
+        return redirect()->route('soap', ['patient_number' => $patient_number]);
+    }
 }

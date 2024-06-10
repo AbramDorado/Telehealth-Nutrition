@@ -50,7 +50,7 @@ class LabRequestController extends Controller
         $existingRequest = LabRequest::where('patient_number', $patient_number)->first();
 
         if ($existingRequest) {
-            return $this->updateLabRequest($request, $patient_number);
+            return $this->updateLabRequest($request, $patient_number, $existingRequest);
         }
 
         Log::debug($validatedData['request']);
@@ -83,11 +83,27 @@ class LabRequestController extends Controller
         return redirect()->route('diethistory', ['patient_number' => $patient_number]);
     }
 
-    private function updateLabRequest(Request $request, $patient_number)
+    private function updateLabRequest(Request $request, $patient_number, $existingRequest)
     {
-        $patient = LabRequest::where('patient_number', $patient_number)->first();
-        $patient->fill($request->all());
-        $patient->save();
+        $patient =  PatientInformation::where('patient_number', $patient_number)->firstOrFail();
+        
+        $existingRequest->fill($request->all());
+
+        $existingRequest->request = json_encode($request['request']) ?? null;;
+        $existingRequest->license_num = intval($request['license_num']) ?? null;
+        $existingRequest->lab_request_dt = now();
+        
+        $existingRequest->age_2 = $patient->age;
+        $existingRequest->sex_2 = $patient->sex;
+        $existingRequest->lab_request_dt = now();
+        $existingRequest->patient_name_1 = trim(
+            ($patient->first_name ?? '') . ' ' . 
+            ($patient->middle_name ?? '') . ' ' . 
+            ($patient->last_name ?? '') . ' ' . 
+            ($patient->suffix ?? '')
+        );
+
+        $existingRequest->save();
 
         // Redirect the user back to the next page
         // return view('diethistory', ['patient_number' => $patient_number]);
