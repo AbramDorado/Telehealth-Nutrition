@@ -5,32 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soap;
-use App\Models\PatientInformation;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 class SoapController extends Controller
 {
-    private $soap;
-
     public function index($patient_number)
     {
-        $soap = Soap::where('patient_number', $patient_number)
+        $soap_logs = Soap::where('patient_number', $patient_number)
             ->orderBy('created_at', 'desc')
-            ->first();
+            ->get();
 
-        if ($soap) $soap->soap_dt = Carbon::parse($soap->soap_dt)->format('Y-m-d') ?? null;
-        return view('soap', compact('patient_number', 'soap'));
+        return view('soap', compact('patient_number', 'soap_logs'));
     }
 
     public function store(Request $request, $patient_number)
     {
         Log::debug("Function called");
-        $existingSoap = Soap::where('patient_number', $patient_number)->first();
 
-        if ($existingSoap) {
-            return $this->updateSoap($request, $existingSoap, $patient_number);
-        }
         $validatedData = $request->validate([
             'soap_dt' => 'required|date',
             'subjective' => 'sometimes|nullable|string',
@@ -61,9 +53,6 @@ class SoapController extends Controller
         ]);
 
         Log::debug("It reached here");
-
-        // Ensure the patient exists
-        // $patient = PatientInformation::where('patient_number', $patient_number)->firstOrFail();
 
         // Create the new SOAP record
         $soap = new Soap();
@@ -99,16 +88,7 @@ class SoapController extends Controller
         $soap->patient_number = $patient_number; // Associate the SOAP record with the patient
         $soap->save();
 
-        // Redirect the user back to the next page
-        return view('labrequest', ['patient_number' => $patient_number]);
-    }
-
-    public function updateSoap(Request $request, Soap $existingSoap, $patient_number)
-    {
-        $existingSoap->fill($request->all());
-        $existingSoap->save();
-        
-        // Redirect the user back to the next page
-        return view('labrequest', ['patient_number' => $patient_number]);
+        // Redirect the user back to the SOAP page with the updated patient_number
+        return redirect()->route('soap', ['patient_number' => $patient_number]);
     }
 }

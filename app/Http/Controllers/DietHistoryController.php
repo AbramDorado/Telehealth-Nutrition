@@ -93,7 +93,8 @@ class DietHistoryController extends Controller
         $diethistory->patient_number = $patient_number;
         $diethistory->save();
 
-        return view('pcwm', ['patient_number' => $patient_number]);
+        // return view('pcwm', ['patient_number' => $patient_number]);
+        return redirect()->route('pcwm', ['patient_number' => $patient_number]);
     }
 
     public function updateDietHistory(Request $request, DietHistory $existingDietHistory, $patient_number)
@@ -102,6 +103,7 @@ class DietHistoryController extends Controller
         $existingDietHistory->save();
         
         // Redirect the user back to the next page
-        return view('pcwm', ['patient_number' => $patient_number]);
+        // return view('pcwm', ['patient_number' => $patient_number]);
+        return redirect()->route('pcwm', ['patient_number' => $patient_number]);
     }
 }

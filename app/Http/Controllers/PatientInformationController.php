@@ -27,6 +27,13 @@ class PatientInformationController extends Controller
 
     public function store(Request $request, $patient_number)
     {
+        
+        $existingPatientInformation = PatientInformation::where('patient_number', $patient_number)->first();
+
+        if ($existingPatientInformation) {
+            return $this->updatePatientInformation($request, $existingPatientInformation, $patient_number);
+        }
+
         // Validate the incoming request data
         $validatedData = $request->validate([
             'last_name' => 'nullable|string|max:255',
@@ -123,6 +130,19 @@ class PatientInformationController extends Controller
         session(['patient_number' => $patientinformation->patient_number]);
 
         // Redirect the user back to the next page
-        return view('soap', ['patient_number' => $patient_number]);
+        // return view('soap', ['patient_number' => $patient_number]);
+        return redirect()->route('soap', ['patient_number' => $patient_number]);
+
+    }
+
+    public function updatePatientInformation(Request $request, PatientInformation $existingPatientInformation, $patient_number)
+    {
+        $existingPatientInformation->fill($request->all());
+        $existingPatientInformation->save();
+        
+        // Redirect the user back to the next page
+        // return view('soap', ['patient_number' => $patient_number]);
+        return redirect()->route('soap', ['patient_number' => $patient_number]);
+    
     }
 }
