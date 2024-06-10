@@ -76,7 +76,6 @@ Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name
 
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
 
-Route::get('/download-pdf/{codeEvent}', [PdfController::class, 'download'])->name('download-pdf');
 Route::get('/download-excel', [ExcelController::class, 'export'])->name('download-excel');
 
 
@@ -107,6 +106,9 @@ Route::post('/diethistory/{patient_number}', [DietHistoryController::class, 'sto
 
 Route::get('/pcwm/{patient_number}', [PcwmController::class, 'index'])->name('pcwm');
 Route::post('/pcwm/{patient_number}', [PcwmController::class, 'store'])->name('store_pcwm');
+
+Route::get('/download-pdf/{patient_number}', [PdfController::class, 'download'])->name('download-pdf');
+Route::get('/download-lab-req-pdf/{patient_number}', [PdfController::class, 'labreq_download'])->name('download-lab-req-pdf');
 
 ///////////////////////////////////////////////////////////
 

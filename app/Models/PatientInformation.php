@@ -73,4 +73,9 @@ class PatientInformation extends Model
     {
         return $this->hasOne(Pcwm::class, 'patient_number', 'patient_number');
     }
+    
+    public function pcwmLogs()
+    {
+        return $this->hasMany(PcwmLog::class, 'patient_number', 'patient_number');
+    }
 }

@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePcwmsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pcwms', function (Blueprint $table) {
@@ -37,11 +32,6 @@ class CreatePcwmsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('pcwms');

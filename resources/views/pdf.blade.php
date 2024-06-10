@@ -1,35 +1,44 @@
-<!DOCTYPE html>
+<html>
+
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-    <meta name=Generator content="Microsoft Word 15 (filtered)">
-    <style>
-    <!--
-    /* Font Definitions */
-    @font-face
-        {font-family:Helvetica;
-        panose-1:0 0 0 0 0 0 0 0 0 0;}
-    @font-face
-        {font-family:"Cambria Math";
-        panose-1:2 4 5 3 5 4 6 3 2 4;}
-    /* Style Definitions */
-    p.MsoNormal, li.MsoNormal, div.MsoNormal
-        {margin:0cm;
-        font-size:12.0pt;
-        font-family:"Times New Roman",serif;}
-    .MsoChpDefault
-        {font-family:"Calibri",sans-serif;}
-    @page WordSection1
-        {size:612.0pt 792.0pt;
-        margin:72.0pt 72.0pt 72.0pt 72.0pt;}
-    div.WordSection1
-        {page:WordSection1;}
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"Header Char";
+	margin:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-link:Header;
+	font-family:"Times New Roman",serif;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
 
     header {
         position: fixed;
         top: 0cm;
         left: 0cm;
         right: 0cm;
-        height: 3.5cm;
+        height: 5cm;
     }
 
     footer {
@@ -41,9 +50,10 @@
     }
 
     body {
-        padding-top: 3.5cm;
-    }
-    </style>
+        padding-top: 4.5cm;
+    } 
+
+</style>
 
 </head>
 
@@ -51,24 +61,25 @@
 
 <header>
     <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
-    style='font-size:24.0pt;font-family:Helvetica'>Hospital Name</span></b><span
-    lang=EN-US style='font-size:24.0pt;font-family:Helvetica'>                                    
-    </span><span lang=EN-US style='font-family:Helvetica'>Code Event #<b>{{$event->code_number ?? '---'}}</b></span></p>
+    style='font-size:24.0pt;font-family:Helvetica'>Institution Name</span></b>
+    <spanlang=EN-US style='font-size:24.0pt;font-family:Helvetica'></span>
+    </p>
 
     <p class=MsoNormal style='text-align:justify'><span lang=EN-US
     style='font-size:10.0pt;font-family:Helvetica'>Address Line</span></p>
 
     <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>+63
-    2 8888 8888 (Telephone) / +63 999 999 9999 (Mobile)<br>
-    www.hospitalname.com | hospital@mail.com</span></p>
+    2 1234 5678 (Telephone) / +63 123 456 7890 (Mobile)<br>
+    www.institution.com | institution@mail.com</span></p>
 
-    <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>--------------------------------------------------------------------------------------------------------------------------------------------------------------</span></p>
+    <br>
     <p class=MsoNormal align=center style='text-align:center'><b><u><span
-    lang=EN-US style='font-family:Helvetica'>CARDIOPULMONARY RESUSCITATION RECORD</span></u></b></p> 
+    lang=EN-US style='font-size:16.0pt;font-family:Helvetica'>Medical Health Record</span></u></b></p>
+    <span lang=EN-US style='font-family:Helvetica'>Patient #<b>{{$patient->patient_number ?? '---'}}</b></span></p>
 </header>
 
 <footer>
-<p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>ABC-FORM-1281     Generated on: {{ now()->format('Y-m-d H:i:s') }}</span></p>
+<p class=MsoNormal><span lang=EN-US style='font-size:10.0pt;font-family:Helvetica'>MEDICAL-HEALTH-RECORD          Date & Time of Form Generation: {{ now()->format('Y-m-d H:i:s') }}</span></p>
 </footer>
 
 <main>
@@ -80,260 +91,250 @@
  style='width:478.75pt;border-collapse:collapse;border:none'>
  <thead>
   <tr style='height:21.8pt'>
-   <td width=638 colspan=8 style='width:478.75pt;border:solid black 1.0pt;
+   <td width=638 colspan=10 style='width:478.75pt;border:solid black 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section I. </span></b><span
-   lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Main
+   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+   style='font-size:16.0pt;line-height:115%;font-family:"Arial",sans-serif'>Patient
    Information</span></p>
    </td>
   </tr>
  </thead>
  <tr style='height:18.9pt'>
-  <td width=478 colspan=6 style='width:358.65pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.9pt'>
+  <td width=378 colspan=6 style='width:283.25pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:18.9pt'>
   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-family:Helvetica'>Patient Information</span></b></p>
+  style='font-family:"Arial",sans-serif'>Basic Information</span></b></p>
   </td>
-  <td width=160 colspan=2 style='width:120.1pt;border-top:none;border-left:
+  <td width=261 colspan=4 style='width:195.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:18.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>PIN #: {{$event->patient->patient_pin ?? '---'}}
-</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:119.75pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:Helvetica'>Visit/Encounter
-  #</span></p>
-  </td>
-  <td width=159 colspan=3 style='width:119.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->visit_number ?? '---'}}</span></p>
-  </td>
-  <td width=159 colspan=2 style='width:119.55pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Sex</span></p>
-  </td>
-  <td width=160 colspan=2 style='width:120.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->sex ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Referral
+  Control Number # <b>{RCN}</b></span></p>
   </td>
  </tr>
  <tr style='height:1.0cm'>
-  <td width=319 colspan=4 style='width:239.1pt;border:solid black 1.0pt;
+  <td width=255 colspan=5 style='width:191.15pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Name</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Name</span></p>
   <p class=MsoNormal style='line-height:115%'><i><span lang=EN-US
-  style='font-size:9.0pt;line-height:115%;font-family:Helvetica'>Last Name
-  (Suffix), First Name Middle Name</span></i></p>
+  style='font-size:9.0pt;line-height:115%;font-family:"Arial",sans-serif'>Last
+  Name (Suffix), First Name Middle Name</span></i></p>
   </td>
-  <td width=320 colspan=4 style='width:239.65pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=275 colspan=4 style='width:206.5pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:1.0cm'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->last_name ?? '---'}} {{$event->patient->suffix ?? ''}}, {{$event->patient->first_name ?? '---'}} {{$event->patient->middle_name ?? ''}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->last_name ?? '---'}} {{$patient->suffix ?? ''}}, {{$patient->first_name ?? '---'}} {{$patient->middle_name ?? ''}}</span></p>
+  </td>
+  <td width=108 style='width:81.1pt;border-top:none;border-left:none;
+  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:1.0cm'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Sex: {{$patient->sex ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:16.95pt'>
-  <td width=189 colspan=2 style='width:141.5pt;border:solid black 1.0pt;
+  <td width=189 colspan=3 style='width:141.5pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.95pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:Helvetica'>Date
-  of Birth  </span><i><span lang=EN-US style='font-size:9.0pt;font-family:Helvetica'>YYYY-MM-DD</span></i></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:"Arial",sans-serif'>Date
+  of Birth  </span><i><span lang=EN-US style='font-size:9.0pt;font-family:"Arial",sans-serif'>YYYY-MM-DD</span></i></p>
   </td>
-  <td width=246 colspan=3 style='width:184.3pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:16.95pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:Helvetica'>{{$event->patient->birthday ?? '---'}}</span></p>
-  </td>
-  <td width=44 style='width:32.85pt;border-top:none;border-left:none;
+  <td width=302 colspan=5 style='width:8.0cm;border-top:none;border-left:none;
   border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
   height:16.95pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:Helvetica'>Age</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:"Arial",sans-serif'>{{$patient->birthday ?? '---'}}</span></p>
   </td>
-  <td width=160 colspan=2 style='width:120.1pt;border-top:none;border-left:
+  <td width=147 colspan=2 style='width:110.45pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:16.95pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->age ?? '---'}} years old</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:"Arial",sans-serif'>Age: {{$patient->age ?? '---'}} years old</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
-  <td width=160 style='width:119.75pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:11.0pt;font-family:Helvetica'>Height</span></p>
+  <td width=213 colspan=4 style='width:159.55pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Civil
+  status: {{$patient->civil_status ?? '---'}}</span></p>
   </td>
-  <td width=159 colspan=3 style='width:119.35pt;border-top:none;border-left:
+  <td width=213 colspan=3 style='width:159.6pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->height ?? '---'}} cm</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Religion: {{$patient->religion ?? '---'}}</span></p>
   </td>
-  <td width=159 colspan=2 style='width:119.55pt;border-top:none;border-left:
+  <td width=213 colspan=3 style='width:159.6pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Weight</span></p>
-  </td>
-  <td width=160 colspan=2 style='width:120.1pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->weight ?? '---'}} kg</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Blood
+  type: {{$patient->blood_type ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
   <td width=160 style='width:119.75pt;border:solid black 1.0pt;border-top:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Allergies</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Home
+  address</span></p>
   </td>
-  <td width=479 colspan=7 style='width:359.0pt;border-top:none;border-left:
+  <td width=479 colspan=9 style='width:359.0pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->allergies ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->home_address ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
   <td width=160 style='width:119.75pt;border:solid black 1.0pt;border-top:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Location</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Contact
+  number</span></p>
   </td>
-  <td width=479 colspan=7 style='width:359.0pt;border-top:none;border-left:
+  <td width=479 colspan=9 style='width:359.0pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->patient->location ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->contact_number ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=480 colspan=7 style='width:360.0pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-family:Helvetica'>Code Blue Activation</span></b></p>
-  </td>
-  <td width=158 style='width:118.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Code #: {{$event->code_number ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=160 colspan=2 style='width:120.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time of
-  Activation of Code</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Allergies</span></p>
   </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
+  <td width=478 colspan=8 style='width:358.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->code_start_dt ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->allergies ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=160 colspan=2 style='width:120.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time of
-  Arrest</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Unit
+  Assignment</span></p>
   </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
+  <td width=478 colspan=8 style='width:358.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->arrest_dt ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->unit_assignment ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=160 colspan=2 style='width:120.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Reason for
-  Code Blue Activation</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Rank/Position</span></p>
   </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
+  <td width=478 colspan=8 style='width:358.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->reason_for_activation ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->position ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=160 colspan=2 style='width:120.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Initially
-  reported by</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Bachelor’s
+  Degree</span></p>
   </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
+  <td width=478 colspan=8 style='width:358.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->initial_reporter ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->bachelor_degree ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=160 colspan=2 style='width:120.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time of
-  Code Team arrival</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Date
+  Entered Service</span></p>
   </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
+  <td width=478 colspan=8 style='width:358.5pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->code_team_arrival_dt ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$patient->date_entered_service ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time of
-  e-Cart arrival</span></p>
-  </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->e_cart_arrival_dt ?? '---'}}</span></p>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>General
+  Appearance and Condition</span></b></p>
   </td>
  </tr>
  <tr style='height:7.9pt'>
-  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Witnessed</span></p>
-  </td>
-  <td width=365 colspan=5 style='width:273.45pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$event->witnessed ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Skin: {{$patient->skin ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>HEENT: {{$patient->heent ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Neck: {{$patient->neck ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Chest: {{$patient->chest ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Heart: {{$patient->heart ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Breast (for female): {{$patient->breast ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Abdomen: {{$patient->abdomen ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Musculoskeletal: {{$patient->musculoskeletal ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Neurologic: {{$patient->neurologic ?? '---'}}</span></p>
   </td>
  </tr>
-
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Medical
+  History</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Present: {{ implode(', ', $patient->past_medical_history ?? []) }}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Operations: {{$patient->operations ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Previous Hospitalization: {{$patient->previous_hospitalization ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Current Medications: {{$patient->current_medication ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Family History: {{$patient->family_history ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Psychosocial History: {{$patient->psychosocial_history ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border-top:none;
+  border-left:solid black 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Obestetic
+  History</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=10 valign=top style='width:478.75pt;border-top:none;
+  border-left:solid black 1.0pt;border-bottom:solid windowtext 1.0pt;
+  border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Obstetric
+  Score: {{$patient->obestetric_score ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Last
+  Menstrual Period: {{$patient->lmp ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Menarche: {{$patient->menarche ?? '---'}}</span></p>
+  </td>
+ </tr>
 </table>
 
 </div>
 
-<p class=MsoNormal>&nbsp;</p>
-<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
 <div align=center>
 
@@ -341,213 +342,202 @@
  style='width:478.75pt;border-collapse:collapse;border:none'>
  <thead>
   <tr style='height:21.8pt'>
-   <td width=638 colspan=7 style='width:478.75pt;border:solid black 1.0pt;
+   <td width=638 colspan=5 style='width:478.75pt;border:solid black 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section II. </span></b><span
-   lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Resuscitation
-   Proper</span></p>
    <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-   style='font-size:14.0pt;line-height:115%;font-family:Helvetica'>Initial
-   Resuscitation</span></p>
+   style='font-size:16.0pt;line-height:115%;font-family:"Arial",sans-serif'>S.O.A.P  
+   </span><span lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:
+   "Arial",sans-serif'>Subjective, Objective, Assessment, Plan</span></p>
    </td>
   </tr>
  </thead>
- <tr style='height:18.9pt'>
-  <td width=638 colspan=7 style='width:478.75pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:18.9pt'>
-  <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-family:Helvetica'>Airway / Ventilation</span></b></p>
+ <tr style='height:15.25pt'>
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Details
+  of Visit</span></b></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
-  <td width=245 colspan=4 style='width:184.05pt;border:solid black 1.0pt;
+  <td width=246 colspan=2 valign=top style='width:184.25pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Breathing
-  upon code activation</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Date
+  of Visit:</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>{{$soap->soap_dt ?? '---'}}</span></p>
   </td>
-  <td width=393 colspan=3 style='width:294.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=393 colspan=3 valign=top style='width:294.5pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->breathing_upon_ca ?? '---' }}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Subjective
+  / Chief Complaint:</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>{{$soap->subjective ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
-  <td width=245 colspan=4 style='width:184.05pt;border:solid black 1.0pt;
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>First
-  assisted ventilation date/time</span></p>
-  </td>
-  <td width=393 colspan=3 style='width:294.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->first_ventilation_dt ?? '---'}}</span></p>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Vital
+  Signs</span></b></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
-  <td width=245 colspan=4 style='width:184.05pt;border:solid black 1.0pt;
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Ventilation
-  via</span></p>
-  </td>
-  <td width=393 colspan=3 style='width:294.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->ventilation ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Blood
+  Pressure: {{$soap->bp ?? '---'}}</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>
-  <td width=245 colspan=4 style='width:184.05pt;border:solid black 1.0pt;
+  <td width=319 colspan=3 valign=top style='width:239.35pt;border:solid black 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Intubated
-  Date/Time</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Pulse
+  Rate: {{$soap->pr ?? '---'}} bpm </span></p>
   </td>
-  <td width=393 colspan=3 style='width:294.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  <td width=319 colspan=2 valign=top style='width:239.4pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->intubation_dt ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Respiratory
+  Rate: {{$soap->rr ?? '---'}}</span></p>
   </td>
  </tr>
- <tr style='height:5.6pt'>
-  <td width=156 colspan=2 style='width:116.9pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>ET Tube size</span></p>
+ <tr style='height:15.25pt'>
+  <td width=319 colspan=3 valign=top style='width:239.35pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Height: {{$soap->height ?? '---'}} cm</span></p>
   </td>
-  <td width=90 colspan=2 style='width:67.15pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->et_tube_size ?? '---'}}</span></p>
+  <td width=319 colspan=2 valign=top style='width:239.4pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Weight: {{$soap->weight ?? '---'}} kg</span></p>
   </td>
-  <td width=217 colspan=2 style='width:163.0pt;border-top:none;border-left:
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=319 colspan=3 valign=top style='width:239.35pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Temperature: {{$soap->temp ?? '---'}} degrees Celsius</span></p>
+  </td>
+  <td width=319 colspan=2 valign=top style='width:239.4pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Body
+  Mass Index: {{$soap->bmi_1 ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Laboratory
+  Test Results</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:8.2pt'>
+  <td width=160 valign=top style='width:119.65pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:8.2pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Electrocardiogram:</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>{{$soap->ecg ?? '---'}}</span></p>
+  </td>
+  <td width=160 colspan=2 valign=top style='width:119.7pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.2pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Chest
+  X-Ray: {{$soap->cxr ?? '---'}}</span></p>
+  </td>
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Number of
-  intubation attempts</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.2pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>SGOT: {{$soap->sgot ?? '---'}}</span></p>
   </td>
-  <td width=176 style='width:131.7pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->intubation_attempts ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:5.6pt'>
-  <td width=245 colspan=4 style='width:184.05pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Confirmation
-  of ET tube placement</span></p>
-  </td>
-  <td width=393 colspan=3 style='width:294.7pt;border-top:none;border-left:
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:5.6pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->et_tube_information ?? '---'}}</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.2pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>SGPT: {{$soap->sgpt ?? '---'}}</span></p>
   </td>
  </tr>
- <tr style='height:10.05pt'>
-  <td width=638 colspan=7 style='width:478.75pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:10.05pt'>
-  <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-family:Helvetica'>Circulation</span></b></p>
+ <tr style='height:8.15pt'>
+  <td width=160 valign=top style='width:119.65pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Complete
+  Blood Count: {{$soap->cbc ?? '---'}}</span></p>
   </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=267 colspan=5 style='width:200.1pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>First
-  documented rhythm</span></p>
+  <td width=160 colspan=2 valign=top style='width:119.7pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Urinalysis: {{$soap->ua ?? '---'}}</span></p>
   </td>
-  <td width=372 colspan=2 style='width:278.65pt;border-top:none;border-left:
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->first_documented_rhythm ?? '---'}}</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Fasting
+  Blood Sugar: {{$soap->fbs ?? '---'}}</span></p>
   </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=267 colspan=5 style='width:200.1pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>First
-  pulseless rhythm date/time</span></p>
-  </td>
-  <td width=372 colspan=2 style='width:278.65pt;border-top:none;border-left:
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->first_pulseless_rhythm_dt ?? '---'}}</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Potassium
+  Blood Test (NaK): {{$soap->nak ?? '---'}}</span></p>
   </td>
  </tr>
- <tr style='height:7.9pt'>
-  <td width=267 colspan=5 style='width:200.1pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Compressions
-  started date/time</span></p>
+ <tr style='height:8.15pt'>
+  <td width=160 valign=top style='width:119.65pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Creatinine;
+  {{$soap->crea ?? '---'}}</span></p>
   </td>
-  <td width=372 colspan=2 style='width:278.65pt;border-top:none;border-left:
+  <td width=160 colspan=2 valign=top style='width:119.7pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Blood Urea
+  Nitrogen: {{$soap->bun ?? '---'}}</span></p>
+  </td>
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->compressions_dt ?? '---'}}</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>HbA1c: {{$soap->hbaic ?? '---'}}</span></p>
   </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=113 style='width:84.8pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>AED applied</span></p>
-  </td>
-  <td width=71 colspan=2 style='width:53.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->aed_applied ?? '---'}}</span></p>
-  </td>
-  <td width=454 colspan=4 style='width:340.35pt;border-top:none;border-left:
+  <td width=160 valign=top style='width:119.7pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/time: {{$initialResuscitation->aed_applied_dt ?? '---'}}</span></p>
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>HepaBS: {{$soap->hepabs ?? '---'}}</span></p>
   </td>
  </tr>
- <tr style='height:7.9pt'>
-  <td width=113 style='width:84.8pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Pacemaker on</span></p>
+ <tr style='height:8.15pt'>
+  <td width=160 valign=top style='width:119.65pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Blood
+  Uric Acid: {{$soap->bua ?? '---'}}</span></p>
   </td>
-  <td width=71 colspan=2 style='width:53.6pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$initialResuscitation->pacemaker_on ?? '---'}}</span></p>
+  <td width=160 colspan=2 valign=top style='width:119.7pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Lipid
+  Profile: {{$soap->lipid_profile ?? '---'}}</span></p>
   </td>
-  <td width=454 colspan=4 style='width:340.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/time: {{$initialResuscitation->pacemaker_on_dt ?? '---'}}</span></p>
+  <td width=319 colspan=2 valign=top style='width:239.4pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Others: {{$soap->others ?? '---'}}</span></p>
   </td>
  </tr>
+ <tr style='height:8.15pt'>
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:8.15pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Assessment
+  &amp; Plan</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:4.85pt'>
+  <td width=638 colspan=5 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.85pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Assessment: {{$soap->assessment ?? '---'}}</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Plan: {{$soap->plan ?? '---'}}</span></p>
+  </td>
+ </tr>
+</table>
 
 </div>
 
-<p class=MsoNormal>&nbsp;</p>
-<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
 <div align=center>
 
@@ -555,892 +545,469 @@
  style='width:478.75pt;border-collapse:collapse;border:none'>
  <thead>
   <tr style='height:21.8pt'>
-   <td width=638 colspan=10 style='width:478.75pt;border:solid black 1.0pt;
+   <td width=638 colspan=8 style='width:478.75pt;border:solid black 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section II. </span></b><span
-   lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Resuscitation
-   Proper</span></p>
    <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-   style='font-size:14.0pt;line-height:115%;font-family:Helvetica'>Resuscitation
-   Flowsheet</span></p>
+   style='font-size:16.0pt;line-height:115%;font-family:"Arial",sans-serif'>Diet
+   History</span></p>
    </td>
   </tr>
  </thead>
- @foreach($flowsheet as $flst)
  <tr style='height:15.25pt'>
-  <td width=110 style='width:82.25pt;border:solid black 1.0pt;border-top:none;
+  <td width=638 colspan=8 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>Anthropometric
+  Assessment</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=184 valign=top style='width:138.15pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Height: {{$diethistory->ht ?? '---'}} cm</span></p>
+  </td>
+  <td width=225 colspan=6 valign=top style='width:168.9pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Weight: {{$diethistory->wt ?? '---'}} kg</span></p>
+  </td>
+  <td width=229 valign=top style='width:171.7pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Waist
+  circumference: {{$diethistory->waist_cir ?? '---'}} cm</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=338 colspan=4 valign=top style='width:253.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Body
+  Fat %: {{$diethistory->body_fat ?? '---'}}</span></p>
+  </td>
+  <td width=300 colspan=4 valign=top style='width:225.0pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>BMI: {{$diethistory->bmi_2 ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=338 colspan=4 valign=top style='width:253.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>DBW: {{$diethistory->dbw ?? '---'}}</span></p>
+  </td>
+  <td width=300 colspan=4 valign=top style='width:225.0pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>DBW
+  Range: {{$diethistory->dbw_range ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=184 style='width:138.15pt;border:solid black 1.0pt;border-top:none;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span style='font-family:"Arial",sans-serif;
+  color:black'>Case</span></p>
+  </td>
+  <td width=454 colspan=7 style='width:340.6pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->case ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=184 style='width:138.15pt;border:solid black 1.0pt;border-top:none;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span style='font-family:"Arial",sans-serif;
+  color:black'>Diet Rx</span></p>
+  </td>
+  <td width=454 colspan=7 style='width:340.6pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->diet_rx ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=8 valign=top style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-family:"Arial",sans-serif'>24
+  Hour Food Recall</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 valign=top style='width:164.75pt;border-top:none;
+  border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
+  solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-family:"Arial",sans-serif'>Date
+  and time </span></p>
+  </td>
+  <td width=419 colspan=6 valign=top style='width:314.0pt;border-top:none;
+  border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>{{$diethistory->food_recall_time ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Where eaten</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->where_eaten ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Food/s</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->foods ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Description</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->description ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Amount</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->amount ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Was this food taken typical?</span></p>
+  </td>
+  <td width=49 style='width:36.5pt;border-top:none;border-left:none;border-bottom:
+  solid black 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->food_taken ?? '---'}}</span></p>
+  </td>
+  <td width=105 colspan=2 style='width:78.95pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>If
+  not, why?</span></p>
+  </td>
+  <td width=265 colspan=3 style='width:198.55pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->food_taken_1 ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Exercise (type, frequency, duration)</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$diethistory->exercise ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=8 style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Flowsheet #</span></b><</p>
+  style='font-family:"Arial",sans-serif'>Nutrition Intervention</span></b></p>
   </td>
-  <td width=55 colspan=2 style='width:41.6pt;border-top:none;border-left:none;
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=184 style='width:138.15pt;border:solid black 1.0pt;border-top:none;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Target Weight: {{$diethistory->target_weight_1 ?? '---'}} kg</span></p>
+  </td>
+  <td width=191 colspan=5 style='width:143.25pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Weight Loss: {{$diethistory->weight_loss ?? '---'}} kg</span></p>
+  </td>
+  <td width=263 colspan=2 style='width:197.35pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Total Energy Allowance: {{$diethistory->total_energy_allowance ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=638 colspan=8 style='width:478.75pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Food Distribution</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Vegetable A</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->vegetable_a ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Vegetable B</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->vegetable_b ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Fruit</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->fruit ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Milk</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->milk ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Rice, Cereal or Substitute</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->rice_cereal ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Meat/Fish/Poultry Products/Processed
+  foods</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->meat ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Fat, Oil, Dairy products</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->fat ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:7.9pt'>
+  <td width=220 colspan=2 style='width:164.75pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>Sugar</span></p>
+  </td>
+  <td width=419 colspan=6 style='width:314.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-family:"Arial",sans-serif'>{{$diethistory->sugar ?? '---'}}</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=638
+ style='width:478.75pt;border-collapse:collapse;border:none'>
+ <thead>
+  <tr style='height:21.8pt'>
+   <td width=638 colspan=6 style='width:478.75pt;border:solid black 1.0pt;
+   padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
+   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+   style='font-size:16.0pt;line-height:115%;font-family:"Arial",sans-serif'>Progress
+   Chart for Weight Management (PCWM)</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='height:15.25pt'>
+  <td width=319 colspan=4 style='width:239.35pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Target
+  Weight: {{$pcwm->target_weight_2 ?? '---'}} kg</span></p>
+  </td>
+  <td width=319 colspan=2 style='width:239.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Target
+  Date: {{$pcwm->target_date ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=319 colspan=4 style='width:239.35pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Starting
+  Weight: {{$pcwm->starting_weight ?? '---'}} kg</span></p>
+  </td>
+  <td width=319 colspan=2 style='width:239.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Starting
+  Date: {{$pcwm->starting_date ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=319 colspan=4 style='width:239.35pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Weighing
+  Day, Every: {{$pcwm->weighing_day ?? '---'}}</span></p>
+  </td>
+  <td width=319 colspan=2 style='width:239.4pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Weighing
+  Time: {{$pcwm->weight_time ?? '---'}}</span></p>
+  </td>
+ </tr>
+ @php $logNumber = 1; @endphp
+ @if(isset($pcwm) && $pcwm->logs->isNotEmpty())
+ @foreach($pcwm->logs as $log)
+ <tr style='height:15.25pt'>
+  <td width=165 style='width:123.85pt;border:solid black 1.0pt;border-top:none;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Log<b>
+  </b># <b>{{$logNumber++ }}</b></span></p>
+  </td>
+  <td width=85 style='width:63.9pt;border-top:none;border-left:none;border-bottom:
+  solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Date</span></p>
+  </td>
+  <td width=388 colspan=4 style='width:291.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>{{$log->pcwm2_dt ?? '---'}}</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.25pt'>
+  <td width=274 colspan=3 style='width:205.3pt;border:solid black 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Actual
+  Weekly Weight:{{$log->actual_weekly_weight ?? '---'}} kg</span></p>
+  </td>
+  <td width=170 colspan=2 style='width:127.6pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
+  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Loss: {{$log->loss ?? '---'}} kg</span></p>
+  </td>
+  <td width=194 style='width:145.85pt;border-top:none;border-left:none;
   border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
   height:15.25pt'>
   <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->flowsheet_id ?? '---'}}</span></p>
-  </td>
-  <td width=85 colspan=2 style='width:63.9pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Log time</span></p>
-  </td>
-  <td width=388 colspan=5 style='width:291.0pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->log_time ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=165 colspan=3 style='width:123.85pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Breathing</span></p>
-  </td>
-  <td width=158 colspan=4 style='width:118.2pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->breathing ?? '---'}}</span></p>
-  </td>
-  <td width=158 colspan=2 style='width:118.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Pulse</span></p>
-  </td>
-  <td width=157 style='width:118.0pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->pulse ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=165 colspan=3 style='width:123.85pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Blood
-  pressure, systolic</span></p>
-  </td>
-  <td width=158 colspan=4 style='width:118.2pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->bp_systolic ?? '---'}} mmHg</span></p>
-  </td>
-  <td width=158 colspan=2 style='width:118.7pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Blood
-  pressure, diastolic</span></p>
-  </td>
-  <td width=157 style='width:118.0pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->bp_diastolic ?? '---'}} mmHg</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=165 colspan=3 style='width:123.85pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Rhythm on
-  check</span></p>
-  </td>
-  <td width=473 colspan=7 style='width:354.9pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->rhythm_on_check ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=165 colspan=3 style='width:123.85pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Rhythm, with
-  pulse</span></p>
-  </td>
-  <td width=473 colspan=7 style='width:354.9pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->rhythm_with_pulse ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=165 colspan=3 style='width:123.85pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Rhythm intervention</span></p>
-  </td>
-  <td width=473 colspan=7 style='width:354.9pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->rhythm_intervention ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:10.05pt'>
-  <td width=638 colspan=10 style='width:478.75pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:10.05pt'>
-  <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-  style='font-family:Helvetica'>Medications</span></b></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=194 colspan=4 style='width:145.6pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>Epinephrine dose given</span></p>
-  </td>
-  <td width=103 colspan=2 style='width:76.9pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->epinephrine_dose ?? '---'}} mg</span></p>
-  </td>
-  <td width=141 colspan=2 style='width:105.5pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>Epinephrine route</span></p>
-  </td>
-  <td width=201 colspan=2 style='width:150.75pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->epinephrine_route ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=194 colspan=4 style='width:145.6pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>Amiodarone dose given</span></p>
-  </td>
-  <td width=103 colspan=2 style='width:76.9pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->amiodarone_dose ?? '---'}} mg</span></p>
-  </td>
-  <td width=141 colspan=2 style='width:105.5pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>Amiodarone route</span></p>
-  </td>
-  <td width=201 colspan=2 style='width:150.75pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->amiodarone_route ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=194 colspan=4 style='width:145.6pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>{{$flst->free1_label ?? 'Other medication'}} dose given</span></p>
-  </td>
-  <td width=103 colspan=2 style='width:76.9pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->free1_dose ?? '---'}}</span></p>
-  </td>
-  <td width=141 colspan=2 style='width:105.5pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>{{$flst->free1_label ?? 'Other medication'}} route</span></p>
-  </td>
-  <td width=201 colspan=2 style='width:150.75pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'{{$flst->free1_route ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=194 colspan=4 style='width:145.6pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>{{$flst->free2_label ?? 'Other medication'}} dose given</span></p>
-  </td>
-  <td width=103 colspan=2 style='width:76.9pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'{{$flst->free2_dose ?? '---'}}</span></p>
-  </td>
-  <td width=141 colspan=2 style='width:105.5pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:Helvetica;color:black'>{{$flst->free2_label ?? 'Other medication'}} route</span></p>
-  </td>
-  <td width=201 colspan=2 style='width:150.75pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->free2_route ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=147 colspan=2 style='width:110.5pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Comments/remarks</span></p>
-  </td>
-  <td width=491 colspan=8 style='width:368.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$flst->comments ?? '---'}}</span></p>
+  style='font-size:11.0pt;line-height:115%;font-family:"Arial",sans-serif'>Gain:{{$log->gain ?? '---'}} kg</span></p>
   </td>
  </tr>
  @endforeach
-
- </div>
- 
-<p class=MsoNormal>&nbsp;</p>
-<p class=MsoNormal>&nbsp;</p>
-
-<div align=center>
-
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=638
- style='width:478.75pt;border-collapse:collapse;border:none'>
- <thead>
-  <tr style='height:21.8pt'>
-   <td width=638 colspan=7 style='width:478.75pt;border:solid black 1.0pt;
-   padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section III.
-   </span></b><span lang=EN-US style='font-size:16.0pt;line-height:115%;
-   font-family:Helvetica'>Outcome</span></p>
-   </td>
-  </tr>
- </thead>
- <tr style='height:15.25pt'>
-  <td width=274 colspan=4 style='width:205.3pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time
-  Resuscitation Event Ended</span></p>
-  </td>
-  <td width=365 colspan=3 style='width:273.45pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->code_end_dt ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=104 style='width:77.75pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Outcome</span></p>
-  </td>
-  <td width=535 colspan=6 style='width:401.0pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->outcome ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=104 rowspan=3 style='width:77.75pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Assessment, </span><i><span
-  lang=EN-US style='font-size:10.0pt;line-height:115%;font-family:Helvetica'>if
-  survived</span></i></p>
-  </td>
-  <td width=123 colspan=2 style='width:92.1pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Blood pressure,
-  systolic</span></p>
-  </td>
-  <td width=142 colspan=2 style='width:106.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->bp_systolic ?? '---'}} mmHg</span></p>
-  </td>
-  <td width=123 style='width:92.1pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Blood
-  pressure, diastolic</span></p>
-  </td>
-  <td width=147 style='width:110.45pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->bp_diastolic ?? '---'}} mmHg</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=123 colspan=2 style='width:92.1pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Heart rate</span></p>
-  </td>
-  <td width=142 colspan=2 style='width:106.35pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->heart_rate ?? '---'}} beats per
-  min</span></p>
-  </td>
-  <td width=123 style='width:92.1pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Respiratory
-  rate</span></p>
-  </td>
-  <td width=147 style='width:110.45pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->respiratory_rate ?? '---'}} breaths per
-  min</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=85 style='width:63.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Rhythm</span></p>
-  </td>
-  <td width=450 colspan=5 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->rhythm ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=189 colspan=2 style='width:141.5pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Date/Time of
-  death, </span><i><span lang=EN-US style='font-size:10.0pt;line-height:115%;
-  font-family:Helvetica'>if died</span></i></p>
-  </td>
-  <td width=450 colspan=5 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$outcome->death_dt ?? '---'}}</span></p>
-  </td>
- </tr>
- </div>
- <p class=MsoNormal>&nbsp;</p>
- <p class=MsoNormal>&nbsp;</p>
-
-<div align=center>
-
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=638
- style='width:478.75pt;border-collapse:collapse;border:none'>
- <thead>
-  <tr style='height:21.8pt'>
-   <td width=638 colspan=3 style='width:478.75pt;border:solid black 1.0pt;
-   padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section IV. </span></b><span
-   lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Debriefing
-   and evaluation</span></p>
-   </td>
-  </tr>
- </thead>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:"Arial",sans-serif;color:black'>Was the code
-  conducted in accordance with the current algorithm?</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question1 ?? '---'}} </span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:"Arial",sans-serif;color:black'>Was there any
-  problem in the response time of the team?</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question2 ?? '---'}}<br \>{{$evaluation->question2_1 ?? ''}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span style='font-size:11.0pt;
-  line-height:115%;font-family:"Arial",sans-serif;color:black'>Were there any
-  problems with equipment, supplies or tests?</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:115%'><u><span
-  lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Equipment/supplies/tests</span></u></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:115%'><u><span
-  lang=EN-US style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Status</span></u></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>IV Supplies</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_1 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Central Line
-  Kit</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_2 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Suction</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_3 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Medications</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_4 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>ECG monitor</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_5 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Defibrillator</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_6 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>External
-  pacemaker</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_7 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Pacing or
-  defibrillator pad</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_8 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Intubation supplies</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_9 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Bag-valve
-  mask</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_10 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Oxygen supplies</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_11 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 rowspan=2 style='width:141.5pt;border:solid black 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Laboratory
-  results</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_12 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Chest x-ray</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_13 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>&nbsp;</span></p>
-  </td>
-  <td width=267 style='width:200.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Others</span></p>
-  </td>
-  <td width=182 style='width:136.75pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question3_14 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Were policies
-  and procedures followed?</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question4 ?? '---'}}<br \>{{$evaluation->question4_1 ?? ''}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Were there
-  any problems during the code?</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question5 ?? '---'}}<br \>{{$evaluation->question5_1 ?? ''}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Was family notified and updated on patient’s condition?
-  </span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question6 ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:7.9pt'>
-  <td width=189 style='width:141.5pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Other remarks</span></p>
-  </td>
-  <td width=450 colspan=2 style='width:337.25pt;border-top:none;border-left:
-  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt;height:7.9pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$evaluation->question7 ?? '---'}}</span></p>
-  </td>
- </tr>
+ @endif
 </table>
-<p class=MsoNormal>&nbsp;</p>
-<p class=MsoNormal>&nbsp;</p>
-
-<div align=center>
-
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=638
- style='width:478.75pt;border-collapse:collapse;border:none'>
- <thead>
-  <tr style='height:21.8pt'>
-   <td width=638 colspan=2 style='width:478.75pt;border:solid black 1.0pt;
-   padding:0cm 5.4pt 0cm 5.4pt;height:21.8pt'>
-   <p class=MsoNormal style='line-height:115%'><b><span lang=EN-US
-   style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Section V. </span></b><span
-   lang=EN-US style='font-size:16.0pt;line-height:115%;font-family:Helvetica'>Code
-   team</span></p>
-   </td>
-  </tr>
- </thead>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:120.25pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Code team
-  leader</span></p>
-  </td>
-  <td width=478 style='width:358.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$codeTeam->code_team_leader ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:120.25pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Code team co-leader</span></p>
-  </td>
-  <td width=478 style='width:358.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{ $codeTeam ? ($codeTeam->code_team_co_leader == -1 ? '---' : ($codeTeam->code_team_co_leader ?? '---')) : '---' }}
-</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:120.25pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Recorder</span></p>
-  </td>
-  <td width=478 style='width:358.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$codeTeam->recorder ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:120.25pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Code team
-  members</span></p>
-  </td>
-  <td width=478 style='width:358.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{$codeTeam->code_team_member ?? '---'}}</span></p>
-  </td>
- </tr>
- <tr style='height:15.25pt'>
-  <td width=160 style='width:120.25pt;border:solid black 1.0pt;border-top:none;
-  padding:0cm 5.4pt 0cm 5.4pt;height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>Intubated by</span></p>
-  </td>
-  <td width=478 style='width:358.5pt;border-top:none;border-left:none;
-  border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
-  height:15.25pt'>
-  <p class=MsoNormal style='line-height:115%'><span lang=EN-US
-  style='font-size:11.0pt;line-height:115%;font-family:Helvetica'>{{ $codeTeam ? ($codeTeam->intubated_by == -1 ? '---' : ($codeTeam->intubated_by ?? '---')) : '---' }}
-</span></p>
-  </td>
- </tr>
-</table>
-
 </div>
 
+<p class=MsoNormal><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
+
+</div>
 </main>
 </body>
 </html>
