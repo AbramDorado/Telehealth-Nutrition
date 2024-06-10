@@ -2,7 +2,7 @@
     .bg-hospital-blue img {
         display: block;
         height: 60px;
-        margin: 0 auto; /* Center the image */
+        margin: 5 auto; /* Center the image */
         max-width: 100%; /* Adjust the image size */
     }
 
@@ -62,7 +62,7 @@
                     <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
                 </div> -->
                 <div class="bg-hospital-blue">
-                    <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
+                    <img src="{{ asset('assets/images/nutrimed.png') }}" alt="enCODE Logo">
                 </div>
                     <!-- <h1 style="color: blue;">ERE</h1> -->
                 </span>

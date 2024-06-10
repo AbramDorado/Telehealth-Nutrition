@@ -40,12 +40,6 @@ class LabRequestController extends Controller
         ]);
 
         Log::debug("It reached here");
-
-        //     'lab_request_dt'
-        //     'patient_name_1'
-        //     'age_2'
-        //     'sex_2' 
-        //     'is_archived'
         
         $existingRequest = LabRequest::where('patient_number', $patient_number)->first();
 

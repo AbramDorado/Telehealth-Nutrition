@@ -37,23 +37,23 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('assets/images/login.png');
+            background-image: url('assets/images/login5.jpg');
             background-size: cover;
             filter: blur(0px);
         }
 
         .card {
             position: absolute;
-            top: 60%;
-            left: 75%;
+            top: 50%;
+            left: 50%;
             right: 0%;
             transform: translate(-50%, -50%);
             width: 500px;
             border-radius: 10px;
-            /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1); */
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             z-index: 1;
-            background-color: transparent;
+            background-color: solid;
         }
 
         @media(max-width: 1220px) {
@@ -73,7 +73,7 @@
         }
 
         .bg-hospital-blue {
-            padding: 10px 20px 0 20px;
+            padding: 40px 20px 0 20px;
             text-align: center;
             position: relative;
             background-color: transparent; /* Adding a background color */
@@ -150,7 +150,7 @@
         <div class="left-content">
         <div class="card overflow-hidden account-card mx-3">
         <div class="bg-hospital-blue">
-            <img src="{{ asset('assets/images/en.png') }}" alt="enCODE Logo">
+            <img src="{{ asset('assets/images/nutrimed.png') }}" alt="nutrimed Logo">
 
         </div>
             <div class="account-card-content">

@@ -29,60 +29,34 @@ class FormController extends Controller
         // Pass the data to the view
         return view('view_medical_record', compact('patientInformation', 'soaps', 'labRequest', 'dietHistory', 'pcwm', 'pcwmlogs'));
     }
-    
-    // ARCHIVE FUNCTION
-    public function archive(Request $request, $patient_number)
-    {
-        $patientInformation = PatientInformation::where('patient_number', $patient_number)->first();
-        
-        if ($patientInformation) {
-            $patientInformation->update(['is_archived' => true]);
-    
-            // Handle archiving related records
-            $patientInformation->soap()->update(['is_archived' => true]);
-            $patientInformation->labRequest()->update(['is_archived' => true]);
-            $patientInformation->dietHistory()->update(['is_archived' => true]);
-            $patientInformation->pcwm()->update(['is_archived' => true]);
-    
-            return redirect()->back()->with('success', 'Medical Record archived successfully.');
-        }
-    
-        return redirect()->back()->with('error', 'Medical Record not found.');
-    }
-
-    // UNARCHIVE FUNCTION
-    public function unarchive(Request $request, $patient_number)
-    {
-        $patientInformation = PatientInformation::where('patient_number', $patient_number)->first();
-
-        if ($patientInformation) {
-            $patientInformation->update(['is_archived' => false]);
-
-            // Handle unarchiving related records if needed
-            $patientInformation->soap()->update(['is_archived' => false]);
-            $patientInformation->labRequest()->update(['is_archived' => false]);
-            $patientInformation->dietHistory()->update(['is_archived' => false]);
-            $patientInformation->pcwm()->update(['is_archived' => false]);
-
-            return redirect()->back()->with('success', 'Medical Record unarchived successfully.');
-        }
-
-        return redirect()->back()->with('error', 'Medical Record not found.');
-    }
 
     // SHOW TABLE FUNCTION
     public function index()
     {
-        $nutritionEvents = PatientInformation::select(
-            'patient_number',
-            'first_name',
-            'last_name',
-            'age',
-            'home_address',
-            'contact_number'
+        $nutritionEvents = DB::table('patient_information')
+        ->leftJoin('lab_requests', 'patient_information.patient_number', '=', 'lab_requests.patient_number')
+        ->select(
+            'patient_information.patient_number',
+            'patient_information.first_name',
+            'patient_information.last_name',
+            'patient_information.age',
+            'patient_information.sex',
+            'patient_information.contact_number',
+            'lab_requests.request'
         )
         ->distinct()
         ->get();
+
+        // Format the requests
+        $nutritionEvents->transform(function ($event) {
+            if (isset($event->request)) {
+                $requests = json_decode($event->request, true);
+                $event->request = $requests ? implode(', ', $requests) : 'None';
+            } else {
+                $event->request = 'None';
+            }
+            return $event;
+        });
 
         return view('includes/nutritionforms', compact('nutritionEvents'));
     }

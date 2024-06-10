@@ -21,7 +21,6 @@ class LabRequest extends Model
         'others',
         'medical_officer',
         'license_num',
-        'is_archived',
         'patient_number',
     ];
 

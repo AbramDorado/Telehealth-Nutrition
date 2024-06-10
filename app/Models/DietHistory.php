@@ -41,7 +41,6 @@ class DietHistory extends Model
         'meat',
         'fat',
         'sugar',
-        'is_archived',
         'patient_number',
     ];
 

@@ -51,7 +51,6 @@ class PatientInformation extends Model
         'obstetric_score',
         'lmp',
         'menarche',
-        'is_archived',
     ];
 
     public function soap()

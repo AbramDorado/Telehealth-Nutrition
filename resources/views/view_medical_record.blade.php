@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center" id="headingMain">
             <h2 class="mb-0">
-                Main Information
+                Patient Information
             </h2>
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseMain" aria-expanded="true" aria-controls="collapseMain">
                 <i class="fas fa-chevron-down"></i>

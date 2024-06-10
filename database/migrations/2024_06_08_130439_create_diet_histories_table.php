@@ -28,7 +28,7 @@ class CreateDietHistoriesTable extends Migration
             $table->string('where_eaten')->nullable();
             $table->string('foods')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedInteger('amount')->nullable();
+            $table->string('amount')->nullable();
             $table->string('food_taken')->nullable();
             $table->string('food_taken_1')->nullable();
             $table->string('exercise')->nullable();
@@ -44,7 +44,6 @@ class CreateDietHistoriesTable extends Migration
             $table->string('fat')->nullable();
             $table->string('sugar')->nullable();
 
-            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('patient_number')->nullable();
             
             // Foreign key with ON DELETE CASCADE

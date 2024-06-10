@@ -18,7 +18,6 @@ class Pcwm extends Model
         'starting_date',
         'weighing_day',
         'weighing_time',
-        'is_archived',
         'patient_number',
     ];
 

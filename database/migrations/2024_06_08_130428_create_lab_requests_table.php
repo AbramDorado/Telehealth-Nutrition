@@ -19,12 +19,11 @@ class CreateLabRequestsTable extends Migration
             $table->string('patient_name_1')->nullable();
             $table->unsignedInteger('age_2')->nullable();
             $table->string('sex_2')->nullable();
-            $table->string('request')->nullable();
+            $table->json('request')->nullable();
             $table->string('others')->nullable();
             $table->string('medical_officer')->nullable();
             $table->unsignedInteger('license_num')->nullable();
             
-            $table->boolean('is_archived')->default(false);
             $table->unsignedInteger('patient_number')->nullable();
 
             $table->foreign('patient_number')->references('patient_number')->on('patient_information')->onDelete('cascade'); // This line adds ON DELETE CASCADE

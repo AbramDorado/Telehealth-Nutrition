@@ -52,22 +52,6 @@
         <div class="card">
             <div class="card-body">
             <div class="table-rep-plugin">
-                <div class="d-flex justify-content-between mb-3">
-                    <form method="GET" action="{{ route('archived_nutritionforms') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-archive fa-2x"></i>
-                        </button>
-                    </form>
-
-                    <form method="GET" action="{{ route('download-excel') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-file-excel fa-2x"></i>
-                        </button>
-                    </form>
-                </div>
-
 
                     <div class="table-responsive" style="overflow-x: auto;">
                         <table id="datatable-buttons" class="table table-hover table-striped table-bordered dt-responsive nowrap">
@@ -76,8 +60,9 @@
                                     <th>#</th>
                                     <th>Patient Name</th>
                                     <th>Age</th>
-                                    <th>Address</th>
+                                    <th>Sex</th>
                                     <th>Contact Number</th>
+                                    <th>Lab Requests</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -87,34 +72,27 @@
                                     <td>{{ $event->patient_number }}</td>
                                     <td>{{ $event->first_name }} {{ $event->last_name }}</td>
                                     <td>{{ $event->age }}</td>
-                                    <td>{{ $event->home_address }}</td>
+                                    <td>{{ $event->sex }}</td>
                                     <td>{{ $event->contact_number }}</td>
+                                    <td>{{ $event->request }}</td>
                                     <td>
                                         <!-- View the forms -->
-                                        <a href="{{ route('view_nutritionforms', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                        <a href="{{ route('view_nutritionforms', ['patient_number' => $event->patient_number]) }}" class="btn btn-success btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-eye"></i>
                                         </a>
 
                                         <!-- Edit the forms -->
-                                            <a href="{{ route('patientinformation', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                            <a href="{{ route('patientinformation', ['patient_number' => $event->patient_number]) }}" class="btn btn-warning btn-sm" style="height: 100%; border-radius: 0;">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                        
-                                        <!-- Archive the forms -->
-                                        <form action="{{ route('archive_nutritionforms', ['patient_number' => $event->patient_number]) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('POST')
-                                            <button type="submit" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
-                                                <i class="fas fa-archive"></i>
-                                            </button>
-                                        </form>
 
                                         <!-- Download in PDF the forms -->
-                                        <a href="{{ route('download-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                        <a href="{{ route('download-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-danger btn-sm" style="height: 100%; border-radius: 0;">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
                                         
-                                        <a href="{{ route('download-lab-req-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                        <!-- Download in PDF the forms for lab request-->
+                                        <a href="{{ route('download-lab-req-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-info btn-sm" style="height: 100%; border-radius: 0;">
                                             Lab Request Form
                                         </a>
                                     </td>

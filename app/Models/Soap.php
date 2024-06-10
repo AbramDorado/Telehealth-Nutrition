@@ -38,7 +38,6 @@ class Soap extends Model
         'others',
         'assessment',
         'plan',
-        'is_archived',
         'patient_number',  
     ];
 

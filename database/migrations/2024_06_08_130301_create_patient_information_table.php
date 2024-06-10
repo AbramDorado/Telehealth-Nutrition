@@ -52,7 +52,6 @@ class CreatePatientInformationTable extends Migration
             $table->string('lmp')->nullable();
             $table->string('menarche')->nullable();
 
-            $table->boolean('is_archived')->default(false);
             $table->timestamps();
         });
     }

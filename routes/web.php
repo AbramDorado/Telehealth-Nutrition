@@ -63,33 +63,14 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
 
-Route::get('/searchPatientPins', [PatientController::class, 'searchPatientPins'])->name('searchPatientPins');
-Route::get('/fetchPatientInformation', [PatientController::class, 'fetchPatientInformation'])->name('fetchPatientInformation');
-Route::get('/fetchPatientPin', [PatientController::class, 'fetchPatientPin'])->name('fetchPatientPin');
-Route::get('/fetchFlowsheetInformation/{code_number}', [FlowsheetController::class, 'fetchFlowsheetInformation'])->name('fetchFlowsheetInformation');
-
-Route::delete('/destroy/{id}', [FlowsheetController::class, 'destroy'])->name('destroy');
-Route::get('/edit/{id}', [FlowsheetController::class, 'edit'])->name('edit');
-Route::put('/update/{id}', [FlowsheetController::class, 'update'])->name('update');
-Route::post('/store/{code_number}', [FlowsheetController::class, 'store'])->name('store_flowsheet'); 
-
-
 Route::delete('/delete-user/{id}', '\App\Http\Controllers\UserController@deleteUser')->name('delete_user');
-
-Route::get('/download-excel', [ExcelController::class, 'export'])->name('download-excel');
 
 
 ///////////////////////////////////////////////////////////
-
 Route::get('/nutritionforms', '\App\Http\Controllers\FormController@index')->name('includes/nutritionforms');
 Route::get('/nutritionforms/{patient_number}/view', [FormController::class, 'viewMedicalRecord'])->name('view_nutritionforms');
 Route::post('/nutritionforms/{patient_number}/archive', [FormController::class, 'archive'])->name('archive_nutritionforms');
 Route::patch('/unarchive_nutritionforms/{patient_number}', [FormController::class,'unarchive'])->name('unarchive_nutritionforms');
-
-//for achrive
-Route::get('/archived_nutritionforms', 'App\Http\Controllers\ArchiveController@archivedNutritionForms')->name('archived_nutritionforms');
-Route::patch('/unarchive_nutritionforms/{patient_number}', [FormController::class,'unarchive'])->name('unarchive_nutritionforms');
-
 
 Route::get('/patientinformation/{patient_number}', [PatientInformationController::class, 'index'])->name('patientinformation');
 Route::post('/patientinformation/{patient_number}', [PatientInformationController::class, 'store'])->name('store_patientinformation');
@@ -110,7 +91,6 @@ Route::post('/pcwm/{patient_number}', [PcwmController::class, 'store'])->name('s
 
 Route::get('/download-pdf/{patient_number}', [PdfController::class, 'download'])->name('download-pdf');
 Route::get('/download-lab-req-pdf/{patient_number}', [PdfController::class, 'labreq_download'])->name('download-lab-req-pdf');
-
 ///////////////////////////////////////////////////////////
 
 Route::group(['middleware' => ['auth']], function () {
