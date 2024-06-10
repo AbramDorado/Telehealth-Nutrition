@@ -79,7 +79,8 @@ class LabRequestController extends Controller
 
         $labRequest->save();
 
-        return view('diethistory',  ['patient_number' => $patient_number]);
+        // return view('diethistory',  ['patient_number' => $patient_number]);
+        return redirect()->route('diethistory', ['patient_number' => $patient_number]);
     }
 
     private function updateLabRequest(Request $request, $patient_number)
@@ -89,6 +90,7 @@ class LabRequestController extends Controller
         $patient->save();
 
         // Redirect the user back to the next page
-        return view('diethistory', ['patient_number' => $patient_number]);
+        // return view('diethistory', ['patient_number' => $patient_number]);
+        return redirect()->route('diethistory', ['patient_number' => $patient_number]);
     }
 }

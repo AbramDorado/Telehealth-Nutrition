@@ -287,7 +287,7 @@
                 </div>
             </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" id="saveButton">Save</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 
                     </form>    
                 </div>
