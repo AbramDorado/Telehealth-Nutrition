@@ -96,7 +96,8 @@ Route::post('/patientinformation/{patient_number}', [PatientInformationControlle
 
 Route::get('/soap/{patient_number}', [SoapController::class, 'index'])->name('soap');
 Route::post('/soap/{patient_number}', [SoapController::class, 'store'])->name('store_soap');
-Route::put('/soap/{log_id}', [SoapController::class, 'update'])->name('update_soap');
+Route::get('/soap/edit/{log_id}', [SoapController::class, 'update_form'])->name('update_form');
+Route::post('/soap/edit/{log_id}', [SoapController::class, 'update'])->name('update_soap');
 
 Route::get('/labrequest/{patient_number}', [LabRequestController::class, 'index'])->name('labrequest');
 Route::post('/labrequest/{patient_number}', [LabRequestController::class, 'store'])->name('store_labrequest'); 
