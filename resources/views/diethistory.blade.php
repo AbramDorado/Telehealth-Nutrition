@@ -113,47 +113,47 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="ht">Height (cm)</label>
-                        <input type="text" class="form-control" name="ht" id="ht" value="{{ old('ht', optional($diethistory ?? '')->ht) }}">
+                        <input type="text" class="form-control" name="ht" id="ht" placeholder="e.g. 170" value="{{ old('ht', optional($diethistory ?? '')->ht) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="wt">Weight (kg)</label>
-                        <input type="text" class="form-control" name="wt" id="wt" value="{{ old('wt', optional($diethistory ?? '')->wt) }}">
+                        <input type="text" class="form-control" name="wt" id="wt" placeholder="e.g. 65" value="{{ old('wt', optional($diethistory ?? '')->wt) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="waist_cir">Waist Circumference</label>
-                        <input type="text" class="form-control" name="waist_cir" id="waist_cir" value="{{ old('waist_cir', optional($diethistory ?? '')->waist_cir) }}">
+                        <label for="waist_cir">Waist Circumference (cm)</label>
+                        <input type="text" class="form-control" name="waist_cir" id="waist_cir" placeholder="e.g. 80" value="{{ old('waist_cir', optional($diethistory ?? '')->waist_cir) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="body_fat">Body Fat %</label>
-                        <input type="text" class="form-control" name="body_fat" id="body_fat" value="{{ old('body_fat', optional($diethistory ?? '')->body_fat) }}">
+                        <label for="body_fat">Body Fat (%)</label>
+                        <input type="text" class="form-control" name="body_fat" id="body_fat" placeholder="e.g. 25" value="{{ old('body_fat', optional($diethistory ?? '')->body_fat) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="bmi_2">BMI</label>
-                        <input type="text" class="form-control" name="bmi_2" id="bmi_2" value="{{ old('bmi_2', optional($diethistory ?? '')->bmi_2) }}">
+                        <input type="text" class="form-control" name="bmi_2" id="bmi_2" placeholder="Auto Compute" value="{{ old('bmi_2', optional($diethistory ?? '')->bmi_2) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="dbw">DBW</label>
-                        <input type="text" class="form-control" name="dbw" id="dbw" value="{{ old('dbw', optional($diethistory ?? '')->dbw) }}">
+                        <label for="dbw">DBW (kg)</label>
+                        <input type="text" class="form-control" name="dbw" id="dbw" placeholder="e.g. 22.5" value="{{ old('dbw', optional($diethistory ?? '')->dbw) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="dbw_range">DBW Range</label>
-                        <input type="text" class="form-control" name="dbw_range" id="dbw_range" value="{{ old('dbw_range', optional($diethistory ?? '')->dbw_range) }}">
+                        <label for="dbw_range">DBW Range (kg)</label>
+                        <input type="text" class="form-control" name="dbw_range" id="dbw_range" placeholder="e.g. 55 to 65" value="{{ old('dbw_range', optional($diethistory ?? '')->dbw_range) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="case">Case</label>
-                        <textarea type="text" class="form-control" name="case" id="case">{{ old('case', optional($diethistory ?? '')->case) }}</textarea>
+                        <textarea type="text" class="form-control" name="case" id="case" placeholder="Text Field">{{ old('case', optional($diethistory ?? '')->case) }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="diet_rx">Diet Rx</label>
-                        <textarea type="text" class="form-control" name="diet_rx" id="diet_rx">{{ old('diet_rx', optional($diethistory ?? '')->diet_rx) }}</textarea>
+                        <textarea type="text" class="form-control" name="diet_rx" id="diet_rx" placeholder="Text Field">{{ old('diet_rx', optional($diethistory ?? '')->diet_rx) }}</textarea>
                     </div>
                 </div>
             </div>
@@ -169,22 +169,22 @@
 
                     <div class="form-group">
                         <label for="where_eaten">Where Eaten</label>
-                        <input type="text" class="form-control" name="where_eaten" id="where_eaten" value="{{ old('where_eaten', optional($diethistory ?? '')->where_eaten) }}">
+                        <input type="text" class="form-control" name="where_eaten" id="where_eaten" placeholder="Home" value="{{ old('where_eaten', optional($diethistory ?? '')->where_eaten) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="foods">Food/s</label>
-                        <input type="text" class="form-control" name="foods" id="foods" value="{{ old('foods', optional($diethistory ?? '')->foods) }}">
+                        <input type="text" class="form-control" name="foods" id="foods" placeholder="e.g. Chicken salad" value="{{ old('foods', optional($diethistory ?? '')->foods) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" name="description" id="description" value="{{ old('description', optional($diethistory ?? '')->description) }}">
+                        <input type="text" class="form-control" name="description" placeholder="Text Field" id="description" value="{{ old('description', optional($diethistory ?? '')->description) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="amount">Amount</label>
-                        <input type="text" class="form-control" name="amount" id="amount" value="{{ old('amount', optional($diethistory ?? '')->amount) }}">
+                        <input type="text" class="form-control" name="amount" id="amount" placeholder="1 serving" value="{{ old('amount', optional($diethistory ?? '')->amount) }}">
                     </div>
 
                     <div class="form-group">
@@ -197,12 +197,12 @@
 
                     <div class="form-group" id="reason-container" style="{{ old('food_taken', optional($diethistory ?? '')->food_taken) == 'no' ? '' : 'display: none;' }}">
                         <label for="food_taken_1">If not, why?</label>
-                        <input type="text" class="form-control" name="food_taken_1" id="food_taken_1" value="{{ old('food_taken_1', optional($diethistory ?? '')->food_taken_1) }}">
+                        <input type="text" class="form-control" name="food_taken_1" id="food_taken_1" placeholder="Text Field" value="{{ old('food_taken_1', optional($diethistory ?? '')->food_taken_1) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="exercise">Exercise (type, frequency, duration)</label>
-                        <input type="text" class="form-control" name="exercise" id="exercise" value="{{ old('exercise', optional($diethistory ?? '')->exercise) }}">
+                        <input type="text" class="form-control" name="exercise" id="exercise" placeholder="Text Field" value="{{ old('exercise', optional($diethistory ?? '')->exercise) }}">
                     </div>
                 </div>
             </div>
@@ -211,64 +211,64 @@
                 <div class="card-header bg-secondary text-white py-2">Nutrition Intervention</div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="target_weight_1">Target Weight</label>
-                        <input type="text" class="form-control" name="target_weight_1" id="target_weight_1" value="{{ old('target_weight_1', optional($diethistory ?? '')->target_weight_1) }}">
+                        <label for="target_weight_1">Target Weight (kg)</label>
+                        <input type="text" class="form-control" name="target_weight_1" id="target_weight_1" placeholder="e.g. 70" value="{{ old('target_weight_1', optional($diethistory ?? '')->target_weight_1) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="weight_loss">Weight Loss</label>
-                        <input type="text" class="form-control" name="weight_loss" id="weight_loss" value="{{ old('weight_loss', optional($diethistory ?? '')->weight_loss) }}">
+                        <label for="weight_loss">Weight Loss (kg)</label>
+                        <input type="text" class="form-control" name="weight_loss" id="weight_loss" placeholder="e.g. 5" value="{{ old('weight_loss', optional($diethistory ?? '')->weight_loss) }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="total_energy_allowance">Total Energy Allowance</label>
-                        <input type="text" class="form-control" name="total_energy_allowance" id="total_energy_allowance" value="{{ old('total_energy_allowance', optional($diethistory ?? '')->total_energy_allowance) }}">
+                        <label for="total_energy_allowance">Total Energy Allowance (kcal)</label>
+                        <input type="text" class="form-control" name="total_energy_allowance" id="total_energy_allowance" placeholder="e.g. 1800" value="{{ old('total_energy_allowance', optional($diethistory ?? '')->total_energy_allowance) }}">
                     </div>
 
                     <h5 class="mt-4">Food Distribution</h5>
 
                     <div class="form-group">
                         <label for="vegetable_a">Vegetable A</label>
-                        <input type="text" class="form-control" name="vegetable_a" id="vegetable_a" value="{{ old('vegetable_a', optional($diethistory ?? '')->vegetable_a) }}">
+                        <input type="text" class="form-control" name="vegetable_a" id="vegetable_a" placeholder="e.g. Broccoli" value="{{ old('vegetable_a', optional($diethistory ?? '')->vegetable_a) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="vegetable_b">Vegetable B</label>
-                        <input type="text" class="form-control" name="vegetable_b" id="vegetable_b" value="{{ old('vegetable_b', optional($diethistory ?? '')->vegetable_b) }}">
+                        <input type="text" class="form-control" name="vegetable_b" id="vegetable_b" placeholder="e.g. Carrots" value="{{ old('vegetable_b', optional($diethistory ?? '')->vegetable_b) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="fruit">Fruit</label>
-                        <input type="text" class="form-control" name="fruit" id="fruit" value="{{ old('fruit', optional($diethistory ?? '')->fruit) }}">
+                        <input type="text" class="form-control" name="fruit" id="fruit" placeholder="e.g. Apple" value="{{ old('fruit', optional($diethistory ?? '')->fruit) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="milk">Milk</label>
-                        <input type="text" class="form-control" name="milk" id="milk" value="{{ old('milk', optional($diethistory ?? '')->milk) }}">
+                        <input type="text" class="form-control" name="milk" id="milk" placeholder="e.g. Low-fat milk" value="{{ old('milk', optional($diethistory ?? '')->milk) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="rice_cereal">Rice, Cereal or Substitute</label>
-                        <input type="text" class="form-control" name="rice_cereal" id="rice_cereal" value="{{ old('rice_cereal', optional($diethistory ?? '')->rice_cereal) }}">
+                        <input type="text" class="form-control" name="rice_cereal" id="rice_cereal" placeholder="e.g. pasta" value="{{ old('rice_cereal', optional($diethistory ?? '')->rice_cereal) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="meat">Meat/Fish/Poultry Products/Processed foods </label>
-                        <input type="text" class="form-control" name="meat" id="meat" value="{{ old('meat', optional($diethistory ?? '')->meat) }}">
+                        <input type="text" class="form-control" name="meat" id="meat" placeholder="e.g. Chicken" value="{{ old('meat', optional($diethistory ?? '')->meat) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="fat">Fat, Oil, Dairy products</label>
-                        <input type="text" class="form-control" name="fat" id="fat" value="{{ old('fat', optional($diethistory ?? '')->fat) }}">
+                        <input type="text" class="form-control" name="fat" id="fat" placeholder="e.g. butter" value="{{ old('fat', optional($diethistory ?? '')->fat) }}">
                     </div>
 
                     <div class="form-group">
                         <label for="sugar">Sugar</label>
-                        <input type="text" class="form-control" name="sugar" id="sugar" value="{{ old('sugar', optional($diethistory ?? '')->sugar) }}">
+                        <input type="text" class="form-control" name="sugar" id="sugar" placeholder="e.g. Table sugar, Candies" value="{{ old('sugar', optional($diethistory ?? '')->sugar) }}">
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+            <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </div>
     </div>
 </form>

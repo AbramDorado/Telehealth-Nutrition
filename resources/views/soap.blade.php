@@ -103,7 +103,7 @@
             <div class="col-md-10">
                 <div class="form-group">
                     <label for="subjective">Subjective / Chief Complaint:</label>
-                    <input type="text" class="form-control" name="subjective" placeholder="Reason for Visit?" value="{{ old('subjective', optional($soap ?? '')->subjective) }}">
+                    <input type="text" class="form-control" name="subjective" placeholder="Text Field" value="{{ old('subjective', optional($soap ?? '')->subjective) }}">
                 </div>
             </div>
         </div>
@@ -124,19 +124,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="pr">Pulse Rate (bpm):</label>
-                        <input type="text" class="form-control" name="pr" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('pr', optional($soap ?? '')->pr) }}">
+                        <input type="text" class="form-control" name="pr" placeholder="e.g. 70" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('pr', optional($soap ?? '')->pr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="rr">Respiratory Rate:</label>
-                        <input type="text" class="form-control" name="rr" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('rr', optional($soap ?? '')->rr) }}">
+                        <label for="rr">Respiratory Rate (bpm):</label>
+                        <input type="text" class="form-control" name="rr" placeholder="e.g. 16" pattern="^[1-9]\d*(\.\d{1})?$" value="{{ old('rr', optional($soap ?? '')->rr) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="temp">Temperature (C):</label>
-                        <input type="text" class="form-control" name="temp" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('temp', optional($soap ?? '')->temp) }}">
+                        <input type="text" class="form-control" name="temp" placeholder="e.g. 37" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('temp', optional($soap ?? '')->temp) }}">
                     </div>
                 </div>
             </div>
@@ -145,19 +145,19 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="height">Height (cm):</label>
-                        <input type="text" class="form-control" name="height" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('height', optional($soap ?? '')->height) }}">
+                        <input type="text" class="form-control" name="height" placeholder="e.g. 170" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('height', optional($soap ?? '')->height) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="weight">Weight (kg):</label>
-                        <input type="text" class="form-control" name="weight" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('weight', optional($soap ?? '')->weight) }}">
+                        <input type="text" class="form-control" name="weight" placeholder="e.g. 65" pattern="^[1-9]\d*(\.\d{1})?$" title="Please enter a number, up to only one decimal place" value="{{ old('weight', optional($soap ?? '')->weight) }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="bmi_1">Body Mass Index:</label>
-                        <input type="text" class="form-control" name="bmi_1" value="{{ old('bmi_1', optional($soap ?? '')->bmi_1) }}">
+                        <input type="text" class="form-control" name="bmi_1" placeholder="Auto Compute" value="{{ old('bmi_1', optional($soap ?? '')->bmi_1) }}">
                     </div>
                 </div>
 
@@ -177,13 +177,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="ecg">Electrocardiogram:</label>
-                            <input type="text" class="form-control" name="ecg" value="{{ old('ecg', optional($soap ?? '')->ecg) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="ecg" value="{{ old('ecg', optional($soap ?? '')->ecg) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="ecg">Chest X-Ray:</label>
-                            <input type="text" class="form-control" name="cxr" value="{{ old('cxr', optional($soap ?? '')->cxr) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="cxr" value="{{ old('cxr', optional($soap ?? '')->cxr) }}">
                         </div>
                     </div>
                 </div>
@@ -192,13 +192,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="cbc">Complete Blood Count:</label>
-                            <input type="text" class="form-control" name="cbc" value="{{ old('cbc', optional($soap ?? '')->cbc) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="cbc" value="{{ old('cbc', optional($soap ?? '')->cbc) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="ua">Urinalysis:</label>
-                            <input type="text" class="form-control" name="ua" value="{{ old('ua', optional($soap ?? '')->ua) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="ua" value="{{ old('ua', optional($soap ?? '')->ua) }}">
                         </div>
                     </div>
                 </div>
@@ -207,13 +207,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="crea">Creatinine:</label>
-                            <input type="text" class="form-control" name="crea" value="{{ old('crea', optional($soap ?? '')->crea) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="crea" value="{{ old('crea', optional($soap ?? '')->crea) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bun">Blood Urea Nitrogen:</label>
-                            <input type="text" class="form-control" name="bun" value="{{ old('bun', optional($soap ?? '')->bun) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="bun" value="{{ old('bun', optional($soap ?? '')->bun) }}">
                         </div>
                     </div>
                 </div>
@@ -222,13 +222,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bua">Blood Uric Acid:</label>
-                            <input type="text" class="form-control" name="bua" value="{{ old('bua', optional($soap ?? '')->bua) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="bua" value="{{ old('bua', optional($soap ?? '')->bua) }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="lipid_profile">Lipid Profile:</label>
-                            <input type="text" class="form-control" name="lipid_profile" value="{{ old('lipid_profile', optional($soap ?? '')->lipid_profile) }}">
+                            <input type="text" class="form-control" placeholder="Text Field" name="lipid_profile" value="{{ old('lipid_profile', optional($soap ?? '')->lipid_profile) }}">
                         </div>
                     </div>
                 </div>
@@ -244,13 +244,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sgot">SGOT:</label>
-                                <input type="text" class="form-control" name="sgot" value="{{ old('sgot', optional($soap ?? '')->sgot) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="sgot" value="{{ old('sgot', optional($soap ?? '')->sgot) }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sgpt">SGPT:</label>
-                                <input type="text" class="form-control" name="sgpt" value="{{ old('sgpt', optional($soap ?? '')->sgpt) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="sgpt" value="{{ old('sgpt', optional($soap ?? '')->sgpt) }}">
                             </div>
                         </div>
                     </div>
@@ -259,13 +259,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="fbs">Fasting Blood Sugar:</label>
-                                <input type="text" class="form-control" name="fbs" value="{{ old('fbs', optional($soap ?? '')->fbs) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="fbs" value="{{ old('fbs', optional($soap ?? '')->fbs) }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nak">Sodium and Potassium:</label>
-                                <input type="text" class="form-control" name="nak" value="{{ old('nak', optional($soap ?? '')->nak) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="nak" value="{{ old('nak', optional($soap ?? '')->nak) }}">
                             </div>
                         </div>
                     </div>
@@ -274,20 +274,20 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hbaic">HbA1c:</label>
-                                <input type="text" class="form-control" name="hbaic" value="{{ old('hbaic', optional($soap ?? '')->hbaic) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="hbaic" value="{{ old('hbaic', optional($soap ?? '')->hbaic) }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hepabs">HepaBS:</label>
-                                <input type="text" class="form-control" name="hepabs" value="{{ old('hepabs', optional($soap ?? '')->hepabs) }}">
+                                <input type="text" class="form-control" placeholder="Text Field" name="hepabs" value="{{ old('hepabs', optional($soap ?? '')->hepabs) }}">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="others">Others:</label>
-                        <input type="text" class="form-control" name="others" value="{{ old('others', optional($soap ?? '')->others) }}">
+                        <input type="text" class="form-control" placeholder="Text Field" name="others" value="{{ old('others', optional($soap ?? '')->others) }}">
                     </div>
                 </div>
             </div>
@@ -299,12 +299,12 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="assessment">Assessment:</label>
-                <input type="text" class="form-control" name="assessment" value="{{ old('assessment', optional($soap ?? '')->assessment) }}">
+                <input type="text" class="form-control" name="assessment" placeholder="Text Field" value="{{ old('assessment', optional($soap ?? '')->assessment) }}">
             </div>
 
             <div class="form-group">
                 <label for="plan">Plan:</label>
-                <input type="text" class="form-control" name="plan" value="{{ old('plan', optional($soap ?? '')->plan) }}">
+                <input type="text" class="form-control" name="plan" placeholder="Text Field" value="{{ old('plan', optional($soap ?? '')->plan) }}">
             </div>
         </div>
     </div>
@@ -312,12 +312,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-primary btn-block" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">
+                <a class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
             </div>
             <div class="col-12 mt-2">
-                <button type="submit" class="btn btn-primary btn-block">Log</button>
+                <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;">Log</button>
             </div>
         </div>
     </div>

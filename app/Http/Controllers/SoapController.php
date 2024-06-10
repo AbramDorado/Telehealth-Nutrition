@@ -83,7 +83,6 @@ class SoapController extends Controller
         $soap->others = $validatedData['others'] ?? null;
         $soap->assessment = $validatedData['assessment'] ?? null;
         $soap->plan = $validatedData['plan'] ?? null;
-        $soap->is_archived = false;
 
         $soap->patient_number = $patient_number; // Associate the SOAP record with the patient
         $soap->save();

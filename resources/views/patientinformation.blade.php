@@ -77,10 +77,10 @@
             
 <div class="fixed-header">
     <a class="btn btn-secondary" style="color: #fff; background-color: #6c757d" href="{{ route('patientinformation', ['patient_number' => $patient_number]) }}">Patient Information</a>
-    <a id="soapBtn" class="btn btn-secondary" href="{{ route('soap', ['patient_number' => $patient_number]) }}" >S.O.A.P.</a>
-    <a id="labrequestBtn" class="btn btn-secondary" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}" >Lab Test Requests</a>
-    <a id="diethistoryBtn" class="btn btn-secondary" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}" >Diet History</a>
-    <a id="pcwmBtn" class="btn btn-secondary" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}" >P.C.W.M.</a>
+    <a id="soapBtn" class="btn btn-secondary disabled" href="{{ route('soap', ['patient_number' => $patient_number]) }}" >S.O.A.P.</a>
+    <a id="labrequestBtn" class="btn btn-secondary disabled" href="{{ route('labrequest', ['patient_number' => $patient_number]) }}" >Lab Test Requests</a>
+    <a id="diethistoryBtn" class="btn btn-secondary disabled" href="{{ route('diethistory', ['patient_number' => $patient_number]) }}" >Diet History</a>
+    <a id="pcwmBtn" class="btn btn-secondary disabled" href="{{ route('pcwm', ['patient_number' => $patient_number]) }}" >P.C.W.M.</a>
 </div>
 
 <div class="container">
@@ -99,7 +99,7 @@
 
                 <div class="form-group">
                     <label for="referral_control_num">Referral Control Number:</label>
-                    <input type="text" class="form-control" name="referral_control_num" pattern="\d+" title="Please enter only numbers" value="{{ old('referral_control_num', optional($patientinformation ?? '')->referral_control_num) }}">
+                    <input type="text" class="form-control" name="referral_control_num" placeholder="e.g. BFP-NUTR-2024-001" pattern="\d+" title="Please enter only numbers" value="{{ old('referral_control_num', optional($patientinformation ?? '')->referral_control_num) }}">
                 </div>
 
                 <label for="patient_name">Patient Name:</label>
@@ -142,7 +142,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="age">Age:</label>
-                            <input type="number" class="form-control" name="age" value="{{ old('age', optional($patientinformation ?? '')->age) }}">
+                            <input type="number" class="form-control" name="age" placeholder="e.g. 21" value="{{ old('age', optional($patientinformation ?? '')->age) }}">
                         </div>
                     </div>
                 </div>
@@ -176,14 +176,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="contact_number">Contact Number:</label>
-                            <input type="text" class="form-control" name="contact_number" pattern="\d+" title="Please enter only numbers" value="{{ old('contact_number', optional($patientinformation ?? '')->contact_number) }}">
+                            <input type="text" class="form-control" name="contact_number" placeholder="e.g. 9953425699" pattern="\d+" title="Please enter only numbers" value="{{ old('contact_number', optional($patientinformation ?? '')->contact_number) }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="religion">Religion:</label>
-                            <input type="text" class="form-control" name="religion" value="{{ old('religion', optional($patientinformation ?? '')->religion) }}">
+                            <input type="text" class="form-control" name="religion" placeholder="e.g. Catholic, Born Again, etc." value="{{ old('religion', optional($patientinformation ?? '')->religion) }}">
                         </div>
                     </div>
                 </div>
@@ -219,14 +219,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="unit_assignment">Unit Assignment: </label>
-                            <input type="text" class="form-control" name="unit_assignment" value="{{ old('unit_assignment', optional($patientinformation ?? '')->unit_assignment) }}">
+                            <input type="text" class="form-control" name="unit_assignment" placeholder="e.g. Rescue Squad" value="{{ old('unit_assignment', optional($patientinformation ?? '')->unit_assignment) }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="position">Rank/Position: </label>
-                            <input type="text" class="form-control" name="position" value="{{ old('position', optional($patientinformation ?? '')->position) }}">
+                            <input type="text" class="form-control" name="position" placeholder="e.g. Fire Captain" value="{{ old('position', optional($patientinformation ?? '')->position) }}">
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bachelor_degree">Bachelor's Degree: </label>
-                            <input type="text" class="form-control" name="bachelor_degree" value="{{ old('bachelor_degree', optional($patientinformation ?? '')->bachelor_degree) }}">
+                            <input type="text" class="form-control" name="bachelor_degree" placeholder="e.g. BS Computer Science" value="{{ old('bachelor_degree', optional($patientinformation ?? '')->bachelor_degree) }}">
                         </div>
                     </div>
 
@@ -250,7 +250,7 @@
                 
                 <div class="form-group">
                     <label for="alergies">Allergies:</label>
-                    <input type="text" class="form-control" name="allergies" value="{{ old('allergies', optional($patientinformation ?? '')->allergies) }}">
+                    <input type="text" class="form-control" name="allergies" placeholder="e.g. Shrimp, Crabs, etc." value="{{ old('allergies', optional($patientinformation ?? '')->allergies) }}">
                 </div>
 
             </div>
@@ -265,13 +265,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="skin">Skin:</label>
-                        <input type="text" class="form-control" name="skin" value="{{ old('skin', optional($patientinformation ?? '')->skin) }}">
+                        <input type="text" class="form-control" name="skin" placeholder="Text Field" value="{{ old('skin', optional($patientinformation ?? '')->skin) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="heent">Head, Eyes, Ears, Nose, Throat:</label>
-                        <input typel="text" class="form-control" name="heent" value="{{ old('heent', optional($patientinformation ?? '')->heent) }}">
+                        <input typel="text" class="form-control" name="heent" placeholder="Text Field" value="{{ old('heent', optional($patientinformation ?? '')->heent) }}">
                     </div>
                 </div>
             </div>
@@ -279,13 +279,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="neck">Neck:</label>
-                        <input type="text" class="form-control" name="neck" value="{{ old('neck', optional($patientinformation ?? '')->neck) }}">
+                        <input type="text" class="form-control" name="neck" placeholder="Text Field" value="{{ old('neck', optional($patientinformation ?? '')->neck) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="chest">Chest:</label>
-                        <input type="text" class="form-control" name="chest" value="{{ old('chest', optional($patientinformation ?? '')->chest) }}">
+                        <input type="text" class="form-control" name="chest" placeholder="Text Field" value="{{ old('chest', optional($patientinformation ?? '')->chest) }}">
                     </div>
                 </div>
             </div>
@@ -293,13 +293,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="heart">Heart:</label>
-                        <input type="text" class="form-control" name="heart" value="{{ old('heart', optional($patientinformation ?? '')->heart) }}">
+                        <input type="text" class="form-control" name="heart" placeholder="Text Field" value="{{ old('heart', optional($patientinformation ?? '')->heart) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="breast">Breast:</label>
-                        <input type="text" class="form-control" name="breast" value="{{ old('breast', optional($patientinformation ?? '')->breast) }}">
+                        <input type="text" class="form-control" name="breast" placeholder="Text Field" value="{{ old('breast', optional($patientinformation ?? '')->breast) }}">
                     </div>
                 </div>
             </div>
@@ -307,19 +307,19 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="abdomen">Abdomen:</label>
-                        <input type="text" class="form-control" name="abdomen" value="{{ old('abdomen', optional($patientinformation ?? '')->abdomen) }}">
+                        <input type="text" class="form-control" name="abdomen" placeholder="Text Field" value="{{ old('abdomen', optional($patientinformation ?? '')->abdomen) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="musculoskeletal">Musculoskeletal:</label>
-                        <input type="text" class="form-control" name="musculoskeletal" value="{{ old('musculoskeletal', optional($patientinformation ?? '')->musculoskeletal) }}">
+                        <input type="text" class="form-control" name="musculoskeletal" placeholder="Text Field" value="{{ old('musculoskeletal', optional($patientinformation ?? '')->musculoskeletal) }}">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="neurologic">Neurologic:</label>
-                <input type="text" class="form-control" name="neurologic" value="{{ old('neurologic', optional($patientinformation ?? '')->neurologic) }}">
+                <input type="text" class="form-control" name="neurologic" placeholder="Text Field" value="{{ old('neurologic', optional($patientinformation ?? '')->neurologic) }}">
             </div>
         </div>
     </div>
@@ -367,27 +367,27 @@
 
             <div class="form-group">
                 <label for="operations">Operations:</label>
-                <input type="text" class="form-control" name="operations" value="{{ old('operations', optional($patientinformation ?? '')->operations) }}">
+                <input type="text" class="form-control" name="operations" placeholder="Text Field" value="{{ old('operations', optional($patientinformation ?? '')->operations) }}">
             </div>
 
             <div class="form-group">
                 <label for="previous_hospitalization">Previous Hospitalization:</label>
-                <input type="text" class="form-control" name="previous_hospitalization" value="{{ old('previous_hospitalization', optional($patientinformation ?? '')->previous_hospitalization) }}">
+                <input type="text" class="form-control" name="previous_hospitalization" placeholder="Text Field" value="{{ old('previous_hospitalization', optional($patientinformation ?? '')->previous_hospitalization) }}">
             </div>
 
             <div class="form-group">
                 <label for="current_medication">Current Medications:</label>
-                <input type="text" class="form-control" name="current_medication" value="{{ old('current_medication', optional($patientinformation ?? '')->current_medication) }}">
+                <input type="text" class="form-control" name="current_medication" placeholder="Text Field" value="{{ old('current_medication', optional($patientinformation ?? '')->current_medication) }}">
             </div>
 
             <div class="form-group">
                 <label for="family_history">Family History:</label>
-                <input type="text" class="form-control" name="family_history" value="{{ old('family_history', optional($patientinformation ?? '')->family_history) }}">
+                <input type="text" class="form-control" name="family_history" placeholder="Text Field" value="{{ old('family_history', optional($patientinformation ?? '')->family_history) }}">
             </div>
 
             <div class="form-group">
                 <label for="psychosocial_history">Psychosocial History:</label>
-                <input type="text" class="form-control" name="psychosocial_history" value="{{ old('psychosocial_history', optional($patientinformation ?? '')->psychosocial_history) }}">
+                <input type="text" class="form-control" name="psychosocial_history" placeholder="Text Field" value="{{ old('psychosocial_history', optional($patientinformation ?? '')->psychosocial_history) }}">
             </div>
 
         </div>
@@ -401,19 +401,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="obstetric_score">Obstetric Score:</label>
-                        <input type="text" class="form-control" name="obstetric_score" value="{{ old('obstetric_score', optional($patientinformation ?? '')->obstetric_score) }}">
+                        <input type="text" class="form-control" name="obstetric_score" placeholder="e.g. GOS 3-1-2-0" value="{{ old('obstetric_score', optional($patientinformation ?? '')->obstetric_score) }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="lmp">Last Menstrual Period:</label>
-                        <input type="text" class="form-control" name="lmp" value="{{ old('lmp', optional($patientinformation ?? '')->lmp) }}">
+                        <input type="date" class="form-control" name="lmp" value="{{ old('lmp', optional($patientinformation ?? '')->lmp) }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="menarche">Menarche:</label>
-                        <input type="text" class="form-control" name="menarche" value="{{ old('menarche', optional($patientinformation ?? '')->menarche) }}">
+                        <input type="date" class="form-control" name="menarche" value="{{ old('menarche', optional($patientinformation ?? '')->menarche) }}">
                     </div>
                 </div>
             </div>
@@ -421,7 +421,7 @@
         </div>
     </div>
 
-        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button> <!-- Added btn-block class for width -->
+        <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;"><i class="fa fa-chevron-right" aria-hidden="true"></i></button> <!-- Added btn-block class for width -->
     </form> <!--end of the form submission-->
 
   </div>

@@ -49,8 +49,8 @@ class CreatePatientInformationTable extends Migration
             $table->string('family_history')->nullable();
             $table->string('psychosocial_history')->nullable();
             $table->string('obstetric_score')->nullable();
-            $table->string('lmp')->nullable();
-            $table->string('menarche')->nullable();
+            $table->date('lmp')->default(date("Y-m-d"))->nullable();
+            $table->date('menarche')->default(date("Y-m-d"))->nullable();
 
             $table->timestamps();
         });

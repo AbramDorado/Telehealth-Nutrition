@@ -91,8 +91,8 @@
           <div class="card-header bg-secondary text-white py-2">Progress Chart for Weight Management</div>
           <div class="card-body">
             <div class="form-group">
-              <label for="target_weight_2">Target Weight</label>
-              <input type="text" class="form-control" name="target_weight_2" id="target_weight_2" value="{{ old('target_weight_2', $pcwm->target_weight_2 ?? '') }}">
+              <label for="target_weight_2">Target Weight (kg)</label>
+              <input type="text" class="form-control" name="target_weight_2" id="target_weight_2" placeholder="e.g. 65" value="{{ old('target_weight_2', $pcwm->target_weight_2 ?? '') }}">
             </div>
 
             <div class="form-group">
@@ -102,7 +102,7 @@
 
             <div class="form-group">
               <label for="starting_weight">Starting Weight</label>
-              <input type="number" class="form-control" name="starting_weight" id="starting_weight" value="{{ old('starting_weight', $pcwm->starting_weight ?? '') }}">
+              <input type="number" class="form-control" name="starting_weight" id="starting_weight" placeholder="e.g. 70" value="{{ old('starting_weight', $pcwm->starting_weight ?? '') }}">
             </div>
 
             <div class="form-group">
@@ -177,7 +177,7 @@
             <button type="button" class="btn btn-secondary" id="add-row">Add</button>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
       </form>
 
     </div>

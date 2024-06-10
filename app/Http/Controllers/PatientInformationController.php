@@ -70,9 +70,8 @@ class PatientInformationController extends Controller
             'family_history' => 'nullable|string|max:255',
             'psychosocial_history' => 'nullable|string|max:255',
             'obstetric_score' => 'nullable|string|max:255',
-            'lmp' => 'nullable|string|max:255',
-            'menarche' => 'nullable|string|max:255',
-            'is_archived' => 'nullable|boolean',
+            'lmp' => 'nullable|date',
+            'menarche' => 'nullable|date',
         ]);
 
         Log::debug("It reached here");

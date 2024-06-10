@@ -34,19 +34,21 @@ class FormController extends Controller
     public function index()
     {
         $nutritionEvents = DB::table('patient_information')
-        ->leftJoin('lab_requests', 'patient_information.patient_number', '=', 'lab_requests.patient_number')
-        ->select(
-            'patient_information.patient_number',
-            'patient_information.first_name',
-            'patient_information.last_name',
-            'patient_information.age',
-            'patient_information.sex',
-            'patient_information.contact_number',
-            'lab_requests.request'
-        )
-        ->distinct()
-        ->get();
-
+            ->leftJoin('lab_requests', function ($join) {
+                $join->on('patient_information.patient_number', '=', DB::raw('lab_requests.patient_number::bigint'));
+            })
+            ->select(
+                'patient_information.patient_number',
+                'patient_information.first_name',
+                'patient_information.last_name',
+                'patient_information.age',
+                'patient_information.sex',
+                'patient_information.contact_number',
+                'lab_requests.request'
+            )
+            ->distinct()
+            ->get();
+    
         // Format the requests
         $nutritionEvents->transform(function ($event) {
             if (isset($event->request)) {
@@ -57,7 +59,7 @@ class FormController extends Controller
             }
             return $event;
         });
-
-        return view('includes/nutritionforms', compact('nutritionEvents'));
-    }
+    
+        return view('includes.nutritionforms', compact('nutritionEvents'));
+    }    
 }

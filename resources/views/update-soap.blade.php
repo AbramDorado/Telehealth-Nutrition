@@ -312,7 +312,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mt-2">
-                <button type="submit" class="btn btn-primary btn-block">Save</button>
+                <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;">Save</button>
             </div>
         </div>
     </div>

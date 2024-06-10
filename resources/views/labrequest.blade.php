@@ -261,7 +261,7 @@
                             <label for="others">Others (specify):</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="others" value="{{ old('others', optional($labrequest ?? '')->others) }}"> 
+                            <input type="text" class="form-control" name="others" placeholder="Text Field" value="{{ old('others', optional($labrequest ?? '')->others) }}"> 
                         </div>
                     </div>
                     </div>
@@ -271,14 +271,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="medical_officer">Medical Officer:</label>
-                            <input type="text" class="form-control" name="medical_officer" value="{{ old('medical_officer', optional($labrequest ?? '')->medical_officer) }}"> 
+                            <input type="text" class="form-control" name="medical_officer" placeholder="Enter Name" value="{{ old('medical_officer', optional($labrequest ?? '')->medical_officer) }}"> 
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="license_num">License Number:</label>
-                            <input type="text" class="form-control" name="license_num" pattern="\d+" title="Please enter only numbers" value="{{ old('license_num', optional($labrequest ?? '')->license_num) }}">
+                            <input type="text" class="form-control" name="license_num" placeholder="Enter License Number" pattern="\d+" title="Please enter only numbers" value="{{ old('license_num', optional($labrequest ?? '')->license_num) }}">
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                 </div>
             </div>
 
-                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-block" style="background-color: #EC674A; border-color: #EC674A; font-size: 20px; padding: 15px 20px;"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
 
                     </form>    
                 </div>

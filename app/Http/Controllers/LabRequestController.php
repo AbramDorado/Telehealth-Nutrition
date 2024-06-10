@@ -68,7 +68,6 @@ class LabRequestController extends Controller
         $labRequest->age_2 = $patient->age;
         $labRequest->sex_2 = $patient->sex;
 
-        $labRequest->is_archived = false;
         $labRequest->patient_number = $patient_number;
 
         $labRequest->save();
