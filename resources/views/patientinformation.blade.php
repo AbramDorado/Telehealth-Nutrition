@@ -99,7 +99,7 @@
 
                 <div class="form-group">
                     <label for="referral_control_num">Referral Control Number:</label>
-                    <input type="text" class="form-control" name="referral_control_num" placeholder="e.g. BFP-NUTR-2024-001" pattern="\d+" title="Please enter only numbers" value="{{ old('referral_control_num', optional($patientinformation ?? '')->referral_control_num) }}">
+                    <input type="text" class="form-control" name="referral_control_num" placeholder="e.g. 123456789" pattern="\d+" title="Please enter only numbers" value="{{ old('referral_control_num', optional($patientinformation ?? '')->referral_control_num) }}">
                 </div>
 
                 <label for="patient_name">Patient Name:</label>

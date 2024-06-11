@@ -9,7 +9,7 @@ class CreatePcwmsTable extends Migration
     public function up()
     {
         Schema::create('pcwms', function (Blueprint $table) {
-            $table->id('pcwm1_id');
+            $table->id('pcwm_id');
             $table->decimal('target_weight_2', 3, 1)->nullable();
             $table->date('target_date')->nullable();
             $table->decimal('starting_weight', 3, 1)->nullable();

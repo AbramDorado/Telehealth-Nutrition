@@ -23,9 +23,9 @@
             if ($currentUser && $currentUser->name === "Admin"): ?>
                 <li class="dropdown notification-list">
                     <div class="dropdown-toggle nav-link waves-effect">
-                        <a href="/users">
+                        <!-- <a href="/users">
                             <i class="ti-forms"></i> Users
-                        </a>
+                        </a> -->
                     </div>
                 </li>
             <?php endif; ?>

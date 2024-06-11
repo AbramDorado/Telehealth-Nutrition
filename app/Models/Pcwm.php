@@ -9,7 +9,7 @@ class Pcwm extends Model
 {
     use HasFactory;
     protected $table = 'pcwms';
-    protected $primaryKey = 'pcwm1_id';
+    protected $primaryKey = 'pcwm_id';
 
     protected $fillable = [
         'target_weight_2',
@@ -30,6 +30,6 @@ class Pcwm extends Model
 
     public function logs()
     {
-        return $this->hasMany(PcwmLog::class, 'pcwm_id', 'pcwm1_id');
+        return $this->hasMany(PcwmLog::class, 'pcwm_id', 'pcwm_id');
     }
 }

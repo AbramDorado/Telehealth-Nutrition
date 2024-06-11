@@ -24,7 +24,7 @@ class FormController extends Controller
         $labRequest = LabRequest::where('patient_number', $patient_number)->first();
         $dietHistory = DietHistory::where('patient_number', $patient_number)->first();
         $pcwm = Pcwm::where('patient_number', $patient_number)->first();
-        $pcwmlogs = PcwmLog::where('pcwm_id', $pcwm->pcwm1_id)->orderBy('pcwm2_dt', 'asc')->get();;
+        $pcwmlogs = PcwmLog::where('pcwm_id', $pcwm->pcwm_id)->orderBy('pcwm2_dt', 'asc')->get();;
 
         // Pass the data to the view
         return view('view_medical_record', compact('patientInformation', 'soaps', 'labRequest', 'dietHistory', 'pcwm', 'pcwmlogs'));

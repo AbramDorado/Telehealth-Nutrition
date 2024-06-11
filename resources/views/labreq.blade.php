@@ -103,13 +103,13 @@ div.WordSection1
   <td width=302 colspan=2 style='width:8.0cm;border-top:none;border-left:none;
   border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;
   height:16.95pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:10.5pt;font-family:"Arial",sans-serif'>A</span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:10.5pt;font-family:"Arial",sans-serif'>{{$patient->birthday ?? '---'}}</span></p>
   </td>
   <td width=132 colspan=2 style='width:99.25pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:16.95pt'>
   <p class=MsoNormal><span lang=EN-US style='font-size:10.5pt;font-family:"Arial",sans-serif'>Age:
-  ### years old</span></p>
+    {{$patient->age ?? '---'}} years old</span></p>
   </td>
  </tr>
  <tr style='height:15.25pt'>

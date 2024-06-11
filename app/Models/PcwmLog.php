@@ -22,7 +22,7 @@ class PcwmLog extends Model
 
     public function pcwm()
     {
-        return $this->belongsTo(Pcwm::class, 'pcwm_id', 'pcwm1_id');
+        return $this->belongsTo(Pcwm::class, 'pcwm_id', 'pcwm_id');
     }
 }
 
