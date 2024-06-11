@@ -10,7 +10,7 @@
 
                             <li class="">
                                 <a href="/nutritionforms" class="waves-effect {{ request()->is("nutritionforms") || request()->is("nutritionforms/*") ? "mm active" : "" }}">
-                                    <i class="ti-forms"></i> <span> Code Blue Forms </span>
+                                    <i class="ti-forms"></i> <span> Nutrition Forms </span>
                                 </a>
                             </li>            
 

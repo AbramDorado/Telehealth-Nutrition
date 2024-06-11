@@ -17,7 +17,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                <h1 class="text-center">CODE BLUE</h5>
+                <h1 class="text-center">Nutrition</h5>
                 <div class="clockStyle" id="clock">123</div>
             </div>
 
