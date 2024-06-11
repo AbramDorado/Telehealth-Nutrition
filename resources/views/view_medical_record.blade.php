@@ -277,6 +277,8 @@
     </div>  
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    @if(isset($soaps))
+
     @foreach($soaps as $soap)
 
     <div class="card">
@@ -536,7 +538,11 @@
 
     @endforeach
 
+    @endif
+
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    @if(isset($labRequest))
     
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center" id="headingLabTestRequests">
@@ -606,8 +612,12 @@
         </div>
     </div>
 
+    @endif
+
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     
+    @if(isset($dietHistory))
+
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center" id="headingDietHistory">
             <h2 class="mb-0">Diet History</h2>
@@ -820,8 +830,12 @@
         </div>
     </div>
 
+    @endif
+
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     
+    @if(isset($pcwm))
+
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center" id="headingProgressChart">
             <h2 class="mb-0">Progress Chart for Weight Management</h2>
@@ -894,6 +908,8 @@
                     <div class="card-body">
                         <div class="row">
 
+                        @if(isset($pcwm) && $pcwm->logs->isNotEmpty())
+
                         @foreach($pcwmlogs as $pcwmlog)
 
                             <!-- First Column -->
@@ -952,6 +968,8 @@
 
                         @endforeach
 
+                        @endif
+
                         </div>
                     </div>
                 </div>
@@ -959,6 +977,8 @@
             </div>
         </div>
     </div>
+
+    @endif
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     

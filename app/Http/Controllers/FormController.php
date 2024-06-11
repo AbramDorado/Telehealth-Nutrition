@@ -12,6 +12,7 @@ use App\Models\PcwmLog;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class FormController extends Controller
 {
@@ -24,7 +25,7 @@ class FormController extends Controller
         $labRequest = LabRequest::where('patient_number', $patient_number)->first();
         $dietHistory = DietHistory::where('patient_number', $patient_number)->first();
         $pcwm = Pcwm::where('patient_number', $patient_number)->first();
-        $pcwmlogs = PcwmLog::where('pcwm_id', $pcwm->pcwm_id)->orderBy('pcwm2_dt', 'asc')->get();;
+        $pcwmlogs = $pcwm ? $pcwm->logs : collect();
 
         // Pass the data to the view
         return view('view_medical_record', compact('patientInformation', 'soaps', 'labRequest', 'dietHistory', 'pcwm', 'pcwmlogs'));
