@@ -10,6 +10,8 @@ class PcwmLog extends Model
     use HasFactory;
     protected $table = 'pcwm_logs';
 
+    protected $primaryKey = 'pcwm_logs_id';
+
     protected $fillable = [
         'pcwm_id',
         'pcwm2_dt',
