@@ -62,7 +62,7 @@
                     <img src="{{ secure_asset('assets/images/en.png') }}" alt="enCODE Logo">
                 </div> -->
                 <div class="bg-hospital-blue">
-                    <img src="{{ asset('assets/images/nutrimed.png') }}" alt="enCODE Logo">
+                    <img src="{{ asset('assets/images/NutriConnect.png') }}" alt="enCODE Logo">
                 </div>
                     <!-- <h1 style="color: blue;">ERE</h1> -->
                 </span>

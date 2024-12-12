@@ -36,7 +36,7 @@
     </div>
 
     <!-- Button to trigger the add user pop-up -->
-    <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
+    <button style="background-color: #14A44D; border-color: #14A44D;" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
         <i class="fas fa-user-plus"></i> Add User
     </button>
 </div>
