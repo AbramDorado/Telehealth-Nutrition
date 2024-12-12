@@ -6,6 +6,8 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\JitsiController;
 ///////////////////////////////////////////////////////////
 use App\Http\Controllers\PatientInformationController;
 use App\Http\Controllers\SoapController;
@@ -58,7 +60,6 @@ Route::get('/users', function(){
     return view('users');
 });
 
-
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/store_user', [UserController::class, 'store'])->name('store_user');
 Route::put('/update_user/{id}', [UserController::class, 'updateUser'])->name('update_user');
@@ -93,7 +94,8 @@ Route::get('/download-pdf/{patient_number}', [PdfController::class, 'download'])
 Route::get('/download-lab-req-pdf/{patient_number}', [PdfController::class, 'labreq_download'])->name('download-lab-req-pdf');
 ///////////////////////////////////////////////////////////
 
-Route::group(['middleware' => ['auth']], function () {
+Route::get('/jitsi-meeting', [JitsiController::class, 'createRoom']);
 
+Route::group(['middleware' => ['auth']], function () {
 
 });

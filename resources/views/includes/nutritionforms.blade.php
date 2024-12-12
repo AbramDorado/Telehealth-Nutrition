@@ -24,21 +24,43 @@
 
         /* Custom button style */
         .btn.custom-btn {
-            background-color: #F67356; /* Green color */
-            border-color: #F67356; /* Matching border color */
+            background-color: #14A44D; 
+            border-color: #14A44D; /* Matching border color */
             color: #fff; /* Text color */
             font-size: 20px; /* Adjust font size */
             padding: 15px 20px; /* Adjust padding */
         }
         .btn.custom-btn:hover {
-            background-color: #EC674A; /* Darker green on hover */
-            border-color: #EC674A; /* Matching darker border on hover */
+            background-color: #30b840; 
+            border-color: #30b840; /* Matching darker border on hover */
+        }
+
+        /* Custom button style */
+        .btn.custom-btn-2 {
+            background-color: #54B4D3; /* Green color */
+            border-color: #54B4D3; /* Matching border color */
+            color: #fff; /* Text color */
+            font-size: 20px; /* Adjust font size */
+            padding: 15px 20px; /* Adjust padding */
+        }
+        .btn.custom-btn-2:hover {
+            background-color: #41c0cc; /* Darker green on hover */
+            border-color: #41c0cc; /* Matching darker border on hover */
         }
         
     </style>
 @endsection
 
 @section('button')
+    <!-- Add the Jitsi Meeting Button here -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <a href="{{ url('jitsi-meeting') }}" class="btn btn-block custom-btn-2">
+                <i class="fas fa-video" style="margin-right: 8px;"></i> NutriMed Meeting
+            </a> <!-- Jitsi Button -->
+        </div>
+    </div>
+
     <div class="row justify-content-center mb-4">
         <div class="col-md-6">
             @php
@@ -53,7 +75,9 @@
 
             <form method="GET" action="{{ route('patientinformation', ['patient_number' => $nextPatientNumber]) }}">
                 @csrf
-                <button type="submit" class="btn btn-block custom-btn">Enter New Medical Record</button>
+                <button type="submit" class="btn btn-block custom-btn">
+                    <i class="fas fa-file-medical" style="margin-right: 8px;"></i> Enter New Medical Record
+                </button>
             </form>
         </div>
     </div>
@@ -91,7 +115,7 @@
                                         <td>{{ $event->request }}</td>
                                         <td>
                                             <!-- View the forms -->
-                                            <a href="{{ route('view_nutritionforms', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0;">
+                                            <a href="{{ route('view_nutritionforms', ['patient_number' => $event->patient_number]) }}" class="btn btn-primary btn-sm" style="height: 100%; border-radius: 0; background-color: #14A44D; border-color: #14A44D;">
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
@@ -106,7 +130,7 @@
                                             </a>
                                             
                                             <!-- Download in PDF the forms for lab request-->
-                                            <a href="{{ route('download-lab-req-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-danger btn-sm" style="height: 100%; border-radius: 0;">
+                                            <a href="{{ route('download-lab-req-pdf', ['patient_number' => $event->patient_number]) }}" class="btn btn-secondary btn-sm" style="height: 100%; border-radius: 0; background-color: #54B4D3; border-color: #54B4D3;">
                                                 Lab Request Form
                                             </a>
                                         </td>
