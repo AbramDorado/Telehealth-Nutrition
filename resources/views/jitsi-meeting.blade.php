@@ -40,15 +40,6 @@
         .btn-custom:hover {
             background-color: #218838;
         }
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 
@@ -74,7 +65,7 @@
             },
             interfaceConfigOverwrite: {
                 // Optional: Customize the interface (e.g., hide the 'kick' button)
-                TOOLBAR_BUTTONS: ['microphone', 'camera', 'hangup', 'chat'],
+                // TOOLBAR_BUTTONS: ['microphone', 'camera', 'hangup', 'chat'],
             },
         };
         const api = new JitsiMeetExternalAPI(domain, options);
