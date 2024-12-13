@@ -47,22 +47,41 @@
             background-color: #41c0cc; /* Darker green on hover */
             border-color: #41c0cc; /* Matching darker border on hover */
         }
-        
+
+        /* Custom button style */
+        .btn.custom-btn-3 {
+            background-color: #346ed1; 
+            border-color: #346ed1; /* Matching border color */
+            color: #fff; /* Text color */
+            font-size: 20px; /* Adjust font size */
+            padding: 15px 20px; /* Adjust padding */
+        }
+        .btn.custom-btn-3:hover {
+            background-color: #325ea8; 
+            border-color: #325ea8; /* Matching darker border on hover */
+        }                
     </style>
 @endsection
 
 @section('button')
-    <!-- Add the Jitsi Meeting Button here -->
+    <!-- Add Buttons in a Single Row -->
     <div class="row justify-content-center mb-4">
-        <div class="col-md-6">
+        <!-- NutriConnect Meeting Button -->
+        <div class="col-md-4 text-center">
             <a href="{{ url('jitsi-meeting') }}" class="btn btn-block custom-btn-2">
-                <i class="fas fa-video" style="margin-right: 8px;"></i> NutriMed Meeting
-            </a> <!-- Jitsi Button -->
+                <i class="fas fa-video" style="margin-right: 8px;"></i> NutriConnect Meeting
+            </a>
         </div>
-    </div>
 
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-6">
+        <!-- Calendar Schedule Button -->
+        <div class="col-md-4 text-center">
+            <a href="{{ url('meetings') }}" class="btn btn-block custom-btn-3">
+                <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> Calendar Schedule
+            </a>
+        </div>
+
+        <!-- Enter New Medical Record Button -->
+        <div class="col-md-4 text-center">
             @php
                 $lastPatientNumber = DB::table('patient_information')->orderBy('patient_number', 'desc')->first();
 

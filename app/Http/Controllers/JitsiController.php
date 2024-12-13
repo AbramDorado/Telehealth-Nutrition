@@ -8,10 +8,7 @@ class JitsiController extends Controller
 {
     public function createRoom()
     {
-        // Generate a unique room name or fetch it from a database
-        $roomName = 'meeting_' . uniqid();
-        
-        // Pass the room name to the view
+        $roomName = $request->room ?? 'default_meeting_room';
         return view('jitsi-meeting', compact('roomName'));
     }
 }

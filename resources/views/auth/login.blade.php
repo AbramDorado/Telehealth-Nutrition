@@ -37,7 +37,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('assets/images/login5.jpg');
+            background-image: url('assets/images/nutribg.jpg');
             background-size: cover;
             filter: blur(0px);
         }
@@ -118,16 +118,16 @@
         }
 
         .btn-success {
-            background-color: #0A3C6B;
-            border-color: #0A3C6B;
+            /* background-color: #0A3C6B; */
+            /* border-color: #0A3C6B; */
             font-size: 16px;
             font-weight: 600;
             padding: 10px 20px;
         }
 
         .btn-success:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            /* background-color: #0056b3; */
+            /* border-color: #0056b3; */
         }
 
         .welcome-text {
@@ -150,7 +150,7 @@
         <div class="left-content">
         <div class="card overflow-hidden account-card mx-3">
         <div class="bg-hospital-blue">
-            <img src="{{ asset('assets/images/nutrimed.png') }}" alt="nutrimed Logo">
+            <img src="{{ asset('assets/images/NutriConnect.png') }}" alt="NutriConnect Logo">
 
         </div>
             <div class="account-card-content">

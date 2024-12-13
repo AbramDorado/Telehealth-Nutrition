@@ -8,6 +8,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ZoomController;
 use App\Http\Controllers\JitsiController;
+use App\Http\Controllers\MeetingController;
 ///////////////////////////////////////////////////////////
 use App\Http\Controllers\PatientInformationController;
 use App\Http\Controllers\SoapController;
@@ -95,6 +96,10 @@ Route::get('/download-lab-req-pdf/{patient_number}', [PdfController::class, 'lab
 ///////////////////////////////////////////////////////////
 
 Route::get('/jitsi-meeting', [JitsiController::class, 'createRoom']);
+
+Route::get('/meetings', [MeetingController::class, 'index'])->name('meetings.index');
+Route::post('/meetings', [MeetingController::class, 'store'])->name('meetings.store');
+Route::delete('/meetings/{id}', [MeetingController::class, 'destroy'])->name('meetings.destroy');
 
 Route::group(['middleware' => ['auth']], function () {
 
